@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>StudyByPKY | Biology NCERT Highlights</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(rgba(0,70,30,.82),rgba(0,70,30,.82)),
+url("https://images.unsplash.com/photo-1532094349884-543bc11b2341");
+background-size:cover;
+background-attachment:fixed;
+color:white;
+}
+
+header{
+background:#0b5d1e;
+padding:20px;
+text-align:center;
+}
+
+.logo{
+font-size:38px;
+font-weight:bold;
+}
+
+.logo span{
+color:#ffd700;
+}
+
+.hero{
+padding:60px 20px;
+text-align:center;
+}
+
+.hero h1{
+font-size:52px;
+color:#ffd700;
+}
+
+.hero p{
+font-size:22px;
+margin-top:15px;
+}
+
+.btn{
+display:inline-block;
+margin-top:25px;
+padding:14px 30px;
+background:#ffd700;
+color:black;
+font-weight:bold;
+text-decoration:none;
+border-radius:30px;
+}
+
+.container{
+padding:50px 8%;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.card{
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(10px);
+padding:25px;
+border-radius:18px;
+transition:.4s;
+border:1px solid rgba(255,255,255,.3);
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card h2{
+color:#ffd700;
+margin-bottom:12px;
+}
+
+footer{
+background:#0b5d1e;
+padding:20px;
+text-align:center;
+margin-top:40px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+Study<span>ByPKY</span>
+</div>
+
+<h2>Biology NCERT Highlights | NEET 2026</h2>
+
+</header>
+
+
+<div class="hero">
+
+<h1>🌿 Biology NCERT Highlights</h1>
+
+<p>One-Line Facts • NCERT Keywords • Exam Tricks</p>
+
+<a class="btn"
+href="http://www.youtube.com/@studybypky"
+target="_blank">
+
+🎥 StudyByPKY YouTube
+
+</a>
+
+</div>
+
+<section>
+
+<div class="container">
+
+<div class="grid">
+
+<div class="card">
+
+<h2>CLASS 11</h2>
+<a href="https://drive.google.com/file/d/1tJyUws7-huXf-9xZacrRK5qNAxyFfxeC/view?usp=drivesdk">🧬The living world</a>
+<p>The living world </p>
+
+<a href="https://drive.google.com/file/d/1iE3xr3vQ3BOEgEgzNgp4u01PP3lcZQ6E/view?usp=drivesdk">🧬 Biological classification</a>
+<p>Biological classification</p>
+
+<a href="https://drive.google.com/file/d/1z7oI6896nE_rD8dlbkzQoP9YayI6Utn1/view?usp=drivesdk">🧬 Plant Kingdom</a>
+<p>Plant Kingdom </p>
+
+<a href="https://drive.google.com/file/d/1EqwCVidfjsSPjyUdpwxmjq-Oo6wzzoQ1/view?usp=drivesdk">🧬 Animal Kingdom</a>
+<p>Animal Kingdom</p>
+
+<a href="https://drive.google.com/file/d/1XHNuunip8SGybRWpEHtU62fxO7G-XOZL/view?usp=drivesdk">🧬 Morphology of flowering plants</a>
+<p>Morphology of flowering plants</p>
+
+<a href="https://drive.google.com/file/d/17Xjizk-7LPNFEBab4RADQGdVcgZfGPmB/view?usp=drivesdk">🧬Anatomy of flowering plants</a>
+<p>Anatomy of flowering plants </p>
+
+<a href="https://drive.google.com/file/d/1aJJq6PUrtnTcvPT7iYKyFWDxp0gqE_pU/view?usp=drivesdk">🧬 Structural organisation in Animal</a>
+<p>Structural organisation in Animal</p>
+
+<a href="https://drive.google.com/file/d/1SXfgipjIw19yAnAiFplMD6Na0BmM4R0j/view?usp=drivesdk">🧬Frog</a>
+<p>Frog🐸</p>
+
+<a href="https://drive.google.com/file/d/1UeocQMSUM00u9s3BVqqF1OzIgBf0eQi7/view?usp=drivesdk">🧬 Cockroach</a>
+<p>Cockroach 🐞</p>
+
+<a href="https://drive.google.com/file/d/18PV2p02MG7stxZ9M1BvBEtL3u9zeFI27/view?usp=drivesdk">🧬Cell the unit of life</a>
+<p>Cell the unit of life</p>
+
+<a href="https://drive.google.com/file/d/1kYby7kHuB7hUQHFsXGEBa1RtXd5ZhFis/view?usp=drivesdk">🧬 Biomolecules</a>
+<p>Biomolecules </p>
+
+<a href="https://drive.google.com/file/d/1p6q-P7NPrrU_WNTFxpvPd1vGe923KF1v/view?usp=drivesdk">🧬 Cell cycle and cell division</a>
+<p>Cell cycle and cell division</p>
+
+<a href="https://drive.google.com/file/d/18kMsbIwyrCJ_xrHovbpX15CsRNG8T1xW/view?usp=drivesdk">🧬 Photosynthesis in higher plants</a>
+<p>Photosynthesis in higher plants</p>
+
+<a href="https://drive.google.com/file/d/1vBomxPGMkAx9VGHcndSBjR6JZFZAXFtW/view?usp=drivesdk">🧬 Respiration in higher plants</a>
+<p>Respiration in higher plants</p>
+
+<a href="https://drive.google.com/file/d/1nUxGVlZiIkFiJU-3QYDRaL1VO9urp1d8/view?usp=drivesdk">🧬 Plant growth and development</a>
+<p>Plant growth and development</p>
+
+<a href="https://drive.google.com/file/d/1oxQ2JYNL2R6q-6tY6R2TZRaovk_JrDnv/view?usp=drivesdk">🧬Breathing and exchange of gass</a>
+<p>Breathing and exchange of gases</p>
+
+<a href="https://drive.google.com/file/d/1NprBmPj16XGIYwZ6kVmb18P0JAT6O9B1/view?usp=drivesdk">🧬 Body fluids and circulation</a>
+<p>Body fluids and circulation</p>
+
+<a href="https://drive.google.com/file/d/1LrwTetMjeZW0Ka1gADUrWLfXfP-BdQQq/view?usp=drivesdk">🧬Excretory product and their elimination</a>
+<p>Excretory product and their elimination</p>
+
+<a href="https://drive.google.com/file/d/1Fb3A7Cgxzzp_9_g99OcZvok_3eDrwYIW/view?usp=drivesdk">🧬Locomotion and movement</a>
+<p>Locomotion and movement</p>
+
+<a href="https://drive.google.com/file/d/1IBPUZP6lQLM9wqa-dEvG1HVU5IkqS6vL/view?usp=drivesdk">🧬 Neural control and coordination</a>
+<p>Neural control and coordination</p>
+
+<a href="https://drive.google.com/file/d/1g8U0JCMZiDnrYsWCkfKR2ZKlJjGTdwHg/view?usp=drivesdk">🧬 Chemical coordination and integration</a>
+<p>Chemical coordination and integration</p>
+
+</p>
+</div>
+</Section>
+
+<section>
+
+<div class="container">
+
+<div class="grid">
+<div class="card">
+<h2>CLASS 12</h2>
+
+<a href="https://drive.google.com/file/d/13fZ6AQDXxKuLLXViXfHIoFE_pjJbzZU5/view?usp=drivesdk">🧬 sexual reproduction in flowering plants</a>
+<p>sexual reproduction in flowering plants</p>
+
+<a href="https://drive.google.com/file/d/17372zhJET-lHUQ7ENU0qDX3PieFkXOro/view?usp=drivesdk">🧬Human Reproduction </a>
+<p>Human Reproduction</p>
+
+<a href="https://drive.google.com/file/d/1eHK6uLvAmp9mG56vvWnYtLxfJ9UxyGw7/view?usp=drivesdk">🧬Reproductive Health </a>
+<p>Reproductive Health</p>
+
+<a href="https://drive.google.com/file/d/1YUeF2P30-TiArqhgzLt8SIM4MhaMIyGE/view?usp=drivesdk">🧬Principles of Inheritance and Variation </a>
+<p>Principles of Inheritance and Variation</p>
+
+<a href="https://drive.google.com/file/d/16ur6MQRzASdpS1uNhCLRXITwsdlvkCU5/view?usp=drivesdk">🧬Molecular Basis of Inheritance </a>
+<p>Molecular Basis of Inheritance</p>
+
+<a href="https://drive.google.com/file/d/1tLhqK5BOdJ15IjG-9zqd6t_Ep2GYA-T7/view?usp=drivesdk">🧬Evolution </a>
+<p>Evolution</p>
+
+<a href="https://drive.google.com/file/d/1I0jWJSR6TTLVZsLUqyu5JJbugKQtjgaY/view?usp=drivesdk">🧬 Human health and disease</a>
+<p>Human health and diseases</p>
+
+<a href="https://drive.google.com/file/d/1wB42a1x6sHQGrowLn8uHewewJnkVObVX/view?usp=drivesdk">🧬 Microbes in human welfare</a>
+<p>Microbes in human welfare</p>
+
+<a href="https://drive.google.com/file/d/1vhGy8NWtD7jEdsGYKUj1yIG3smHLEd6O/view?usp=drivesdk">🧬Biotechnology: Principles and Processes </a>
+<p>Biotechnology: Principles and Processes</p>
+
+<a href="https://drive.google.com/file/d/1okewHuXV94OWGP53WgYOPLecIVAYK625/view?usp=drivesdk">🧬Biotechnology and its Applications </a>
+<p>Biotechnology and its Applications</p>
+
+<a href="https://drive.google.com/file/d/1pEr_fhlxOwRxAp69nGvGe9JSBpMvTej3/view?usp=drivesdk">🧬Organisms and Populations </a>
+<p>Organisms and Populations</p>
+
+<a href="https://drive.google.com/file/d/1J2DY16j8vV5eLm8f6i1iMDapQrSOrJM-/view?usp=drivesdk">🧬Ecosystem </a>
+<p>Ecosystem</p>
+
+<a href="https://drive.google.com/file/d/1FOzIqkA61Bq5N5DZe8HIFGomTGl0q0bF/view?usp=drivesdk">🧬Biodiversity and Conservation </a>
+<p>Biodiversity and Conservation</p>
+
+
+
+</div>
+</Section>
+
+<div class="card">
+<h2>🎯 NEET Focus</h2>
+<p>
+✔ NCERT Highlight Lines<br>
+✔ Important Tables<br>
+✔ Diagrams<br>
+✔ PYQ Facts<br>
+✔ Assertion & Reason
+</p>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 StudyByPKY
+
+<br>
+
+Learn • Revise • Achieve
+
+</footer>
+
+</body>
+</html>
