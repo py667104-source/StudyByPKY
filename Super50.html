@@ -175,6 +175,18 @@ PKY
 📋 Submit Registration
 </button>
 
+<label style="margin-top:20px;font-weight:bold;">
+Upload Payment Screenshot
+</label>
+
+<input
+    type="file"
+    id="paymentScreenshot"
+    accept="image/*"
+    style="margin-top:10px;"
+    required
+>
+    
 </div>
 
 <div class="info">
@@ -220,13 +232,18 @@ function submitForm() {
     let name = document.getElementById("studentName").value;
     let father = document.getElementById("fatherName").value;
     let mobile = document.getElementById("mobile").value;
-    let email = document.getElementById("email").value;
-
+    let email = document.getElementById("email").value :
+    let screenshot = document.getElementById("paymentScreenshot").files[0];
+    
     if(name=="" || father=="" || mobile=="" || email==""){
-        alert("Please fill all details before submitting.");
-        return;
-    }
+    alert("Please fill all details before submitting.");
+    return;
+}
 
+if(!screenshot){
+    alert("Please upload your payment screenshot.");
+    return;
+    }
     document.body.innerHTML = `
     <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(135deg,#0f172a,#0056d6,#00bfff);font-family:Arial,sans-serif;">
         <div style="background:white;padding:40px;border-radius:20px;max-width:700px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.3);">
