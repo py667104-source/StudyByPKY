@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyByPKY | PHYSICS NCERT HIGHLIGHTS Payment</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#0056d6,#00bfff);
+padding:20px;
+}
+
+.container{
+max-width:800px;
+margin:auto;
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.header{
+background:#0056d6;
+color:white;
+text-align:center;
+padding:25px;
+}
+
+.logo{
+width:90px;
+height:90px;
+background:white;
+border-radius:50%;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+font-weight:bold;
+color:#0056d6;
+border:4px solid gold;
+margin-bottom:10px;
+}
+
+.content{
+padding:25px;
+}
+
+label{
+display:block;
+margin-top:15px;
+font-weight:bold;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-top:5px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+}
+
+.payment{
+margin-top:25px;
+padding:20px;
+background:#eef7ff;
+border-radius:10px;
+text-align:center;
+}
+
+.amount{
+font-size:34px;
+font-weight:bold;
+color:green;
+margin:10px;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:15px;
+border:none;
+border-radius:8px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.payBtn{
+background:#16a34a;
+color:white;
+}
+
+.submitBtn{
+background:#0056d6;
+color:white;
+}
+
+.info{
+margin-top:25px;
+background:#fff8dc;
+padding:20px;
+border-radius:10px;
+}
+
+.footer{
+background:#0f172a;
+color:white;
+padding:15px;
+text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<div class="logo">
+PKY
+</div>
+
+
+<h1>PHYSICS NCERT Highlights</h1>
+
+<h2>Powered by StudyByPKY</h2>
+
+</div>
+
+<div class="content">
+
+<label>Student Name</label>
+<input type="text" id="studentName" placeholder="Enter Student Name" required>
+
+<label>Father's Name</label>
+<input type="text" id="fatherName" placeholder="Enter Father's Name" required>
+
+<label>Mobile Number</label>
+<input type="tel" id="mobile" maxlength="10" placeholder="Enter Mobile Number" required>
+
+<label>Email Address</label>
+<input type="email" id="email" placeholder="Enter Email Address" required>
+
+<div class="payment">
+
+<h2>Registration Fee</h2>
+
+<div class="amount">₹100</div>
+
+<h3>UPI ID</h3>
+
+<p style="font-size:18px;font-weight:bold;color:#0056d6;">
+7534976027-1@mbkns
+</p>
+<button class="payBtn" onclick="payNow()">
+💳 Pay ₹100 via Any UPI App
+</button>
+
+<h2> Payment  </h2>    
+<p>
+<button <nav>
+<a href="https://forms.gle/PwpD1YSWDyWBNfss5"> PAYMENT WITH QR </a>
+</nav> 
+</p>
+</button>
+    
+<label>Upload Payment Screenshot</label>
+<input type="file" id="paymentScreenshot" accept="image/*" required>
+
+    
+<button class="submitBtn" onclick="submitForm()">
+📋 Submit Registration
+</button>   
+</div>
+
+<div class="info">
+
+<h2>
+Why are PHYSICS NCERT Highlights Important for NEET?</h2>
+
+<ul style="padding-left:20px;line-height:1.9;">
+
+<li>✅ Covers 100% High-Yield NCERT Points asked in NEET.</li>
+  
+<li>✅ Helps in Quick Revision before tests and the final exam.</li>
+
+<li>✅ Highlights Important Lines, Facts & Keywords frequently asked in NEET.</li>
+  
+<li>✅ Strengthens Concepts from NCERT, the most trusted source for Biology.</li>
+  
+<li>✅ Improves Accuracy in Assertion-Reason, Statement & Match-the-Following questions.</li>
+  
+<li>✅ Saves Time by focusing only on Exam-Relevant Content.</li>
+  
+<li>✅ Includes Diagrams, Tables, Flowcharts & Scientific Names for better retention.</li>
+  
+<li>✅ Boosts Memory, Confidence & NEET Score with regular revision.</li>
+  
+<li>✅ Ideal for Last-Minute Revision and daily Physics practice.</li>
+  
+<li>✅ The Smartest Way to Master NEET Physics through NCERT Highlights.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+© 2026 StudyByPKY | PHYSICS NCERT Highlights
+</div>
+
+
+<script>
+function submitForm() {
+
+    let name = document.getElementById("studentName").value;
+    let father = document.getElementById("fatherName").value;
+    let mobile = document.getElementById("mobile").value;
+    let email = document.getElementById("email").value;
+    let screenshot = document.getElementById("paymentScreenshot").files[0];
+
+
+    if(name=="" || father=="" || mobile=="" || email==""){
+        alert("Please fill all details before submitting.");
+        return;
+    }
+
+
+    if(!screenshot){
+        alert("Please upload your payment screenshot.");
+        return;
+    }
+
+
+    document.body.innerHTML = `
+
+    <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(135deg,#0f172a,#0056d6,#00bfff);font-family:Arial,sans-serif;">
+
+    <div style="background:white;padding:40px;border-radius:20px;text-align:center;max-width:700px;">
+
+    <div style="font-size:70px;">🎉</div>
+
+    <h1 style="color:#16a34a;">
+    Congratulations!
+    </h1>
+
+    <h2>
+    Dear ${name},
+    </h2>
+
+    <p style="font-size:20px;line-height:1.8;">
+
+    You are now a student of
+
+    <br><br>
+
+    <b style="color:#0056d6;font-size:24px;">
+    Physics NCERT Highlights
+    </b>
+
+    <br><br>
+
+    Your registration has been submitted successfully.
+
+    <br><br>
+
+    Test login details will be sent to your registered email.
+   
+    <br><br>
+
+    Best Wishes for your NEET Preparation 🚀
+
+    </p>
+
+    </div>
+
+
+    </div>
+
+    `;
+    }
+    function payNow() {
+    alert("Open any UPI app and pay ₹100 to:\n7534976027-1@mbkns");
+        }
+    </script>
+</body >
+</html>
+</div>
