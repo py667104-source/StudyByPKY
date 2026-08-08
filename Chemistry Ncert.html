@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Chemistry NCERT Highlights</title>
+
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body{
+
+    background:#0b1222;
+
+    color:#ffffff;
+
+    min-height:100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+
+    height:58px;
+
+    background:#10192c;
+
+    border-bottom:1px solid #263453;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:0 16px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+}
+
+
+.back{
+
+    text-decoration:none;
+
+    color:#8ea7ff;
+
+    font-size:25px;
+
+    margin-right:8px;
+}
+
+
+.header-title{
+
+    font-size:13px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container{
+
+    width:100%;
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:0 10px 40px;
+}
+
+
+/* =========================
+   TABS
+========================= */
+
+.tabs{
+
+    height:58px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(5,1fr);
+
+    border-bottom:1px solid #263453;
+
+    margin-bottom:14px;
+}
+
+
+.tab{
+
+    height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#7f8ba4;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    position:relative;
+
+    cursor:pointer;
+
+    text-align:center;
+}
+
+
+.tab.active{
+
+    color:#ffffff;
+}
+
+
+.tab.active::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+
+    left:15%;
+
+    right:15%;
+
+    height:3px;
+
+    background:#6678ff;
+
+    border-radius:
+    5px 5px 0 0;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box{
+
+    margin:
+    8px 3px 14px;
+}
+
+
+.search-box input{
+
+    width:100%;
+
+    background:#151f34;
+
+    color:#ffffff;
+
+    border:1px solid #2b3b5d;
+
+    border-radius:9px;
+
+    outline:none;
+
+    padding:
+    11px 13px;
+
+    font-size:11px;
+}
+
+
+.search-box input::placeholder{
+
+    color:#78859d;
+}
+
+
+.search-box input:focus{
+
+    border-color:#6678ff;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section-title{
+
+    margin:
+    13px 4px 8px;
+
+    padding:
+    8px 10px;
+
+    background:#121d32;
+
+    border-left:
+    3px solid #6678ff;
+
+    border-radius:4px;
+
+    color:#e9edfa;
+
+    font-size:11px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   NOTE CARD
+========================= */
+
+.note{
+
+    width:100%;
+
+    min-height:64px;
+
+    display:flex;
+
+    align-items:center;
+
+    background:#1a263d;
+
+    border:
+    1px solid #2c3b5b;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    margin-bottom:8px;
+
+    cursor:pointer;
+
+    transition:
+    transform .2s,
+    background .2s,
+    border .2s;
+
+    box-shadow:
+    0 3px 8px rgba(0,0,0,.16);
+}
+
+
+.note:hover{
+
+    transform:translateY(-1px);
+
+    background:#1d2b45;
+
+    border-color:#526b9d;
+}
+
+
+/* =========================
+   PDF ICON AREA
+========================= */
+
+.pdf-area{
+
+    width:76px;
+
+    min-height:64px;
+
+    align-self:stretch;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#193961;
+
+    flex-shrink:0;
+}
+
+
+/* =========================
+   PDF PAPER
+========================= */
+
+.pdf-paper{
+
+    width:28px;
+
+    height:34px;
+
+    background:#ffffff;
+
+    border-radius:2px;
+
+    position:relative;
+
+    box-shadow:
+    0 2px 5px rgba(0,0,0,.3);
+}
+
+
+.pdf-paper::before{
+
+    content:"";
+
+    position:absolute;
+
+    right:0;
+
+    top:0;
+
+    width:0;
+
+    height:0;
+
+    border-left:
+    9px solid transparent;
+
+    border-bottom:
+    9px solid #cfd5df;
+}
+
+
+.pdf-paper::after{
+
+    content:"PDF";
+
+    position:absolute;
+
+    left:4px;
+
+    bottom:5px;
+
+    color:#d84444;
+
+    font-size:6px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   NOTE INFO
+========================= */
+
+.note-info{
+
+    flex:1;
+
+    min-width:0;
+
+    padding:
+    9px 11px;
+}
+
+
+.note-info h3{
+
+    color:#f0f3fa;
+
+    font-size:10px;
+
+    line-height:1.4;
+
+    font-weight:700;
+}
+
+
+.note-info p{
+
+    color:#8794ab;
+
+    font-size:8px;
+
+    margin-top:4px;
+}
+
+
+/* =========================
+   ARROW
+========================= */
+
+.arrow{
+
+    color:#8095d8;
+
+    font-size:20px;
+
+    margin-right:11px;
+}
+
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+
+    display:none;
+
+    text-align:center;
+
+    padding:35px 10px;
+
+    color:#7d899f;
+
+    font-size:12px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:430px){
+
+    .container{
+
+        padding-left:7px;
+
+        padding-right:7px;
+    }
+
+
+    .tab{
+
+        font-size:8px;
+    }
+
+
+    .pdf-area{
+
+        width:72px;
+    }
+
+
+    .note-info h3{
+
+        font-size:9.5px;
+    }
+
+
+    .note-info p{
+
+        font-size:7px;
+    }
+
+
+    .arrow{
+
+        margin-right:7px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <a
+        href="index.html"
+        class="back"
+    >
+        ‹
+    </a>
+
+
+    <div class="header-title">
+
+        Chemistry NCERT Highlights
+        (Only PDF)
+
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- =========================
+     TABS
+========================= -->
+
+<nav class="tabs">
+
+    <div class="tab">
+        Lectures
+    </div>
+
+    <div class="tab active">
+        Notes
+    </div>
+
+    <div class="tab">
+        DPP
+    </div>
+
+    <div class="tab">
+        DPP PDF
+    </div>
+
+    <div class="tab">
+        DPP Videos
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     SEARCH
+========================= -->
+
+<div class="search-box">
+
+    <input
+        type="text"
+        id="search"
+        placeholder="Search Chemistry chapter..."
+    >
+
+</div>
+
+
+
+<!-- ==================================================
+     PHYSICAL CHEMISTRY
+================================================== -->
+
+<div class="section-title">
+
+    Physical Chemistry
+
+</div>
+
+
+
+<!-- 01 -->
+
+<div
+class="note"
+data-name="Some Basic Concepts of Chemistry"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/some-basic-concepts-of-chemistry.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+
+    <div class="note-info">
+
+        <h3>
+            Some Basic Concepts of Chemistry :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Chemistry • NCERT Highlights
+        </p>
+
+    </div>
+
+
+    <div class="arrow">
+        ›
+    </div>
+
+</div>
+
+
+
+<!-- 02 -->
+
+<div
+class="note"
+data-name="Structure of Atom"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/structure-of-atom.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Structure of Atom :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Chemistry • NCERT Highlights
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 03 -->
+
+<div
+class="note"
+data-name="Thermodynamics"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/thermodynamics.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Thermodynamics :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Physical Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 04 -->
+
+<div
+class="note"
+data-name="Equilibrium"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/equilibrium.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Equilibrium :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Physical Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 05 -->
+
+<div
+class="note"
+data-name="Redox Reactions"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/redox-reactions.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Redox Reactions :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Physical Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 06 -->
+
+<div
+class="note"
+data-name="Solutions"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/solutions.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Solutions :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Physical Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 07 -->
+
+<div
+class="note"
+data-name="Electrochemistry"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/electrochemistry.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Electrochemistry :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Physical Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 08 -->
+
+<div
+class="note"
+data-name="Chemical Kinetics"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/chemical-kinetics.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Chemical Kinetics :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Physical Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- ==================================================
+     ORGANIC CHEMISTRY
+================================================== -->
+
+<div class="section-title">
+
+    Organic Chemistry
+
+</div>
+
+
+
+<!-- 09 -->
+
+<div
+class="note"
+data-name="Organic Chemistry Some Basic Principles and Techniques"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/organic-chemistry-basic-principles.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Organic Chemistry :
+            Some Basic Principles and Techniques :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Organic Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 10 -->
+
+<div
+class="note"
+data-name="Hydrocarbons"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/hydrocarbons.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Hydrocarbons :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Organic Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 11 -->
+
+<div
+class="note"
+data-name="Haloalkanes and Haloarenes"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/haloalkanes-and-haloarenes.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Haloalkanes and Haloarenes :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Organic Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 12 -->
+
+<div
+class="note"
+data-name="Alcohols Phenols and Ethers"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/alcohols-phenols-and-ethers.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Alcohols, Phenols and Ethers :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Organic Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 13 -->
+
+<div
+class="note"
+data-name="Aldehydes Ketones and Carboxylic Acids"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/aldehydes-ketones-carboxylic-acids.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Aldehydes, Ketones and
+            Carboxylic Acids :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Organic Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 14 -->
+
+<div
+class="note"
+data-name="Amines"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/amines.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Amines :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Organic Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 15 -->
+
+<div
+class="note"
+data-name="Biomolecules"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/biomolecules.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Biomolecules :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Organic Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- ==================================================
+     INORGANIC CHEMISTRY
+================================================== -->
+
+<div class="section-title">
+
+    Inorganic Chemistry
+
+</div>
+
+
+
+<!-- 16 -->
+
+<div
+class="note"
+data-name="Classification of Elements and Periodicity in Properties"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/classification-of-elements.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Classification of Elements and
+            Periodicity in Properties :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Inorganic Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 17 -->
+
+<div
+class="note"
+data-name="Chemical Bonding and Molecular Structure"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/chemical-bonding.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Chemical Bonding and
+            Molecular Structure :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Inorganic Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 18 -->
+
+<div
+class="note"
+data-name="p Block Elements"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/p-block-elements.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            The p-Block Elements :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Inorganic Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 19 -->
+
+<div
+class="note"
+data-name="d and f Block Elements"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/d-and-f-block-elements.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            d- and f- Block Elements :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Inorganic Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 20 -->
+
+<div
+class="note"
+data-name="Coordination Compounds"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/coordination-compounds.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Coordination Compounds :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Inorganic Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 21 -->
+
+<div
+class="note"
+data-name="Metallurgy"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/metallurgy.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            General Principles and
+            Processes of Isolation of Metals :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Inorganic Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- 22 -->
+
+<div
+class="note"
+data-name="Hydrogen"
+onclick="openPDF('pdfs/chemistry-ncert-highlights/hydrogen.pdf')"
+>
+
+    <div class="pdf-area">
+        <div class="pdf-paper"></div>
+    </div>
+
+    <div class="note-info">
+
+        <h3>
+            Hydrogen :
+            NCERT Highlights
+        </h3>
+
+        <p>
+            Inorganic Chemistry • NCERT
+        </p>
+
+    </div>
+
+    <div class="arrow">›</div>
+
+</div>
+
+
+
+<!-- EMPTY -->
+
+<div
+id="empty"
+class="empty"
+>
+
+    No Chemistry chapter found.
+
+</div>
+
+
+</main>
+
+
+
+<script>
+
+/* =========================
+   OPEN PDF
+========================= */
+
+function openPDF(file){
+
+    window.open(
+        file,
+        "_blank"
+    );
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+const search =
+document.getElementById(
+    "search"
+);
+
+
+const notes =
+document.querySelectorAll(
+    ".note"
+);
+
+
+const empty =
+document.getElementById(
+    "empty"
+);
+
+
+search.addEventListener(
+    "input",
+    function(){
+
+        const value =
+        this.value
+        .toLowerCase()
+        .trim();
+
+
+        let found = 0;
+
+
+        notes.forEach(
+            note => {
+
+                const name =
+                note.dataset.name
+                .toLowerCase();
+
+
+                const match =
+                name.includes(value);
+
+
+                note.style.display =
+                match
+                ? "flex"
+                : "none";
+
+
+                if(match){
+
+                    found++;
+
+                }
+
+            }
+        );
+
+
+        empty.style.display =
+        found === 0
+        ? "block"
+        : "none";
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

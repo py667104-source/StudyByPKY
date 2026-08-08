@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Chemistry DPP Videos</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body{
+    background:#0b1222;
+    color:#fff;
+    min-height:100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    height:58px;
+    background:#10192c;
+    border-bottom:1px solid #263453;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 16px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back{
+    text-decoration:none;
+    color:#8ea7ff;
+    font-size:25px;
+    margin-right:8px;
+}
+
+.header-title{
+    font-size:13px;
+    font-weight:700;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:0 10px 40px;
+}
+
+
+/* =========================
+   TABS
+========================= */
+
+.tabs{
+    height:58px;
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+
+    border-bottom:1px solid #263453;
+
+    margin-bottom:14px;
+}
+
+.tab{
+    height:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#7f8ba4;
+
+    font-size:9px;
+    font-weight:700;
+
+    position:relative;
+    cursor:pointer;
+
+    text-align:center;
+}
+
+.tab.active{
+    color:#fff;
+}
+
+.tab.active::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+    left:15%;
+    right:15%;
+
+    height:3px;
+
+    background:#6678ff;
+
+    border-radius:5px 5px 0 0;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box{
+    margin:8px 3px 14px;
+}
+
+.search-box input{
+    width:100%;
+
+    background:#151f34;
+    color:#fff;
+
+    border:1px solid #2b3b5d;
+
+    border-radius:9px;
+
+    outline:none;
+
+    padding:11px 13px;
+
+    font-size:11px;
+}
+
+.search-box input::placeholder{
+    color:#78859d;
+}
+
+.search-box input:focus{
+    border-color:#6678ff;
+}
+
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section-title{
+    margin:13px 4px 8px;
+
+    padding:8px 10px;
+
+    background:#121d32;
+
+    border-left:3px solid #6678ff;
+
+    border-radius:4px;
+
+    color:#e9edfa;
+
+    font-size:11px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   VIDEO CARD
+========================= */
+
+.video-card{
+
+    width:100%;
+
+    min-height:78px;
+
+    display:flex;
+
+    align-items:center;
+
+    background:#1a263d;
+
+    border:1px solid #2c3b5b;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    margin-bottom:8px;
+
+    cursor:pointer;
+
+    transition:
+    transform .2s,
+    background .2s,
+    border .2s;
+
+    box-shadow:
+    0 3px 8px rgba(0,0,0,.16);
+}
+
+.video-card:hover{
+
+    transform:translateY(-1px);
+
+    background:#1d2b45;
+
+    border-color:#526b9d;
+}
+
+
+/* =========================
+   VIDEO THUMBNAIL
+========================= */
+
+.thumbnail{
+
+    width:120px;
+
+    min-height:78px;
+
+    align-self:stretch;
+
+    background:
+    linear-gradient(
+        135deg,
+        #17355d,
+        #244a7a
+    );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-shrink:0;
+
+    position:relative;
+}
+
+
+/* =========================
+   PLAY BUTTON
+========================= */
+
+.play{
+
+    width:40px;
+    height:40px;
+
+    background:#6678ff;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+    0 3px 12px rgba(0,0,0,.4);
+}
+
+.play::after{
+
+    content:"";
+
+    width:0;
+    height:0;
+
+    border-top:8px solid transparent;
+
+    border-bottom:8px solid transparent;
+
+    border-left:12px solid #fff;
+
+    margin-left:3px;
+}
+
+
+/* =========================
+   DURATION
+========================= */
+
+.duration{
+
+    position:absolute;
+
+    bottom:5px;
+    right:5px;
+
+    background:rgba(0,0,0,.75);
+
+    color:#fff;
+
+    padding:3px 5px;
+
+    border-radius:3px;
+
+    font-size:7px;
+
+    font-weight:700;
+}
+
+
+/* =========================
+   VIDEO INFO
+========================= */
+
+.video-info{
+
+    flex:1;
+
+    min-width:0;
+
+    padding:9px 11px;
+}
+
+.video-info h3{
+
+    color:#f0f3fa;
+
+    font-size:10px;
+
+    line-height:1.4;
+
+    font-weight:700;
+}
+
+.video-info p{
+
+    color:#8794ab;
+
+    font-size:8px;
+
+    margin-top:4px;
+}
+
+
+/* =========================
+   META
+========================= */
+
+.meta{
+
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    margin-top:5px;
+
+    color:#8d9bb3;
+
+    font-size:7px;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.watch-btn{
+
+    margin-right:10px;
+
+    border:0;
+
+    background:#596cff;
+
+    color:#fff;
+
+    border-radius:7px;
+
+    padding:8px 9px;
+
+    font-size:8px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+.watch-btn:hover{
+    background:#7181ff;
+}
+
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+
+    display:none;
+
+    text-align:center;
+
+    padding:35px 10px;
+
+    color:#7d899f;
+
+    font-size:12px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:430px){
+
+    .container{
+        padding-left:7px;
+        padding-right:7px;
+    }
+
+    .tab{
+        font-size:8px;
+    }
+
+    .thumbnail{
+        width:82px;
+    }
+
+    .play{
+        width:32px;
+        height:32px;
+    }
+
+    .play::after{
+        border-top-width:6px;
+        border-bottom-width:6px;
+        border-left-width:9px;
+    }
+
+    .duration{
+        font-size:6px;
+    }
+
+    .video-info h3{
+        font-size:9.5px;
+    }
+
+    .video-info p{
+        font-size:7px;
+    }
+
+    .meta{
+        font-size:6.5px;
+        gap:5px;
+    }
+
+    .watch-btn{
+        padding:7px 7px;
+        font-size:7px;
+        margin-right:6px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <a
+        href="index.html"
+        class="back"
+    >
+        ‹
+    </a>
+
+    <div class="header-title">
+
+        Chemistry DPP Videos
+
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- =========================
+     TABS
+========================= -->
+
+<nav class="tabs">
+
+    <div
+        class="tab"
+        onclick="goTo('chemistry_lectures.html')"
+    >
+        Lectures
+    </div>
+
+
+    <div
+        class="tab"
+        onclick="goTo('chemistry_ncert_highlights.html')"
+    >
+        Notes
+    </div>
+
+
+    <div
+        class="tab"
+        onclick="goTo('chemistry_dpp.html')"
+    >
+        DPP
+    </div>
+
+
+    <div
+        class="tab"
+        onclick="goTo('chemistry_dpp_pdf.html')"
+    >
+        DPP PDF
+    </div>
+
+
+    <div class="tab active">
+        DPP Videos
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     SEARCH
+========================= -->
+
+<div class="search-box">
+
+    <input
+        type="text"
+        id="search"
+        placeholder="Search DPP video..."
+    >
+
+</div>
+
+
+
+<!-- ==================================================
+     PHYSICAL CHEMISTRY
+================================================== -->
+
+<div class="section-title">
+
+    Physical Chemistry
+
+</div>
+
+
+
+<!-- VIDEO 01 -->
+
+<div
+class="video-card"
+data-name="Some Basic Concepts of Chemistry"
+onclick="watchVideo('videos/dpp/chemistry/some-basic-concepts.mp4')"
+>
+
+    <div class="thumbnail">
+
+        <div class="play"></div>
+
+        <span class="duration">
+            28:45
+        </span>
+
+    </div>
+
+
+    <div class="video-info">
+
+        <h3>
+
+            DPP 01 :
+            Some Basic Concepts of Chemistry
+
+        </h3>
+
+        <p>
+
+            DPP Solution Video
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Video</span>
+            <span>📝 20 Questions</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchVideo('videos/dpp/chemistry/some-basic-concepts.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- VIDEO 02 -->
+
+<div
+class="video-card"
+data-name="Structure of Atom"
+onclick="watchVideo('videos/dpp/chemistry/structure-of-atom.mp4')"
+>
+
+    <div class="thumbnail">
+
+        <div class="play"></div>
+
+        <span class="duration">
+            31:20
+        </span>
+
+    </div>
+
+
+    <div class="video-info">
+
+        <h3>
+
+            DPP 02 :
+            Structure of Atom
+
+        </h3>
+
+        <p>
+            DPP Solution Video
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Video</span>
+            <span>📝 20 Questions</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchVideo('videos/dpp/chemistry/structure-of-atom.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- VIDEO 03 -->
+
+<div
+class="video-card"
+data-name="Thermodynamics"
+onclick="watchVideo('videos/dpp/chemistry/thermodynamics.mp4')"
+>
+
+    <div class="thumbnail">
+
+        <div class="play"></div>
+
+        <span class="duration">
+            42:15
+        </span>
+
+    </div>
+
+
+    <div class="video-info">
+
+        <h3>
+
+            DPP 03 :
+            Thermodynamics
+
+        </h3>
+
+        <p>
+            DPP Solution Video
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Video</span>
+            <span>📝 25 Questions</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchVideo('videos/dpp/chemistry/thermodynamics.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- VIDEO 04 -->
+
+<div
+class="video-card"
+data-name="Equilibrium"
+onclick="watchVideo('videos/dpp/chemistry/equilibrium.mp4')"
+>
+
+    <div class="thumbnail">
+
+        <div class="play"></div>
+
+        <span class="duration">
+            38:30
+        </span>
+
+    </div>
+
+
+    <div class="video-info">
+
+        <h3>
+
+            DPP 04 :
+            Equilibrium
+
+        </h3>
+
+        <p>
+            DPP Solution Video
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Video</span>
+            <span>📝 25 Questions</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchVideo('videos/dpp/chemistry/equilibrium.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- VIDEO 05 -->
+
+<div
+class="video-card"
+data-name="Redox Reactions"
+onclick="watchVideo('videos/dpp/chemistry/redox-reactions.mp4')"
+>
+
+    <div class="thumbnail">
+
+        <div class="play"></div>
+
+        <span class="duration">
+            29:40
+        </span>
+
+    </div>
+
+
+    <div class="video-info">
+
+        <h3>
+
+            DPP 05 :
+            Redox Reactions
+
+        </h3>
+
+        <p>
+            DPP Solution Video
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Video</span>
+            <span>📝 20 Questions</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchVideo('videos/dpp/chemistry/redox-reactions.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- VIDEO 06 -->
+
+<div
+class="video-card"
+data-name="Solutions"
+onclick="watchVideo('videos/dpp/chemistry/solutions.mp4')"
+>
+
+    <div class="thumbnail">
+
+        <div class="play"></div>
+
+        <span class="duration">
+            35:10
+        </span>
+
+    </div>
+
+
+    <div class="video-info">
+
+        <h3>
+
+            DPP 06 :
+            Solutions
+
+        </h3>
+
+        <p>
+            DPP Solution Video
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Video</span>
+            <span>📝 25 Questions</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchVideo('videos/dpp/chemistry/solutions.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- ==================================================
+     ORGANIC CHEMISTRY
+================================================== -->
+
+<div class="section-title">
+
+    Organic Chemistry
+
+</div>
+
+
+
+<!-- VIDEO 07 -->
+
+<div
+class="video-card"
+data-name="Organic Chemistry Basic Principles"
+onclick="watchVideo('videos/dpp/chemistry/organic-basic-principles.mp4')"
+>
+
+    <div class="thumbnail">
+
+        <div class="play"></div>
+
+        <span class="duration">
+            45:20
+        </span>
+
+    </div>
+
+
+    <div class="video-info">
+
+        <h3>
+
+            DPP 07 :
+            Organic Chemistry Basic Principles
+
+        </h3>
+
+        <p>
+            DPP Solution Video
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Video</span>
+            <span>📝 30 Questions</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchVideo('videos/dpp/chemistry/organic-basic-principles.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- VIDEO 08 -->
+
+<div
+class="video-card"
+data-name="Hydrocarbons"
+onclick="watchVideo('videos/dpp/chemistry/hydrocarbons.mp4')"
+>
+
+    <div class="thumbnail">
+
+        <div class="play"></div>
+
+        <span class="duration">
+            39:25
+        </span>
+
+    </div>
+
+
+    <div class="video-info">
+
+        <h3>
+
+            DPP 08 :
+            Hydrocarbons
+
+        </h3>
+
+        <p>
+            DPP Solution Video
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Video</span>
+            <span>📝 25 Questions</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchVideo('videos/dpp/chemistry/hydrocarbons.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- VIDEO 09 -->
+
+<div
+class="video-card"
+data-name="Haloalkanes and Haloarenes"
+onclick="watchVideo('videos/dpp/chemistry/haloalkanes.mp4')"
+>
+
+    <div class="thumbnail">
+
+        <div class="play"></div>
+
+        <span class="duration">
+            41:50
+        </span>
+
+    </div>
+
+
+    <div class="video-info">
+
+        <h3>
+
+            DPP 09 :
+            Haloalkanes and Haloarenes
+
+        </h3>
+
+        <p>
+            DPP Solution Video
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Video</span>
+            <span>📝 25 Questions</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchVideo('videos/dpp/chemistry/haloalkanes.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- VIDEO 10 -->
+
+<div
+class="video-card"
+data-name="Alcohols Phenols and Ethers"
+onclick="watchVideo('videos/dpp/chemistry/alcohols-phenols-ethers.mp4')"
+>
+
+    <div class="thumbnail">
+
+        <div class="play"></div>
+
+        <span class="duration">
+            44:15
+        </span>
+
+    </div>
+
+
+    <div class="video-info">
+
+        <h3>
+
+            DPP 10 :
+            Alcohols, Phenols and Ethers
+
+        </h3>
+
+        <p>
+            DPP Solution Video
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Video</span>
+            <span>📝 25 Questions</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchVideo('videos/dpp/chemistry/alcohols-phenols-ethers.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- ==================================================
+     INORGANIC CHEMISTRY
+================================================== -->
+
+<div class="section-title">
+
+    Inorganic Chemistry
+
+</div>
+
+
+
+<!-- VIDEO 11 -->
+
+<div
+class="video-card"
+data-name="Classification of Elements"
+onclick="watchVideo('videos/dpp/chemistry/classification-elements.mp4')"
+>
+
+    <div class="thumbnail">
+
+        <div class="play"></div>
+
+        <span class="duration">
+            32:40
+        </span>
+
+    </div>
+
+
+    <div class="video-info">
+
+        <h3>
+
+            DPP 11 :
+            Classification of Elements
+
+        </h3>
+
+        <p>
+            DPP Solution Video
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Video</span>
+            <span>📝 20 Questions</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchVideo('videos/dpp/chemistry/classification-elements.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- VIDEO 12 -->
+
+<div
+class="video-card"
+data-name="Chemical Bonding"
+onclick="watchVideo('videos/dpp/chemistry/chemical-bonding.mp4')"
+>
+
+    <div class="thumbnail">
+
+        <div class="play"></div>
+
+        <span class="duration">
+            48:20
+        </span>
+
+    </div>
+
+
+    <div class="video-info">
+
+        <h3>
+
+            DPP 12 :
+            Chemical Bonding and Molecular Structure
+
+        </h3>
+
+        <p>
+            DPP Solution Video
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Video</span>
+            <span>📝 30 Questions</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchVideo('videos/dpp/chemistry/chemical-bonding.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- VIDEO 13 -->
+
+<div
+class="video-card"
+data-name="p Block Elements"
+onclick="watchVideo('videos/dpp/chemistry/p-block-elements.mp4')"
+>
+
+    <div class="thumbnail">
+
+        <div class="play"></div>
+
+        <span class="duration">
+            37:45
+        </span>
+
+    </div>
+
+
+    <div class="video-info">
+
+        <h3>
+
+            DPP 13 :
+            The p-Block Elements
+
+        </h3>
+
+        <p>
+            DPP Solution Video
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Video</span>
+            <span>📝 25 Questions</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchVideo('videos/dpp/chemistry/p-block-elements.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- VIDEO 14 -->
+
+<div
+class="video-card"
+data-name="d and f Block Elements"
+onclick="watchVideo('videos/dpp/chemistry/d-f-block-elements.mp4')"
+>
+
+    <div class="thumbnail">
+
+        <div class="play"></div>
+
+        <span class="duration">
+            34:30
+        </span>
+
+    </div>
+
+
+    <div class="video-info">
+
+        <h3>
+
+            DPP 14 :
+            d- and f-Block Elements
+
+        </h3>
+
+        <p>
+            DPP Solution Video
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Video</span>
+            <span>📝 25 Questions</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchVideo('videos/dpp/chemistry/d-f-block-elements.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- VIDEO 15 -->
+
+<div
+class="video-card"
+data-name="Coordination Compounds"
+onclick="watchVideo('videos/dpp/chemistry/coordination-compounds.mp4')"
+>
+
+    <div class="thumbnail">
+
+        <div class="play"></div>
+
+        <span class="duration">
+            40:15
+        </span>
+
+    </div>
+
+
+    <div class="video-info">
+
+        <h3>
+
+            DPP 15 :
+            Coordination Compounds
+
+        </h3>
+
+        <p>
+            DPP Solution Video
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Video</span>
+            <span>📝 30 Questions</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchVideo('videos/dpp/chemistry/coordination-compounds.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- EMPTY -->
+
+<div
+id="empty"
+class="empty"
+>
+
+    No DPP video found.
+
+</div>
+
+
+</main>
+
+
+
+<script>
+
+/* =========================
+   WATCH VIDEO
+========================= */
+
+function watchVideo(video){
+
+    window.open(
+        video,
+        "_blank"
+    );
+
+}
+
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+function goTo(page){
+
+    window.location.href = page;
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+const search =
+document.getElementById("search");
+
+const cards =
+document.querySelectorAll(".video-card");
+
+const empty =
+document.getElementById("empty");
+
+
+search.addEventListener(
+    "input",
+    function(){
+
+        const value =
+        this.value
+        .toLowerCase()
+        .trim();
+
+        let found = 0;
+
+
+        cards.forEach(
+            card => {
+
+                const name =
+                card.dataset.name
+                .toLowerCase();
+
+
+                const match =
+                name.includes(value);
+
+
+                card.style.display =
+                match
+                ? "flex"
+                : "none";
+
+
+                if(match){
+
+                    found++;
+
+                }
+
+            }
+        );
+
+
+        empty.style.display =
+        found === 0
+        ? "block"
+        : "none";
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

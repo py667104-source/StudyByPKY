@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Chemistry Lectures</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body{
+    background:#0b1222;
+    color:#fff;
+    min-height:100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    height:58px;
+    background:#10192c;
+    border-bottom:1px solid #263453;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 16px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back{
+    text-decoration:none;
+    color:#8ea7ff;
+    font-size:25px;
+    margin-right:8px;
+}
+
+.header-title{
+    font-size:13px;
+    font-weight:700;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+
+    padding:0 10px 40px;
+}
+
+
+/* =========================
+   TABS
+========================= */
+
+.tabs{
+    height:58px;
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+
+    border-bottom:1px solid #263453;
+
+    margin-bottom:14px;
+}
+
+.tab{
+    height:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#7f8ba4;
+
+    font-size:9px;
+    font-weight:700;
+
+    position:relative;
+
+    cursor:pointer;
+
+    text-align:center;
+}
+
+.tab.active{
+    color:#fff;
+}
+
+.tab.active::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+    left:15%;
+    right:15%;
+
+    height:3px;
+
+    background:#6678ff;
+
+    border-radius:5px 5px 0 0;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box{
+    margin:8px 3px 14px;
+}
+
+.search-box input{
+    width:100%;
+
+    background:#151f34;
+
+    color:#fff;
+
+    border:1px solid #2b3b5d;
+
+    border-radius:9px;
+
+    outline:none;
+
+    padding:11px 13px;
+
+    font-size:11px;
+}
+
+.search-box input::placeholder{
+    color:#78859d;
+}
+
+.search-box input:focus{
+    border-color:#6678ff;
+}
+
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section-title{
+
+    margin:13px 4px 8px;
+
+    padding:8px 10px;
+
+    background:#121d32;
+
+    border-left:3px solid #6678ff;
+
+    border-radius:4px;
+
+    color:#e9edfa;
+
+    font-size:11px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   LECTURE CARD
+========================= */
+
+.lecture{
+
+    width:100%;
+
+    min-height:76px;
+
+    display:flex;
+
+    align-items:center;
+
+    background:#1a263d;
+
+    border:1px solid #2c3b5b;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    margin-bottom:8px;
+
+    cursor:pointer;
+
+    transition:
+    transform .2s,
+    background .2s,
+    border .2s;
+
+    box-shadow:
+    0 3px 8px rgba(0,0,0,.16);
+}
+
+.lecture:hover{
+
+    transform:translateY(-1px);
+
+    background:#1d2b45;
+
+    border-color:#526b9d;
+}
+
+
+/* =========================
+   VIDEO AREA
+========================= */
+
+.video-area{
+
+    width:92px;
+
+    min-height:76px;
+
+    align-self:stretch;
+
+    background:#193961;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-shrink:0;
+
+    position:relative;
+}
+
+
+/* =========================
+   PLAY BUTTON
+========================= */
+
+.play{
+
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+
+    background:#6678ff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+    0 3px 10px rgba(0,0,0,.3);
+}
+
+.play::after{
+
+    content:"";
+
+    width:0;
+    height:0;
+
+    border-top:7px solid transparent;
+
+    border-bottom:7px solid transparent;
+
+    border-left:11px solid #fff;
+
+    margin-left:3px;
+}
+
+
+/* =========================
+   LECTURE INFO
+========================= */
+
+.lecture-info{
+
+    flex:1;
+
+    min-width:0;
+
+    padding:9px 11px;
+}
+
+.lecture-info h3{
+
+    color:#f0f3fa;
+
+    font-size:10px;
+
+    line-height:1.4;
+
+    font-weight:700;
+}
+
+.lecture-info p{
+
+    color:#8794ab;
+
+    font-size:8px;
+
+    margin-top:4px;
+}
+
+
+/* =========================
+   META
+========================= */
+
+.meta{
+
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    margin-top:5px;
+
+    color:#8d9bb3;
+
+    font-size:7px;
+}
+
+
+/* =========================
+   WATCH BUTTON
+========================= */
+
+.watch{
+
+    margin-right:10px;
+
+    border:0;
+
+    background:#596cff;
+
+    color:#fff;
+
+    border-radius:7px;
+
+    padding:8px 9px;
+
+    font-size:8px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+.watch:hover{
+    background:#7181ff;
+}
+
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+
+    display:none;
+
+    text-align:center;
+
+    padding:35px 10px;
+
+    color:#7d899f;
+
+    font-size:12px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:430px){
+
+    .container{
+        padding-left:7px;
+        padding-right:7px;
+    }
+
+    .tab{
+        font-size:8px;
+    }
+
+    .video-area{
+        width:70px;
+    }
+
+    .play{
+        width:32px;
+        height:32px;
+    }
+
+    .play::after{
+        border-top-width:6px;
+        border-bottom-width:6px;
+        border-left-width:9px;
+    }
+
+    .lecture-info h3{
+        font-size:9.5px;
+    }
+
+    .lecture-info p{
+        font-size:7px;
+    }
+
+    .meta{
+        font-size:6.5px;
+        gap:5px;
+    }
+
+    .watch{
+        padding:7px 7px;
+        font-size:7px;
+        margin-right:6px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <a
+        href="index.html"
+        class="back"
+    >
+        ‹
+    </a>
+
+    <div class="header-title">
+
+        Chemistry Lectures
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- =========================
+     TABS
+========================= -->
+
+<nav class="tabs">
+
+    <div class="tab active">
+        Lectures
+    </div>
+
+    <div
+        class="tab"
+        onclick="goTo('chemistry_ncert_highlights.html')"
+    >
+        Notes
+    </div>
+
+    <div class="tab">
+        DPP
+    </div>
+
+    <div class="tab">
+        DPP PDF
+    </div>
+
+    <div class="tab">
+        DPP Videos
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     SEARCH
+========================= -->
+
+<div class="search-box">
+
+    <input
+        type="text"
+        id="search"
+        placeholder="Search Chemistry lecture..."
+    >
+
+</div>
+
+
+<!-- ==================================================
+     PHYSICAL CHEMISTRY
+================================================== -->
+
+<div class="section-title">
+
+    Physical Chemistry
+
+</div>
+
+
+<!-- 01 -->
+
+<div
+class="lecture"
+data-name="Some Basic Concepts of Chemistry"
+onclick="watchLecture('videos/chemistry/some-basic-concepts.mp4')"
+>
+
+    <div class="video-area">
+
+        <div class="play"></div>
+
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Some Basic Concepts of Chemistry :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Chemistry • Physical Chemistry
+
+        </p>
+
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+
+            <span>⏱ 1h 20m</span>
+
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/some-basic-concepts.mp4')"
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+<!-- 02 -->
+
+<div
+class="lecture"
+data-name="Structure of Atom"
+onclick="watchLecture('videos/chemistry/structure-of-atom.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Structure of Atom :
+            Complete Lecture
+        </h3>
+
+        <p>
+            Chemistry • Physical Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 1h 35m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/structure-of-atom.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- 03 -->
+
+<div
+class="lecture"
+data-name="Thermodynamics"
+onclick="watchLecture('videos/chemistry/thermodynamics.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Thermodynamics :
+            Complete Lecture
+        </h3>
+
+        <p>
+            Chemistry • Physical Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 2h 10m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/thermodynamics.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- 04 -->
+
+<div
+class="lecture"
+data-name="Equilibrium"
+onclick="watchLecture('videos/chemistry/equilibrium.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Equilibrium :
+            Complete Lecture
+        </h3>
+
+        <p>
+            Chemistry • Physical Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 1h 50m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/equilibrium.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- 05 -->
+
+<div
+class="lecture"
+data-name="Redox Reactions"
+onclick="watchLecture('videos/chemistry/redox-reactions.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Redox Reactions :
+            Complete Lecture
+        </h3>
+
+        <p>
+            Chemistry • Physical Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 1h 25m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/redox-reactions.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- 06 -->
+
+<div
+class="lecture"
+data-name="Solutions"
+onclick="watchLecture('videos/chemistry/solutions.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Solutions :
+            Complete Lecture
+        </h3>
+
+        <p>
+            Chemistry • Physical Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 1h 45m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/solutions.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- 07 -->
+
+<div
+class="lecture"
+data-name="Electrochemistry"
+onclick="watchLecture('videos/chemistry/electrochemistry.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Electrochemistry :
+            Complete Lecture
+        </h3>
+
+        <p>
+            Chemistry • Physical Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 2h 05m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/electrochemistry.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- 08 -->
+
+<div
+class="lecture"
+data-name="Chemical Kinetics"
+onclick="watchLecture('videos/chemistry/chemical-kinetics.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Chemical Kinetics :
+            Complete Lecture
+        </h3>
+
+        <p>
+            Chemistry • Physical Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 1h 40m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/chemical-kinetics.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- ==================================================
+     ORGANIC CHEMISTRY
+================================================== -->
+
+<div class="section-title">
+
+    Organic Chemistry
+
+</div>
+
+
+<!-- 09 -->
+
+<div
+class="lecture"
+data-name="Organic Chemistry Basic Principles"
+onclick="watchLecture('videos/chemistry/organic-basic-principles.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Organic Chemistry :
+            Basic Principles and Techniques
+        </h3>
+
+        <p>
+            Chemistry • Organic Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 2h 00m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/organic-basic-principles.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- 10 -->
+
+<div
+class="lecture"
+data-name="Hydrocarbons"
+onclick="watchLecture('videos/chemistry/hydrocarbons.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Hydrocarbons :
+            Complete Lecture
+        </h3>
+
+        <p>
+            Chemistry • Organic Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 2h 15m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/hydrocarbons.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- 11 -->
+
+<div
+class="lecture"
+data-name="Haloalkanes and Haloarenes"
+onclick="watchLecture('videos/chemistry/haloalkanes-haloarenes.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Haloalkanes and Haloarenes :
+            Complete Lecture
+        </h3>
+
+        <p>
+            Chemistry • Organic Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 1h 55m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/haloalkanes-haloarenes.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- 12 -->
+
+<div
+class="lecture"
+data-name="Alcohols Phenols and Ethers"
+onclick="watchLecture('videos/chemistry/alcohols-phenols-ethers.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Alcohols, Phenols and Ethers :
+            Complete Lecture
+        </h3>
+
+        <p>
+            Chemistry • Organic Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 2h 05m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/alcohols-phenols-ethers.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- 13 -->
+
+<div
+class="lecture"
+data-name="Aldehydes Ketones Carboxylic Acids"
+onclick="watchLecture('videos/chemistry/aldehydes-ketones-acids.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Aldehydes, Ketones and
+            Carboxylic Acids :
+            Complete Lecture
+        </h3>
+
+        <p>
+            Chemistry • Organic Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 2h 20m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/aldehydes-ketones-acids.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- 14 -->
+
+<div
+class="lecture"
+data-name="Amines"
+onclick="watchLecture('videos/chemistry/amines.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Amines :
+            Complete Lecture
+        </h3>
+
+        <p>
+            Chemistry • Organic Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 1h 35m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/amines.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- 15 -->
+
+<div
+class="lecture"
+data-name="Biomolecules"
+onclick="watchLecture('videos/chemistry/biomolecules.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Biomolecules :
+            Complete Lecture
+        </h3>
+
+        <p>
+            Chemistry • Organic Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 1h 25m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/biomolecules.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- ==================================================
+     INORGANIC CHEMISTRY
+================================================== -->
+
+<div class="section-title">
+
+    Inorganic Chemistry
+
+</div>
+
+
+<!-- 16 -->
+
+<div
+class="lecture"
+data-name="Classification of Elements and Periodicity"
+onclick="watchLecture('videos/chemistry/classification-elements.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Classification of Elements and
+            Periodicity in Properties
+        </h3>
+
+        <p>
+            Chemistry • Inorganic Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 1h 50m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/classification-elements.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- 17 -->
+
+<div
+class="lecture"
+data-name="Chemical Bonding and Molecular Structure"
+onclick="watchLecture('videos/chemistry/chemical-bonding.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Chemical Bonding and
+            Molecular Structure
+        </h3>
+
+        <p>
+            Chemistry • Inorganic Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 2h 30m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/chemical-bonding.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- 18 -->
+
+<div
+class="lecture"
+data-name="p Block Elements"
+onclick="watchLecture('videos/chemistry/p-block-elements.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            The p-Block Elements :
+            Complete Lecture
+        </h3>
+
+        <p>
+            Chemistry • Inorganic Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 2h 10m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/p-block-elements.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- 19 -->
+
+<div
+class="lecture"
+data-name="d and f Block Elements"
+onclick="watchLecture('videos/chemistry/d-f-block-elements.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            d- and f-Block Elements :
+            Complete Lecture
+        </h3>
+
+        <p>
+            Chemistry • Inorganic Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 1h 45m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/d-f-block-elements.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<!-- 20 -->
+
+<div
+class="lecture"
+data-name="Coordination Compounds"
+onclick="watchLecture('videos/chemistry/coordination-compounds.mp4')"
+>
+
+    <div class="video-area">
+        <div class="play"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+            Coordination Compounds :
+            Complete Lecture
+        </h3>
+
+        <p>
+            Chemistry • Inorganic Chemistry
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 2h 00m</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch"
+        onclick="event.stopPropagation(); watchLecture('videos/chemistry/coordination-compounds.mp4')"
+    >
+        WATCH
+    </button>
+
+</div>
+
+
+<div
+id="empty"
+class="empty"
+>
+    No Chemistry lecture found.
+</div>
+
+
+</main>
+
+
+<script>
+
+/* =========================
+   WATCH LECTURE
+========================= */
+
+function watchLecture(video){
+
+    window.open(
+        video,
+        "_blank"
+    );
+
+}
+
+
+/* =========================
+   TAB NAVIGATION
+========================= */
+
+function goTo(page){
+
+    window.location.href = page;
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+const search =
+document.getElementById("search");
+
+const lectures =
+document.querySelectorAll(".lecture");
+
+const empty =
+document.getElementById("empty");
+
+
+search.addEventListener(
+    "input",
+    function(){
+
+        const value =
+        this.value
+        .toLowerCase()
+        .trim();
+
+        let found = 0;
+
+
+        lectures.forEach(
+            lecture => {
+
+                const name =
+                lecture.dataset.name
+                .toLowerCase();
+
+
+                const match =
+                name.includes(value);
+
+
+                lecture.style.display =
+                match
+                ? "flex"
+                : "none";
+
+
+                if(match){
+                    found++;
+                }
+
+            }
+        );
+
+
+        empty.style.display =
+        found === 0
+        ? "block"
+        : "none";
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
