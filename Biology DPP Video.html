@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Biology DPP Videos</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#0b1222;
+    color:#fff;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+.header{
+    height:48px;
+    background:#10192c;
+    border-bottom:1px solid #253451;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 10px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back{
+    color:#91a6ff;
+    text-decoration:none;
+    font-size:22px;
+    margin-right:6px;
+}
+
+.header-title{
+    font-size:10px;
+    font-weight:700;
+}
+
+
+/* MAIN */
+
+.container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:0 8px 40px;
+}
+
+
+/* TABS */
+
+.tabs{
+    height:52px;
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+
+    border-bottom:1px solid #253451;
+}
+
+.tab{
+    height:52px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#7d8ba5;
+
+    font-size:7px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    position:relative;
+    text-align:center;
+}
+
+.tab.active{
+    color:#fff;
+}
+
+.tab.active::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+    left:15%;
+    right:15%;
+
+    height:3px;
+
+    background:#6374ff;
+
+    border-radius:4px 4px 0 0;
+}
+
+
+/* TITLE */
+
+.page-title{
+    font-size:11px;
+    font-weight:700;
+
+    margin:12px 3px 8px;
+
+    color:#e9edf7;
+}
+
+
+/* SEARCH */
+
+.search{
+    margin:0 3px 10px;
+}
+
+.search input{
+    width:100%;
+    height:32px;
+
+    background:#151f34;
+
+    border:1px solid #293a5a;
+
+    border-radius:7px;
+
+    padding:0 10px;
+
+    color:#fff;
+
+    outline:none;
+
+    font-size:8px;
+}
+
+.search input::placeholder{
+    color:#72809a;
+}
+
+.search input:focus{
+    border-color:#6374ff;
+}
+
+
+/* CLASS */
+
+.class-title{
+    height:25px;
+
+    display:flex;
+    align-items:center;
+
+    margin:8px 3px 6px;
+
+    padding-left:8px;
+
+    background:#111d32;
+
+    border-left:2px solid #6374ff;
+
+    border-radius:3px;
+
+    color:#e6eaf3;
+
+    font-size:8px;
+    font-weight:700;
+}
+
+
+/* VIDEO CARD */
+
+.video-card{
+
+    display:flex;
+    align-items:center;
+
+    min-height:72px;
+
+    margin-bottom:6px;
+
+    background:#182640;
+
+    border:1px solid #293b5d;
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+    transition:.2s;
+}
+
+.video-card:hover{
+    background:#1d2d49;
+    border-color:#4c6290;
+}
+
+
+/* VIDEO ICON */
+
+.video-icon{
+
+    width:58px;
+    min-height:72px;
+
+    align-self:stretch;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#193960;
+
+    flex-shrink:0;
+}
+
+.play-icon{
+
+    width:32px;
+    height:25px;
+
+    background:#fff;
+
+    border-radius:5px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:0 2px 5px #0005;
+}
+
+.play-icon::after{
+
+    content:"";
+
+    width:0;
+    height:0;
+
+    border-top:6px solid transparent;
+    border-bottom:6px solid transparent;
+    border-left:9px solid #596cff;
+
+    margin-left:2px;
+}
+
+
+/* INFO */
+
+.video-info{
+
+    flex:1;
+
+    min-width:0;
+
+    padding:7px 8px;
+}
+
+.video-info h3{
+
+    color:#f0f3f9;
+
+    font-size:8.5px;
+
+    line-height:1.35;
+
+    font-weight:700;
+}
+
+.video-info p{
+
+    color:#7f8da7;
+
+    font-size:6.5px;
+
+    margin-top:3px;
+}
+
+
+/* META */
+
+.meta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:5px;
+
+    margin-top:4px;
+
+    font-size:6px;
+
+    color:#8997af;
+}
+
+
+/* WATCH BUTTON */
+
+.watch-btn{
+
+    margin-right:7px;
+
+    padding:7px 8px;
+
+    background:#596cff;
+
+    color:#fff;
+
+    border:0;
+
+    border-radius:5px;
+
+    font-size:6.5px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+.watch-btn:hover{
+    background:#7180ff;
+}
+
+
+/* EMPTY */
+
+.empty{
+
+    display:none;
+
+    text-align:center;
+
+    padding:30px 10px;
+
+    color:#78859c;
+
+    font-size:10px;
+}
+
+
+/* VIDEO PLAYER MODAL */
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:#050914ee;
+
+    z-index:500;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:15px;
+}
+
+.modal-box{
+
+    width:100%;
+    max-width:700px;
+
+    background:#111b2f;
+
+    border:1px solid #304263;
+
+    border-radius:10px;
+
+    padding:10px;
+}
+
+.modal-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:8px;
+}
+
+.modal-title{
+
+    font-size:10px;
+    font-weight:700;
+
+    color:#fff;
+
+    padding-right:10px;
+}
+
+.close{
+
+    width:28px;
+    height:28px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#263653;
+
+    color:#fff;
+
+    font-size:15px;
+
+    cursor:pointer;
+}
+
+video{
+
+    width:100%;
+
+    display:block;
+
+    background:#000;
+
+    border-radius:7px;
+
+    max-height:70vh;
+}
+
+
+/* MOBILE */
+
+@media(max-width:430px){
+
+    .tab{
+        font-size:6.5px;
+    }
+
+    .video-icon{
+        width:55px;
+    }
+
+    .video-info h3{
+        font-size:8px;
+    }
+
+    .video-info p{
+        font-size:6px;
+    }
+
+    .watch-btn{
+        font-size:6px;
+        padding:6px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+<a href="index.html" class="back">‹</a>
+
+<div class="header-title">
+Biology : DPP Videos
+</div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- TABS -->
+
+<div class="tabs">
+
+<div class="tab"
+onclick="go('biology_lectures.html')">
+Lectures
+</div>
+
+<div class="tab"
+onclick="go('biology_ncert_highlights.html')">
+Notes
+</div>
+
+<div class="tab"
+onclick="go('biology_dpp.html')">
+DPP
+</div>
+
+<div class="tab"
+onclick="go('biology_dpp_pdf.html')">
+DPP PDF
+</div>
+
+<div class="tab active">
+DPP Videos
+</div>
+
+</div>
+
+
+
+<!-- TITLE -->
+
+<div class="page-title">
+Biology : DPP Videos
+</div>
+
+
+
+<!-- SEARCH -->
+
+<div class="search">
+
+<input
+type="text"
+id="search"
+placeholder="Search Biology DPP video..."
+>
+
+</div>
+
+
+
+<div id="content">
+
+
+<!-- =====================================================
+CLASS 11
+===================================================== -->
+
+<div class="class-section">
+
+<div class="class-title">
+Class 11 Biology
+</div>
+
+
+<!-- 01 -->
+
+<div class="video-card"
+data-search="living world dpp video 01">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+The Living World : DPP Video 01
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 25 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp01.mp4',
+'The Living World : DPP Video 01'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 02 -->
+
+<div class="video-card"
+data-search="biological classification dpp video 02">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Biological Classification : DPP Video 02
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 25 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp02.mp4',
+'Biological Classification : DPP Video 02'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 03 -->
+
+<div class="video-card"
+data-search="plant kingdom dpp video 03">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Plant Kingdom : DPP Video 03
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp03.mp4',
+'Plant Kingdom : DPP Video 03'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 04 -->
+
+<div class="video-card"
+data-search="animal kingdom dpp video 04">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Animal Kingdom : DPP Video 04
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp04.mp4',
+'Animal Kingdom : DPP Video 04'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 05 -->
+
+<div class="video-card"
+data-search="morphology flowering plants dpp video 05">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Morphology of Flowering Plants : DPP Video 05
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp05.mp4',
+'Morphology of Flowering Plants : DPP Video 05'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 06 -->
+
+<div class="video-card"
+data-search="anatomy flowering plants dpp video 06">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Anatomy of Flowering Plants : DPP Video 06
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp06.mp4',
+'Anatomy of Flowering Plants : DPP Video 06'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 07 -->
+
+<div class="video-card"
+data-search="structural organisation animals dpp video 07">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Structural Organisation in Animals : DPP Video 07
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp07.mp4',
+'Structural Organisation in Animals : DPP Video 07'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 08 -->
+
+<div class="video-card"
+data-search="cell unit life dpp video 08">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Cell : The Unit of Life : DPP Video 08
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp08.mp4',
+'Cell : The Unit of Life : DPP Video 08'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 09 -->
+
+<div class="video-card"
+data-search="biomolecules dpp video 09">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Biomolecules : DPP Video 09
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp09.mp4',
+'Biomolecules : DPP Video 09'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 10 -->
+
+<div class="video-card"
+data-search="cell cycle cell division dpp video 10">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Cell Cycle and Cell Division : DPP Video 10
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp10.mp4',
+'Cell Cycle and Cell Division : DPP Video 10'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 11 -->
+
+<div class="video-card"
+data-search="photosynthesis plants dpp video 11">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Photosynthesis in Higher Plants : DPP Video 11
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp11.mp4',
+'Photosynthesis in Higher Plants : DPP Video 11'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 12 -->
+
+<div class="video-card"
+data-search="respiration plants dpp video 12">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Respiration in Plants : DPP Video 12
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp12.mp4',
+'Respiration in Plants : DPP Video 12'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 13 -->
+
+<div class="video-card"
+data-search="plant growth development dpp video 13">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Plant Growth and Development : DPP Video 13
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp13.mp4',
+'Plant Growth and Development : DPP Video 13'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 14 -->
+
+<div class="video-card"
+data-search="breathing exchange gases dpp video 14">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Breathing and Exchange of Gases : DPP Video 14
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp14.mp4',
+'Breathing and Exchange of Gases : DPP Video 14'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 15 -->
+
+<div class="video-card"
+data-search="body fluids circulation dpp video 15">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Body Fluids and Circulation : DPP Video 15
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp15.mp4',
+'Body Fluids and Circulation : DPP Video 15'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 16 -->
+
+<div class="video-card"
+data-search="excretory products elimination dpp video 16">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Excretory Products and Their Elimination : DPP Video 16
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp16.mp4',
+'Excretory Products and Their Elimination : DPP Video 16'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 17 -->
+
+<div class="video-card"
+data-search="locomotion movement dpp video 17">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Locomotion and Movement : DPP Video 17
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp17.mp4',
+'Locomotion and Movement : DPP Video 17'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 18 -->
+
+<div class="video-card"
+data-search="neural control coordination dpp video 18">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Neural Control and Coordination : DPP Video 18
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp18.mp4',
+'Neural Control and Coordination : DPP Video 18'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 19 -->
+
+<div class="video-card"
+data-search="chemical coordination integration dpp video 19">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Chemical Coordination and Integration : DPP Video 19
+</h3>
+
+<p>
+Biology • Class 11 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class11/dpp19.mp4',
+'Chemical Coordination and Integration : DPP Video 19'
+)">
+WATCH
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+CLASS 12
+===================================================== -->
+
+<div class="class-section">
+
+<div class="class-title">
+Class 12 Biology
+</div>
+
+
+<!-- 20 -->
+
+<div class="video-card"
+data-search="sexual reproduction flowering plants dpp video 20">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Sexual Reproduction in Flowering Plants : DPP Video 20
+</h3>
+
+<p>
+Biology • Class 12 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class12/dpp20.mp4',
+'Sexual Reproduction in Flowering Plants : DPP Video 20'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 21 -->
+
+<div class="video-card"
+data-search="human reproduction dpp video 21">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Human Reproduction : DPP Video 21
+</h3>
+
+<p>
+Biology • Class 12 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class12/dpp21.mp4',
+'Human Reproduction : DPP Video 21'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 22 -->
+
+<div class="video-card"
+data-search="reproductive health dpp video 22">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Reproductive Health : DPP Video 22
+</h3>
+
+<p>
+Biology • Class 12 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class12/dpp22.mp4',
+'Reproductive Health : DPP Video 22'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 23 -->
+
+<div class="video-card"
+data-search="inheritance variation dpp video 23">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Principles of Inheritance and Variation : DPP Video 23
+</h3>
+
+<p>
+Biology • Class 12 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 35 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class12/dpp23.mp4',
+'Principles of Inheritance and Variation : DPP Video 23'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 24 -->
+
+<div class="video-card"
+data-search="molecular basis inheritance dpp video 24">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Molecular Basis of Inheritance : DPP Video 24
+</h3>
+
+<p>
+Biology • Class 12 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 35 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class12/dpp24.mp4',
+'Molecular Basis of Inheritance : DPP Video 24'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 25 -->
+
+<div class="video-card"
+data-search="evolution dpp video 25">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Evolution : DPP Video 25
+</h3>
+
+<p>
+Biology • Class 12 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class12/dpp25.mp4',
+'Evolution : DPP Video 25'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 26 -->
+
+<div class="video-card"
+data-search="human health disease dpp video 26">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Human Health and Disease : DPP Video 26
+</h3>
+
+<p>
+Biology • Class 12 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class12/dpp26.mp4',
+'Human Health and Disease : DPP Video 26'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 27 -->
+
+<div class="video-card"
+data-search="microbes human welfare dpp video 27">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Microbes in Human Welfare : DPP Video 27
+</h3>
+
+<p>
+Biology • Class 12 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class12/dpp27.mp4',
+'Microbes in Human Welfare : DPP Video 27'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 28 -->
+
+<div class="video-card"
+data-search="biotechnology principles processes dpp video 28">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Biotechnology : Principles and Processes : DPP Video 28
+</h3>
+
+<p>
+Biology • Class 12 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 35 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class12/dpp28.mp4',
+'Biotechnology : Principles and Processes : DPP Video 28'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 29 -->
+
+<div class="video-card"
+data-search="biotechnology applications dpp video 29">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Biotechnology and Its Applications : DPP Video 29
+</h3>
+
+<p>
+Biology • Class 12 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 35 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class12/dpp29.mp4',
+'Biotechnology and Its Applications : DPP Video 29'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 30 -->
+
+<div class="video-card"
+data-search="organisms populations dpp video 30">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Organisms and Populations : DPP Video 30
+</h3>
+
+<p>
+Biology • Class 12 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class12/dpp30.mp4',
+'Organisms and Populations : DPP Video 30'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 31 -->
+
+<div class="video-card"
+data-search="ecosystem dpp video 31">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Ecosystem : DPP Video 31
+</h3>
+
+<p>
+Biology • Class 12 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class12/dpp31.mp4',
+'Ecosystem : DPP Video 31'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 32 -->
+
+<div class="video-card"
+data-search="biodiversity conservation dpp video 32">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Biodiversity and Conservation : DPP Video 32
+</h3>
+
+<p>
+Biology • Class 12 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class12/dpp32.mp4',
+'Biodiversity and Conservation : DPP Video 32'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 33 -->
+
+<div class="video-card"
+data-search="environmental issues dpp video 33">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+Environmental Issues : DPP Video 33
+</h3>
+
+<p>
+Biology • Class 12 • DPP Discussion
+</p>
+
+<div class="meta">
+<span>▶ Video</span>
+<span>⏱ 30 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/biology/class12/dpp33.mp4',
+'Environmental Issues : DPP Video 33'
+)">
+WATCH
+</button>
+
+</div>
+
+
+</div>
+
+
+<div id="empty" class="empty">
+No DPP video found.
+</div>
+
+</div>
+
+</main>
+
+
+
+<!-- VIDEO MODAL -->
+
+<div class="modal" id="videoModal">
+
+<div class="modal-box">
+
+<div class="modal-top">
+
+<div class="modal-title" id="modalTitle">
+DPP Video
+</div>
+
+<button class="close"
+onclick="closeVideo()">
+×
+</button>
+
+</div>
+
+<video
+id="player"
+controls
+playsinline>
+
+Your browser does not support HTML video.
+
+</video>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+/* PAGE NAVIGATION */
+
+function go(page){
+
+    window.location.href = page;
+
+}
+
+
+/* WATCH VIDEO */
+
+function watchVideo(file,title){
+
+    const modal =
+    document.getElementById("videoModal");
+
+    const player =
+    document.getElementById("player");
+
+    const modalTitle =
+    document.getElementById("modalTitle");
+
+    modalTitle.textContent = title;
+
+    player.src = file;
+
+    modal.style.display = "flex";
+
+    player.play().catch(function(){});
+
+}
+
+
+/* CLOSE VIDEO */
+
+function closeVideo(){
+
+    const modal =
+    document.getElementById("videoModal");
+
+    const player =
+    document.getElementById("player");
+
+    player.pause();
+
+    player.removeAttribute("src");
+
+    player.load();
+
+    modal.style.display = "none";
+
+}
+
+
+/* CLICK OUTSIDE */
+
+document
+.getElementById("videoModal")
+.addEventListener("click",function(e){
+
+    if(e.target === this){
+
+        closeVideo();
+
+    }
+
+});
+
+
+/* SEARCH */
+
+const search =
+document.getElementById("search");
+
+const cards =
+document.querySelectorAll(".video-card");
+
+const sections =
+document.querySelectorAll(".class-section");
+
+const empty =
+document.getElementById("empty");
+
+
+search.addEventListener("input",function(){
+
+    const value =
+    this.value.toLowerCase().trim();
+
+    let found = 0;
+
+
+    sections.forEach(section => {
+
+        let sectionFound = 0;
+
+        const sectionCards =
+        section.querySelectorAll(".video-card");
+
+
+        sectionCards.forEach(card => {
+
+            const text =
+            card.dataset.search.toLowerCase();
+
+
+            if(text.includes(value)){
+
+                card.style.display="flex";
+
+                sectionFound++;
+                found++;
+
+            }
+            else{
+
+                card.style.display="none";
+
+            }
+
+        });
+
+
+        if(value && sectionFound === 0){
+
+            section.style.display="none";
+
+        }
+        else{
+
+            section.style.display="block";
+
+        }
+
+    });
+
+
+    if(value && found === 0){
+
+        empty.style.display="block";
+
+    }
+    else{
+
+        empty.style.display="none";
+
+    }
+
+});
+
+
+/* ESCAPE KEY */
+
+document.addEventListener("keydown",function(e){
+
+    if(e.key === "Escape"){
+
+        closeVideo();
+
+    }
+
+});
+
+</script>
+
+
+</body>
+
+</html>

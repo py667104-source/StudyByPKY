@@ -1,0 +1,2497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Biology Lectures</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body{
+    background:#0b1222;
+    color:#fff;
+    min-height:100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    height:58px;
+    background:#10192c;
+    border-bottom:1px solid #263453;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 16px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back{
+    text-decoration:none;
+    color:#8ea7ff;
+    font-size:25px;
+    margin-right:8px;
+}
+
+.header-title{
+    font-size:13px;
+    font-weight:700;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:0 10px 40px;
+}
+
+
+/* =========================
+   TABS
+========================= */
+
+.tabs{
+    height:58px;
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+
+    border-bottom:1px solid #263453;
+
+    margin-bottom:14px;
+}
+
+.tab{
+    height:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#7f8ba4;
+
+    font-size:9px;
+    font-weight:700;
+
+    position:relative;
+
+    cursor:pointer;
+
+    text-align:center;
+}
+
+.tab.active{
+    color:#fff;
+}
+
+.tab.active::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+
+    left:15%;
+    right:15%;
+
+    height:3px;
+
+    background:#6678ff;
+
+    border-radius:5px 5px 0 0;
+}
+
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+.page-title{
+
+    font-size:12px;
+
+    font-weight:700;
+
+    color:#e8edf8;
+
+    margin:10px 4px 8px;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box{
+
+    margin:0 3px 14px;
+}
+
+.search-box input{
+
+    width:100%;
+
+    background:#151f34;
+
+    color:#fff;
+
+    border:1px solid #2b3b5d;
+
+    border-radius:9px;
+
+    outline:none;
+
+    padding:11px 13px;
+
+    font-size:11px;
+}
+
+.search-box input::placeholder{
+
+    color:#78859d;
+}
+
+.search-box input:focus{
+
+    border-color:#6678ff;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section-title{
+
+    margin:13px 4px 8px;
+
+    padding:8px 10px;
+
+    background:#121d32;
+
+    border-left:3px solid #6678ff;
+
+    border-radius:4px;
+
+    color:#e9edfa;
+
+    font-size:11px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   LECTURE CARD
+========================= */
+
+.lecture-card{
+
+    width:100%;
+
+    min-height:76px;
+
+    display:flex;
+
+    align-items:center;
+
+    background:#1a263d;
+
+    border:1px solid #2c3b5b;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    margin-bottom:8px;
+
+    cursor:pointer;
+
+    transition:
+
+    transform .2s,
+    background .2s,
+    border .2s;
+}
+
+.lecture-card:hover{
+
+    transform:translateY(-1px);
+
+    background:#1d2b45;
+
+    border-color:#526b9d;
+}
+
+
+/* =========================
+   ICON AREA
+========================= */
+
+.icon-area{
+
+    width:88px;
+
+    min-height:76px;
+
+    align-self:stretch;
+
+    background:#193961;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-shrink:0;
+}
+
+
+/* =========================
+   VIDEO ICON
+========================= */
+
+.video-icon{
+
+    width:40px;
+    height:29px;
+
+    background:#fff;
+
+    border-radius:5px;
+
+    position:relative;
+
+    box-shadow:
+    0 2px 7px rgba(0,0,0,.35);
+}
+
+
+/* play triangle */
+
+.video-icon::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:15px;
+
+    top:8px;
+
+    width:0;
+    height:0;
+
+    border-top:7px solid transparent;
+
+    border-bottom:7px solid transparent;
+
+    border-left:11px solid #6678ff;
+}
+
+
+/* =========================
+   LECTURE INFO
+========================= */
+
+.lecture-info{
+
+    flex:1;
+
+    min-width:0;
+
+    padding:9px 11px;
+}
+
+.lecture-info h3{
+
+    color:#f0f3fa;
+
+    font-size:10px;
+
+    line-height:1.4;
+
+    font-weight:700;
+}
+
+.lecture-info p{
+
+    color:#8794ab;
+
+    font-size:8px;
+
+    margin-top:4px;
+}
+
+
+/* =========================
+   META
+========================= */
+
+.meta{
+
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    margin-top:5px;
+
+    color:#8d9bb3;
+
+    font-size:7px;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.watch-btn{
+
+    margin-right:10px;
+
+    border:0;
+
+    background:#596cff;
+
+    color:#fff;
+
+    border-radius:7px;
+
+    padding:8px 9px;
+
+    font-size:8px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+.watch-btn:hover{
+
+    background:#7181ff;
+}
+
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+
+    display:none;
+
+    text-align:center;
+
+    padding:35px 10px;
+
+    color:#7d899f;
+
+    font-size:12px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:430px){
+
+    .container{
+
+        padding-left:7px;
+        padding-right:7px;
+    }
+
+    .tab{
+
+        font-size:8px;
+    }
+
+    .icon-area{
+
+        width:70px;
+    }
+
+    .video-icon{
+
+        width:34px;
+        height:25px;
+    }
+
+    .video-icon::after{
+
+        left:13px;
+
+        top:7px;
+
+        border-top-width:6px;
+
+        border-bottom-width:6px;
+
+        border-left-width:9px;
+    }
+
+    .lecture-info h3{
+
+        font-size:9.5px;
+    }
+
+    .lecture-info p{
+
+        font-size:7px;
+    }
+
+    .meta{
+
+        font-size:6.5px;
+
+        gap:5px;
+    }
+
+    .watch-btn{
+
+        padding:7px;
+
+        font-size:7px;
+
+        margin-right:6px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <a
+        href="index.html"
+        class="back"
+    >
+        ‹
+    </a>
+
+    <div class="header-title">
+
+        Biology : Lectures
+
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- =========================
+     TABS
+========================= -->
+
+<nav class="tabs">
+
+    <div class="tab active">
+
+        Lectures
+
+    </div>
+
+
+    <div
+        class="tab"
+        onclick="goTo('biology_ncert_highlights.html')"
+    >
+
+        Notes
+
+    </div>
+
+
+    <div
+        class="tab"
+        onclick="goTo('biology_dpp.html')"
+    >
+
+        DPP
+
+    </div>
+
+
+    <div
+        class="tab"
+        onclick="goTo('biology_dpp_pdf.html')"
+    >
+
+        DPP PDF
+
+    </div>
+
+
+    <div
+        class="tab"
+        onclick="goTo('biology_dpp_videos.html')"
+    >
+
+        DPP Videos
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     TITLE
+========================= -->
+
+<div class="page-title">
+
+    Biology : Complete Lectures
+
+</div>
+
+
+
+<!-- =========================
+     SEARCH
+========================= -->
+
+<div class="search-box">
+
+    <input
+        type="text"
+        id="search"
+        placeholder="Search Biology chapter..."
+    >
+
+</div>
+
+
+
+<!-- ==================================================
+     CLASS 11 BIOLOGY
+================================================== -->
+
+<div class="section-title">
+
+    Class 11 Biology
+
+</div>
+
+
+
+<!-- 01 -->
+
+<div
+class="lecture-card"
+data-name="The Living World"
+onclick="watchLecture('videos/biology/the-living-world.mp4')"
+>
+
+    <div class="icon-area">
+
+        <div class="video-icon"></div>
+
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            The Living World :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 45 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/the-living-world.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- 02 -->
+
+<div
+class="lecture-card"
+data-name="Biological Classification"
+onclick="watchLecture('videos/biology/biological-classification.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Biological Classification :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 55 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/biological-classification.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- 03 -->
+
+<div
+class="lecture-card"
+data-name="Plant Kingdom"
+onclick="watchLecture('videos/biology/plant-kingdom.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Plant Kingdom :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 60 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/plant-kingdom.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- 04 -->
+
+<div
+class="lecture-card"
+data-name="Animal Kingdom"
+onclick="watchLecture('videos/biology/animal-kingdom.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Animal Kingdom :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 65 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/animal-kingdom.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- 05 -->
+
+<div
+class="lecture-card"
+data-name="Morphology of Flowering Plants"
+onclick="watchLecture('videos/biology/morphology-flowering-plants.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Morphology of Flowering Plants :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 58 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/morphology-flowering-plants.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- 06 -->
+
+<div
+class="lecture-card"
+data-name="Anatomy of Flowering Plants"
+onclick="watchLecture('videos/biology/anatomy-flowering-plants.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Anatomy of Flowering Plants :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 52 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/anatomy-flowering-plants.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- 07 -->
+
+<div
+class="lecture-card"
+data-name="Structural Organisation in Animals"
+onclick="watchLecture('videos/biology/structural-organisation-animals.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Structural Organisation in Animals :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 50 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/structural-organisation-animals.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- 08 -->
+
+<div
+class="lecture-card"
+data-name="Cell The Unit of Life"
+onclick="watchLecture('videos/biology/cell-unit-of-life.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Cell : The Unit of Life :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 70 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/cell-unit-of-life.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- 09 -->
+
+<div
+class="lecture-card"
+data-name="Biomolecules"
+onclick="watchLecture('videos/biology/biomolecules.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Biomolecules :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 48 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/biomolecules.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- 10 -->
+
+<div
+class="lecture-card"
+data-name="Cell Cycle and Cell Division"
+onclick="watchLecture('videos/biology/cell-cycle-division.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Cell Cycle and Cell Division :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 62 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/cell-cycle-division.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+<!-- 11-->
+
+<div
+class="lecture-card"
+data-name="Photosynthesis in higher plants"
+onclick="watchLecture('videos/biology/cell-cycle-division.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Photosynthesis in higher plants :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 62 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/cell-cycle-division.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+<!-- 12 -->
+
+<div
+class="lecture-card"
+data-name="Respiration in higher plants"
+onclick="watchLecture('videos/biology/cell-cycle-division.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Respiration in higher plants :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 62 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/cell-cycle-division.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+<!-- 13 -->
+
+<div
+class="lecture-card"
+data-name="Plant growth and development"
+onclick="watchLecture('videos/biology/cell-cycle-division.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+           Plant growth and development :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 62 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/cell-cycle-division.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+<!-- 14-->
+
+<div
+class="lecture-card"
+data-name="Breathing and exchange of gases"
+onclick="watchLecture('videos/biology/cell-cycle-division.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Breathing and exchange of gases :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 62 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/cell-cycle-division.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+<!-- 15 -->
+
+<div
+class="lecture-card"
+data-name="body fluids and circulation"
+onclick="watchLecture('videos/biology/cell-cycle-division.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+           body fluids and circulation :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 62 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/cell-cycle-division.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+<!-- 16 -->
+
+<div
+class="lecture-card"
+data-name="Excretory product and their elimination"
+onclick="watchLecture('videos/biology/cell-cycle-division.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Excretory product and their elimination :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 62 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/cell-cycle-division.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+<!-- 17 -->
+
+<div
+class="lecture-card"
+data-name="Locomotion and movement"
+onclick="watchLecture('videos/biology/cell-cycle-division.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Locomotion and movement :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 62 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/cell-cycle-division.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+<!-- 18-->
+
+<div
+class="lecture-card"
+data-name="Neural control  and  coordination"
+onclick="watchLecture('videos/biology/cell-cycle-division.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Neural control  and  coordination :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 62 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/cell-cycle-division.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+<!-- 19 -->
+
+<div
+class="lecture-card"
+data-name="Chemical coordination and integration"
+onclick="watchLecture('videos/biology/cell-cycle-division.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Chemical coordination and integration :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 11
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 62 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/cell-cycle-division.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+<!-- ==================================================
+     CLASS 12 BIOLOGY
+================================================== -->
+
+<div class="section-title">
+
+    Class 12 Biology
+
+</div>
+
+<!-- 20 -->
+
+<div
+class="lecture-card"
+data-name="Sexual reproduction in flowering plants"
+onclick="watchLecture('videos/biology/cell-cycle-division.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Sexual reproduction in flowering plants :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 12
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 62 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/cell-cycle-division.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- 21-->
+
+<div
+class="lecture-card"
+data-name="Human Reproduction"
+onclick="watchLecture('videos/biology/human-reproduction.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Human Reproduction :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 12
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 65 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/human-reproduction.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- 22 -->
+
+<div
+class="lecture-card"
+data-name="Reproductive Health"
+onclick="watchLecture('videos/biology/reproductive-health.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Reproductive Health :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 12
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 50 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/reproductive-health.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- 23 -->
+
+<div
+class="lecture-card"
+data-name="Principles of Inheritance and Variation"
+onclick="watchLecture('videos/biology/principles-inheritance.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Principles of Inheritance and Variation :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 12
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 75 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/principles-inheritance.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- 24 -->
+
+<div
+class="lecture-card"
+data-name="Molecular Basis of Inheritance"
+onclick="watchLecture('videos/biology/molecular-basis-inheritance.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Molecular Basis of Inheritance :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 12
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 78 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/molecular-basis-inheritance.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- 25 -->
+
+<div
+class="lecture-card"
+data-name="Evolution"
+onclick="watchLecture('videos/biology/evolution.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Evolution :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 12
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 55 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/evolution.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- 26 -->
+
+<div
+class="lecture-card"
+data-name="Human Health and Disease"
+onclick="watchLecture('videos/biology/human-health-disease.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Human Health and Disease :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 12
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 60 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/human-health-disease.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+<!-- 27 -->
+
+<div
+class="lecture-card"
+data-name="Microbes in human welfare"
+onclick="watchLecture('videos/biology/cell-cycle-division.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Microbes in human welfare :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 12
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 62 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/cell-cycle-division.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+<!-- 28 -->
+
+<div
+class="lecture-card"
+data-name="Biotechnology Principles and Processes"
+onclick="watchLecture('videos/biology/biotechnology-principles.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Biotechnology :
+            Principles and Processes
+
+        </h3>
+
+        <p>
+
+            Biology • Class 12
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 62 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/biotechnology-principles.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- 29 -->
+
+<div
+class="lecture-card"
+data-name="Biotechnology and its Applications"
+onclick="watchLecture('videos/biology/biotechnology-applications.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Biotechnology and its Applications :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 12
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 55 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/biotechnology-applications.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+<!-- 30 -->
+
+<div
+class="lecture-card"
+data-name="Organisms and Populations"
+onclick="watchLecture('videos/biology/cell-cycle-division.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+           Organisms and Populations :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 12
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 62 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/cell-cycle-division.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+<!-- 31 -->
+
+<div
+class="lecture-card"
+data-name="Ecology and Environment"
+onclick="watchLecture('videos/biology/ecology-environment.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+            Ecology and Environment :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 12
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 70 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/ecology-environment.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+<!-- 32 -->
+
+<div
+class="lecture-card"
+data-name="Biodiversity and Conservation"
+onclick="watchLecture('videos/biology/cell-cycle-division.mp4')"
+>
+
+    <div class="icon-area">
+        <div class="video-icon"></div>
+    </div>
+
+
+    <div class="lecture-info">
+
+        <h3>
+
+           Biodiversity and Conservation :
+            Complete Lecture
+
+        </h3>
+
+        <p>
+
+            Biology • Class 12
+
+        </p>
+
+        <div class="meta">
+
+            <span>🎥 Lecture</span>
+            <span>⏱ 62 min</span>
+            <span>🎯 NEET</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="watch-btn"
+        onclick="
+        event.stopPropagation();
+        watchLecture('videos/biology/cell-cycle-division.mp4')
+        "
+    >
+
+        WATCH
+
+    </button>
+
+</div>
+
+
+
+<!-- EMPTY -->
+
+<div
+id="empty"
+class="empty"
+>
+
+    No Biology lecture found.
+
+</div>
+
+
+</main>
+
+
+
+<script>
+
+/* =========================
+   WATCH LECTURE
+========================= */
+
+function watchLecture(video){
+
+    window.open(
+        video,
+        "_blank"
+    );
+
+}
+
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+function goTo(page){
+
+    window.location.href = page;
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+const search =
+document.getElementById("search");
+
+
+const cards =
+document.querySelectorAll(".lecture-card");
+
+
+const empty =
+document.getElementById("empty");
+
+
+search.addEventListener(
+    "input",
+    function(){
+
+        const value =
+        this.value
+        .toLowerCase()
+        .trim();
+
+        let found = 0;
+
+
+        cards.forEach(
+            card => {
+
+                const name =
+                card.dataset.name
+                .toLowerCase();
+
+
+                const match =
+                name.includes(value);
+
+
+                card.style.display =
+                match
+                ? "flex"
+                : "none";
+
+
+                if(match){
+
+                    found++;
+
+                }
+
+            }
+        );
+
+
+        empty.style.display =
+        found === 0
+        ? "block"
+        : "none";
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

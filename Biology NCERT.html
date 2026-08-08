@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NCERT Highlights | Only PDF</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#0b1222;
+    color:#fff;
+    min-height:100vh;
+}
+
+/* HEADER */
+.header{
+    height:58px;
+    display:flex;
+    align-items:center;
+    padding:0 18px;
+    background:#111a2d;
+    border-bottom:1px solid #263453;
+    position:sticky;
+    top:0;
+    z-index:20;
+}
+
+.back{
+    color:#8ea9ff;
+    font-size:24px;
+    text-decoration:none;
+    margin-right:8px;
+}
+
+.title{
+    font-size:13px;
+    font-weight:700;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+/* MAIN */
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:0 14px 35px;
+}
+
+/* TABS */
+.tabs{
+    height:58px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    align-items:end;
+    border-bottom:1px solid #263453;
+    margin-bottom:15px;
+}
+
+.tab{
+    height:48px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#8490a8;
+    font-size:10px;
+    font-weight:600;
+    cursor:pointer;
+    position:relative;
+    text-align:center;
+}
+
+.tab.active{
+    color:#fff;
+}
+
+.tab.active:after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:15%;
+    right:15%;
+    height:3px;
+    background:#6778ff;
+    border-radius:4px 4px 0 0;
+}
+
+/* SECTION TITLE */
+.section-title{
+    font-size:12px;
+    color:#d7def0;
+    margin:7px 4px 10px;
+    font-weight:700;
+}
+
+/* SEARCH */
+.search-box{
+    display:flex;
+    gap:8px;
+    margin:0 0 13px;
+}
+
+.search-box input{
+    width:100%;
+    background:#151f34;
+    color:white;
+    border:1px solid #2b3a5c;
+    border-radius:10px;
+    padding:12px 14px;
+    outline:none;
+    font-size:12px;
+}
+
+.search-box input:focus{
+    border-color:#6579ff;
+}
+
+/* PDF CARD */
+.chapter{
+    width:100%;
+    min-height:62px;
+    display:flex;
+    align-items:center;
+    margin-bottom:9px;
+    border-radius:10px;
+    overflow:hidden;
+    background:#1a263d;
+    border:1px solid #2b3a57;
+    box-shadow:0 3px 8px rgba(0,0,0,.16);
+    transition:.2s;
+    cursor:pointer;
+}
+
+.chapter:hover{
+    transform:translateY(-1px);
+    border-color:#526b9d;
+    background:#1d2b45;
+}
+
+/* PDF ICON AREA */
+.pdf-icon{
+    width:76px;
+    min-height:62px;
+    align-self:stretch;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#18365e;
+}
+
+/* PDF PAPER */
+.pdf-paper{
+    width:26px;
+    height:32px;
+    background:#fff;
+    border-radius:2px;
+    position:relative;
+    box-shadow:0 2px 5px rgba(0,0,0,.25);
+}
+
+.pdf-paper:before{
+    content:"";
+    position:absolute;
+    right:0;
+    top:0;
+    border-left:8px solid transparent;
+    border-bottom:8px solid #cfd4dc;
+}
+
+.pdf-paper:after{
+    content:"PDF";
+    position:absolute;
+    left:3px;
+    bottom:4px;
+    font-size:6px;
+    font-weight:800;
+    color:#d94141;
+}
+
+/* INFO */
+.info{
+    padding:9px 11px;
+    flex:1;
+    min-width:0;
+}
+
+.info h3{
+    font-size:11px;
+    line-height:1.35;
+    color:#f1f4fb;
+    font-weight:700;
+}
+
+.info p{
+    color:#8f9bb1;
+    font-size:8px;
+    margin-top:4px;
+}
+
+/* ARROW */
+.open{
+    margin-right:12px;
+    color:#8ea9ff;
+    font-size:18px;
+}
+
+/* EMPTY SEARCH */
+.empty{
+    display:none;
+    text-align:center;
+    color:#7f8ba2;
+    padding:35px 10px;
+    font-size:12px;
+}
+
+/* MOBILE */
+@media(max-width:430px){
+
+    .container{
+        padding-left:8px;
+        padding-right:8px;
+    }
+
+    .tabs{
+        grid-template-columns:repeat(5,1fr);
+    }
+
+    .tab{
+        font-size:8px;
+    }
+
+    .pdf-icon{
+        width:74px;
+    }
+
+    .info h3{
+        font-size:10px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <a class="back" href="index.html">
+        ‹
+    </a>
+
+    <div class="title">
+        NCERT Highlights (Only PDF)
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- TABS -->
+
+<nav class="tabs">
+
+    <div class="tab">
+        Lectures
+    </div>
+
+    <div class="tab active">
+        Notes
+    </div>
+
+    <div class="tab">
+        DPP
+    </div>
+
+    <div class="tab">
+        DPP PDF
+    </div>
+
+    <div class="tab">
+        DPP Videos
+    </div>
+
+</nav>
+
+
+<!-- TITLE -->
+
+<div class="section-title">
+    Biology : NCERT Highlights
+</div>
+
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+    <input
+        id="search"
+        type="text"
+        placeholder="Search NCERT chapter..."
+    >
+
+</div>
+
+
+<!-- PDF LIST -->
+
+<div id="list">
+
+
+<!-- 01 -->
+
+<div
+class="chapter"
+data-name="The Living World"
+onclick="openPDF('https://drive.google.com/file/d/1tJyUws7-huXf-9xZacrRK5qNAxyFfxeC/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+
+    <div class="pdf-paper"></div>
+
+</div>
+
+<div class="info">
+
+<h3>
+The Living World : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 02 -->
+
+<div
+class="chapter"
+data-name="Biological Classification"
+onclick="openPDF('https://drive.google.com/file/d/1iE3xr3vQ3BOEgEgzNgp4u01PP3lcZQ6E/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Biological Classification : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 03 -->
+
+<div
+class="chapter"
+data-name="Plant Kingdom"
+onclick="openPDF('https://drive.google.com/file/d/1z7oI6896nE_rD8dlbkzQoP9YayI6Utn1/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Plant Kingdom : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 04 -->
+
+<div
+class="chapter"
+data-name="Animal Kingdom"
+onclick="openPDF('https://drive.google.com/file/d/1EqwCVidfjsSPjyUdpwxmjq-Oo6wzzoQ1/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Animal Kingdom : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 05 -->
+
+<div
+class="chapter"
+data-name="Morphology of Flowering Plants"
+onclick="openPDF('https://drive.google.com/file/d/1XHNuunip8SGybRWpEHtU62fxO7G-XOZL/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Morphology of Flowering Plants : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 06 -->
+
+<div
+class="chapter"
+data-name="Anatomy of Flowering Plants"
+onclick="openPDF('https://drive.google.com/file/d/17Xjizk-7LPNFEBab4RADQGdVcgZfGPmB/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Anatomy of Flowering Plants : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 07 -->
+
+<div
+class="chapter"
+data-name="Structural Organisation in Animals"
+onclick="openPDF('https://drive.google.com/file/d/1aJJq6PUrtnTcvPT7iYKyFWDxp0gqE_pU/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Structural Organisation in Animals : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 08 -->
+
+<div
+class="chapter"
+data-name="Cell The Unit of Life"
+onclick="openPDF('https://drive.google.com/file/d/18PV2p02MG7stxZ9M1BvBEtL3u9zeFI27/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Cell : The Unit of Life : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 09 -->
+
+<div
+class="chapter"
+data-name="Biomolecules"
+onclick="openPDF('https://drive.google.com/file/d/1kYby7kHuB7hUQHFsXGEBa1RtXd5ZhFis/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Biomolecules : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 10 -->
+
+<div
+class="chapter"
+data-name="Cell Cycle and Cell Division"
+onclick="openPDF('https://drive.google.com/file/d/1p6q-P7NPrrU_WNTFxpvPd1vGe923KF1v/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Cell Cycle and Cell Division : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 11 -->
+
+<div
+class="chapter"
+data-name="Photosynthesis in Plants"
+onclick="openPDF('https://drive.google.com/file/d/18kMsbIwyrCJ_xrHovbpX15CsRNG8T1xW/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Photosynthesis in Plants : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 12 -->
+
+<div
+class="chapter"
+data-name="Respiration in Plants"
+onclick="openPDF('https://drive.google.com/file/d/1vBomxPGMkAx9VGHcndSBjR6JZFZAXFtW/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Respiration in Plants : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 13 -->
+
+<div
+class="chapter"
+data-name="Plant Growth and Development"
+onclick="openPDF('https://drive.google.com/file/d/1nUxGVlZiIkFiJU-3QYDRaL1VO9urp1d8/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Plant Growth and Development : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+<!-- 14 -->
+
+<div
+class="chapter"
+data-name="Breathingandexchangeofgass"
+onclick="openPDF('https://drive.google.com/file/d/1oxQ2JYNL2R6q-6tY6R2TZRaovk_JrDnv/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Breathing and exchange of gass: NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+<!-- 15 -->
+
+<div
+class="chapter"
+data-name="Body fluids and circulation"
+onclick="openPDF('https://drive.google.com/file/d/1NprBmPj16XGIYwZ6kVmb18P0JAT6O9B1/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Body fluids and circulation : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+<!-- 16 -->
+
+<div
+class="chapter"
+data-name="Excretory product and their elimination"
+onclick="openPDF('https://drive.google.com/file/d/1LrwTetMjeZW0Ka1gADUrWLfXfP-BdQQq/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Excretory product and their elimination : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+<!-- 17 -->
+
+<div
+class="chapter"
+data-name="Locomotion and movement "
+onclick="openPDF('https://drive.google.com/file/d/1Fb3A7Cgxzzp_9_g99OcZvok_3eDrwYIW/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Locomotion  and movement: NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+<!-- 18 -->
+
+<div
+class="chapter"
+data-name="Neural control and coordination"
+onclick="openPDF('https://drive.google.com/file/d/1IBPUZP6lQLM9wqa-dEvG1HVU5IkqS6vL/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Neural control and coordination : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+<!-- 19  -->
+
+<div
+class="chapter"
+data-name="Chemical coordination and integration"
+onclick="openPDF('https://drive.google.com/file/d/1g8U0JCMZiDnrYsWCkfKR2ZKlJjGTdwHg/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Chemical coordination and integration : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+<!-- 20 -->
+
+<div
+class="chapter"
+data-name="Sexual Reproduction in flowering plants "
+onclick="openPDF('https://drive.google.com/file/d/13fZ6AQDXxKuLLXViXfHIoFE_pjJbzZU5/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Sexual Reproduction in flowering plants : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+<!-- 21 -->
+
+<div
+class="chapter"
+data-name="Human Reproduction"
+onclick="openPDF('https://drive.google.com/file/d/17372zhJET-lHUQ7ENU0qDX3PieFkXOro/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Human Reproduction : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 22 -->
+
+<div
+class="chapter"
+data-name="Reproductive Health"
+onclick="openPDF('https://drive.google.com/file/d/1eHK6uLvAmp9mG56vvWnYtLxfJ9UxyGw7/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Reproductive Health : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 23 -->
+
+<div
+class="chapter"
+data-name="Principles of Inheritance and Variation"
+onclick="openPDF('https://drive.google.com/file/d/1YUeF2P30-TiArqhgzLt8SIM4MhaMIyGE/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Principles of Inheritance and Variation : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 24 -->
+
+<div
+class="chapter"
+data-name="Molecular Basis of Inheritance"
+onclick="openPDF('https://drive.google.com/file/d/16ur6MQRzASdpS1uNhCLRXITwsdlvkCU5/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Molecular Basis of Inheritance : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 25 -->
+
+<div
+class="chapter"
+data-name="Evolution"
+onclick="openPDF('https://drive.google.com/file/d/1tLhqK5BOdJ15IjG-9zqd6t_Ep2GYA-T7/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Evolution : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 26 -->
+
+<div
+class="chapter"
+data-name="Human Health and Disease"
+onclick="openPDF('https://drive.google.com/file/d/1I0jWJSR6TTLVZsLUqyu5JJbugKQtjgaY/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Human Health and Disease : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+<!-- 27 -->
+
+<div
+class="chapter"
+data-name="Microbes in human welfare "
+onclick="openPDF('https://drive.google.com/file/d/1wB42a1x6sHQGrowLn8uHewewJnkVObVX/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Microbes in human welfare : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+<!-- 28 -->
+
+<div
+class="chapter"
+data-name="Biotechnology Principles and Processes"
+onclick="openPDF('https://drive.google.com/file/d/1vhGy8NWtD7jEdsGYKUj1yIG3smHLEd6O/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Biotechnology : Principles and Processes : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+
+<!-- 29 -->
+
+<div
+class="chapter"
+data-name="Biotechnology and its Applications"
+onclick="openPDF('https://drive.google.com/file/d/1okewHuXV94OWGP53WgYOPLecIVAYK625/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Biotechnology and its Applications : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+<!-- 30 -->
+
+<div
+class="chapter"
+data-name="Organisms and Populations"
+onclick="openPDF('https://drive.google.com/file/d/1pEr_fhlxOwRxAp69nGvGe9JSBpMvTej3/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Organisms   and Populations : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+<!-- 31 -->
+
+<div
+class="chapter"
+data-name="Ecology and Eironment"
+onclick="openPDF('https://drive.google.com/file/d/1J2DY16j8vV5eLm8f6i1iMDapQrSOrJM-/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Ecology and Environment : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+
+<!-- 32 -->
+
+<div
+class="chapter"
+data-name="Biodiversity and Conservation "
+onclick="openPDF('https://drive.google.com/file/d/1FOzIqkA61Bq5N5DZe8HIFGomTGl0q0bF/view?usp=drivesdk')"
+>
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="info">
+
+<h3>
+Biodiversity  and Conservation : NCERT Highlights
+</h3>
+
+<p>
+NCERT Highlights PDF
+</p>
+
+</div>
+
+<div class="open">
+›
+</div>
+
+</div>
+</div>
+
+
+<div id="empty" class="empty">
+No chapter found.
+</div>
+
+
+</main>
+
+
+<script>
+
+/* OPEN PDF */
+
+function openPDF(file){
+
+    window.open(file, "_blank");
+
+}
+
+
+/* SEARCH */
+
+const search =
+document.getElementById("search");
+
+const chapters =
+document.querySelectorAll(".chapter");
+
+const empty =
+document.getElementById("empty");
+
+
+search.addEventListener("input", function(){
+
+    const value =
+    this.value.toLowerCase().trim();
+
+    let found = 0;
+
+
+    chapters.forEach(chapter => {
+
+        const name =
+        chapter.dataset.name.toLowerCase();
+
+        const match =
+        name.includes(value);
+
+
+        chapter.style.display =
+        match ? "flex" : "none";
+
+
+        if(match){
+            found++;
+        }
+
+    });
+
+
+    empty.style.display =
+    found ? "none" : "block";
+
+});
+
+</script>
+
+</body>
+</html>

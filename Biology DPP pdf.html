@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Biology DPP PDF - NEET</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#0b1222;
+    color:#fff;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+.header{
+    height:48px;
+    background:#10192c;
+    border-bottom:1px solid #253451;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 10px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back{
+    color:#91a6ff;
+    text-decoration:none;
+    font-size:22px;
+    margin-right:6px;
+}
+
+.header-title{
+    font-size:10px;
+    font-weight:700;
+}
+
+
+/* MAIN */
+
+.container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:0 8px 40px;
+}
+
+
+/* TABS */
+
+.tabs{
+    height:52px;
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+
+    border-bottom:1px solid #253451;
+}
+
+.tab{
+    height:52px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#7d8ba5;
+
+    font-size:7px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    position:relative;
+    text-align:center;
+}
+
+.tab.active{
+    color:#fff;
+}
+
+.tab.active::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+    left:15%;
+    right:15%;
+
+    height:3px;
+
+    background:#6374ff;
+
+    border-radius:4px 4px 0 0;
+}
+
+
+/* TITLE */
+
+.page-title{
+    font-size:11px;
+    font-weight:700;
+
+    margin:12px 3px 8px;
+
+    color:#e9edf7;
+}
+
+
+/* SEARCH */
+
+.search{
+    margin:0 3px 10px;
+}
+
+.search input{
+    width:100%;
+    height:32px;
+
+    background:#151f34;
+
+    border:1px solid #293a5a;
+
+    border-radius:7px;
+
+    padding:0 10px;
+
+    color:#fff;
+
+    outline:none;
+
+    font-size:8px;
+}
+
+.search input::placeholder{
+    color:#72809a;
+}
+
+.search input:focus{
+    border-color:#6374ff;
+}
+
+
+/* CLASS TITLE */
+
+.class-title{
+    height:25px;
+
+    display:flex;
+    align-items:center;
+
+    margin:8px 3px 6px;
+
+    padding-left:8px;
+
+    background:#111d32;
+
+    border-left:2px solid #6374ff;
+
+    border-radius:3px;
+
+    color:#e6eaf3;
+
+    font-size:8px;
+    font-weight:700;
+}
+
+
+/* PDF CARD */
+
+.pdf-card{
+
+    display:flex;
+    align-items:center;
+
+    min-height:67px;
+
+    margin-bottom:6px;
+
+    background:#182640;
+
+    border:1px solid #293b5d;
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+    transition:.2s;
+}
+
+.pdf-card:hover{
+    background:#1d2d49;
+    border-color:#4c6290;
+}
+
+
+/* PDF ICON */
+
+.pdf-icon{
+
+    width:58px;
+    min-height:67px;
+
+    align-self:stretch;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#193960;
+
+    flex-shrink:0;
+}
+
+.pdf-file{
+
+    width:30px;
+    height:34px;
+
+    background:#fff;
+
+    border-radius:3px;
+
+    position:relative;
+
+    box-shadow:0 2px 5px #0005;
+}
+
+.pdf-file::before{
+
+    content:"PDF";
+
+    position:absolute;
+
+    top:12px;
+    left:4px;
+
+    color:#e53935;
+
+    font-size:7px;
+    font-weight:900;
+}
+
+.pdf-file::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:5px;
+    right:5px;
+    bottom:6px;
+
+    height:2px;
+
+    background:#d3d8e3;
+
+    box-shadow:
+        0 -5px 0 #d3d8e3,
+        0 -10px 0 #d3d8e3;
+}
+
+
+/* INFO */
+
+.pdf-info{
+
+    flex:1;
+
+    min-width:0;
+
+    padding:7px 8px;
+}
+
+.pdf-info h3{
+
+    color:#f0f3f9;
+
+    font-size:8.5px;
+
+    line-height:1.35;
+
+    font-weight:700;
+}
+
+.pdf-info p{
+
+    color:#7f8da7;
+
+    font-size:6.5px;
+
+    margin-top:3px;
+}
+
+
+/* META */
+
+.meta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:5px;
+
+    margin-top:4px;
+
+    font-size:6px;
+
+    color:#8997af;
+}
+
+
+/* BUTTON */
+
+.open-btn{
+
+    margin-right:7px;
+
+    padding:7px 8px;
+
+    background:#596cff;
+
+    color:#fff;
+
+    border:0;
+
+    border-radius:5px;
+
+    font-size:6.5px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+.open-btn:hover{
+    background:#7180ff;
+}
+
+
+/* EMPTY */
+
+.empty{
+
+    display:none;
+
+    text-align:center;
+
+    padding:30px 10px;
+
+    color:#78859c;
+
+    font-size:10px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:430px){
+
+    .tab{
+        font-size:6.5px;
+    }
+
+    .pdf-icon{
+        width:55px;
+    }
+
+    .pdf-info h3{
+        font-size:8px;
+    }
+
+    .pdf-info p{
+        font-size:6px;
+    }
+
+    .open-btn{
+        font-size:6px;
+        padding:6px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+<a href="index.html" class="back">‹</a>
+
+<div class="header-title">
+Biology : DPP PDF
+</div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- TABS -->
+
+<div class="tabs">
+
+<div class="tab"
+onclick="go('biology_lectures.html')">
+Lectures
+</div>
+
+<div class="tab"
+onclick="go('biology_ncert_highlights.html')">
+Notes
+</div>
+
+<div class="tab"
+onclick="go('biology_dpp.html')">
+DPP
+</div>
+
+<div class="tab active">
+DPP PDF
+</div>
+
+<div class="tab"
+onclick="go('biology_dpp_videos.html')">
+DPP Videos
+</div>
+
+</div>
+
+
+
+<!-- PAGE TITLE -->
+
+<div class="page-title">
+Biology : DPP PDF
+</div>
+
+
+
+<!-- SEARCH -->
+
+<div class="search">
+
+<input
+type="text"
+id="search"
+placeholder="Search DPP PDF..."
+>
+
+</div>
+
+
+
+<div id="content">
+
+
+<!-- =====================================================
+CLASS 11
+===================================================== -->
+
+<div class="class-section">
+
+<div class="class-title">
+Class 11 Biology
+</div>
+
+
+<!-- 01 -->
+
+<div class="pdf-card"
+data-search="living world dpp pdf 01">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+The Living World : DPP PDF 01
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp01.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 02 -->
+
+<div class="pdf-card"
+data-search="biological classification dpp pdf 02">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Biological Classification : DPP PDF 02
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp02.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 03 -->
+
+<div class="pdf-card"
+data-search="plant kingdom dpp pdf 03">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Plant Kingdom : DPP PDF 03
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp03.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 04 -->
+
+<div class="pdf-card"
+data-search="animal kingdom dpp pdf 04">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Animal Kingdom : DPP PDF 04
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp04.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 05 -->
+
+<div class="pdf-card"
+data-search="morphology flowering plants dpp pdf 05">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Morphology of Flowering Plants : DPP PDF 05
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp05.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 06 -->
+
+<div class="pdf-card"
+data-search="anatomy flowering plants dpp pdf 06">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Anatomy of Flowering Plants : DPP PDF 06
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp06.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 07 -->
+
+<div class="pdf-card"
+data-search="structural organisation animals dpp pdf 07">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Structural Organisation in Animals : DPP PDF 07
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp07.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 08 -->
+
+<div class="pdf-card"
+data-search="cell unit life dpp pdf 08">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Cell : The Unit of Life : DPP PDF 08
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp08.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 09 -->
+
+<div class="pdf-card"
+data-search="biomolecules dpp pdf 09">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Biomolecules : DPP PDF 09
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp09.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 10 -->
+
+<div class="pdf-card"
+data-search="cell cycle cell division dpp pdf 10">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Cell Cycle and Cell Division : DPP PDF 10
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp10.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 11 -->
+
+<div class="pdf-card"
+data-search="photosynthesis plants dpp pdf 11">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Photosynthesis in Higher Plants : DPP PDF 11
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp11.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 12 -->
+
+<div class="pdf-card"
+data-search="respiration plants dpp pdf 12">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Respiration in Plants : DPP PDF 12
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp12.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 13 -->
+
+<div class="pdf-card"
+data-search="plant growth development dpp pdf 13">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Plant Growth and Development : DPP PDF 13
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp13.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 14 -->
+
+<div class="pdf-card"
+data-search="breathing exchange gases dpp pdf 14">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Breathing and Exchange of Gases : DPP PDF 14
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp14.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 15 -->
+
+<div class="pdf-card"
+data-search="body fluids circulation dpp pdf 15">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Body Fluids and Circulation : DPP PDF 15
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp15.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 16 -->
+
+<div class="pdf-card"
+data-search="excretory products elimination dpp pdf 16">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Excretory Products and Their Elimination : DPP PDF 16
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp16.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 17 -->
+
+<div class="pdf-card"
+data-search="locomotion movement dpp pdf 17">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Locomotion and Movement : DPP PDF 17
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp17.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 18 -->
+
+<div class="pdf-card"
+data-search="neural control coordination dpp pdf 18">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Neural Control and Coordination : DPP PDF 18
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp18.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 19 -->
+
+<div class="pdf-card"
+data-search="chemical coordination integration dpp pdf 19">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Chemical Coordination and Integration : DPP PDF 19
+</h3>
+
+<p>
+Biology • Class 11 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class11/dpp19.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+CLASS 12
+===================================================== -->
+
+<div class="class-section">
+
+<div class="class-title">
+Class 12 Biology
+</div>
+
+
+<!-- 20 -->
+
+<div class="pdf-card"
+data-search="sexual reproduction flowering plants dpp pdf 20">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Sexual Reproduction in Flowering Plants : DPP PDF 20
+</h3>
+
+<p>
+Biology • Class 12 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class12/dpp20.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 21 -->
+
+<div class="pdf-card"
+data-search="human reproduction dpp pdf 21">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Human Reproduction : DPP PDF 21
+</h3>
+
+<p>
+Biology • Class 12 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class12/dpp21.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 22 -->
+
+<div class="pdf-card"
+data-search="reproductive health dpp pdf 22">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Reproductive Health : DPP PDF 22
+</h3>
+
+<p>
+Biology • Class 12 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class12/dpp22.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 23 -->
+
+<div class="pdf-card"
+data-search="inheritance variation dpp pdf 23">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Principles of Inheritance and Variation : DPP PDF 23
+</h3>
+
+<p>
+Biology • Class 12 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class12/dpp23.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 24 -->
+
+<div class="pdf-card"
+data-search="molecular basis inheritance dpp pdf 24">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Molecular Basis of Inheritance : DPP PDF 24
+</h3>
+
+<p>
+Biology • Class 12 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class12/dpp24.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 25 -->
+
+<div class="pdf-card"
+data-search="evolution dpp pdf 25">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Evolution : DPP PDF 25
+</h3>
+
+<p>
+Biology • Class 12 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class12/dpp25.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 26 -->
+
+<div class="pdf-card"
+data-search="human health disease dpp pdf 26">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Human Health and Disease : DPP PDF 26
+</h3>
+
+<p>
+Biology • Class 12 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class12/dpp26.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 27 -->
+
+<div class="pdf-card"
+data-search="microbes human welfare dpp pdf 27">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Microbes in Human Welfare : DPP PDF 27
+</h3>
+
+<p>
+Biology • Class 12 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class12/dpp27.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 28 -->
+
+<div class="pdf-card"
+data-search="biotechnology principles processes dpp pdf 28">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Biotechnology : Principles and Processes : DPP PDF 28
+</h3>
+
+<p>
+Biology • Class 12 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class12/dpp28.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 29 -->
+
+<div class="pdf-card"
+data-search="biotechnology applications dpp pdf 29">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Biotechnology and Its Applications : DPP PDF 29
+</h3>
+
+<p>
+Biology • Class 12 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class12/dpp29.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 30 -->
+
+<div class="pdf-card"
+data-search="organisms populations dpp pdf 30">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Organisms and Populations : DPP PDF 30
+</h3>
+
+<p>
+Biology • Class 12 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class12/dpp30.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 31 -->
+
+<div class="pdf-card"
+data-search="ecosystem dpp pdf 31">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Ecosystem : DPP PDF 31
+</h3>
+
+<p>
+Biology • Class 12 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class12/dpp31.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 32 -->
+
+<div class="pdf-card"
+data-search="biodiversity conservation dpp pdf 32">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Biodiversity and Conservation : DPP PDF 32
+</h3>
+
+<p>
+Biology • Class 12 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class12/dpp32.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+<!-- 33 -->
+
+<div class="pdf-card"
+data-search="environmental issues dpp pdf 33">
+
+<div class="pdf-icon">
+<div class="pdf-file"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+Environmental Issues : DPP PDF 33
+</h3>
+
+<p>
+Biology • Class 12 • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 PDF</span>
+<span>📝 20 Questions</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="open-btn"
+onclick="openPDF('pdfs/biology/class12/dpp33.pdf')">
+OPEN PDF
+</button>
+
+</div>
+
+
+</div>
+
+
+<div id="empty" class="empty">
+No DPP PDF found.
+</div>
+
+
+</div>
+
+</main>
+
+
+
+<script>
+
+/* NAVIGATION */
+
+function go(page){
+    window.location.href = page;
+}
+
+
+/* OPEN PDF */
+
+function openPDF(file){
+
+    window.location.href = file;
+
+}
+
+
+/* SEARCH */
+
+const search =
+document.getElementById("search");
+
+const cards =
+document.querySelectorAll(".pdf-card");
+
+const sections =
+document.querySelectorAll(".class-section");
+
+const empty =
+document.getElementById("empty");
+
+
+search.addEventListener("input",function(){
+
+    const value =
+    this.value.toLowerCase().trim();
+
+    let found = 0;
+
+
+    sections.forEach(section => {
+
+        let sectionFound = 0;
+
+        const sectionCards =
+        section.querySelectorAll(".pdf-card");
+
+
+        sectionCards.forEach(card => {
+
+            const text =
+            card.dataset.search.toLowerCase();
+
+
+            if(text.includes(value)){
+
+                card.style.display="flex";
+
+                sectionFound++;
+                found++;
+
+            }
+            else{
+
+                card.style.display="none";
+
+            }
+
+        });
+
+
+        if(value && sectionFound === 0){
+
+            section.style.display="none";
+
+        }
+        else{
+
+            section.style.display="block";
+
+        }
+
+    });
+
+
+    if(value && found === 0){
+
+        empty.style.display="block";
+
+    }
+    else{
+
+        empty.style.display="none";
+
+    }
+
+});
+
+</script>
+
+
+</body>
+
+</html>
