@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Physics : DPP</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#0b1222;
+    color:#fff;
+    min-height:100vh;
+}
+
+.header{
+    height:48px;
+    background:#10192c;
+    border-bottom:1px solid #263653;
+    display:flex;
+    align-items:center;
+    padding:0 10px;
+}
+
+.back{
+    color:#91a6ff;
+    text-decoration:none;
+    font-size:22px;
+    margin-right:6px;
+}
+
+.header-title{
+    font-size:10px;
+    font-weight:700;
+}
+
+.container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:0 8px 40px;
+}
+
+/* TABS */
+
+.tabs{
+    height:52px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    border-bottom:1px solid #253451;
+}
+
+.tab{
+    height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#7d8ba5;
+    font-size:7px;
+    font-weight:700;
+    cursor:pointer;
+    position:relative;
+}
+
+.tab.active{
+    color:#fff;
+}
+
+.tab.active::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:15%;
+    right:15%;
+    height:3px;
+    background:#6374ff;
+    border-radius:4px 4px 0 0;
+}
+
+/* TITLE */
+
+.page-title{
+    font-size:11px;
+    font-weight:700;
+    margin:12px 3px 8px;
+}
+
+/* SEARCH */
+
+.search{
+    margin:0 3px 10px;
+}
+
+.search input{
+    width:100%;
+    height:32px;
+    background:#151f34;
+    border:1px solid #293a5a;
+    border-radius:7px;
+    padding:0 10px;
+    color:#fff;
+    outline:none;
+    font-size:8px;
+}
+
+.search input::placeholder{
+    color:#72809a;
+}
+
+.search input:focus{
+    border-color:#6374ff;
+}
+
+/* CLASS */
+
+.class-title{
+    height:25px;
+    display:flex;
+    align-items:center;
+    margin:8px 3px 6px;
+    padding-left:8px;
+    background:#111d32;
+    border-left:2px solid #6374ff;
+    border-radius:3px;
+    color:#e6eaf3;
+    font-size:8px;
+    font-weight:700;
+}
+
+/* DPP CARD */
+
+.dpp-card{
+    display:flex;
+    align-items:center;
+    min-height:75px;
+    margin-bottom:6px;
+    background:#182640;
+    border:1px solid #293b5d;
+    border-radius:8px;
+    overflow:hidden;
+    transition:.2s;
+}
+
+.dpp-card:hover{
+    background:#1d2d49;
+    border-color:#4c6290;
+}
+
+/* ICON */
+
+.dpp-icon{
+    width:58px;
+    min-height:75px;
+    align-self:stretch;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#193960;
+    flex-shrink:0;
+}
+
+.paper{
+    width:32px;
+    height:36px;
+    background:#fff;
+    border-radius:3px;
+    position:relative;
+}
+
+.paper::before{
+    content:"DPP";
+    position:absolute;
+    top:11px;
+    left:5px;
+    right:5px;
+    color:#e94d61;
+    font-size:7px;
+    font-weight:900;
+    text-align:center;
+}
+
+.paper::after{
+    content:"";
+    position:absolute;
+    left:7px;
+    right:7px;
+    bottom:7px;
+    height:2px;
+    background:#d8dce5;
+    box-shadow:
+    0 -5px #d8dce5,
+    0 -10px #d8dce5;
+}
+
+/* INFO */
+
+.dpp-info{
+    flex:1;
+    min-width:0;
+    padding:7px 8px;
+}
+
+.dpp-info h3{
+    color:#f0f3f9;
+    font-size:8.5px;
+    line-height:1.35;
+    font-weight:700;
+}
+
+.dpp-info p{
+    color:#7f8da7;
+    font-size:6.5px;
+    margin-top:3px;
+}
+
+.meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:5px;
+    margin-top:4px;
+    color:#8997af;
+    font-size:6px;
+}
+
+/* BUTTON */
+
+.start-btn{
+    margin-right:7px;
+    padding:7px 8px;
+    background:#596cff;
+    color:#fff;
+    border:0;
+    border-radius:5px;
+    font-size:6.5px;
+    font-weight:800;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.start-btn:hover{
+    background:#7180ff;
+}
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#050914ee;
+    z-index:500;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+}
+
+.modal-box{
+    width:100%;
+    max-width:700px;
+    max-height:90vh;
+    overflow:auto;
+    background:#111b2f;
+    border:1px solid #304263;
+    border-radius:10px;
+    padding:12px;
+}
+
+.modal-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:10px;
+}
+
+.modal-title{
+    font-size:10px;
+    font-weight:700;
+}
+
+.close{
+    width:28px;
+    height:28px;
+    border:0;
+    border-radius:50%;
+    background:#263653;
+    color:#fff;
+    font-size:15px;
+    cursor:pointer;
+}
+
+/* QUESTIONS */
+
+.question{
+    background:#182640;
+    border:1px solid #293b5d;
+    border-radius:7px;
+    padding:10px;
+    margin-bottom:8px;
+}
+
+.question h4{
+    font-size:8px;
+    line-height:1.5;
+    margin-bottom:8px;
+}
+
+.option{
+    display:block;
+    width:100%;
+    text-align:left;
+    background:#111c30;
+    color:#cbd3e2;
+    border:1px solid #2c3d5c;
+    padding:8px;
+    margin-top:5px;
+    border-radius:5px;
+    font-size:7px;
+    cursor:pointer;
+}
+
+.option:hover{
+    border-color:#6374ff;
+}
+
+.submit{
+    width:100%;
+    height:36px;
+    border:0;
+    border-radius:6px;
+    background:#596cff;
+    color:#fff;
+    font-weight:800;
+    font-size:8px;
+    cursor:pointer;
+    margin-top:5px;
+}
+
+.result{
+    text-align:center;
+    padding:15px;
+    font-size:11px;
+    font-weight:700;
+    display:none;
+}
+
+/* EMPTY */
+
+.empty{
+    display:none;
+    text-align:center;
+    padding:30px 10px;
+    color:#78859c;
+    font-size:10px;
+}
+
+/* MOBILE */
+
+@media(max-width:430px){
+
+    .tab{
+        font-size:6.5px;
+    }
+
+    .dpp-icon{
+        width:55px;
+    }
+
+    .dpp-info h3{
+        font-size:8px;
+    }
+
+    .dpp-info p{
+        font-size:6px;
+    }
+
+    .start-btn{
+        font-size:6px;
+        padding:6px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<a href="index.html" class="back">‹</a>
+
+<div class="header-title">
+Physics : DPP
+</div>
+
+</header>
+
+
+<main class="container">
+
+<!-- TABS -->
+
+<div class="tabs">
+
+<div class="tab"
+onclick="go('Physics.html')">
+Lectures
+</div>
+
+<div class="tab"
+onclick="go('physics_ncert_highlights.html')">
+Notes
+</div>
+
+<div class="tab active">
+DPP
+</div>
+
+<div class="tab" href="Physics-DPP-PDF.html">
+    DPP PDF
+</div>
+
+
+<div class="tab"
+onclick="go('physics_dpp_videos.html')">
+DPP Videos
+</div>
+
+</div>
+
+
+<div class="page-title">
+Physics : Daily Practice Problems
+</div>
+
+
+<!-- SEARCH -->
+
+<div class="search">
+
+<input
+type="text"
+id="search"
+placeholder="Search DPP / chapter..."
+>
+
+</div>
+
+
+<div id="content">
+
+
+<!-- ==================================================
+CLASS 11
+================================================== -->
+
+<div class="class-section">
+
+<div class="class-title">
+Class 11 Physics
+</div>
+
+
+<!-- DPP 01 -->
+
+<div class="dpp-card"
+data-search="dpp 01 units measurements physical world">
+
+<div class="dpp-icon">
+<div class="paper"></div>
+</div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 01 : Units and Measurements
+</h3>
+
+<p>
+Physics • Class 11 • Daily Practice Problems
+</p>
+
+<div class="meta">
+<span>📝 15 Questions</span>
+<span>⏱ 20 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 01 : Units and Measurements')">
+START DPP
+</button>
+
+</div>
+
+
+<!-- DPP 02 -->
+
+<div class="dpp-card"
+data-search="dpp 02 motion straight line">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 02 : Motion in a Straight Line
+</h3>
+
+<p>
+Physics • Class 11 • Daily Practice Problems
+</p>
+
+<div class="meta">
+<span>📝 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 02 : Motion in a Straight Line')">
+START DPP
+</button>
+
+</div>
+
+
+<!-- DPP 03 -->
+
+<div class="dpp-card"
+data-search="dpp 03 motion plane">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 03 : Motion in a Plane
+</h3>
+
+<p>
+Physics • Class 11 • Daily Practice Problems
+</p>
+
+<div class="meta">
+<span>📝 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 03 : Motion in a Plane')">
+START DPP
+</button>
+
+</div>
+
+
+<!-- DPP 04 -->
+
+<div class="dpp-card"
+data-search="dpp 04 laws motion newton">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 04 : Laws of Motion
+</h3>
+
+<p>
+Physics • Class 11 • Daily Practice Problems
+</p>
+
+<div class="meta">
+<span>📝 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 04 : Laws of Motion')">
+START DPP
+</button>
+
+</div>
+
+
+<!-- DPP 05 -->
+
+<div class="dpp-card"
+data-search="dpp 05 work energy power">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 05 : Work, Energy and Power
+</h3>
+
+<p>
+Physics • Class 11 • Daily Practice Problems
+</p>
+
+<div class="meta">
+<span>📝 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 05 : Work, Energy and Power')">
+START DPP
+</button>
+
+</div>
+
+
+<!-- DPP 06 -->
+
+<div class="dpp-card"
+data-search="dpp 06 rotational motion particles">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 06 : System of Particles and Rotational Motion
+</h3>
+
+<p>
+Physics • Class 11 • Daily Practice Problems
+</p>
+
+<div class="meta">
+<span>📝 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 06 : Rotational Motion')">
+START DPP
+</button>
+
+</div>
+
+
+<!-- DPP 07 -->
+
+<div class="dpp-card"
+data-search="dpp 07 gravitation">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 07 : Gravitation
+</h3>
+
+<p>
+Physics • Class 11 • Daily Practice Problems
+</p>
+
+<div class="meta">
+<span>📝 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 07 : Gravitation')">
+START DPP
+</button>
+
+</div>
+
+
+<!-- DPP 08 -->
+
+<div class="dpp-card"
+data-search="dpp 08 mechanical properties solids">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 08 : Mechanical Properties of Solids
+</h3>
+
+<p>
+Physics • Class 11 • Daily Practice Problems
+</p>
+
+<div class="meta">
+<span>📝 15 Questions</span>
+<span>⏱ 20 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 08 : Mechanical Properties of Solids')">
+START DPP
+</button>
+
+</div>
+
+
+<!-- DPP 09 -->
+
+<div class="dpp-card"
+data-search="dpp 09 mechanical properties fluids">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 09 : Mechanical Properties of Fluids
+</h3>
+
+<p>
+Physics • Class 11 • Daily Practice Problems
+</p>
+
+<div class="meta">
+<span>📝 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 09 : Mechanical Properties of Fluids')">
+START DPP
+</button>
+
+</div>
+
+
+<!-- DPP 10 -->
+
+<div class="dpp-card"
+data-search="dpp 10 thermal properties matter">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 10 : Thermal Properties of Matter
+</h3>
+
+<p>
+Physics • Class 11 • Daily Practice Problems
+</p>
+
+<div class="meta">
+<span>📝 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 10 : Thermal Properties of Matter')">
+START DPP
+</button>
+
+</div>
+
+
+<!-- DPP 11 -->
+
+<div class="dpp-card"
+data-search="dpp 11 thermodynamics">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 11 : Thermodynamics
+</h3>
+
+<p>
+Physics • Class 11 • Daily Practice Problems
+</p>
+
+<div class="meta">
+<span>📝 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 11 : Thermodynamics')">
+START DPP
+</button>
+
+</div>
+
+
+<!-- DPP 12 -->
+
+<div class="dpp-card"
+data-search="dpp 12 kinetic theory gases">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 12 : Kinetic Theory of Gases
+</h3>
+
+<p>
+Physics • Class 11 • Daily Practice Problems
+</p>
+
+<div class="meta">
+<span>📝 15 Questions</span>
+<span>⏱ 20 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 12 : Kinetic Theory of Gases')">
+START DPP
+</button>
+
+</div>
+
+
+<!-- DPP 13 -->
+
+<div class="dpp-card"
+data-search="dpp 13 oscillations shm">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 13 : Oscillations
+</h3>
+
+<p>
+Physics • Class 11 • Daily Practice Problems
+</p>
+
+<div class="meta">
+<span>📝 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 13 : Oscillations')">
+START DPP
+</button>
+
+</div>
+
+
+<!-- DPP 14 -->
+
+<div class="dpp-card"
+data-search="dpp 14 waves sound">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 14 : Waves
+</h3>
+
+<p>
+Physics • Class 11 • Daily Practice Problems
+</p>
+
+<div class="meta">
+<span>📝 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 14 : Waves')">
+START DPP
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ==================================================
+CLASS 12
+================================================== -->
+
+<div class="class-section">
+
+<div class="class-title">
+Class 12 Physics
+</div>
+
+
+<div class="dpp-card"
+data-search="dpp 15 electric charges fields electrostatics">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 15 : Electric Charges and Fields
+</h3>
+
+<p>Physics • Class 12 • Daily Practice Problems</p>
+
+<div class="meta">
+<span>📝 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 15 : Electric Charges and Fields')">
+START DPP
+</button>
+
+</div>
+
+
+<div class="dpp-card"
+data-search="dpp 16 electrostatic potential capacitance">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 16 : Electrostatic Potential and Capacitance
+</h3>
+
+<p>Physics • Class 12 • Daily Practice Problems</p>
+
+<div class="meta">
+<span>📝 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 16 : Electrostatic Potential and Capacitance')">
+START DPP
+</button>
+
+</div>
+
+
+<div class="dpp-card"
+data-search="dpp 17 current electricity">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 17 : Current Electricity
+</h3>
+
+<p>Physics • Class 12 • Daily Practice Problems</p>
+
+<div class="meta">
+<span>📝 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 17 : Current Electricity')">
+START DPP
+</button>
+
+</div>
+
+
+<div class="dpp-card"
+data-search="dpp 18 moving charges magnetism">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 18 : Moving Charges and Magnetism
+</h3>
+
+<p>Physics • Class 12 • Daily Practice Problems</p>
+
+<div class="meta">
+<span>📝 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 18 : Moving Charges and Magnetism')">
+START DPP
+</button>
+
+</div>
+
+
+<div class="dpp-card"
+data-search="dpp 19 magnetism matter">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 19 : Magnetism and Matter
+</h3>
+
+<p>Physics • Class 12 • Daily Practice Problems</p>
+
+<div class="meta">
+<span>📝 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 19 : Magnetism and Matter')">
+START DPP
+</button>
+
+</div>
+
+
+<div class="dpp-card"
+data-search="dpp 20 electromagnetic induction emi">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 20 : Electromagnetic Induction
+</h3>
+
+<p>Physics • Class 12 • Daily Practice Problems</p>
+
+<div class="meta">
+<span>📝 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 20 : Electromagnetic Induction')">
+START DPP
+</button>
+
+</div>
+
+
+<div class="dpp-card"
+data-search="dpp 21 alternating current">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 21 : Alternating Current
+</h3>
+
+<p>Physics • Class 12 • Daily Practice Problems</p>
+
+<div class="meta">
+<span>📝 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 21 : Alternating Current')">
+START DPP
+</button>
+
+</div>
+
+
+<div class="dpp-card"
+data-search="dpp 22 electromagnetic waves">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 22 : Electromagnetic Waves
+</h3>
+
+<p>Physics • Class 12 • Daily Practice Problems</p>
+
+<div class="meta">
+<span>📝 15 Questions</span>
+<span>⏱ 20 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 22 : Electromagnetic Waves')">
+START DPP
+</button>
+
+</div>
+
+
+<div class="dpp-card"
+data-search="dpp 23 ray optics optical instruments">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 23 : Ray Optics and Optical Instruments
+</h3>
+
+<p>Physics • Class 12 • Daily Practice Problems</p>
+
+<div class="meta">
+<span>📝 30 Questions</span>
+<span>⏱ 35 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 23 : Ray Optics')">
+START DPP
+</button>
+
+</div>
+
+
+<div class="dpp-card"
+data-search="dpp 24 wave optics">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 24 : Wave Optics
+</h3>
+
+<p>Physics • Class 12 • Daily Practice Problems</p>
+
+<div class="meta">
+<span>📝 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 24 : Wave Optics')">
+START DPP
+</button>
+
+</div>
+
+
+<div class="dpp-card"
+data-search="dpp 25 dual nature radiation matter">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 25 : Dual Nature of Radiation and Matter
+</h3>
+
+<p>Physics • Class 12 • Daily Practice Problems</p>
+
+<div class="meta">
+<span>📝 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 25 : Dual Nature of Radiation and Matter')">
+START DPP
+</button>
+
+</div>
+
+
+<div class="dpp-card"
+data-search="dpp 26 atoms">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 26 : Atoms
+</h3>
+
+<p>Physics • Class 12 • Daily Practice Problems</p>
+
+<div class="meta">
+<span>📝 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 26 : Atoms')">
+START DPP
+</button>
+
+</div>
+
+
+<div class="dpp-card"
+data-search="dpp 27 nuclei nuclear">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 27 : Nuclei
+</h3>
+
+<p>Physics • Class 12 • Daily Practice Problems</p>
+
+<div class="meta">
+<span>📝 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 27 : Nuclei')">
+START DPP
+</button>
+
+</div>
+
+
+<div class="dpp-card"
+data-search="dpp 28 semiconductor electronics">
+
+<div class="dpp-icon"><div class="paper"></div></div>
+
+<div class="dpp-info">
+
+<h3>
+DPP 28 : Semiconductor Electronics
+</h3>
+
+<p>Physics • Class 12 • Daily Practice Problems</p>
+
+<div class="meta">
+<span>📝 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="start-btn"
+onclick="openDPP('DPP 28 : Semiconductor Electronics')">
+START DPP
+</button>
+
+</div>
+
+</div>
+
+
+<div id="empty" class="empty">
+No DPP found.
+</div>
+
+</div>
+
+</main>
+
+
+<!-- DPP MODAL -->
+
+<div class="modal" id="dppModal">
+
+<div class="modal-box">
+
+<div class="modal-top">
+
+<div class="modal-title" id="modalTitle">
+Physics DPP
+</div>
+
+<button class="close" onclick="closeDPP()">
+×
+</button>
+
+</div>
+
+
+<div id="quiz">
+
+
+<div class="question">
+
+<h4>
+Q1. Which physical quantity has the SI unit metre per second?
+</h4>
+
+<button class="option" onclick="selectAnswer(this,false)">
+A. Acceleration
+</button>
+
+<button class="option" onclick="selectAnswer(this,true)">
+B. Velocity
+</button>
+
+<button class="option" onclick="selectAnswer(this,false)">
+C. Force
+</button>
+
+<button class="option" onclick="selectAnswer(this,false)">
+D. Energy
+</button>
+
+</div>
+
+
+<div class="question">
+
+<h4>
+Q2. The slope of a velocity-time graph represents:
+</h4>
+
+<button class="option" onclick="selectAnswer(this,true)">
+A. Acceleration
+</button>
+
+<button class="option" onclick="selectAnswer(this,false)">
+B. Distance
+</button>
+
+<button class="option" onclick="selectAnswer(this,false)">
+C. Displacement
+</button>
+
+<button class="option" onclick="selectAnswer(this,false)">
+D. Momentum
+</button>
+
+</div>
+
+
+<div class="question">
+
+<h4>
+Q3. The SI unit of force is:
+</h4>
+
+<button class="option" onclick="selectAnswer(this,false)">
+A. Joule
+</button>
+
+<button class="option" onclick="selectAnswer(this,true)">
+B. Newton
+</button>
+
+<button class="option" onclick="selectAnswer(this,false)">
+C. Watt
+</button>
+
+<button class="option" onclick="selectAnswer(this,false)">
+D. Pascal
+</button>
+
+</div>
+
+
+<button class="submit"
+onclick="submitDPP()">
+SUBMIT DPP
+</button>
+
+
+<div class="result" id="result"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* NAVIGATION */
+
+function go(page){
+    window.location.href = page;
+}
+
+
+/* DPP */
+
+let score = 0;
+let answered = 0;
+
+function openDPP(title){
+
+    document.getElementById("modalTitle").textContent = title;
+
+    score = 0;
+    answered = 0;
+
+    document.getElementById("result").style.display = "none";
+
+    document
+    .querySelectorAll(".option")
+    .forEach(btn => {
+        btn.disabled = false;
+        btn.style.borderColor = "";
+    });
+
+    document.getElementById("dppModal").style.display = "flex";
+}
+
+
+function selectAnswer(button,correct){
+
+    if(button.disabled){
+        return;
+    }
+
+    button.disabled = true;
+
+    answered++;
+
+    if(correct){
+        score++;
+        button.style.borderColor = "#4ade80";
+    }
+    else{
+        button.style.borderColor = "#ef4444";
+    }
+}
+
+
+/* SUBMIT */
+
+function submitDPP(){
+
+    const total = 3;
+
+    if(answered < total){
+
+        alert(
+            "Please answer all questions before submitting."
+        );
+
+        return;
+    }
+
+    const result =
+    document.getElementById("result");
+
+    result.style.display = "block";
+
+    result.innerHTML =
+    "DPP Completed 🎉<br><br>" +
+    "Score: " + score + " / " + total;
+}
+
+
+/* CLOSE */
+
+function closeDPP(){
+
+    document.getElementById("dppModal").style.display = "none";
+}
+
+
+/* OUTSIDE CLICK */
+
+document
+.getElementById("dppModal")
+.addEventListener("click",function(e){
+
+    if(e.target === this){
+        closeDPP();
+    }
+
+});
+
+
+/* SEARCH */
+
+const search =
+document.getElementById("search");
+
+const sections =
+document.querySelectorAll(".class-section");
+
+const empty =
+document.getElementById("empty");
+
+
+search.addEventListener("input",function(){
+
+    const value =
+    this.value.toLowerCase().trim();
+
+    let found = 0;
+
+
+    sections.forEach(section => {
+
+        let sectionFound = 0;
+
+        const cards =
+        section.querySelectorAll(".dpp-card");
+
+
+        cards.forEach(card => {
+
+            const text =
+            card.dataset.search.toLowerCase();
+
+
+            if(text.includes(value)){
+
+                card.style.display = "flex";
+
+                sectionFound++;
+                found++;
+
+            }
+            else{
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        if(value && sectionFound === 0){
+
+            section.style.display = "none";
+
+        }
+        else{
+
+            section.style.display = "block";
+
+        }
+
+    });
+
+
+    if(value && found === 0){
+
+        empty.style.display = "block";
+
+    }
+    else{
+
+        empty.style.display = "none";
+
+    }
+
+});
+
+
+/* ESC */
+
+document.addEventListener("keydown",function(e){
+
+    if(e.key === "Escape"){
+        closeDPP();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

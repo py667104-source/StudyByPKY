@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Physics : Complete Lectures</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#0b1222;
+    color:#fff;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+.header{
+    height:48px;
+    background:#10192c;
+    border-bottom:1px solid #263653;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 10px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back{
+    color:#91a6ff;
+    text-decoration:none;
+    font-size:22px;
+    margin-right:6px;
+}
+
+.header-title{
+    font-size:10px;
+    font-weight:700;
+}
+
+
+/* MAIN */
+
+.container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:0 8px 40px;
+}
+
+
+/* TABS */
+
+.tabs{
+    height:52px;
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+
+    border-bottom:1px solid #253451;
+}
+
+.tab{
+    height:52px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#7d8ba5;
+
+    font-size:7px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    position:relative;
+    text-align:center;
+}
+
+.tab.active{
+    color:#fff;
+}
+
+.tab.active::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+    left:15%;
+    right:15%;
+
+    height:3px;
+
+    background:#6374ff;
+
+    border-radius:4px 4px 0 0;
+}
+
+
+/* TITLE */
+
+.page-title{
+    font-size:11px;
+    font-weight:700;
+
+    margin:12px 3px 8px;
+}
+
+
+/* SEARCH */
+
+.search{
+    margin:0 3px 10px;
+}
+
+.search input{
+    width:100%;
+    height:32px;
+
+    background:#151f34;
+
+    border:1px solid #293a5a;
+
+    border-radius:7px;
+
+    padding:0 10px;
+
+    color:#fff;
+
+    outline:none;
+
+    font-size:8px;
+}
+
+.search input::placeholder{
+    color:#72809a;
+}
+
+.search input:focus{
+    border-color:#6374ff;
+}
+
+
+/* CLASS TITLE */
+
+.class-title{
+    height:25px;
+
+    display:flex;
+    align-items:center;
+
+    margin:8px 3px 6px;
+
+    padding-left:8px;
+
+    background:#111d32;
+
+    border-left:2px solid #6374ff;
+
+    border-radius:3px;
+
+    color:#e6eaf3;
+
+    font-size:8px;
+    font-weight:700;
+}
+
+
+/* LECTURE CARD */
+
+.lecture-card{
+
+    display:flex;
+    align-items:center;
+
+    min-height:72px;
+
+    margin-bottom:6px;
+
+    background:#182640;
+
+    border:1px solid #293b5d;
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+    transition:.2s;
+}
+
+.lecture-card:hover{
+    background:#1d2d49;
+    border-color:#4c6290;
+}
+
+
+/* VIDEO ICON */
+
+.video-icon{
+
+    width:58px;
+    min-height:72px;
+
+    align-self:stretch;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#193960;
+
+    flex-shrink:0;
+}
+
+.play-icon{
+
+    width:32px;
+    height:25px;
+
+    background:#fff;
+
+    border-radius:5px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:0 2px 5px #0005;
+}
+
+.play-icon::after{
+
+    content:"";
+
+    width:0;
+    height:0;
+
+    border-top:6px solid transparent;
+    border-bottom:6px solid transparent;
+    border-left:9px solid #596cff;
+
+    margin-left:2px;
+}
+
+
+/* INFO */
+
+.lecture-info{
+
+    flex:1;
+    min-width:0;
+
+    padding:7px 8px;
+}
+
+.lecture-info h3{
+
+    color:#f0f3f9;
+
+    font-size:8.5px;
+
+    line-height:1.35;
+
+    font-weight:700;
+}
+
+.lecture-info p{
+
+    color:#7f8da7;
+
+    font-size:6.5px;
+
+    margin-top:3px;
+}
+
+
+/* META */
+
+.meta{
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:5px;
+
+    margin-top:4px;
+
+    color:#8997af;
+
+    font-size:6px;
+}
+
+
+/* WATCH BUTTON */
+
+.watch-btn{
+
+    margin-right:7px;
+
+    padding:7px 9px;
+
+    background:#596cff;
+
+    color:#fff;
+
+    border:0;
+
+    border-radius:5px;
+
+    font-size:6.5px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+.watch-btn:hover{
+    background:#7180ff;
+}
+
+
+/* EMPTY */
+
+.empty{
+
+    display:none;
+
+    text-align:center;
+
+    padding:30px 10px;
+
+    color:#78859c;
+
+    font-size:10px;
+}
+
+
+/* VIDEO MODAL */
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:#050914ee;
+
+    z-index:500;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:15px;
+}
+
+.modal-box{
+
+    width:100%;
+    max-width:700px;
+
+    background:#111b2f;
+
+    border:1px solid #304263;
+
+    border-radius:10px;
+
+    padding:10px;
+}
+
+.modal-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:8px;
+}
+
+.modal-title{
+
+    font-size:10px;
+    font-weight:700;
+
+    color:#fff;
+
+    padding-right:10px;
+}
+
+.close{
+
+    width:28px;
+    height:28px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#263653;
+
+    color:#fff;
+
+    font-size:15px;
+
+    cursor:pointer;
+}
+
+video{
+
+    width:100%;
+
+    display:block;
+
+    background:#000;
+
+    border-radius:7px;
+
+    max-height:70vh;
+}
+
+
+/* MOBILE */
+
+@media(max-width:430px){
+
+    .tab{
+        font-size:6.5px;
+    }
+
+    .video-icon{
+        width:55px;
+    }
+
+    .lecture-info h3{
+        font-size:8px;
+    }
+
+    .lecture-info p{
+        font-size:6px;
+    }
+
+    .watch-btn{
+        font-size:6px;
+        padding:6px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+<a href="index.html" class="back">‹</a>
+
+<div class="header-title">
+Physics : Complete Lectures
+</div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- TABS -->
+
+<div class="tabs">
+
+<div class="tab active">
+Lectures
+</div>
+
+<div class="tab"
+onclick="go('physics_ncert_highlights.html')">
+Notes
+</div>
+
+<div class="tab"
+onclick="go('physics_dpp.html')">
+DPP
+</div>
+
+<div class="tab"
+onclick="go('physics_dpp_pdf.html')">
+DPP PDF
+</div>
+
+<div class="tab"
+onclick="go('physics_dpp_videos.html')">
+DPP Videos
+</div>
+
+</div>
+
+
+
+<!-- TITLE -->
+
+<div class="page-title">
+Physics : Complete Lectures
+</div>
+
+
+
+<!-- SEARCH -->
+
+<div class="search">
+
+<input
+type="text"
+id="search"
+placeholder="Search Physics chapter..."
+>
+
+</div>
+
+
+
+<div id="content">
+
+
+<!-- =====================================================
+CLASS 11
+===================================================== -->
+
+<div class="class-section">
+
+<div class="class-title">
+Class 11 Physics
+</div>
+
+
+<!-- 01 -->
+
+<div class="lecture-card"
+data-search="units measurements physical world">
+
+<div class="video-icon">
+<div class="play-icon"></div>
+</div>
+
+<div class="lecture-info">
+
+<h3>
+Units and Measurements : Complete Lecture
+</h3>
+
+<p>
+Physics • Class 11 • Chapter 01
+</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 45 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class11/01-units-measurements.mp4',
+'Units and Measurements : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 02 -->
+
+<div class="lecture-card"
+data-search="motion straight line kinematics">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Motion in a Straight Line : Complete Lecture
+</h3>
+
+<p>Physics • Class 11 • Chapter 02</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 60 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class11/02-motion-straight-line.mp4',
+'Motion in a Straight Line : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 03 -->
+
+<div class="lecture-card"
+data-search="motion plane vectors">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Motion in a Plane : Complete Lecture
+</h3>
+
+<p>Physics • Class 11 • Chapter 03</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 65 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class11/03-motion-plane.mp4',
+'Motion in a Plane : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 04 -->
+
+<div class="lecture-card"
+data-search="laws motion newton">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Laws of Motion : Complete Lecture
+</h3>
+
+<p>Physics • Class 11 • Chapter 04</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 70 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class11/04-laws-motion.mp4',
+'Laws of Motion : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 05 -->
+
+<div class="lecture-card"
+data-search="work energy power">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Work, Energy and Power : Complete Lecture
+</h3>
+
+<p>Physics • Class 11 • Chapter 05</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 70 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class11/05-work-energy-power.mp4',
+'Work, Energy and Power : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 06 -->
+
+<div class="lecture-card"
+data-search="system particles rotational motion">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+System of Particles and Rotational Motion : Complete Lecture
+</h3>
+
+<p>Physics • Class 11 • Chapter 06</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 90 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class11/06-rotational-motion.mp4',
+'System of Particles and Rotational Motion : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 07 -->
+
+<div class="lecture-card"
+data-search="gravitation">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Gravitation : Complete Lecture
+</h3>
+
+<p>Physics • Class 11 • Chapter 07</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 60 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class11/07-gravitation.mp4',
+'Gravitation : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 08 -->
+
+<div class="lecture-card"
+data-search="mechanical properties solids elasticity">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Mechanical Properties of Solids : Complete Lecture
+</h3>
+
+<p>Physics • Class 11 • Chapter 08</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 50 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class11/08-mechanical-properties-solids.mp4',
+'Mechanical Properties of Solids : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 09 -->
+
+<div class="lecture-card"
+data-search="mechanical properties fluids fluid">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Mechanical Properties of Fluids : Complete Lecture
+</h3>
+
+<p>Physics • Class 11 • Chapter 09</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 60 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class11/09-mechanical-properties-fluids.mp4',
+'Mechanical Properties of Fluids : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 10 -->
+
+<div class="lecture-card"
+data-search="thermal properties matter heat">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Thermal Properties of Matter : Complete Lecture
+</h3>
+
+<p>Physics • Class 11 • Chapter 10</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 55 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class11/10-thermal-properties.mp4',
+'Thermal Properties of Matter : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 11 -->
+
+<div class="lecture-card"
+data-search="thermodynamics">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Thermodynamics : Complete Lecture
+</h3>
+
+<p>Physics • Class 11 • Chapter 11</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 75 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class11/11-thermodynamics.mp4',
+'Thermodynamics : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 12 -->
+
+<div class="lecture-card"
+data-search="kinetic theory gases">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Kinetic Theory of Gases : Complete Lecture
+</h3>
+
+<p>Physics • Class 11 • Chapter 12</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 50 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class11/12-kinetic-theory.mp4',
+'Kinetic Theory of Gases : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 13 -->
+
+<div class="lecture-card"
+data-search="oscillations shm simple harmonic motion">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Oscillations : Complete Lecture
+</h3>
+
+<p>Physics • Class 11 • Chapter 13</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 60 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class11/13-oscillations.mp4',
+'Oscillations : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 14 -->
+
+<div class="lecture-card"
+data-search="waves sound">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Waves : Complete Lecture
+</h3>
+
+<p>Physics • Class 11 • Chapter 14</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 65 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class11/14-waves.mp4',
+'Waves : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+CLASS 12
+===================================================== -->
+
+<div class="class-section">
+
+<div class="class-title">
+Class 12 Physics
+</div>
+
+
+<!-- 15 -->
+
+<div class="lecture-card"
+data-search="electric charges fields electrostatics">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Electric Charges and Fields : Complete Lecture
+</h3>
+
+<p>Physics • Class 12 • Chapter 01</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 75 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class12/01-electric-charges-fields.mp4',
+'Electric Charges and Fields : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 16 -->
+
+<div class="lecture-card"
+data-search="electrostatic potential capacitance">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Electrostatic Potential and Capacitance : Complete Lecture
+</h3>
+
+<p>Physics • Class 12 • Chapter 02</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 75 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class12/02-potential-capacitance.mp4',
+'Electrostatic Potential and Capacitance : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 17 -->
+
+<div class="lecture-card"
+data-search="current electricity">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Current Electricity : Complete Lecture
+</h3>
+
+<p>Physics • Class 12 • Chapter 03</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 80 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class12/03-current-electricity.mp4',
+'Current Electricity : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 18 -->
+
+<div class="lecture-card"
+data-search="moving charges magnetism">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Moving Charges and Magnetism : Complete Lecture
+</h3>
+
+<p>Physics • Class 12 • Chapter 04</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 85 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class12/04-moving-charges-magnetism.mp4',
+'Moving Charges and Magnetism : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 19 -->
+
+<div class="lecture-card"
+data-search="magnetism matter">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Magnetism and Matter : Complete Lecture
+</h3>
+
+<p>Physics • Class 12 • Chapter 05</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 55 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class12/05-magnetism-matter.mp4',
+'Magnetism and Matter : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 20 -->
+
+<div class="lecture-card"
+data-search="electromagnetic induction emi">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Electromagnetic Induction : Complete Lecture
+</h3>
+
+<p>Physics • Class 12 • Chapter 06</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 65 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class12/06-electromagnetic-induction.mp4',
+'Electromagnetic Induction : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 21 -->
+
+<div class="lecture-card"
+data-search="alternating current ac">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Alternating Current : Complete Lecture
+</h3>
+
+<p>Physics • Class 12 • Chapter 07</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 65 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class12/07-alternating-current.mp4',
+'Alternating Current : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 22 -->
+
+<div class="lecture-card"
+data-search="electromagnetic waves em waves">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Electromagnetic Waves : Complete Lecture
+</h3>
+
+<p>Physics • Class 12 • Chapter 08</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 40 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class12/08-electromagnetic-waves.mp4',
+'Electromagnetic Waves : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 23 -->
+
+<div class="lecture-card"
+data-search="ray optics optical instruments">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Ray Optics and Optical Instruments : Complete Lecture
+</h3>
+
+<p>Physics • Class 12 • Chapter 09</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 90 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class12/09-ray-optics.mp4',
+'Ray Optics and Optical Instruments : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 24 -->
+
+<div class="lecture-card"
+data-search="wave optics interference diffraction">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Wave Optics : Complete Lecture
+</h3>
+
+<p>Physics • Class 12 • Chapter 10</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 70 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class12/10-wave-optics.mp4',
+'Wave Optics : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 25 -->
+
+<div class="lecture-card"
+data-search="dual nature radiation matter photoelectric">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Dual Nature of Radiation and Matter : Complete Lecture
+</h3>
+
+<p>Physics • Class 12 • Chapter 11</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 55 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class12/11-dual-nature.mp4',
+'Dual Nature of Radiation and Matter : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 26 -->
+
+<div class="lecture-card"
+data-search="atoms bohr model">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Atoms : Complete Lecture
+</h3>
+
+<p>Physics • Class 12 • Chapter 12</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 50 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class12/12-atoms.mp4',
+'Atoms : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 27 -->
+
+<div class="lecture-card"
+data-search="nuclei nuclear physics">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Nuclei : Complete Lecture
+</h3>
+
+<p>Physics • Class 12 • Chapter 13</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 55 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class12/13-nuclei.mp4',
+'Nuclei : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 28 -->
+
+<div class="lecture-card"
+data-search="semiconductor electronics devices circuits">
+
+<div class="video-icon"><div class="play-icon"></div></div>
+
+<div class="lecture-info">
+
+<h3>
+Semiconductor Electronics: Materials, Devices and Simple Circuits : Complete Lecture
+</h3>
+
+<p>Physics • Class 12 • Chapter 14</p>
+
+<div class="meta">
+<span>▶ Lecture</span>
+<span>⏱ 75 min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button class="watch-btn"
+onclick="watchVideo(
+'videos/physics/class12/14-semiconductor-electronics.mp4',
+'Semiconductor Electronics : Complete Lecture'
+)">
+WATCH
+</button>
+
+</div>
+
+
+</div>
+
+
+<div id="empty" class="empty">
+No Physics chapter found.
+</div>
+
+</div>
+
+</main>
+
+
+
+<!-- VIDEO MODAL -->
+
+<div class="modal" id="videoModal">
+
+<div class="modal-box">
+
+<div class="modal-top">
+
+<div class="modal-title" id="modalTitle">
+Physics Lecture
+</div>
+
+<button class="close"
+onclick="closeVideo()">
+×
+</button>
+
+</div>
+
+<video
+id="player"
+controls
+playsinline>
+
+Your browser does not support HTML video.
+
+</video>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+/* PAGE NAVIGATION */
+
+function go(page){
+    window.location.href = page;
+}
+
+
+/* WATCH VIDEO */
+
+function watchVideo(file,title){
+
+    const modal =
+    document.getElementById("videoModal");
+
+    const player =
+    document.getElementById("player");
+
+    const modalTitle =
+    document.getElementById("modalTitle");
+
+    modalTitle.textContent = title;
+
+    player.src = file;
+
+    modal.style.display = "flex";
+
+    player.play().catch(function(){});
+
+}
+
+
+/* CLOSE VIDEO */
+
+function closeVideo(){
+
+    const modal =
+    document.getElementById("videoModal");
+
+    const player =
+    document.getElementById("player");
+
+    player.pause();
+
+    player.removeAttribute("src");
+
+    player.load();
+
+    modal.style.display = "none";
+}
+
+
+/* CLICK OUTSIDE MODAL */
+
+document
+.getElementById("videoModal")
+.addEventListener("click",function(e){
+
+    if(e.target === this){
+        closeVideo();
+    }
+
+});
+
+
+/* SEARCH */
+
+const search =
+document.getElementById("search");
+
+const cards =
+document.querySelectorAll(".lecture-card");
+
+const sections =
+document.querySelectorAll(".class-section");
+
+const empty =
+document.getElementById("empty");
+
+
+search.addEventListener("input",function(){
+
+    const value =
+    this.value.toLowerCase().trim();
+
+    let found = 0;
+
+
+    sections.forEach(section => {
+
+        let sectionFound = 0;
+
+        const sectionCards =
+        section.querySelectorAll(".lecture-card");
+
+
+        sectionCards.forEach(card => {
+
+            const text =
+            card.dataset.search.toLowerCase();
+
+
+            if(text.includes(value)){
+
+                card.style.display="flex";
+
+                sectionFound++;
+                found++;
+
+            }
+            else{
+
+                card.style.display="none";
+
+            }
+
+        });
+
+
+        if(value && sectionFound === 0){
+
+            section.style.display="none";
+
+        }
+        else{
+
+            section.style.display="block";
+
+        }
+
+    });
+
+
+    if(value && found === 0){
+
+        empty.style.display="block";
+
+    }
+    else{
+
+        empty.style.display="none";
+
+    }
+
+});
+
+
+/* ESCAPE TO CLOSE */
+
+document.addEventListener("keydown",function(e){
+
+    if(e.key === "Escape"){
+        closeVideo();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

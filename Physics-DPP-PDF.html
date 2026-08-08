@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Physics : DPP PDF</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#0b1222;
+    color:#fff;
+    min-height:100vh;
+}
+
+.header{
+    height:48px;
+    background:#10192c;
+    border-bottom:1px solid #263653;
+    display:flex;
+    align-items:center;
+    padding:0 10px;
+}
+
+.back{
+    color:#91a6ff;
+    text-decoration:none;
+    font-size:22px;
+    margin-right:6px;
+}
+
+.header-title{
+    font-size:10px;
+    font-weight:700;
+}
+
+.container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:0 8px 40px;
+}
+
+
+/* ================= TABS ================= */
+
+.tabs{
+    height:52px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    border-bottom:1px solid #253451;
+}
+
+.tab{
+    height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#7d8ba5;
+    font-size:7px;
+    font-weight:700;
+    cursor:pointer;
+    position:relative;
+    text-decoration:none;
+}
+
+.tab.active{
+    color:#fff;
+}
+
+.tab.active::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:15%;
+    right:15%;
+    height:3px;
+    background:#6374ff;
+    border-radius:4px 4px 0 0;
+}
+
+
+/* ================= TITLE ================= */
+
+.page-title{
+    font-size:11px;
+    font-weight:700;
+    margin:12px 3px 8px;
+}
+
+
+/* ================= SEARCH ================= */
+
+.search{
+    margin:0 3px 10px;
+}
+
+.search input{
+    width:100%;
+    height:32px;
+    background:#151f34;
+    border:1px solid #293a5a;
+    border-radius:7px;
+    padding:0 10px;
+    color:#fff;
+    outline:none;
+    font-size:8px;
+}
+
+.search input::placeholder{
+    color:#72809a;
+}
+
+.search input:focus{
+    border-color:#6374ff;
+}
+
+
+/* ================= CLASS TITLE ================= */
+
+.class-title{
+    height:25px;
+    display:flex;
+    align-items:center;
+    margin:8px 3px 6px;
+    padding-left:8px;
+    background:#111d32;
+    border-left:2px solid #6374ff;
+    border-radius:3px;
+    color:#e6eaf3;
+    font-size:8px;
+    font-weight:700;
+}
+
+
+/* ================= PDF CARD ================= */
+
+.pdf-card{
+    display:flex;
+    align-items:center;
+    min-height:75px;
+    margin-bottom:6px;
+
+    background:#182640;
+    border:1px solid #293b5d;
+    border-radius:8px;
+
+    overflow:hidden;
+    transition:.2s;
+}
+
+.pdf-card:hover{
+    background:#1d2d49;
+    border-color:#4c6290;
+}
+
+
+/* ================= PDF ICON ================= */
+
+.pdf-icon{
+    width:58px;
+    min-height:75px;
+    align-self:stretch;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#193960;
+    flex-shrink:0;
+}
+
+.pdf-paper{
+    width:32px;
+    height:37px;
+
+    background:#fff;
+    border-radius:3px;
+
+    position:relative;
+    box-shadow:0 2px 5px #0004;
+}
+
+.pdf-paper::before{
+    content:"PDF";
+
+    position:absolute;
+    top:11px;
+    left:4px;
+    right:4px;
+
+    text-align:center;
+
+    color:#e34c5d;
+    font-size:7px;
+    font-weight:900;
+}
+
+.pdf-paper::after{
+    content:"";
+
+    position:absolute;
+
+    left:7px;
+    right:7px;
+    bottom:7px;
+
+    height:2px;
+
+    background:#d5d9e1;
+
+    box-shadow:
+    0 -5px #d5d9e1,
+    0 -10px #d5d9e1;
+}
+
+
+/* ================= INFO ================= */
+
+.pdf-info{
+    flex:1;
+    min-width:0;
+    padding:7px 8px;
+}
+
+.pdf-info h3{
+    color:#f0f3f9;
+    font-size:8.5px;
+    line-height:1.35;
+    font-weight:700;
+}
+
+.pdf-info p{
+    color:#7f8da7;
+    font-size:6.5px;
+    margin-top:3px;
+}
+
+.meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+
+    margin-top:4px;
+
+    color:#8997af;
+    font-size:6px;
+}
+
+
+/* ================= BUTTONS ================= */
+
+.buttons{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    margin-right:7px;
+}
+
+.view-btn,
+.download-btn{
+
+    border:0;
+    border-radius:5px;
+
+    padding:6px 7px;
+
+    color:#fff;
+
+    font-size:6px;
+    font-weight:800;
+
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.view-btn{
+    background:#596cff;
+}
+
+.download-btn{
+    background:#263b60;
+}
+
+.view-btn:hover{
+    background:#7180ff;
+}
+
+.download-btn:hover{
+    background:#36517d;
+}
+
+
+/* ================= EMPTY ================= */
+
+.empty{
+    display:none;
+
+    text-align:center;
+
+    padding:30px 10px;
+
+    color:#78859c;
+
+    font-size:10px;
+}
+
+
+/* ================= PDF VIEWER ================= */
+
+.viewer{
+    display:none;
+
+    position:fixed;
+    inset:0;
+
+    background:#050914ee;
+
+    z-index:500;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:12px;
+}
+
+.viewer-box{
+
+    width:100%;
+    max-width:900px;
+
+    height:92vh;
+
+    background:#111b2f;
+
+    border:1px solid #304263;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.viewer-header{
+
+    height:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 9px;
+
+    background:#16223a;
+
+    border-bottom:1px solid #2b3d5c;
+}
+
+.viewer-title{
+    font-size:8px;
+    font-weight:700;
+}
+
+.close{
+    width:28px;
+    height:28px;
+
+    border:0;
+    border-radius:50%;
+
+    background:#293b5d;
+    color:#fff;
+
+    font-size:15px;
+
+    cursor:pointer;
+}
+
+.pdf-frame{
+    flex:1;
+    width:100%;
+    border:0;
+    background:#fff;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:430px){
+
+    .tab{
+        font-size:6px;
+    }
+
+    .pdf-icon{
+        width:55px;
+    }
+
+    .pdf-info h3{
+        font-size:8px;
+    }
+
+    .pdf-info p{
+        font-size:6px;
+    }
+
+    .view-btn,
+    .download-btn{
+        font-size:5.5px;
+        padding:6px;
+    }
+
+    .buttons{
+        margin-right:5px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+<a href="index.html" class="back">
+‹
+</a>
+
+<div class="header-title">
+Physics : DPP PDF
+</div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- ================= TABS ================= -->
+
+<div class="tabs">
+
+<a class="tab"
+href="Physics.html">
+Lectures
+</a>
+
+<a class="tab"
+href="physics_ncert_highlights.html">
+Notes
+</a>
+
+<a class="tab"
+href="Physics-DPP.html">
+DPP
+</a>
+
+<a class="tab active">
+DPP PDF
+</a>
+
+<a class="tab"
+href="physics_dpp_videos.html">
+DPP Videos
+</a>
+
+</div>
+
+
+
+<div class="page-title">
+Physics : DPP PDF
+</div>
+
+
+
+<!-- ================= SEARCH ================= -->
+
+<div class="search">
+
+<input
+type="text"
+id="searchBox"
+placeholder="Search DPP PDF / chapter..."
+>
+
+</div>
+
+
+
+<div id="pdfList">
+
+
+<!-- =====================================================
+CLASS 11
+===================================================== -->
+
+<section class="class-section">
+
+<div class="class-title">
+Class 11 Physics
+</div>
+
+
+<!-- 01 -->
+
+<div class="pdf-card"
+data-search="dpp 01 units measurements physical world">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 01 : Units and Measurements
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 15 Questions</span>
+<span>⏱ 20 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-01-units-and-measurements.pdf','DPP 01 : Units and Measurements')">
+VIEW PDF
+</button>
+
+<a
+class="download-btn"
+href="pdfs/physics-dpp/dpp-01-units-and-measurements.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 02 -->
+
+<div class="pdf-card"
+data-search="dpp 02 motion straight line">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 02 : Motion in a Straight Line
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-02-motion-straight-line.pdf','DPP 02 : Motion in a Straight Line')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-02-motion-straight-line.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 03 -->
+
+<div class="pdf-card"
+data-search="dpp 03 motion plane">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 03 : Motion in a Plane
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-03-motion-plane.pdf','DPP 03 : Motion in a Plane')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-03-motion-plane.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 04 -->
+
+<div class="pdf-card"
+data-search="dpp 04 laws motion">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 04 : Laws of Motion
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-04-laws-of-motion.pdf','DPP 04 : Laws of Motion')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-04-laws-of-motion.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 05 -->
+
+<div class="pdf-card"
+data-search="dpp 05 work energy power">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 05 : Work, Energy and Power
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-05-work-energy-power.pdf','DPP 05 : Work, Energy and Power')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-05-work-energy-power.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 06 -->
+
+<div class="pdf-card"
+data-search="dpp 06 rotational motion particles">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 06 : System of Particles and Rotational Motion
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-06-rotational-motion.pdf','DPP 06 : Rotational Motion')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-06-rotational-motion.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 07 -->
+
+<div class="pdf-card"
+data-search="dpp 07 gravitation">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 07 : Gravitation
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-07-gravitation.pdf','DPP 07 : Gravitation')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-07-gravitation.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 08 -->
+
+<div class="pdf-card"
+data-search="dpp 08 mechanical properties solids">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 08 : Mechanical Properties of Solids
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 15 Questions</span>
+<span>⏱ 20 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-08-mechanical-properties-solids.pdf','DPP 08 : Mechanical Properties of Solids')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-08-mechanical-properties-solids.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 09 -->
+
+<div class="pdf-card"
+data-search="dpp 09 mechanical properties fluids">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 09 : Mechanical Properties of Fluids
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-09-mechanical-properties-fluids.pdf','DPP 09 : Mechanical Properties of Fluids')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-09-mechanical-properties-fluids.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 10 -->
+
+<div class="pdf-card"
+data-search="dpp 10 thermal properties matter">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 10 : Thermal Properties of Matter
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-10-thermal-properties-matter.pdf','DPP 10 : Thermal Properties of Matter')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-10-thermal-properties-matter.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 11 -->
+
+<div class="pdf-card"
+data-search="dpp 11 thermodynamics">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 11 : Thermodynamics
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-11-thermodynamics.pdf','DPP 11 : Thermodynamics')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-11-thermodynamics.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 12 -->
+
+<div class="pdf-card"
+data-search="dpp 12 kinetic theory gases">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 12 : Kinetic Theory of Gases
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 15 Questions</span>
+<span>⏱ 20 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-12-kinetic-theory.pdf','DPP 12 : Kinetic Theory of Gases')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-12-kinetic-theory.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 13 -->
+
+<div class="pdf-card"
+data-search="dpp 13 oscillations">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 13 : Oscillations
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-13-oscillations.pdf','DPP 13 : Oscillations')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-13-oscillations.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 14 -->
+
+<div class="pdf-card"
+data-search="dpp 14 waves">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 14 : Waves
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-14-waves.pdf','DPP 14 : Waves')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-14-waves.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+CLASS 12
+===================================================== -->
+
+<section class="class-section">
+
+<div class="class-title">
+Class 12 Physics
+</div>
+
+
+<!-- 15 -->
+
+<div class="pdf-card"
+data-search="dpp 15 electric charges fields">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 15 : Electric Charges and Fields
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-15-electric-charges-fields.pdf','DPP 15 : Electric Charges and Fields')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-15-electric-charges-fields.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 16 -->
+
+<div class="pdf-card"
+data-search="dpp 16 electrostatic potential capacitance">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 16 : Electrostatic Potential and Capacitance
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-16-electrostatic-potential.pdf','DPP 16 : Electrostatic Potential and Capacitance')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-16-electrostatic-potential.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 17 -->
+
+<div class="pdf-card"
+data-search="dpp 17 current electricity">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 17 : Current Electricity
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-17-current-electricity.pdf','DPP 17 : Current Electricity')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-17-current-electricity.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 18 -->
+
+<div class="pdf-card"
+data-search="dpp 18 moving charges magnetism">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 18 : Moving Charges and Magnetism
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-18-moving-charges-magnetism.pdf','DPP 18 : Moving Charges and Magnetism')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-18-moving-charges-magnetism.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 19 -->
+
+<div class="pdf-card"
+data-search="dpp 19 magnetism matter">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 19 : Magnetism and Matter
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-19-magnetism-matter.pdf','DPP 19 : Magnetism and Matter')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-19-magnetism-matter.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 20 -->
+
+<div class="pdf-card"
+data-search="dpp 20 electromagnetic induction">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 20 : Electromagnetic Induction
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-20-electromagnetic-induction.pdf','DPP 20 : Electromagnetic Induction')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-20-electromagnetic-induction.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 21 -->
+
+<div class="pdf-card"
+data-search="dpp 21 alternating current">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 21 : Alternating Current
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-21-alternating-current.pdf','DPP 21 : Alternating Current')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-21-alternating-current.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 22 -->
+
+<div class="pdf-card"
+data-search="dpp 22 electromagnetic waves">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 22 : Electromagnetic Waves
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 15 Questions</span>
+<span>⏱ 20 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-22-electromagnetic-waves.pdf','DPP 22 : Electromagnetic Waves')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-22-electromagnetic-waves.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 23 -->
+
+<div class="pdf-card"
+data-search="dpp 23 ray optics optical instruments">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 23 : Ray Optics and Optical Instruments
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 30 Questions</span>
+<span>⏱ 35 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-23-ray-optics.pdf','DPP 23 : Ray Optics and Optical Instruments')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-23-ray-optics.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 24 -->
+
+<div class="pdf-card"
+data-search="dpp 24 wave optics">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 24 : Wave Optics
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-24-wave-optics.pdf','DPP 24 : Wave Optics')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-24-wave-optics.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 25 -->
+
+<div class="pdf-card"
+data-search="dpp 25 dual nature radiation matter">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 25 : Dual Nature of Radiation and Matter
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-25-dual-nature.pdf','DPP 25 : Dual Nature of Radiation and Matter')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-25-dual-nature.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 26 -->
+
+<div class="pdf-card"
+data-search="dpp 26 atoms">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 26 : Atoms
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-26-atoms.pdf','DPP 26 : Atoms')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-26-atoms.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 27 -->
+
+<div class="pdf-card"
+data-search="dpp 27 nuclei">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 27 : Nuclei
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 20 Questions</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-27-nuclei.pdf','DPP 27 : Nuclei')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-27-nuclei.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 28 -->
+
+<div class="pdf-card"
+data-search="dpp 28 semiconductor electronics">
+
+<div class="pdf-icon">
+<div class="pdf-paper"></div>
+</div>
+
+<div class="pdf-info">
+
+<h3>
+DPP 28 : Semiconductor Electronics
+</h3>
+
+<p>
+Physics • DPP PDF
+</p>
+
+<div class="meta">
+<span>📄 25 Questions</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="view-btn"
+onclick="viewPDF('pdfs/physics-dpp/dpp-28-semiconductor-electronics.pdf','DPP 28 : Semiconductor Electronics')">
+VIEW PDF
+</button>
+
+<a class="download-btn"
+href="pdfs/physics-dpp/dpp-28-semiconductor-electronics.pdf"
+download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<div class="empty" id="empty">
+No DPP PDF found.
+</div>
+
+
+</main>
+
+
+
+<!-- ================= PDF VIEWER ================= -->
+
+<div class="viewer" id="viewer">
+
+<div class="viewer-box">
+
+<div class="viewer-header">
+
+<div class="viewer-title"
+id="viewerTitle">
+DPP PDF
+</div>
+
+<button class="close"
+onclick="closePDF()">
+×
+</button>
+
+</div>
+
+<iframe
+class="pdf-frame"
+id="pdfFrame">
+</iframe>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+/* ================= PDF VIEW ================= */
+
+function viewPDF(file,title){
+
+    document.getElementById("viewerTitle")
+    .textContent = title;
+
+    document.getElementById("pdfFrame")
+    .src = file;
+
+    document.getElementById("viewer")
+    .style.display = "flex";
+}
+
+
+function closePDF(){
+
+    document.getElementById("viewer")
+    .style.display = "none";
+
+    document.getElementById("pdfFrame")
+    .src = "";
+}
+
+
+/* ================= SEARCH ================= */
+
+const searchBox =
+document.getElementById("searchBox");
+
+const sections =
+document.querySelectorAll(".class-section");
+
+const empty =
+document.getElementById("empty");
+
+
+searchBox.addEventListener("input",function(){
+
+    const search =
+    this.value.toLowerCase().trim();
+
+    let totalFound = 0;
+
+
+    sections.forEach(section => {
+
+        const cards =
+        section.querySelectorAll(".pdf-card");
+
+        let sectionFound = 0;
+
+
+        cards.forEach(card => {
+
+            const text =
+            card.dataset.search.toLowerCase();
+
+
+            if(text.includes(search)){
+
+                card.style.display = "flex";
+
+                sectionFound++;
+                totalFound++;
+
+            }
+            else{
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        if(search && sectionFound === 0){
+
+            section.style.display = "none";
+
+        }
+        else{
+
+            section.style.display = "block";
+
+        }
+
+    });
+
+
+    if(search && totalFound === 0){
+
+        empty.style.display = "block";
+
+    }
+    else{
+
+        empty.style.display = "none";
+
+    }
+
+});
+
+
+/* ================= ESC KEY ================= */
+
+document.addEventListener("keydown",function(e){
+
+    if(e.key === "Escape"){
+        closePDF();
+    }
+
+});
+
+
+/* ================= OUTSIDE CLICK ================= */
+
+document.getElementById("viewer")
+.addEventListener("click",function(e){
+
+    if(e.target === this){
+        closePDF();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

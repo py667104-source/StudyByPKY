@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Physics : DPP Videos</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#0b1222;
+    color:#fff;
+    min-height:100vh;
+}
+
+.header{
+    height:48px;
+    background:#10192c;
+    border-bottom:1px solid #263653;
+    display:flex;
+    align-items:center;
+    padding:0 10px;
+}
+
+.back{
+    color:#91a6ff;
+    text-decoration:none;
+    font-size:22px;
+    margin-right:6px;
+}
+
+.header-title{
+    font-size:10px;
+    font-weight:700;
+}
+
+.container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:0 8px 40px;
+}
+
+
+/* ================= TABS ================= */
+
+.tabs{
+    height:52px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    border-bottom:1px solid #253451;
+}
+
+.tab{
+    height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#7d8ba5;
+
+    font-size:7px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    position:relative;
+
+    text-decoration:none;
+}
+
+.tab.active{
+    color:#fff;
+}
+
+.tab.active::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+    left:15%;
+    right:15%;
+
+    height:3px;
+
+    background:#6374ff;
+
+    border-radius:4px 4px 0 0;
+}
+
+
+/* ================= TITLE ================= */
+
+.page-title{
+    font-size:11px;
+    font-weight:700;
+
+    margin:12px 3px 8px;
+}
+
+
+/* ================= SEARCH ================= */
+
+.search{
+    margin:0 3px 10px;
+}
+
+.search input{
+    width:100%;
+    height:32px;
+
+    background:#151f34;
+
+    border:1px solid #293a5a;
+
+    border-radius:7px;
+
+    padding:0 10px;
+
+    color:#fff;
+
+    outline:none;
+
+    font-size:8px;
+}
+
+.search input::placeholder{
+    color:#72809a;
+}
+
+.search input:focus{
+    border-color:#6374ff;
+}
+
+
+/* ================= CLASS TITLE ================= */
+
+.class-title{
+
+    height:25px;
+
+    display:flex;
+    align-items:center;
+
+    margin:8px 3px 6px;
+
+    padding-left:8px;
+
+    background:#111d32;
+
+    border-left:2px solid #6374ff;
+
+    border-radius:3px;
+
+    color:#e6eaf3;
+
+    font-size:8px;
+
+    font-weight:700;
+}
+
+
+/* ================= VIDEO CARD ================= */
+
+.video-card{
+
+    display:flex;
+    align-items:center;
+
+    min-height:78px;
+
+    margin-bottom:6px;
+
+    background:#182640;
+
+    border:1px solid #293b5d;
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+    transition:.2s;
+}
+
+.video-card:hover{
+
+    background:#1d2d49;
+
+    border-color:#4c6290;
+}
+
+
+/* ================= VIDEO ICON ================= */
+
+.video-icon{
+
+    width:60px;
+
+    min-height:78px;
+
+    align-self:stretch;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#193960;
+
+    flex-shrink:0;
+}
+
+.play-button{
+
+    width:34px;
+    height:26px;
+
+    background:#fff;
+
+    border-radius:6px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+}
+
+.play-button::after{
+
+    content:"";
+
+    width:0;
+    height:0;
+
+    border-top:7px solid transparent;
+    border-bottom:7px solid transparent;
+    border-left:11px solid #596cff;
+
+    margin-left:3px;
+}
+
+
+/* ================= VIDEO INFO ================= */
+
+.video-info{
+
+    flex:1;
+
+    min-width:0;
+
+    padding:7px 8px;
+}
+
+.video-info h3{
+
+    color:#f0f3f9;
+
+    font-size:8.5px;
+
+    line-height:1.35;
+
+    font-weight:700;
+}
+
+.video-info p{
+
+    color:#7f8da7;
+
+    font-size:6.5px;
+
+    margin-top:3px;
+}
+
+.meta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:6px;
+
+    margin-top:4px;
+
+    color:#8997af;
+
+    font-size:6px;
+}
+
+
+/* ================= WATCH BUTTON ================= */
+
+.watch-btn{
+
+    display:block;
+
+    margin-right:7px;
+
+    padding:7px 8px;
+
+    background:#596cff;
+
+    color:#fff;
+
+    border:0;
+
+    border-radius:5px;
+
+    font-size:6px;
+
+    font-weight:800;
+
+    text-decoration:none;
+
+    white-space:nowrap;
+
+    cursor:pointer;
+}
+
+.watch-btn:hover{
+
+    background:#7180ff;
+}
+
+
+/* ================= EMPTY ================= */
+
+.empty{
+
+    display:none;
+
+    text-align:center;
+
+    padding:30px 10px;
+
+    color:#78859c;
+
+    font-size:10px;
+}
+
+
+/* ================= VIDEO PLAYER ================= */
+
+.player{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:#050914ee;
+
+    z-index:500;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:12px;
+}
+
+.player-box{
+
+    width:100%;
+
+    max-width:900px;
+
+    background:#111b2f;
+
+    border:1px solid #304263;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.player-header{
+
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 9px;
+
+    background:#16223a;
+
+    border-bottom:1px solid #2b3d5c;
+}
+
+.player-title{
+
+    font-size:8px;
+
+    font-weight:700;
+}
+
+.close{
+
+    width:28px;
+
+    height:28px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#293b5d;
+
+    color:#fff;
+
+    font-size:15px;
+
+    cursor:pointer;
+}
+
+.video-frame{
+
+    width:100%;
+
+    aspect-ratio:16/9;
+
+    border:0;
+
+    background:#000;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:430px){
+
+    .tab{
+        font-size:6px;
+    }
+
+    .video-icon{
+        width:55px;
+    }
+
+    .video-info h3{
+        font-size:8px;
+    }
+
+    .video-info p{
+        font-size:6px;
+    }
+
+    .watch-btn{
+        font-size:5.5px;
+        padding:6px;
+        margin-right:5px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+<a href="index.html" class="back">
+‹
+</a>
+
+<div class="header-title">
+Physics : DPP Videos
+</div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- ================= TABS ================= -->
+
+<div class="tabs">
+
+<a class="tab"
+href="Physics.html">
+Lectures
+</a>
+
+<a class="tab"
+href="physics_ncert_highlights.html">
+Notes
+</a>
+
+<a class="tab"
+href="Physics-DPP.html">
+DPP
+</a>
+
+<a class="tab"
+href="Physics-DPP-PDF.html">
+DPP PDF
+</a>
+
+<a class="tab active">
+DPP Videos
+</a>
+
+</div>
+
+
+
+<div class="page-title">
+Physics : DPP Video Solutions
+</div>
+
+
+
+<!-- ================= SEARCH ================= -->
+
+<div class="search">
+
+<input
+type="text"
+id="searchBox"
+placeholder="Search DPP video / chapter..."
+>
+
+</div>
+
+
+
+<div id="videoList">
+
+
+<!-- =====================================================
+CLASS 11
+===================================================== -->
+
+<section class="class-section">
+
+<div class="class-title">
+Class 11 Physics
+</div>
+
+
+<!-- 01 -->
+
+<div class="video-card"
+data-search="dpp 01 units measurements physical world">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 01 : Units and Measurements — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 18 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_01','DPP 01 : Units and Measurements')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 02 -->
+
+<div class="video-card"
+data-search="dpp 02 motion straight line">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 02 : Motion in a Straight Line — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 22 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_02','DPP 02 : Motion in a Straight Line')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 03 -->
+
+<div class="video-card"
+data-search="dpp 03 motion plane">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 03 : Motion in a Plane — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_03','DPP 03 : Motion in a Plane')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 04 -->
+
+<div class="video-card"
+data-search="dpp 04 laws motion">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 04 : Laws of Motion — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 24 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_04','DPP 04 : Laws of Motion')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 05 -->
+
+<div class="video-card"
+data-search="dpp 05 work energy power">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 05 : Work, Energy and Power — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 28 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_05','DPP 05 : Work, Energy and Power')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 06 -->
+
+<div class="video-card"
+data-search="dpp 06 rotational motion">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 06 : System of Particles and Rotational Motion — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 32 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_06','DPP 06 : Rotational Motion')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 07 -->
+
+<div class="video-card"
+data-search="dpp 07 gravitation">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 07 : Gravitation — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 23 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_07','DPP 07 : Gravitation')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 08 -->
+
+<div class="video-card"
+data-search="dpp 08 mechanical properties solids">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 08 : Mechanical Properties of Solids — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 20 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_08','DPP 08 : Mechanical Properties of Solids')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 09 -->
+
+<div class="video-card"
+data-search="dpp 09 mechanical properties fluids">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 09 : Mechanical Properties of Fluids — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 24 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_09','DPP 09 : Mechanical Properties of Fluids')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 10 -->
+
+<div class="video-card"
+data-search="dpp 10 thermal properties matter">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 10 : Thermal Properties of Matter — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 21 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_10','DPP 10 : Thermal Properties of Matter')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 11 -->
+
+<div class="video-card"
+data-search="dpp 11 thermodynamics">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 11 : Thermodynamics — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 27 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_11','DPP 11 : Thermodynamics')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 12 -->
+
+<div class="video-card"
+data-search="dpp 12 kinetic theory gases">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 12 : Kinetic Theory of Gases — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 19 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_12','DPP 12 : Kinetic Theory of Gases')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 13 -->
+
+<div class="video-card"
+data-search="dpp 13 oscillations">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 13 : Oscillations — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 24 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_13','DPP 13 : Oscillations')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 14 -->
+
+<div class="video-card"
+data-search="dpp 14 waves">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 14 : Waves — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_14','DPP 14 : Waves')">
+WATCH
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+CLASS 12
+===================================================== -->
+
+<section class="class-section">
+
+<div class="class-title">
+Class 12 Physics
+</div>
+
+
+<!-- 15 -->
+
+<div class="video-card"
+data-search="dpp 15 electric charges fields">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 15 : Electric Charges and Fields — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 28 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_15','DPP 15 : Electric Charges and Fields')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 16 -->
+
+<div class="video-card"
+data-search="dpp 16 electrostatic potential capacitance">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 16 : Electrostatic Potential and Capacitance — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 30 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_16','DPP 16 : Electrostatic Potential and Capacitance')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 17 -->
+
+<div class="video-card"
+data-search="dpp 17 current electricity">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 17 : Current Electricity — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 27 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_17','DPP 17 : Current Electricity')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 18 -->
+
+<div class="video-card"
+data-search="dpp 18 moving charges magnetism">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 18 : Moving Charges and Magnetism — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 31 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_18','DPP 18 : Moving Charges and Magnetism')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 19 -->
+
+<div class="video-card"
+data-search="dpp 19 magnetism matter">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 19 : Magnetism and Matter — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 22 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_19','DPP 19 : Magnetism and Matter')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 20 -->
+
+<div class="video-card"
+data-search="dpp 20 electromagnetic induction">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 20 : Electromagnetic Induction — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 28 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_20','DPP 20 : Electromagnetic Induction')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 21 -->
+
+<div class="video-card"
+data-search="dpp 21 alternating current">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 21 : Alternating Current — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 25 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_21','DPP 21 : Alternating Current')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 22 -->
+
+<div class="video-card"
+data-search="dpp 22 electromagnetic waves">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 22 : Electromagnetic Waves — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 18 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_22','DPP 22 : Electromagnetic Waves')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 23 -->
+
+<div class="video-card"
+data-search="dpp 23 ray optics optical instruments">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 23 : Ray Optics and Optical Instruments — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 34 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_23','DPP 23 : Ray Optics and Optical Instruments')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 24 -->
+
+<div class="video-card"
+data-search="dpp 24 wave optics">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 24 : Wave Optics — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 28 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_24','DPP 24 : Wave Optics')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 25 -->
+
+<div class="video-card"
+data-search="dpp 25 dual nature radiation matter">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 25 : Dual Nature of Radiation and Matter — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 24 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_25','DPP 25 : Dual Nature of Radiation and Matter')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 26 -->
+
+<div class="video-card"
+data-search="dpp 26 atoms">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 26 : Atoms — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 21 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_26','DPP 26 : Atoms')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 27 -->
+
+<div class="video-card"
+data-search="dpp 27 nuclei">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 27 : Nuclei — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 23 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_27','DPP 27 : Nuclei')">
+WATCH
+</button>
+
+</div>
+
+
+<!-- 28 -->
+
+<div class="video-card"
+data-search="dpp 28 semiconductor electronics">
+
+<div class="video-icon">
+<div class="play-button"></div>
+</div>
+
+<div class="video-info">
+
+<h3>
+DPP 28 : Semiconductor Electronics — Video Solution
+</h3>
+
+<p>
+Physics • DPP Video Solution
+</p>
+
+<div class="meta">
+<span>▶ Solution</span>
+<span>⏱ 29 Min</span>
+<span>🎯 NEET</span>
+</div>
+
+</div>
+
+<button
+class="watch-btn"
+onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_28','DPP 28 : Semiconductor Electronics')">
+WATCH
+</button>
+
+</div>
+
+</section>
+
+</div>
+
+
+<div class="empty" id="empty">
+No DPP video found.
+</div>
+
+</main>
+
+
+
+<!-- ================= VIDEO PLAYER ================= -->
+
+<div class="player" id="player">
+
+<div class="player-box">
+
+<div class="player-header">
+
+<div class="player-title"
+id="playerTitle">
+DPP Video
+</div>
+
+<button
+class="close"
+onclick="closeVideo()">
+×
+</button>
+
+</div>
+
+<iframe
+class="video-frame"
+id="videoFrame"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+/* ================= OPEN VIDEO ================= */
+
+function openVideo(url,title){
+
+    document.getElementById("playerTitle")
+    .textContent = title;
+
+    document.getElementById("videoFrame")
+    .src = url;
+
+    document.getElementById("player")
+    .style.display = "flex";
+}
+
+
+/* ================= CLOSE VIDEO ================= */
+
+function closeVideo(){
+
+    document.getElementById("player")
+    .style.display = "none";
+
+    document.getElementById("videoFrame")
+    .src = "";
+
+}
+
+
+/* ================= SEARCH ================= */
+
+const searchBox =
+document.getElementById("searchBox");
+
+const sections =
+document.querySelectorAll(".class-section");
+
+const empty =
+document.getElementById("empty");
+
+
+searchBox.addEventListener("input",function(){
+
+    const search =
+    this.value.toLowerCase().trim();
+
+    let totalFound = 0;
+
+
+    sections.forEach(section => {
+
+        const cards =
+        section.querySelectorAll(".video-card");
+
+        let sectionFound = 0;
+
+
+        cards.forEach(card => {
+
+            const text =
+            card.dataset.search.toLowerCase();
+
+
+            if(text.includes(search)){
+
+                card.style.display = "flex";
+
+                sectionFound++;
+                totalFound++;
+
+            }
+            else{
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        if(search && sectionFound === 0){
+
+            section.style.display = "none";
+
+        }
+        else{
+
+            section.style.display = "block";
+
+        }
+
+    });
+
+
+    if(search && totalFound === 0){
+
+        empty.style.display = "block";
+
+    }
+    else{
+
+        empty.style.display = "none";
+
+    }
+
+});
+
+
+/* ================= ESC KEY ================= */
+
+document.addEventListener("keydown",function(e){
+
+    if(e.key === "Escape"){
+
+        closeVideo();
+
+    }
+
+});
+
+
+/* ================= OUTSIDE CLICK ================= */
+
+document.getElementById("player")
+.addEventListener("click",function(e){
+
+    if(e.target === this){
+
+        closeVideo();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
