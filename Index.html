@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StudyByPKY</title>
+
+<title>StudyByPKY - Batches</title>
 
 <style>
 *{
@@ -14,212 +15,1276 @@
 }
 
 body{
-    background:url("https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1600&q=80") no-repeat center center/cover;
-    min-height:100vh;
+    background:#fff5fb;
+    color:#222;
 }
 
-.overlay{
-    background:rgba(0,0,0,0.60);
-    min-height:100vh;
-    padding:30px;
-}
-
-header{
-    text-align:center;
-    color:white;
-    margin-bottom:40px;
-}
-
-header h1{
-    font-size:52px;
-    color:#00ffcc;
-}
-
-header p{
-    font-size:20px;
-    margin-top:10px;
-}
-
-.container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+/* NAVBAR */
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#ffffff;
+    padding:14px 5%;
+    display:flex;
+    align-items:center;
     gap:25px;
+    box-shadow:0 3px 15px rgba(0,0,0,0.10);
 }
 
-.card{
-    background:rgba(255,255,255,0.92);
-    border-radius:15px;
-    padding:25px;
-    text-align:center;
-    transition:.3s;
-    box-shadow:0 8px 20px rgba(0,0,0,.3);
+.logo{
+    font-size:25px;
+    font-weight:800;
+    color:#e91e63;
+    white-space:nowrap;
 }
 
-.card:hover{
-    transform:translateY(-8px);
+.logo span{
+    color:#7b1fa2;
 }
 
-.card h2{
-    color:#0066cc;
-    margin-bottom:15px;
+.search-box{
+    flex:1;
+    position:relative;
 }
 
-.card p{
-    color:#333;
+.search-box input{
+    width:100%;
+    padding:13px 45px 13px 18px;
+    border:1px solid #ddd;
+    border-radius:30px;
+    outline:none;
+    font-size:15px;
+    background:#f8f8f8;
+}
+
+.search-box input:focus{
+    border-color:#e91e63;
+    background:#fff;
+}
+
+.search-icon{
+    position:absolute;
+    right:18px;
+    top:12px;
+    font-size:19px;
+}
+
+.login-btn{
+    background:#e91e63;
+    color:white;
+    border:0;
+    padding:12px 22px;
+    border-radius:25px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.login-btn:hover{
+    background:#c2185b;
+}
+
+/* HERO */
+.hero{
+    margin:25px 5%;
+    padding:45px 30px;
+    border-radius:25px;
+    background:linear-gradient(135deg,#e91e63,#9c27b0);
+    color:white;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
+    right:-60px;
+    top:-70px;
+}
+
+.hero h1{
+    font-size:38px;
+    margin-bottom:12px;
+}
+
+.hero p{
+    font-size:17px;
+    max-width:650px;
     line-height:1.6;
 }
 
-button{
-    margin-top:20px;
-    padding:10px 20px;
-    border:none;
-    background:#007bff;
-    color:white;
-    border-radius:8px;
+.hero-btn{
+    display:inline-block;
+    margin-top:22px;
+    background:white;
+    color:#e91e63;
+    padding:13px 25px;
+    border-radius:25px;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+/* CATEGORIES */
+.categories{
+    padding:5px 5% 20px;
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+}
+
+.category{
+    background:white;
+    border:1px solid #eee;
+    padding:11px 20px;
+    border-radius:25px;
     cursor:pointer;
-    font-size:16px;
+    white-space:nowrap;
+    font-weight:bold;
 }
 
-button:hover{
-    background:#0056b3;
-}
-
-footer{
-    margin-top:40px;
-    text-align:center;
+.category:hover{
+    background:#e91e63;
     color:white;
-    font-size:18px;
+}
+
+/* SECTION */
+.section{
+    padding:15px 5% 40px;
+}
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.section-title h2{
+    font-size:27px;
+}
+
+.section-title span{
+    color:#e91e63;
+    font-weight:bold;
+}
+
+/* BATCH GRID */
+.batch-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    gap:22px;
+}
+
+.batch{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.10);
+    transition:.3s;
+    position:relative;
+}
+
+.batch:hover{
+    transform:translateY(-6px);
+    box-shadow:0 10px 30px rgba(233,30,99,.20);
+}
+
+.batch-img{
+    height:150px;
+    background:linear-gradient(135deg,#f06292,#7b1fa2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:30px;
+    font-weight:800;
+}
+
+.offer{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:#ff9800;
+    color:white;
+    padding:6px 10px;
+    border-radius:7px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.batch-content{
+    padding:18px;
+}
+
+.batch-content h3{
+    font-size:21px;
+    margin-bottom:8px;
+}
+
+.tag{
+    display:inline-block;
+    background:#fce4ec;
+    color:#c2185b;
+    padding:5px 9px;
+    border-radius:6px;
+    font-size:12px;
+    margin-bottom:10px;
+}
+
+.rating{
+    color:#ff9800;
+    margin-bottom:10px;
+}
+
+.benefits{
+    list-style:none;
+    margin:12px 0;
+}
+
+.benefits li{
+    margin:8px 0;
+    font-size:14px;
+    color:#555;
+}
+
+.price{
+    font-size:25px;
+    font-weight:800;
+    color:#e91e63;
+}
+
+.old-price{
+    color:#999;
+    text-decoration:line-through;
+    font-size:14px;
+    margin-left:7px;
+}
+
+.buy-btn{
+    width:100%;
+    border:0;
+    background:linear-gradient(90deg,#e91e63,#9c27b0);
+    color:white;
+    padding:13px;
+    margin-top:15px;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.buy-btn:hover{
+    opacity:.9;
+}
+
+/* FEATURES */
+.features{
+    background:#fff;
+    padding:35px 5%;
+    margin-top:10px;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.feature{
+    text-align:center;
+    padding:20px;
+}
+
+.feature-icon{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.feature h3{
+    margin-bottom:7px;
+}
+
+.feature p{
+    color:#666;
+    font-size:14px;
+}
+
+/* FOOTER */
+footer{
+    background:#241026;
+    color:white;
+    padding:35px 5%;
+    text-align:center;
+}
+
+footer h2{
+    color:#ff4081;
+    margin-bottom:10px;
+}
+
+footer p{
+    color:#ddd;
+    font-size:14px;
+    line-height:1.7;
+}
+
+/* LOGIN POPUP */
+.login-popup{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    z-index:2000;
+    align-items:center;
+    justify-content:center;
+}
+
+.login-box{
+    background:white;
+    width:90%;
+    max-width:400px;
+    padding:30px;
+    border-radius:20px;
+}
+
+.login-box h2{
+    color:#e91e63;
+    margin-bottom:20px;
+}
+
+.login-box input{
+    width:100%;
+    padding:13px;
+    margin:8px 0;
+    border:1px solid #ddd;
+    border-radius:8px;
+}
+
+.login-submit{
+    width:100%;
+    padding:13px;
+    border:0;
+    border-radius:8px;
+    background:#e91e63;
+    color:white;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.close{
+    float:right;
+    cursor:pointer;
+    font-size:22px;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+    .navbar{
+        flex-wrap:wrap;
+        gap:10px;
+    }
+
+    .logo{
+        font-size:21px;
+    }
+
+    .search-box{
+        order:3;
+        flex-basis:100%;
+    }
+
+    .hero{
+        margin:15px 4%;
+        padding:30px 20px;
+    }
+
+    .hero h1{
+        font-size:28px;
+    }
+
+    .section{
+        padding-left:4%;
+        padding-right:4%;
+    }
+
+    .batch-grid{
+        grid-template-columns:1fr;
+    }
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="overlay">
+<!-- NAVBAR -->
+<nav class="navbar">
 
-<header>
-    <h1>📚 StudyByPKY</h1>
-    <p>Class XI • Class XII • NEET Preparation</p>
-</header>
+    <div class="logo">
+        Study<span>ByPKY</span>
+    </div>
 
-<div class="container">
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search batches, classes, NEET..."
+            onkeyup="searchBatch()"
+        >
+        <span class="search-icon">🔍</span>
+    </div>
 
-<div class="card">
-<h3>📘 Biology NCERT Highlights</h3>
-<p>
-<nav>
-<a class="btn" href="ncert-highlights.html">Open Highlights</a>
+    <button class="login-btn" onclick="openLogin()">
+        Login
+    </button>
+
 </nav>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <h1>Learn. Practice. Achieve. 🚀</h1>
+
+    <p>
+        Join powerful learning batches for CBSE, NEET and competitive
+        preparation with structured classes, notes, tests and revision.
+    </p>
+
+    <a href="#batches" class="hero-btn">
+        Explore Batches →
+    </a>
+
+</section>
+
+
+<!-- CATEGORIES -->
+<div class="categories">
+
+    <div class="category">All Batches</div>
+    <div class="category">Class 9</div>
+    <div class="category">Class 10</div>
+    <div class="category">Class 11</div>
+    <div class="category">Class 12</div>
+    <div class="category">NEET</div>
+    <div class="category">Test Series</div>
+
 </div>
 
-<div class="card">
-<h3>📘 Physics NCERT Highlights</h3>
-<p>
-<nav>
-<a class="btn" href="xx">Open Highlights</a>
-</nav>
-</div>
 
-<div class="card">
-<h3>📘 Chemistry NCERT Highlights</h3>
-<p>
-<nav>
-<a class="btn" href="xx">Open Highlights</a>
-</nav>
-</div>
+<!-- BATCHES -->
+<section class="section" id="batches">
 
-<div class="card">
-<h3>🖥🖥 Biology NCERT video will be comingsoon</h3>
-<p>
-<nav>
-<a class="btn" href="xxl">Open video</a>
-</nav>
-</div>
+    <div class="section-title">
+        <h2>🔥 Popular Batches</h2>
+        <span>View All →</span>
+    </div>
+
+    <div class="batch-grid" id="batchGrid">
+
+
+        <!-- BATCH 1 -->
+        <div class="batch">
+
+            <div class="offer">LIMITED OFFER</div>
+
+<div class="batch-img">
+                🦁 LION batch 
+            </div>
+
+            <div class="batch-content">
+
+                <span class="tag">NEET</span>
+
+    <h3>Lion Batch</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐ 4.9
+                </div>
+
+                <ul class="benefits">
+                    <li>✅ Complete syllabus coverage</li>
+                    <li>✅ Chapter-wise classes</li>
+                    <li>✅ PDF notes & revision</li>
+                    <li>✅ Practice questions</li>
+                    <li>✅ Test series</li>
+                </ul>
+
+                <div class="price">
+                    ₹2500
+                    <span class="old-price">₹5000</span>
+                </div>
+
+                <button class="buy-btn"
+                   onclick="buyBatch('lion Batch',2500)">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+ <!-- BATCH 2 -->
+        <div class="batch">
+
+            <div class="offer">LIMITED OFFER</div>
+<div class="batch-img">
+                📄BIOLOGY NCERT Highlights
+            </div>
+
+            <div class="batch-content">
+
+                <span class="tag">NEET</span>
+
   
-<div class="card">
-<h3>🖥🖥 Physics NCERT video will be comingsoon</h3>                                            
-<p>
-<nav>
-<a class="btn" href="xx">Open video</a>
-</nav>
-</div>
-<div class="card">
-<h3>🖥🖥 Chemistry NCERT video will be comingsoon</h3>
-<p>
-<nav>
-<a class="btn" href="xx">Open video</a>
-</nav>
-</div>
+                <h3>BIOLOGY NCERT Highlights </h3>
 
-<div class="card">
-<h3>📒📒Biology  short notes will be comingsoon</h3>
-<p>
-<nav>
-<a class="btn" href="ncert-highlights.html">Open notes</a>
-</nav>
-</div>
-<div class="card">
-<h3>📒📒Physics  short notes will be comingsoon</h3>
-<p>
-<nav>
-<a class="btn" href="xx">Open notes</a>
-</nav>
-</div>
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐ 4.9
+                </div>
 
-<div class="card">
-<h3>📒📒 Chemistry short notes will be comingsoon </h3>
-<p>
-<nav>
-<a class="btn" href="xx">Open notes</a>
-</nav>
-</div>
+                <ul class="benefits">
+                    <li>✅ Complete syllabus coverage</li>
+                    <li>✅ Chapter-wise classes</li>
+                    <li>✅ PDF notes & revision</li>
+                    
+                </ul>
+
+                <div class="price">
+                    ₹100
+                    <span class="old-price">₹500</span>
+                </div>
+
+                <button class="buy-btn"
+                   onclick="buyBatch('Biology ncert Highlights Batch',100)">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+ <!-- BATCH 3 -->
+        <div class="batch">
+
+            <div class="offer">LIMITED OFFER</div>
+
+<div class="batch-img">
+               📄 PHYSICS NCERT Highlights
+            </div>
+
+            <div class="batch-content">
+
+                <span class="tag">NEET</span>
+
+ 
+                <h3>PHYSICS NCERT Highlights </h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐ 4.9
+                </div>
+
+                <ul class="benefits">
+                    <li>✅ Complete syllabus coverage</li>
+                    <li>✅ Chapter-wise classes</li>
+                    <li>✅ PDF notes & revision</li>
+                    
+                </ul>
+
+                <div class="price">
+                    ₹100
+                    <span class="old-price">₹500</span>
+                </div>
+
+                <button class="buy-btn"
+                   onclick="buyBatch('Physics ncert Highlights Batch',100)">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+ <!-- BATCH 4 -->
+        <div class="batch">
+
+            <div class="offer">LIMITED OFFER</div>
+
+<div class="batch-img">
+                📄CHEMISTRY NCERT Highlights
+            </div>
+
+            <div class="batch-content">
+
+                <span class="tag">NEET</span>
+
+  
+                <h3>CHEMISTRY NCERT Highlights </h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐ 4.9
+                </div>
+
+                <ul class="benefits">
+                    <li>✅ Complete syllabus coverage</li>
+                    <li>✅ Chapter-wise classes</li>
+                    <li>✅ PDF notes & revision</li>
+                    
+                </ul>
+
+                <div class="price">
+                    ₹100
+                    <span class="old-price">₹500</span>
+                </div>
+
+                <button class="buy-btn"
+                   onclick="buyBatch('Chemistry ncert Highlights Batch',100)">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+ <!-- BATCH 5 -->
+        <div class="batch">
+
+            <div class="offer">LIMITED OFFER</div>
+
+<div class="batch-img">
+                🖥BIOLOGY NCERT Highlights Videos
+            </div>
+
+            <div class="batch-content">
+
+                <span class="tag">NEET</span>
+
+          
+                <h3>BIOLOGY NCERT Highlights Videos</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐ 4.9
+                </div>
+
+                <ul class="benefits">
+                    <li>✅ Complete syllabus coverage</li>
+                    <li>✅ Chapter-wise classes</li>
+                    <li>✅ PDF notes & revision</li>
+                    <li>✅️ complete Chapter-wise video</li>
+                </ul>
+
+                <div class="price">
+                    ₹100
+                    <span class="old-price">₹500</span>
+                </div>
+
+                <button class="buy-btn"
+                   onclick="buyBatch('Biology ncert Highlights Videos Batch',100)">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+ <!-- BATCH 6 -->
+        <div class="batch">
+
+            <div class="offer">LIMITED OFFER</div>
+
+<div class="batch-img">
+                🖥PHYSICS NCERT Highlights Videos
+            </div>
+
+            <div class="batch-content">
+
+                <span class="tag">NEET</span>
+
+  
+                <h3>PHYSICS NCERT Highlights Videos</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐ 4.9
+                </div>
+
+                <ul class="benefits">
+                    <li>✅ Complete syllabus coverage</li>
+                    <li>✅ Chapter-wise classes</li>
+                    <li>✅ PDF notes & revision</li>
+                    <li>✅️ complete Chapter-wise video</li>
+                </ul>
+
+                <div class="price">
+                    ₹100
+                    <span class="old-price">₹500</span>
+                </div>
+
+                <button class="buy-btn"
+                   onclick="buyBatch('Physics ncert Highlights Videos Batch',100)">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+ <!-- BATCH 7-->
+        <div class="batch">
+
+            <div class="offer">LIMITED OFFER</div>
+
+<div class="batch-img">
+                🖥CHEMISTRY NCERT Highlights Videos
+            </div>
+
+            <div class="batch-content">
+
+                <span class="tag">NEET</span>
+         
+                <h3>CHEMISTRY NCERT Highlights Videos</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐ 4.9
+                </div>
+
+                <ul class="benefits">
+                    <li>✅ Complete syllabus coverage</li>
+                    <li>✅ Chapter-wise classes</li>
+                    <li>✅ PDF notes & revision</li>
+                    <li>✅️ complete Chapter-wise video</li>
+                </ul>
+
+                <div class="price">
+                    ₹100
+                    <span class="old-price">₹500</span>
+                </div>
+
+                  <button class="buy-btn"
+                   onclick="buyBatch('Chemistry ncert Highlights Videos Batch',100)">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
 
 
 
+        <!-- BATCH 8 -->
+        <div class="batch">
+
+            <div class="offer">NEW</div>
+
+            <div class="batch-img">
+                ⚡ PHOENIX
+            </div>
+
+            <div class="batch-content">
+
+                <span class="tag">CLASS 12</span>
+
+                <h3>Phoenix Batch</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐ 4.8
+                </div>
+
+                <ul class="benefits">
+                    <li>✅ Complete CBSE preparation</li>
+                    <li>✅ Important questions</li>
+                    <li>✅ NCERT focused learning</li>
+                    <li>✅ Revision classes</li>
+                    <li>✅ Mock tests</li>
+                </ul>
+
+                <div class="price">
+                    ₹2999
+                    <span class="old-price">₹5999</span>
+                </div>
+
+                <button class="buy-btn"
+                    onclick="buyBatch('Phoenix Batch',2999)">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
 
 
-    <div class="card">
-        <h2>📂 PYQ Resources</h2>
-        <p>Previous Year Questions, Practice Sets, Test Papers and Important PDFs.</p>
-        <button>Explore</button>
+        <!-- BATCH 9 -->
+        <div class="batch">
+
+            <div class="offer">BEST SELLER</div>
+
+            <div class="batch-img">
+                🩺 NEET PRO
+            </div>
+
+            <div class="batch-content">
+
+                <span class="tag">NEET</span>
+
+                <h3>NEET Pro Batch</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐ 4.9
+                </div>
+
+                <ul class="benefits">
+                    <li>✅ Physics preparation</li>
+                    <li>✅ Chemistry preparation</li>
+                    <li>✅ Biology NCERT focus</li>
+                    <li>✅ Daily practice</li>
+                    <li>✅ Full tests</li>
+                </ul>
+
+                <div class="price">
+                    ₹3999
+                    <span class="old-price">₹7999</span>
+                </div>
+
+                <button class="buy-btn"
+                    onclick="buyBatch('NEET Pro Batch',3999)">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- BATCH 10 -->
+        <div class="batch">
+
+            <div class="batch-img">
+                🎯 TEST SERIES
+            </div>
+
+            <div class="batch-content">
+
+                <span class="tag">TEST SERIES</span>
+
+                <h3>Ultimate Test Series</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐ 4.7
+                </div>
+
+                <ul class="benefits">
+                    <li>✅ 50+ Mock Tests</li>
+                    <li>✅ Chapter-wise tests</li>
+                    <li>✅ Detailed solutions</li>
+                    <li>✅ Performance analysis</li>
+                    <li>✅ Exam-level questions</li>
+                </ul>
+
+                <div class="price">
+                    ₹999
+                    <span class="old-price">₹1999</span>
+                </div>
+
+                <button class="buy-btn"
+                    onclick="buyBatch('Ultimate Test Series',999)">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- BATCH 11 -->
+        <div class="batch">
+
+            <div class="batch-img">
+                📚 FOUNDATION
+            </div>
+
+            <div class="batch-content">
+
+                <span class="tag">CLASS 9</span>
+
+                <h3>Foundation Batch</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐ 4.8
+                </div>
+
+                <ul class="benefits">
+                    <li>✅ Strong basics</li>
+                    <li>✅ NCERT coverage</li>
+                    <li>✅ Practice worksheets</li>
+                    <li>✅ Doubt support</li>
+                    <li>✅ Regular tests</li>
+                </ul>
+
+                <div class="price">
+                    ₹1999
+                    <span class="old-price">₹3999</span>
+                </div>
+
+                <button class="buy-btn"
+                    onclick="buyBatch('Foundation Batch',1999)">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- BATCH 12 -->
+        <div class="batch">
+
+            <div class="batch-img">
+                🏆 BOARD MASTER
+            </div>
+
+            <div class="batch-content">
+
+                <span class="tag">CLASS 12</span>
+
+                <h3>Board Master Batch</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐ 4.9
+                </div>
+
+                <ul class="benefits">
+                    <li>✅ Board-focused preparation</li>
+                    <li>✅ PYQ practice</li>
+                    <li>✅ Sample papers</li>
+                    <li>✅ Revision notes</li>
+                    <li>✅ Full syllabus tests</li>
+                </ul>
+
+                <div class="price">
+                    ₹2499
+                    <span class="old-price">₹4999</span>
+                </div>
+
+                <button class="buy-btn"
+                    onclick="buyBatch('Board Master Batch',2499)">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+ <!-- BATCH 13 -->
+        <div class="batch">
+
+            <div class="batch-img">
+                📚 FOUNDATION
+            </div>
+
+            <div class="batch-content">
+
+                <span class="tag">CLASS 10</span>
+
+                <h3>Foundation Batch</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐ 4.8
+                </div>
+
+                <ul class="benefits">
+                    <li>✅ Strong basics</li>
+                    <li>✅ NCERT coverage</li>
+                    <li>✅ Practice worksheets</li>
+                    <li>✅ Doubt support</li>
+                    <li>✅ Regular tests</li>
+                </ul>
+
+                <div class="price">
+                    ₹2999
+                    <span class="old-price">₹3999</span>
+                </div>
+
+                <button class="buy-btn"
+                    onclick="buyBatch('Foundation Batch',2999)">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+ <!-- BATCH 14 -->
+        <div class="batch">
+
+            <div class="batch-img">
+                📚 FOUNDATION
+            </div>
+
+            <div class="batch-content">
+
+                <span class="tag">CLASS 11</span>
+
+                <h3>Foundation Batch</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐ 4.8
+                </div>
+
+                <ul class="benefits">
+                    <li>✅ Strong basics</li>
+                    <li>✅ NCERT coverage</li>
+                    <li>✅ Practice worksheets</li>
+                    <li>✅ Doubt support</li>
+                    <li>✅ Regular tests</li>
+                </ul>
+
+                <div class="price">
+                    ₹1999
+                    <span class="old-price">₹3999</span>
+                </div>
+
+                <button class="buy-btn"
+                    onclick="buyBatch('Foundation Batch',1999)">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+ <!-- BATCH 15 -->
+        <div class="batch">
+
+            <div class="batch-img">
+                📚 FOUNDATION
+            </div>
+
+            <div class="batch-content">
+
+                <span class="tag">CLASS 12</span>
+
+                <h3>Foundation Batch</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐ 4.8
+                </div>
+
+                <ul class="benefits">
+                    <li>✅ Strong basics</li>
+                    <li>✅ NCERT coverage</li>
+                    <li>✅ Practice worksheets</li>
+                    <li>✅ Doubt support</li>
+                    <li>✅ Regular tests</li>
+                </ul>
+
+                <div class="price">
+                    ₹3500
+                    <span class="old-price">₹3999</span>
+                </div>
+
+                <button class="buy-btn"
+                    onclick="buyBatch('Foundation Batch',3500)">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+</section>
+
+
+<!-- FEATURES -->
+<section class="features">
+
+    <div class="section-title">
+        <h2>Why StudyByPKY?</h2>
     </div>
 
-    <div class="card">
-        <h2>📘 NCERT Highlights</h2>
-        <p>Important NCERT lines, diagrams, tables and exam-oriented points.</p>
-        <button>Read Now</button>
+    <div class="feature-grid">
+
+        <div class="feature">
+            <div class="feature-icon">🎥</div>
+            <h3>Quality Classes</h3>
+            <p>Structured and easy-to-understand learning.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📖</div>
+            <h3>Study Material</h3>
+            <p>Notes, questions and revision resources.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📝</div>
+            <h3>Regular Tests</h3>
+            <p>Practice with exam-oriented tests.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📊</div>
+            <h3>Track Progress</h3>
+            <p>Understand your preparation better.</p>
+        </div>
+
     </div>
 
-    <div class="card">
-        <h2>🎥 NCERT Videos</h2>
-        <p>Chapter-wise video lectures with simple explanations for NEET aspirants.</p>
-        <button>Watch</button>
-    </div>
+</section>
 
-    <div class="card">
-        <h2>📝 Short Notes</h2>
-        <p>Revision notes, formulas, flowcharts and quick concepts for fast preparation.</p>
-        <button>Open Notes</button>
-    </div>
 
-    <div class="card">
-        <h2>👨‍🏫 About Me</h2>
-        <p>
-            Welcome to <b>StudyByPKY</b>.<br>
-            Dedicated to helping Class XI, XII and NEET students through quality study materials, videos and test series.
-        </p>
-        <button>Know More</button>
-    </div>
-
-</div>
-
+<!-- FOOTER -->
 <footer>
-    <h3>Created by <span style="color:#00ffcc;">@StudyByPKY</span></h3>
-    <p>© 2026 StudyByPKY | Learn • Practice • Succeed</p>
+
+    <h2>StudyByPKY</h2>
+
+    <p>
+        Learn smarter. Practice better. Achieve your goals.
+    </p>
+
+    <p>
+        © 2026 StudyByPKY. All Rights Reserved.
+    </p>
+
 </footer>
 
+
+<!-- LOGIN POPUP -->
+<div class="login-popup" id="loginPopup">
+
+    <div class="login-box">
+
+        <span class="close" onclick="closeLogin()">×</span>
+
+        <h2>Welcome Back 👋</h2>
+
+        <input type="text" placeholder="Enter Mobile Number">
+
+        <input type="password" placeholder="Enter Password">
+
+        <button class="login-submit" onclick="loginUser()">
+            Login
+        </button>
+
+    </div>
+
 </div>
+
+
+<script>
+
+/* SEARCH */
+function searchBatch(){
+
+    let input =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    let batches =
+        document.querySelectorAll(".batch");
+
+    batches.forEach(function(batch){
+
+        let text =
+            batch.innerText.toLowerCase();
+
+        if(text.includes(input)){
+            batch.style.display = "";
+        }
+        else{
+            batch.style.display = "none";
+        }
+
+    });
+
+}
+
+
+/* LOGIN */
+function openLogin(){
+
+    document.getElementById("loginPopup")
+    .style.display="flex";
+
+}
+
+function closeLogin(){
+
+    document.getElementById("loginPopup")
+    .style.display="none";
+
+}
+
+function loginUser(){
+
+    alert("Login system can be connected with Firebase.");
+
+}
+
+
+/* BUY NOW */
+function buyBatch(name,price){
+
+    alert(
+        "You selected: " +
+        name +
+        "\\nPrice: ₹" +
+        price
+    );
+
+    /*
+      Replace this alert with your
+      payment page / checkout page.
+
+      Example:
+      window.location.href =
+      "checkout.html?batch=" +
+      encodeURIComponent(name) +
+      "&price=" + price;
+    */
+
+}
+
+
+/* CATEGORY BUTTONS */
+document.querySelectorAll(".category")
+.forEach(function(button){
+
+    button.addEventListener("click",function(){
+
+        let category =
+            this.innerText.toLowerCase();
+
+        let batches =
+            document.querySelectorAll(".batch");
+
+        batches.forEach(function(batch){
+
+            if(category === "all batches"){
+                batch.style.display="";
+                return;
+            }
+
+            let text =
+                batch.innerText.toLowerCase();
+
+            if(text.includes(category)){
+                batch.style.display="";
+            }
+            else{
+                batch.style.display="none";
+            }
+
+        });
+
+    });
+
+});
+
+</script>
 
 </body>
 </html>
