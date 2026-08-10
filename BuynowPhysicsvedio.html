@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>STUDYBYPKY | PHYSICS NCERT VIDEO LECTURES</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#070d1c;
+    color:#ffffff;
+    min-height:100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    height:58px;
+    background:#0e172b;
+    border-bottom:1px solid #263858;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 14px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:14px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#6978ff;
+}
+
+.header-badge{
+    font-size:7px;
+    font-weight:bold;
+
+    background:#1c2c4c;
+    border:1px solid #3b4e78;
+
+    padding:7px 9px;
+    border-radius:20px;
+
+    color:#bfcaff;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+    width:100%;
+    max-width:850px;
+
+    margin:auto;
+
+    padding:12px 10px 50px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.batch-picture{
+    min-height:270px;
+
+    border-radius:15px;
+    overflow:hidden;
+
+    position:relative;
+
+    background:
+    radial-gradient(
+        circle at 50% 35%,
+        #354b88 0%,
+        #192a52 28%,
+        #0c162d 70%
+    );
+
+    border:1px solid #3b4f7b;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    margin-bottom:12px;
+}
+
+.batch-picture::before{
+    content:"";
+
+    position:absolute;
+
+    width:230px;
+    height:230px;
+
+    border-radius:50%;
+
+    border:1px solid #6374ff55;
+
+    box-shadow:
+        0 0 50px #6374ff33;
+}
+
+.batch-picture::after{
+    content:"";
+
+    position:absolute;
+
+    width:160px;
+    height:160px;
+
+    border-radius:50%;
+
+    border:1px solid #ffffff22;
+}
+
+.batch-content{
+    position:relative;
+    z-index:2;
+}
+
+.video-icon{
+    font-size:65px;
+    line-height:1;
+
+    margin-bottom:10px;
+
+    filter:
+        drop-shadow(
+            0 5px 15px #000
+        );
+}
+
+.batch-name{
+    font-size:25px;
+    font-weight:1000;
+    letter-spacing:1px;
+
+    color:#ffffff;
+
+    text-shadow:
+        0 3px 15px #000;
+}
+
+.batch-name span{
+    color:#7584ff;
+}
+
+.created{
+    margin-top:9px;
+
+    font-size:10px;
+    font-weight:bold;
+
+    color:#cbd4e8;
+}
+
+.created strong{
+    color:#ffffff;
+}
+
+.tagline{
+    margin-top:8px;
+
+    font-size:8px;
+
+    color:#9ba9c2;
+}
+
+
+/* =========================
+   PRICE CARD
+========================= */
+
+.price-card{
+    background:#111d34;
+
+    border:1px solid #304568;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    text-align:center;
+
+    margin-bottom:12px;
+}
+
+.price-label{
+    font-size:8px;
+
+    color:#8b99b2;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+.price{
+    margin-top:4px;
+
+    font-size:32px;
+
+    font-weight:900;
+}
+
+.price-note{
+    margin-top:5px;
+
+    font-size:7px;
+
+    color:#7888a5;
+}
+
+
+/* =========================
+   BUY BUTTON
+========================= */
+
+.buy-btn{
+    width:100%;
+    height:48px;
+
+    margin-top:12px;
+
+    border:0;
+    border-radius:8px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #6978ff,
+        #4e5eea
+    );
+
+    color:#ffffff;
+
+    font-size:11px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 7px 20px #5365ff33;
+
+    transition:.2s;
+}
+
+.buy-btn:hover{
+    transform:translateY(-1px);
+
+    box-shadow:
+        0 10px 25px #5365ff55;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section-title{
+    margin:18px 2px 9px;
+
+    padding-left:9px;
+
+    height:32px;
+
+    display:flex;
+    align-items:center;
+
+    border-left:3px solid #6978ff;
+
+    background:#101b31;
+
+    border-radius:4px;
+
+    font-size:10px;
+
+    font-weight:900;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.important-box{
+    background:
+    linear-gradient(
+        135deg,
+        #18294b,
+        #101a30
+    );
+
+    border:1px solid #3b5180;
+
+    border-radius:10px;
+
+    padding:13px;
+
+    margin-bottom:12px;
+}
+
+.important-box h3{
+    font-size:10px;
+
+    margin-bottom:7px;
+
+    color:#8391ff;
+}
+
+.important-box p{
+    font-size:8px;
+
+    color:#cbd4e5;
+
+    line-height:1.6;
+}
+
+
+/* =========================
+   BENEFITS
+========================= */
+
+.benefit{
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    background:#141f35;
+
+    border:1px solid #263957;
+
+    border-radius:8px;
+
+    padding:10px;
+
+    margin-bottom:6px;
+}
+
+.number{
+    width:28px;
+    height:28px;
+
+    border-radius:7px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:#263863;
+
+    color:#8391ff;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    flex-shrink:0;
+}
+
+.benefit-text{
+    font-size:8px;
+
+    color:#d8deea;
+
+    line-height:1.4;
+}
+
+.benefit-text strong{
+    color:#ffffff;
+}
+
+
+/* =========================
+   PAYMENT SCREEN
+========================= */
+
+.payment-screen{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:#050914f5;
+
+    z-index:500;
+
+    padding:15px;
+
+    align-items:center;
+    justify-content:center;
+}
+
+.payment-box{
+    width:100%;
+    max-width:420px;
+
+    background:#111c31;
+
+    border:1px solid #334a72;
+
+    border-radius:14px;
+
+    padding:18px;
+
+    text-align:center;
+
+    box-shadow:
+        0 20px 60px #00000099;
+}
+
+.payment-icon{
+    font-size:45px;
+
+    margin-bottom:8px;
+}
+
+.payment-box h2{
+    font-size:17px;
+
+    margin-bottom:7px;
+}
+
+.payment-box p{
+    color:#8795ae;
+
+    font-size:8px;
+
+    line-height:1.6;
+
+    margin-bottom:12px;
+}
+
+.amount{
+    font-size:28px;
+
+    font-weight:900;
+
+    margin:8px 0 15px;
+}
+
+.upi-id{
+    background:#182743;
+
+    border:1px solid #344a70;
+
+    padding:10px;
+
+    border-radius:7px;
+
+    font-size:9px;
+
+    margin-bottom:10px;
+
+    color:#dbe2ef;
+}
+
+.pay-upi{
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    width:100%;
+    height:45px;
+
+    background:#6978ff;
+
+    color:#ffffff;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    font-size:9px;
+    font-weight:900;
+
+    margin-bottom:8px;
+}
+
+.completed-btn{
+    width:100%;
+    height:42px;
+
+    border:1px solid #344a70;
+
+    background:#1a2944;
+
+    color:#dce3f2;
+
+    border-radius:8px;
+
+    font-size:8px;
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.cancel-btn{
+    margin-top:10px;
+
+    border:0;
+
+    background:none;
+
+    color:#72819b;
+
+    font-size:7px;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   SUCCESS SCREEN
+========================= */
+
+.success-screen{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:#050914f7;
+
+    z-index:600;
+
+    padding:15px;
+
+    align-items:center;
+    justify-content:center;
+}
+
+.success-box{
+    width:100%;
+    max-width:420px;
+
+    background:#111d32;
+
+    border:1px solid #354c72;
+
+    border-radius:14px;
+
+    padding:25px 18px;
+
+    text-align:center;
+}
+
+.success-icon{
+    width:65px;
+    height:65px;
+
+    border-radius:50%;
+
+    margin:0 auto 12px;
+
+    background:#203a42;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:30px;
+}
+
+.success-box h2{
+    font-size:17px;
+
+    margin-bottom:8px;
+}
+
+.success-box p{
+    color:#8b99b1;
+
+    font-size:8px;
+
+    line-height:1.6;
+
+    margin-bottom:15px;
+}
+
+.study-btn{
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    width:100%;
+    height:45px;
+
+    background:#6978ff;
+
+    color:#ffffff;
+
+    text-decoration:none;
+
+    border-radius:8px;
+
+    font-size:9px;
+
+    font-weight:900;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+
+    color:#5e6c84;
+
+    font-size:7px;
+
+    margin-top:25px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:430px){
+
+    .batch-picture{
+        min-height:235px;
+    }
+
+    .video-icon{
+        font-size:55px;
+    }
+
+    .batch-name{
+        font-size:21px;
+    }
+
+    .price{
+        font-size:29px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+<div class="logo">
+STUDY<span>BYPKY</span>
+</div>
+
+<div class="header-badge">
+⚛️ PHYSICS VIDEO LECTURE
+</div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="batch-picture">
+
+<div class="batch-content">
+
+<div class="video-icon">
+⚛️
+</div>
+
+<div class="batch-name">
+PHYSICS <span>NCERT VIDEO LECTURES</span>
+</div>
+
+<div class="created">
+BY <strong>STUDYBYPKY</strong>
+</div>
+
+<div class="tagline">
+NCERT Concepts • Physics Videos • NEET Revision
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     PRICE
+========================= -->
+
+<section class="price-card">
+
+<div class="price-label">
+PHYSICS NCERT VIDEO LECTURES FEE
+</div>
+
+<div class="price">
+₹100
+</div>
+
+<div class="price-note">
+One-time access fee
+</div>
+
+<button
+class="buy-btn"
+onclick="openPayment()">
+
+🚀 BUY NOW — ₹100
+
+</button>
+
+</section>
+
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<div class="section-title">
+🔥 WHY PHYSICS NCERT VIDEO LECTURES?
+</div>
+
+
+<div class="important-box">
+
+<h3>
+⚛️ LEARN PHYSICS THROUGH NCERT VIDEOS
+</h3>
+
+<p>
+Understand important Physics concepts through
+NCERT-focused video lectures. Learn formulas,
+laws, diagrams, derivations and important concepts
+through structured visual lessons.
+</p>
+
+</div>
+
+
+
+<!-- =========================
+     10 BENEFITS
+========================= -->
+
+<div class="section-title">
+🎯 10 BENEFITS OF PHYSICS NCERT VIDEO LECTURES
+</div>
+
+
+<div class="benefit">
+
+<div class="number">
+01
+</div>
+
+<div class="benefit-text">
+
+<strong>NCERT-Based Physics Lectures</strong><br>
+
+Video lessons focused on important NCERT Physics concepts.
+
+</div>
+
+</div>
+
+
+
+<div class="benefit">
+
+<div class="number">
+02
+</div>
+
+<div class="benefit-text">
+
+<strong>Chapter-wise Learning</strong><br>
+
+Study Physics chapters in an organized sequence.
+
+</div>
+
+</div>
+
+
+
+<div class="benefit">
+
+<div class="number">
+03
+</div>
+
+<div class="benefit-text">
+
+<strong>Concept Explanation</strong><br>
+
+Understand difficult Physics concepts through clear videos.
+
+</div>
+
+</div>
+
+
+
+<div class="benefit">
+
+<div class="number">
+04
+</div>
+
+<div class="benefit-text">
+
+<strong>Important NCERT Concepts</strong><br>
+
+Focus on important laws, definitions and principles.
+
+</div>
+
+</div>
+
+
+
+<div class="benefit">
+
+<div class="number">
+05
+</div>
+
+<div class="benefit-text">
+
+<strong>Formula Revision</strong><br>
+
+Revise important formulas required for problem solving.
+
+</div>
+
+</div>
+
+
+
+<div class="benefit">
+
+<div class="number">
+06
+</div>
+
+<div class="benefit-text">
+
+<strong>Numerical Problem Support</strong><br>
+
+Understand the concepts used in Physics numerical questions.
+
+</div>
+
+</div>
+
+
+
+<div class="benefit">
+
+<div class="number">
+07
+</div>
+
+<div class="benefit-text">
+
+<strong>Derivation Support</strong><br>
+
+Review important derivations and their underlying concepts.
+
+</div>
+
+</div>
+
+
+
+<div class="benefit">
+
+<div class="number">
+08
+</div>
+
+<div class="benefit-text">
+
+<strong>Visual Learning</strong><br>
+
+Learn Physics using diagrams and visual explanations.
+
+</div>
+
+</div>
+
+
+
+<div class="benefit">
+
+<div class="number">
+09
+</div>
+
+<div class="benefit-text">
+
+<strong>Quick Revision Videos</strong><br>
+
+Use focused lessons for faster Physics revision.
+
+</div>
+
+</div>
+
+
+
+<div class="benefit">
+
+<div class="number">
+10
+</div>
+
+<div class="benefit-text">
+
+<strong>NEET-Focused Preparation</strong><br>
+
+Useful for focused Physics preparation and revision.
+
+</div>
+
+</div>
+
+
+
+<footer class="footer">
+
+© 2026 STUDYBYPKY • PHYSICS NCERT VIDEO LECTURES
+
+</footer>
+
+</main>
+
+
+
+<!-- =========================
+     PAYMENT POPUP
+========================= -->
+
+<div
+class="payment-screen"
+id="paymentScreen">
+
+<div class="payment-box">
+
+<div class="payment-icon">
+💳
+</div>
+
+<h2>
+PHYSICS NCERT VIDEO LECTURES
+</h2>
+
+<p>
+Pay the fixed fee using your preferred
+UPI application.
+</p>
+
+<div class="amount">
+₹100
+</div>
+
+<div class="upi-id">
+UPI ID: <strong>7534976027@fam</strong>
+</div>
+
+
+<a
+id="upiButton"
+class="pay-upi"
+href="#">
+
+📱 PAY ₹100 USING UPI
+
+</a>
+
+
+<p style="font-size:7px;margin-top:8px;">
+
+After completing the payment, return here and
+tap the confirmation button.
+
+</p>
+
+
+<button
+class="completed-btn"
+onclick="paymentCompleted()">
+
+✅ I HAVE COMPLETED PAYMENT
+
+</button>
+
+
+<button
+class="cancel-btn"
+onclick="closePayment()">
+
+Cancel
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     SUCCESS SCREEN
+========================= -->
+
+<div
+class="success-screen"
+id="successScreen">
+
+<div class="success-box">
+
+<div class="success-icon">
+🎉
+</div>
+
+<h2>
+Congratulations!
+</h2>
+
+<p>
+
+You are now part of
+<strong>Physics NCERT Video Lectures by STUDYBYPKY</strong>.
+
+<br><br>
+
+Your Physics video-learning resources are ready.
+
+</p>
+
+
+<a
+href="Physics-NCERT-Video-Lectures.html"
+class="study-btn">
+
+🎥 STUDY NOW
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   PAYMENT DETAILS
+========================= */
+
+const UPI_ID =
+"7534976027@fam";
+
+const PRICE =
+"100";
+
+const MERCHANT =
+"STUDYBYPKY PHYSICS NCERT VIDEO LECTURES";
+
+
+/* =========================
+   OPEN PAYMENT
+========================= */
+
+function openPayment(){
+
+    const upiLink =
+
+    "upi://pay" +
+
+    "?pa=" +
+    encodeURIComponent(UPI_ID) +
+
+    "&pn=" +
+    encodeURIComponent(MERCHANT) +
+
+    "&am=" +
+    PRICE +
+
+    "&cu=INR" +
+
+    "&tn=" +
+    encodeURIComponent(
+        "PHYSICS NCERT VIDEO LECTURES STUDYBYPKY"
+    );
+
+
+    document.getElementById(
+        "upiButton"
+    ).href = upiLink;
+
+
+    document.getElementById(
+        "paymentScreen"
+    ).style.display = "flex";
+
+}
+
+
+/* =========================
+   CLOSE PAYMENT
+========================= */
+
+function closePayment(){
+
+    document.getElementById(
+        "paymentScreen"
+    ).style.display = "none";
+
+}
+
+
+/* =========================
+   PAYMENT COMPLETED
+========================= */
+
+function paymentCompleted(){
+
+    /*
+      IMPORTANT:
+      This button does NOT verify
+      a real UPI transaction.
+
+      It only opens the success screen.
+
+      For automatic payment verification,
+      connect a payment gateway/backend.
+    */
+
+    document.getElementById(
+        "paymentScreen"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "successScreen"
+    ).style.display = "flex";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
