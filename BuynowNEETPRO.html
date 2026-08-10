@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>STUDYBYPKY | NEET PRO BATCH</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#fff1f8;
+    color:#161616;
+    min-height:100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    height:60px;
+
+    background:#090d20;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 16px;
+
+    position:sticky;
+    top:0;
+
+    z-index:100;
+}
+
+.logo{
+    color:#ffffff;
+    font-size:15px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#8c5cff;
+}
+
+.badge{
+    background:#7d28d9;
+    color:white;
+
+    padding:8px 12px;
+
+    border-radius:20px;
+
+    font-size:8px;
+    font-weight:900;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+    width:100%;
+    max-width:850px;
+
+    margin:auto;
+
+    padding:12px 10px 50px;
+}
+
+
+/* =========================
+   HERO IMAGE
+========================= */
+
+.batch-image{
+    width:100%;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    margin-bottom:14px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ec1680,
+        #8b22c9
+    );
+
+    box-shadow:
+        0 12px 35px #e52b9850;
+}
+
+.batch-image img{
+    width:100%;
+    display:block;
+}
+
+
+/* =========================
+   BATCH CARD
+========================= */
+
+.batch-card{
+
+    background:#ffffff;
+
+    border-radius:16px;
+
+    padding:18px;
+
+    margin-bottom:14px;
+
+    box-shadow:
+        0 8px 30px #b9216320;
+
+    border:1px solid #f0d7e6;
+}
+
+.class-badge{
+
+    display:inline-block;
+
+    background:#ffe4f0;
+
+    color:#a51659;
+
+    padding:8px 14px;
+
+    border-radius:10px;
+
+    font-size:11px;
+
+    font-weight:900;
+
+    margin-bottom:10px;
+}
+
+.batch-title{
+
+    font-size:28px;
+
+    font-weight:1000;
+
+    margin-bottom:8px;
+}
+
+.rating{
+
+    color:#e8aa00;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    margin-bottom:14px;
+}
+
+.rating span{
+
+    color:#d28d00;
+
+    font-size:16px;
+
+    margin-left:5px;
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.feature{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    margin:9px 0;
+
+    color:#444;
+
+    font-size:14px;
+}
+
+.check{
+
+    width:25px;
+    height:25px;
+
+    border-radius:5px;
+
+    background:#72dc12;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-weight:900;
+
+    flex-shrink:0;
+}
+
+
+/* =========================
+   IMPORTANCE
+========================= */
+
+.section-title{
+
+    margin:20px 2px 10px;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ec1680,
+        #9229cf
+    );
+
+    color:white;
+
+    font-size:13px;
+
+    font-weight:900;
+}
+
+.importance-card{
+
+    background:#ffffff;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    margin-bottom:8px;
+
+    border:1px solid #f0d7e6;
+
+    box-shadow:
+        0 5px 18px #b9216315;
+}
+
+.importance-card h3{
+
+    color:#c21a72;
+
+    font-size:12px;
+
+    margin-bottom:5px;
+}
+
+.importance-card p{
+
+    color:#555;
+
+    font-size:9px;
+
+    line-height:1.6;
+}
+
+
+/* =========================
+   PRICE
+========================= */
+
+.price-card{
+
+    background:#ffffff;
+
+    border-radius:16px;
+
+    padding:18px;
+
+    margin-top:18px;
+
+    border:1px solid #f0d7e6;
+
+    box-shadow:
+        0 8px 25px #b9216320;
+}
+
+.price-label{
+
+    font-size:9px;
+
+    color:#777;
+
+    text-transform:uppercase;
+
+    font-weight:bold;
+}
+
+.price{
+
+    margin-top:5px;
+
+    font-size:36px;
+
+    font-weight:1000;
+
+    color:#d3136b;
+}
+
+.old-price{
+
+    color:#999;
+
+    text-decoration:line-through;
+
+    font-size:18px;
+
+    margin-left:8px;
+}
+
+.offer{
+
+    margin-top:5px;
+
+    color:#168c3b;
+
+    font-size:9px;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   BUY BUTTON
+========================= */
+
+.buy-btn{
+
+    width:100%;
+
+    height:52px;
+
+    margin-top:15px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ec1680,
+        #9325c9
+    );
+
+    color:white;
+
+    font-size:14px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 22px #d81b8250;
+
+    transition:.2s;
+}
+
+.buy-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 12px 28px #d81b8270;
+}
+
+
+/* =========================
+   PAYMENT POPUP
+========================= */
+
+.payment-screen{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:#050914ee;
+
+    z-index:500;
+
+    padding:15px;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.payment-box{
+
+    width:100%;
+
+    max-width:420px;
+
+    background:#10182d;
+
+    color:white;
+
+    border:1px solid #394d76;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    text-align:center;
+
+    box-shadow:
+        0 20px 60px #00000099;
+}
+
+.payment-icon{
+
+    font-size:45px;
+
+    margin-bottom:8px;
+}
+
+.payment-box h2{
+
+    font-size:17px;
+
+    margin-bottom:8px;
+}
+
+.payment-box p{
+
+    color:#9ba8c0;
+
+    font-size:8px;
+
+    line-height:1.6;
+}
+
+.amount{
+
+    font-size:32px;
+
+    font-weight:1000;
+
+    margin:14px 0;
+}
+
+.upi-id{
+
+    background:#182743;
+
+    border:1px solid #344a70;
+
+    padding:11px;
+
+    border-radius:8px;
+
+    font-size:10px;
+
+    margin-bottom:10px;
+}
+
+.pay-upi{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:100%;
+
+    height:47px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ec1680,
+        #9325c9
+    );
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:8px;
+
+    font-size:9px;
+
+    font-weight:900;
+
+    margin-bottom:9px;
+}
+
+.completed-btn{
+
+    width:100%;
+
+    height:43px;
+
+    border:1px solid #394d76;
+
+    background:#192945;
+
+    color:white;
+
+    border-radius:8px;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.cancel-btn{
+
+    margin-top:10px;
+
+    border:0;
+
+    background:none;
+
+    color:#8492aa;
+
+    font-size:8px;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   SUCCESS
+========================= */
+
+.success-screen{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:#050914f5;
+
+    z-index:600;
+
+    padding:15px;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.success-box{
+
+    width:100%;
+
+    max-width:420px;
+
+    background:#111d32;
+
+    color:white;
+
+    border:1px solid #394d76;
+
+    border-radius:15px;
+
+    padding:28px 18px;
+
+    text-align:center;
+}
+
+.success-icon{
+
+    width:68px;
+
+    height:68px;
+
+    border-radius:50%;
+
+    margin:0 auto 13px;
+
+    background:#1c9e43;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:32px;
+}
+
+.success-box h2{
+
+    font-size:20px;
+
+    margin-bottom:8px;
+}
+
+.success-box p{
+
+    color:#9ba8c0;
+
+    font-size:9px;
+
+    line-height:1.7;
+
+    margin-bottom:16px;
+}
+
+.study-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:100%;
+
+    height:47px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ec1680,
+        #9325c9
+    );
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:9px;
+
+    font-size:10px;
+
+    font-weight:900;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+
+    text-align:center;
+
+    margin-top:25px;
+
+    color:#888;
+
+    font-size:8px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:430px){
+
+    .batch-title{
+        font-size:25px;
+    }
+
+    .feature{
+        font-size:13px;
+    }
+
+    .price{
+        font-size:32px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+<div class="logo">
+STUDY<span>BYPKY</span>
+</div>
+
+<div class="badge">
+🩺 NEET PRO
+</div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- BATCH IMAGE -->
+
+<section class="batch-image">
+
+<img
+src="sc.jpeg"
+alt="NEET Pro Batch">
+
+</section>
+
+
+
+<!-- BATCH INFORMATION -->
+
+<section class="batch-card">
+
+<div class="class-badge">
+NEET
+</div>
+
+<h1 class="batch-title">
+NEET Pro Batch
+</h1>
+
+<div class="rating">
+★★★★★
+<span>4.9</span>
+</div>
+
+
+<div class="feature">
+<div class="check">✓</div>
+Physics Preparation
+</div>
+
+<div class="feature">
+<div class="check">✓</div>
+Chemistry Preparation
+</div>
+
+<div class="feature">
+<div class="check">✓</div>
+Biology NCERT Focus
+</div>
+
+<div class="feature">
+<div class="check">✓</div>
+Daily Practice
+</div>
+
+<div class="feature">
+<div class="check">✓</div>
+Full Tests
+</div>
+
+</section>
+
+
+
+<!-- IMPORTANCE -->
+
+<div class="section-title">
+🎯 IMPORTANCE OF NEET PRO BATCH
+</div>
+
+
+<div class="importance-card">
+
+<h3>
+📚 Complete NEET Preparation
+</h3>
+
+<p>
+A structured learning program can help students organize
+Physics, Chemistry and Biology preparation in one place.
+</p>
+
+</div>
+
+
+<div class="importance-card">
+
+<h3>
+🧬 Strong Biology & NCERT Focus
+</h3>
+
+<p>
+NCERT-focused Biology learning helps students revise
+important concepts, facts, diagrams and terminology.
+</p>
+
+</div>
+
+
+<div class="importance-card">
+
+<h3>
+⚛️ Physics Concept Building
+</h3>
+
+<p>
+Concept-focused lessons and regular practice can help
+students strengthen their understanding of Physics topics.
+</p>
+
+</div>
+
+
+<div class="importance-card">
+
+<h3>
+⚗️ Chemistry Preparation
+</h3>
+
+<p>
+Organized Chemistry study can cover important concepts,
+reactions, formulas and problem-solving practice.
+</p>
+
+</div>
+
+
+<div class="importance-card">
+
+<h3>
+📝 Daily Practice
+</h3>
+
+<p>
+Regular question practice helps students identify topics
+that need more revision and maintain consistent preparation.
+</p>
+
+</div>
+
+
+<div class="importance-card">
+
+<h3>
+📊 Full Test Practice
+</h3>
+
+<p>
+Mock tests provide an opportunity to practice under
+exam-like conditions and review performance.
+</p>
+
+</div>
+
+
+
+<!-- 10 BENEFITS -->
+
+<div class="section-title">
+🔥 10 BENEFITS OF NEET PRO BATCH
+</div>
+
+
+<div class="importance-card">
+
+<h3>01. Complete NEET Subjects</h3>
+
+<p>
+Physics, Chemistry and Biology preparation resources
+organized together.
+</p>
+
+</div>
+
+
+<div class="importance-card">
+
+<h3>02. NCERT-Based Learning</h3>
+
+<p>
+Focus on important NCERT concepts and revision points.
+</p>
+
+</div>
+
+
+<div class="importance-card">
+
+<h3>03. Chapter-wise Preparation</h3>
+
+<p>
+Study subjects in a structured chapter-wise sequence.
+</p>
+
+</div>
+
+
+<div class="importance-card">
+
+<h3>04. Regular Practice</h3>
+
+<p>
+Practice questions regularly to strengthen understanding.
+</p>
+
+</div>
+
+
+<div class="importance-card">
+
+<h3>05. Revision Support</h3>
+
+<p>
+Use revision resources to revisit important topics.
+</p>
+
+</div>
+
+
+<div class="importance-card">
+
+<h3>06. Test Practice</h3>
+
+<p>
+Attempt tests to evaluate your preparation.
+</p>
+
+</div>
+
+
+<div class="importance-card">
+
+<h3>07. Performance Review</h3>
+
+<p>
+Review mistakes and identify areas that need more practice.
+</p>
+
+</div>
+
+
+<div class="importance-card">
+
+<h3>08. Better Time Management</h3>
+
+<p>
+A structured study schedule can help you manage preparation
+more effectively.
+</p>
+
+</div>
+
+
+<div class="importance-card">
+
+<h3>09. Consistent Preparation</h3>
+
+<p>
+Regular learning and practice can help maintain study
+consistency.
+</p>
+
+</div>
+
+
+<div class="importance-card">
+
+<h3>10. NEET-Focused Resources</h3>
+
+<p>
+Resources are organized around the needs of NEET preparation.
+</p>
+
+</div>
+
+
+
+<!-- PRICE -->
+
+<section class="price-card">
+
+<div class="price-label">
+NEET PRO BATCH FEE
+</div>
+
+<div>
+
+<span class="price">
+₹3,999
+</span>
+
+<span class="old-price">
+₹7,999
+</span>
+
+</div>
+
+<div class="offer">
+✓ Limited-time displayed offer
+</div>
+
+<button
+class="buy-btn"
+onclick="openPayment()">
+
+🚀 BUY NOW — ₹3,999
+
+</button>
+
+</section>
+
+
+
+<footer class="footer">
+
+© 2026 STUDYBYPKY • NEET PRO BATCH
+
+</footer>
+
+</main>
+
+
+
+<!-- PAYMENT POPUP -->
+
+<div
+class="payment-screen"
+id="paymentScreen">
+
+<div class="payment-box">
+
+<div class="payment-icon">
+💳
+</div>
+
+<h2>
+NEET PRO BATCH
+</h2>
+
+<p>
+Amount to Pay
+</p>
+
+<div class="amount">
+₹3,999
+</div>
+
+<div class="upi-id">
+UPI ID:
+<strong>7534976027@fam</strong>
+</div>
+
+
+<a
+id="upiButton"
+class="pay-upi"
+href="#">
+
+📱 PAY ₹3,999 USING UPI
+
+</a>
+
+
+<p style="margin:8px 0 12px;">
+
+After completing payment, return here and
+tap the confirmation button.
+
+</p>
+
+
+<button
+class="completed-btn"
+onclick="paymentCompleted()">
+
+✅ I HAVE COMPLETED PAYMENT
+
+</button>
+
+
+<button
+class="cancel-btn"
+onclick="closePayment()">
+
+Cancel
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- SUCCESS -->
+
+<div
+class="success-screen"
+id="successScreen">
+
+<div class="success-box">
+
+<div class="success-icon">
+✓
+</div>
+
+<h2>
+Congratulations!
+</h2>
+
+<p>
+
+You are now part of
+<strong>NEET PRO BATCH</strong>.
+
+<br><br>
+
+Your NEET preparation journey starts now.
+
+</p>
+
+
+<a
+href="NEET-Pro-Batch.html"
+class="study-btn">
+
+📚 START LEARNING
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   PAYMENT DETAILS
+========================= */
+
+const UPI_ID =
+"7534976027@fam";
+
+const PRICE =
+"3999";
+
+const MERCHANT =
+"STUDYBYPKY NEET PRO BATCH";
+
+
+/* =========================
+   OPEN PAYMENT
+========================= */
+
+function openPayment(){
+
+    const upiLink =
+
+    "upi://pay" +
+
+    "?pa=" +
+    encodeURIComponent(UPI_ID) +
+
+    "&pn=" +
+    encodeURIComponent(MERCHANT) +
+
+    "&am=" +
+    PRICE +
+
+    "&cu=INR" +
+
+    "&tn=" +
+    encodeURIComponent(
+        "NEET PRO BATCH STUDYBYPKY"
+    );
+
+
+    document.getElementById(
+        "upiButton"
+    ).href = upiLink;
+
+
+    document.getElementById(
+        "paymentScreen"
+    ).style.display = "flex";
+
+}
+
+
+/* =========================
+   CLOSE PAYMENT
+========================= */
+
+function closePayment(){
+
+    document.getElementById(
+        "paymentScreen"
+    ).style.display = "none";
+
+}
+
+
+/* =========================
+   PAYMENT COMPLETED
+========================= */
+
+function paymentCompleted(){
+
+    /*
+      This only displays the success screen.
+      It does NOT verify a real UPI payment.
+
+      For automatic verification,
+      use a payment gateway/backend.
+    */
+
+    document.getElementById(
+        "paymentScreen"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "successScreen"
+    ).style.display = "flex";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

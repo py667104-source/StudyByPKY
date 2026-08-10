@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>STUDYBYPKY | PHOENIX BATCH</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#fff1f8;
+    color:#171717;
+    min-height:100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    height:60px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #e91e63,
+        #9c27b0
+    );
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 16px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    box-shadow:0 3px 15px #0002;
+}
+
+.logo{
+    font-size:15px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#ffe082;
+}
+
+.badge{
+    background:#ffffff22;
+    border:1px solid #ffffff55;
+
+    padding:7px 10px;
+
+    border-radius:20px;
+
+    font-size:8px;
+    font-weight:bold;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+
+    width:100%;
+    max-width:850px;
+
+    margin:auto;
+
+    padding:12px 10px 50px;
+}
+
+
+/* =========================
+   BATCH IMAGE
+========================= */
+
+.batch-image{
+
+    width:100%;
+
+    background:white;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 10px 35px #d81b6050;
+
+    margin-bottom:14px;
+}
+
+.batch-image img{
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+}
+
+
+/* =========================
+   TITLE CARD
+========================= */
+
+.title-card{
+
+    background:white;
+
+    border-radius:14px;
+
+    padding:18px;
+
+    margin-bottom:12px;
+
+    box-shadow:
+        0 5px 20px #d81b6020;
+}
+
+.class-badge{
+
+    display:inline-block;
+
+    padding:7px 13px;
+
+    border-radius:20px;
+
+    background:#fde4f0;
+
+    color:#b51d64;
+
+    font-size:10px;
+
+    font-weight:900;
+
+    margin-bottom:10px;
+}
+
+.title-card h1{
+
+    font-size:27px;
+
+    margin-bottom:7px;
+
+    color:#151515;
+}
+
+.subtitle{
+
+    font-size:9px;
+
+    color:#666;
+
+    line-height:1.6;
+}
+
+
+/* =========================
+   RATING
+========================= */
+
+.rating{
+
+    margin-top:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    font-size:12px;
+}
+
+.stars{
+
+    color:#f5b400;
+
+    letter-spacing:1px;
+}
+
+.rating-number{
+
+    color:#a86b00;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   IMPORTANCE
+========================= */
+
+.section-title{
+
+    margin:18px 2px 9px;
+
+    padding-left:10px;
+
+    height:34px;
+
+    display:flex;
+
+    align-items:center;
+
+    border-left:4px solid #e91e63;
+
+    background:white;
+
+    border-radius:5px;
+
+    font-size:11px;
+
+    font-weight:900;
+
+    box-shadow:0 3px 12px #0000000d;
+}
+
+
+/* =========================
+   IMPORTANCE BOX
+========================= */
+
+.importance{
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #fff,
+        #fff0f8
+    );
+
+    border:1px solid #f3b5d1;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    box-shadow:0 4px 15px #d81b6015;
+}
+
+.importance h3{
+
+    color:#d41463;
+
+    font-size:12px;
+
+    margin-bottom:8px;
+}
+
+.importance p{
+
+    color:#555;
+
+    font-size:9px;
+
+    line-height:1.7;
+}
+
+
+/* =========================
+   BENEFITS
+========================= */
+
+.benefit{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    background:white;
+
+    border:1px solid #f0d3e0;
+
+    border-radius:10px;
+
+    padding:11px;
+
+    margin-bottom:7px;
+
+    box-shadow:0 3px 10px #00000008;
+}
+
+.check{
+
+    width:28px;
+    height:28px;
+
+    flex-shrink:0;
+
+    border-radius:7px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:#eaffdc;
+
+    color:#38a900;
+
+    font-size:15px;
+
+    font-weight:bold;
+}
+
+.benefit-text{
+
+    font-size:9px;
+
+    color:#555;
+
+    line-height:1.5;
+}
+
+.benefit-text strong{
+
+    color:#222;
+
+    font-size:10px;
+}
+
+
+/* =========================
+   PRICE CARD
+========================= */
+
+.price-card{
+
+    margin-top:18px;
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:18px;
+
+    text-align:center;
+
+    box-shadow:
+        0 7px 25px #d81b6030;
+
+    border:1px solid #f1d0df;
+}
+
+.price-label{
+
+    font-size:9px;
+
+    color:#777;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+.price-row{
+
+    margin-top:6px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+}
+
+.current-price{
+
+    color:#d41463;
+
+    font-size:35px;
+
+    font-weight:1000;
+}
+
+.old-price{
+
+    color:#888;
+
+    font-size:17px;
+
+    text-decoration:line-through;
+}
+
+.discount{
+
+    display:inline-block;
+
+    margin-top:6px;
+
+    background:#e8f9dc;
+
+    color:#279100;
+
+    padding:5px 9px;
+
+    border-radius:15px;
+
+    font-size:8px;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   BUY BUTTON
+========================= */
+
+.buy-btn{
+
+    width:100%;
+
+    height:52px;
+
+    margin-top:14px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #e91e63,
+        #9c27b0
+    );
+
+    color:white;
+
+    font-size:14px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 20px #d81b6050;
+
+    transition:.2s;
+}
+
+.buy-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 12px 25px #d81b6060;
+}
+
+
+/* =========================
+   PAYMENT SCREEN
+========================= */
+
+.payment-screen{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:#170513ee;
+
+    z-index:500;
+
+    padding:15px;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.payment-box{
+
+    width:100%;
+
+    max-width:420px;
+
+    background:white;
+
+    border-radius:16px;
+
+    padding:20px;
+
+    text-align:center;
+
+    box-shadow:
+        0 20px 60px #0008;
+}
+
+.payment-icon{
+
+    font-size:42px;
+
+    margin-bottom:8px;
+}
+
+.payment-box h2{
+
+    font-size:18px;
+
+    color:#222;
+
+    margin-bottom:7px;
+}
+
+.payment-box p{
+
+    color:#777;
+
+    font-size:9px;
+
+    line-height:1.6;
+
+    margin-bottom:12px;
+}
+
+.amount{
+
+    color:#d41463;
+
+    font-size:32px;
+
+    font-weight:1000;
+
+    margin:10px 0 15px;
+}
+
+.upi-id{
+
+    background:#f8edf4;
+
+    border:1px solid #ecc6d9;
+
+    padding:11px;
+
+    border-radius:8px;
+
+    font-size:10px;
+
+    color:#555;
+
+    margin-bottom:10px;
+}
+
+.pay-upi{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:100%;
+
+    height:46px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #e91e63,
+        #9c27b0
+    );
+
+    color:white;
+
+    border-radius:9px;
+
+    text-decoration:none;
+
+    font-size:10px;
+
+    font-weight:900;
+
+    margin-bottom:8px;
+}
+
+.completed-btn{
+
+    width:100%;
+
+    height:43px;
+
+    border:1px solid #e3c5d5;
+
+    background:#fff5fa;
+
+    color:#9c2160;
+
+    border-radius:9px;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.cancel-btn{
+
+    margin-top:10px;
+
+    border:0;
+
+    background:none;
+
+    color:#888;
+
+    font-size:8px;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   SUCCESS
+========================= */
+
+.success-screen{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:#170513f2;
+
+    z-index:600;
+
+    padding:15px;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.success-box{
+
+    width:100%;
+
+    max-width:420px;
+
+    background:white;
+
+    border-radius:16px;
+
+    padding:25px 18px;
+
+    text-align:center;
+}
+
+.success-icon{
+
+    width:68px;
+
+    height:68px;
+
+    border-radius:50%;
+
+    margin:0 auto 12px;
+
+    background:#e9fbdc;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:32px;
+}
+
+.success-box h2{
+
+    color:#222;
+
+    font-size:20px;
+
+    margin-bottom:8px;
+}
+
+.success-box p{
+
+    color:#777;
+
+    font-size:9px;
+
+    line-height:1.7;
+
+    margin-bottom:15px;
+}
+
+.study-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:100%;
+
+    height:46px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #e91e63,
+        #9c27b0
+    );
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:9px;
+
+    font-size:10px;
+
+    font-weight:900;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+
+    text-align:center;
+
+    color:#999;
+
+    font-size:7px;
+
+    margin-top:25px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:430px){
+
+    .title-card h1{
+        font-size:24px;
+    }
+
+    .current-price{
+        font-size:31px;
+    }
+
+    .old-price{
+        font-size:15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+<div class="logo">
+STUDY<span>BYPKY</span>
+</div>
+
+<div class="badge">
+🔥 PHOENIX BATCH
+</div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- BATCH IMAGE -->
+
+<section class="batch-image">
+
+<img
+src="sc.jpeg"
+alt="Phoenix Batch">
+
+</section>
+
+
+
+<!-- TITLE -->
+
+<section class="title-card">
+
+<div class="class-badge">
+CLASS 12
+</div>
+
+<h1>
+⚡ Phoenix Batch
+</h1>
+
+<div class="subtitle">
+
+Complete Class 12 CBSE preparation with
+NCERT-focused learning, important questions,
+revision classes and mock tests.
+
+</div>
+
+
+<div class="rating">
+
+<span class="stars">
+★★★★★
+</span>
+
+<span class="rating-number">
+4.8
+</span>
+
+</div>
+
+</section>
+
+
+
+<!-- IMPORTANCE -->
+
+<div class="section-title">
+🔥 WHY PHOENIX BATCH IS IMPORTANT FOR CLASS 12
+</div>
+
+
+<div class="importance">
+
+<h3>
+📚 Complete Class 12 Preparation
+</h3>
+
+<p>
+
+Class 12 is an important academic year because
+your board examinations require systematic
+preparation across all subjects.
+
+The Phoenix Batch is designed to provide a
+structured learning path with NCERT-focused
+content, important questions, revision support
+and mock-test practice.
+
+</p>
+
+</div>
+
+
+
+<!-- BENEFITS -->
+
+<div class="section-title">
+🎯 PHOENIX BATCH FEATURES
+</div>
+
+
+
+<div class="benefit">
+
+<div class="check">
+✓
+</div>
+
+<div class="benefit-text">
+
+<strong>Complete CBSE Preparation</strong><br>
+
+Structured resources to support Class 12 CBSE
+board preparation.
+
+</div>
+
+</div>
+
+
+
+<div class="benefit">
+
+<div class="check">
+✓
+</div>
+
+<div class="benefit-text">
+
+<strong>NCERT-Focused Learning</strong><br>
+
+Focus on concepts and topics based on NCERT
+study material.
+
+</div>
+
+</div>
+
+
+
+<div class="benefit">
+
+<div class="check">
+✓
+</div>
+
+<div class="benefit-text">
+
+<strong>Important Questions</strong><br>
+
+Practice important questions for better exam
+preparation.
+
+</div>
+
+</div>
+
+
+
+<div class="benefit">
+
+<div class="check">
+✓
+</div>
+
+<div class="benefit-text">
+
+<strong>Revision Classes</strong><br>
+
+Use revision-focused lessons to review important
+topics.
+
+</div>
+
+</div>
+
+
+
+<div class="benefit">
+
+<div class="check">
+✓
+</div>
+
+<div class="benefit-text">
+
+<strong>Mock Tests</strong><br>
+
+Practice through mock tests and assess your
+exam preparation.
+
+</div>
+
+</div>
+
+
+
+<div class="benefit">
+
+<div class="check">
+✓
+</div>
+
+<div class="benefit-text">
+
+<strong>Chapter-wise Preparation</strong><br>
+
+Study topics in an organized chapter-wise format.
+
+</div>
+
+</div>
+
+
+
+<div class="benefit">
+
+<div class="check">
+✓
+</div>
+
+<div class="benefit-text">
+
+<strong>Exam-Oriented Practice</strong><br>
+
+Prepare with questions and revision designed
+for examination practice.
+
+</div>
+
+</div>
+
+
+
+<div class="benefit">
+
+<div class="check">
+✓
+</div>
+
+<div class="benefit-text">
+
+<strong>Better Revision Planning</strong><br>
+
+Follow a structured approach to complete and
+revise your syllabus.
+
+</div>
+
+</div>
+
+
+
+<!-- PRICE -->
+
+<section class="price-card">
+
+<div class="price-label">
+PHOENIX BATCH FEE
+</div>
+
+<div class="price-row">
+
+<div class="current-price">
+₹2,999
+</div>
+
+<div class="old-price">
+₹5,999
+</div>
+
+</div>
+
+<div class="discount">
+🔥 LIMITED-TIME OFFER
+</div>
+
+
+<button
+class="buy-btn"
+onclick="openPayment()">
+
+🚀 BUY NOW — ₹2,999
+
+</button>
+
+</section>
+
+
+
+<footer class="footer">
+
+© 2026 STUDYBYPKY • PHOENIX BATCH • CLASS 12
+
+</footer>
+
+</main>
+
+
+
+<!-- PAYMENT POPUP -->
+
+<div
+class="payment-screen"
+id="paymentScreen">
+
+<div class="payment-box">
+
+<div class="payment-icon">
+💳
+</div>
+
+<h2>
+PHOENIX BATCH
+</h2>
+
+<p>
+Class 12 CBSE Phoenix Batch
+</p>
+
+<div class="amount">
+₹2,999
+</div>
+
+<div class="upi-id">
+
+UPI ID:
+<strong>7534976027@fam</strong>
+
+</div>
+
+
+<a
+id="upiButton"
+class="pay-upi"
+href="#">
+
+📱 PAY ₹2,999 USING UPI
+
+</a>
+
+
+<p style="font-size:8px">
+
+After completing the payment,
+return here and tap the confirmation button.
+
+</p>
+
+
+<button
+class="completed-btn"
+onclick="paymentCompleted()">
+
+✅ I HAVE COMPLETED PAYMENT
+
+</button>
+
+
+<button
+class="cancel-btn"
+onclick="closePayment()">
+
+Cancel
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- SUCCESS SCREEN -->
+
+<div
+class="success-screen"
+id="successScreen">
+
+<div class="success-box">
+
+<div class="success-icon">
+🎉
+</div>
+
+<h2>
+Congratulations!
+</h2>
+
+<p>
+
+You are now part of the
+<strong>STUDYBYPKY Phoenix Batch</strong>.
+
+<br><br>
+
+Welcome to your Class 12 preparation journey!
+
+</p>
+
+
+<a
+href="Phoenix-Batch-Study.html"
+class="study-btn">
+
+📚 STUDY NOW
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   PAYMENT DETAILS
+========================= */
+
+const UPI_ID =
+"7534976027@fam";
+
+const PRICE =
+"2999";
+
+const MERCHANT =
+"STUDYBYPKY PHOENIX BATCH";
+
+
+/* =========================
+   OPEN PAYMENT
+========================= */
+
+function openPayment(){
+
+    const upiLink =
+
+    "upi://pay" +
+
+    "?pa=" +
+    encodeURIComponent(UPI_ID) +
+
+    "&pn=" +
+    encodeURIComponent(MERCHANT) +
+
+    "&am=" +
+    PRICE +
+
+    "&cu=INR" +
+
+    "&tn=" +
+    encodeURIComponent(
+        "PHOENIX BATCH CLASS 12"
+    );
+
+
+    document.getElementById(
+        "upiButton"
+    ).href = upiLink;
+
+
+    document.getElementById(
+        "paymentScreen"
+    ).style.display = "flex";
+
+}
+
+
+/* =========================
+   CLOSE PAYMENT
+========================= */
+
+function closePayment(){
+
+    document.getElementById(
+        "paymentScreen"
+    ).style.display = "none";
+
+}
+
+
+/* =========================
+   PAYMENT COMPLETED
+========================= */
+
+function paymentCompleted(){
+
+    /*
+      This button does not verify
+      an actual UPI transaction.
+      It only displays the next screen.
+
+      For real payment verification,
+      use a payment gateway/backend.
+    */
+
+    document.getElementById(
+        "paymentScreen"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "successScreen"
+    ).style.display = "flex";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
