@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>STUDYBYPKY | Foundation Batch</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#fff1f8;
+    color:#171717;
+    min-height:100vh;
+}
+
+.header{
+    height:60px;
+    background:#0b1024;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 15px;
+    position:sticky;
+    top:0;
+    z-index:20;
+}
+
+.logo{
+    font-size:15px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#a044ff;
+}
+
+.badge{
+    background:#8d24c8;
+    padding:8px 12px;
+    border-radius:20px;
+    font-size:8px;
+    font-weight:900;
+}
+
+.container{
+    max-width:850px;
+    margin:auto;
+    padding:12px 10px 50px;
+}
+
+
+/* BATCH IMAGE */
+
+.hero{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 35px #d51d7c30;
+    margin-bottom:14px;
+}
+
+.hero img{
+    width:100%;
+    display:block;
+}
+
+
+/* BATCH CARD */
+
+.card,
+.info,
+.price-card{
+    background:#fff;
+    border:1px solid #efd9e7;
+    border-radius:16px;
+    padding:18px;
+    margin-bottom:12px;
+    box-shadow:0 7px 25px #c91e7020;
+}
+
+.category{
+    display:inline-block;
+    background:#ffe5f0;
+    color:#9e2860;
+    padding:8px 13px;
+    border-radius:10px;
+    font-size:11px;
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+h1{
+    font-size:28px;
+    line-height:1.2;
+    margin-bottom:10px;
+}
+
+.rating{
+    color:#e5a700;
+    font-size:21px;
+    margin-bottom:15px;
+}
+
+.rating span{
+    font-size:16px;
+    margin-left:5px;
+}
+
+.feature{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    margin:10px 0;
+    color:#444;
+    font-size:14px;
+}
+
+.check{
+    width:27px;
+    height:27px;
+    background:#68d518;
+    color:#fff;
+    border-radius:5px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:900;
+    flex-shrink:0;
+}
+
+
+/* SECTION TITLE */
+
+.section-title{
+    margin:20px 2px 10px;
+    padding:12px;
+    border-radius:9px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ed167d,
+        #9225c9
+    );
+
+    color:#fff;
+
+    font-size:13px;
+    font-weight:900;
+}
+
+
+/* INFORMATION */
+
+.info h3{
+    color:#c01769;
+    font-size:12px;
+    margin-bottom:6px;
+}
+
+.info p{
+    color:#555;
+    font-size:9px;
+    line-height:1.7;
+}
+
+
+/* PRICE */
+
+.price-card{
+    text-align:center;
+}
+
+.price-label{
+    font-size:9px;
+    color:#777;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+.price{
+    font-size:40px;
+    font-weight:1000;
+    color:#d3136b;
+    margin-top:5px;
+}
+
+.old-price{
+    font-size:18px;
+    color:#999;
+    text-decoration:line-through;
+    margin-left:8px;
+}
+
+.offer{
+    color:#159143;
+    font-size:9px;
+    font-weight:bold;
+    margin-top:4px;
+}
+
+
+/* BUY BUTTON */
+
+.buy-btn,
+.pay-btn{
+
+    width:100%;
+    height:52px;
+
+    margin-top:15px;
+
+    border:0;
+    border-radius:10px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ed167d,
+        #9225c9
+    );
+
+    color:#fff;
+
+    font-size:14px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 8px 22px #d51b8050;
+}
+
+.buy-btn:active,
+.pay-btn:active{
+    transform:scale(.99);
+}
+
+
+/* PAYMENT POPUP */
+
+.payment,
+.success{
+
+    display:none;
+
+    position:fixed;
+    inset:0;
+
+    background:#050914ee;
+
+    z-index:100;
+
+    padding:15px;
+
+    align-items:center;
+    justify-content:center;
+}
+
+.box{
+
+    width:100%;
+    max-width:420px;
+
+    background:#111c31;
+    color:#fff;
+
+    border-radius:15px;
+
+    padding:22px;
+
+    text-align:center;
+
+    box-shadow:
+    0 20px 60px #0008;
+}
+
+.box h2{
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+.box p{
+    color:#9ba8c0;
+    font-size:9px;
+    line-height:1.7;
+}
+
+.amount{
+    font-size:32px;
+    font-weight:1000;
+    margin:14px 0;
+}
+
+.upi{
+
+    background:#192743;
+
+    border:1px solid #394d76;
+
+    padding:11px;
+
+    border-radius:8px;
+
+    font-size:10px;
+
+    margin-bottom:10px;
+}
+
+
+/* PAYMENT COMPLETED */
+
+.done{
+
+    width:100%;
+    height:43px;
+
+    margin-top:9px;
+
+    border:1px solid #394d76;
+
+    background:#192945;
+
+    color:#fff;
+
+    border-radius:8px;
+
+    font-size:8px;
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* CANCEL */
+
+.cancel{
+
+    margin-top:10px;
+
+    border:0;
+
+    background:none;
+
+    color:#8794aa;
+
+    font-size:8px;
+
+    cursor:pointer;
+}
+
+
+/* SUCCESS */
+
+.success-icon{
+
+    width:66px;
+    height:66px;
+
+    border-radius:50%;
+
+    background:#1d9c43;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    margin:0 auto 12px;
+
+    font-size:31px;
+}
+
+.study{
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    width:100%;
+    height:47px;
+
+    margin-top:15px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ed167d,
+        #9225c9
+    );
+
+    color:#fff;
+
+    text-decoration:none;
+
+    border-radius:9px;
+
+    font-size:10px;
+    font-weight:900;
+}
+
+
+/* FOOTER */
+
+.footer{
+
+    text-align:center;
+
+    color:#888;
+
+    font-size:8px;
+
+    margin-top:25px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:430px){
+
+    h1{
+        font-size:24px;
+    }
+
+    .feature{
+        font-size:13px;
+    }
+
+    .price{
+        font-size:34px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+<div class="logo">
+
+STUDY<span>BYPKY</span>
+
+</div>
+
+<div class="badge">
+
+📚 FOUNDATION BATCH
+
+</div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- BATCH IMAGE -->
+
+<section class="hero">
+
+<img
+src="foundation.jpg"
+alt="Foundation Batch">
+
+</section>
+
+
+
+<!-- BATCH DETAILS -->
+
+<section class="card">
+
+<div class="category">
+
+CLASS 9
+
+</div>
+
+
+<h1>
+
+Foundation Batch
+
+</h1>
+
+
+<div class="rating">
+
+★★★★★
+
+<span>4.8</span>
+
+</div>
+
+
+<div class="feature">
+
+<div class="check">✓</div>
+
+<strong>
+Strong Basics
+</strong>
+
+</div>
+
+
+<div class="feature">
+
+<div class="check">✓</div>
+
+<strong>
+NCERT Coverage
+</strong>
+
+</div>
+
+
+<div class="feature">
+
+<div class="check">✓</div>
+
+<strong>
+Practice Worksheets
+</strong>
+
+</div>
+
+
+<div class="feature">
+
+<div class="check">✓</div>
+
+<strong>
+Doubt Support
+</strong>
+
+</div>
+
+
+<div class="feature">
+
+<div class="check">✓</div>
+
+<strong>
+Regular Tests
+</strong>
+
+</div>
+
+</section>
+
+
+
+<!-- IMPORTANCE -->
+
+<div class="section-title">
+
+🎯 WHY FOUNDATION BATCH IS IMPORTANT
+
+</div>
+
+
+<div class="info">
+
+<h3>
+
+📚 Build Strong Fundamentals
+
+</h3>
+
+<p>
+
+Class 9 concepts form an important base for
+later school-level learning. A structured
+foundation course helps students study
+concepts systematically.
+
+</p>
+
+</div>
+
+
+
+<div class="info">
+
+<h3>
+
+📖 NCERT-Focused Learning
+
+</h3>
+
+<p>
+
+Focused NCERT coverage helps students stay
+connected with their core textbook concepts
+and exercises.
+
+</p>
+
+</div>
+
+
+
+<div class="info">
+
+<h3>
+
+✍️ Regular Practice
+
+</h3>
+
+<p>
+
+Worksheets and practice questions give
+students opportunities to apply concepts
+instead of only reading them.
+
+</p>
+
+</div>
+
+
+
+<div class="info">
+
+<h3>
+
+📝 Test-Based Revision
+
+</h3>
+
+<p>
+
+Regular tests can help students review
+preparation, identify gaps and plan
+further revision.
+
+</p>
+
+</div>
+
+
+
+<div class="info">
+
+<h3>
+
+🚀 Future Preparation
+
+</h3>
+
+<p>
+
+A clear understanding of foundational topics
+can make future academic chapters easier
+to approach.
+
+</p>
+
+</div>
+
+
+
+<!-- 10 BENEFITS -->
+
+<div class="section-title">
+
+🔥 10 BENEFITS OF FOUNDATION BATCH
+
+</div>
+
+
+
+<div class="info">
+
+<h3>
+01. Strong Conceptual Base
+</h3>
+
+<p>
+Learn important concepts from the beginning
+in a structured way.
+</p>
+
+</div>
+
+
+
+<div class="info">
+
+<h3>
+02. NCERT Coverage
+</h3>
+
+<p>
+Organized learning around important
+NCERT topics.
+</p>
+
+</div>
+
+
+
+<div class="info">
+
+<h3>
+03. Practice Worksheets
+</h3>
+
+<p>
+Use worksheets for regular written
+and conceptual practice.
+</p>
+
+</div>
+
+
+
+<div class="info">
+
+<h3>
+04. Doubt Support
+</h3>
+
+<p>
+Get a structured place to review
+and resolve learning doubts.
+</p>
+
+</div>
+
+
+
+<div class="info">
+
+<h3>
+05. Regular Tests
+</h3>
+
+<p>
+Test preparation regularly and
+review your progress.
+</p>
+
+</div>
+
+
+
+<div class="info">
+
+<h3>
+06. Chapter-wise Learning
+</h3>
+
+<p>
+Study topics in an organized
+chapter-by-chapter sequence.
+</p>
+
+</div>
+
+
+
+<div class="info">
+
+<h3>
+07. Revision Support
+</h3>
+
+<p>
+Use revision resources to revisit
+important concepts.
+</p>
+
+</div>
+
+
+
+<div class="info">
+
+<h3>
+08. Practice Routine
+</h3>
+
+<p>
+Build a consistent study and
+question-practice routine.
+</p>
+
+</div>
+
+
+
+<div class="info">
+
+<h3>
+09. Identify Weak Topics
+</h3>
+
+<p>
+Use practice and tests to find
+topics that need more attention.
+</p>
+
+</div>
+
+
+
+<div class="info">
+
+<h3>
+10. Future Preparation
+</h3>
+
+<p>
+Strengthen foundational knowledge
+for upcoming academic levels.
+</p>
+
+</div>
+
+
+
+<!-- PRICE -->
+
+<section class="price-card">
+
+<div class="price-label">
+
+FOUNDATION BATCH FEE
+
+</div>
+
+
+<div>
+
+<span class="price">
+
+₹1,999
+
+</span>
+
+<span class="old-price">
+
+₹3,999
+
+</span>
+
+</div>
+
+
+<div class="offer">
+
+✓ Current displayed offer
+
+</div>
+
+
+<button
+class="buy-btn"
+onclick="openPayment()">
+
+🚀 BUY NOW — ₹1,999
+
+</button>
+
+</section>
+
+
+
+<footer class="footer">
+
+© 2026 STUDYBYPKY • FOUNDATION BATCH
+
+</footer>
+
+
+</main>
+
+
+
+<!-- PAYMENT POPUP -->
+
+<div
+class="payment"
+id="payment">
+
+<div class="box">
+
+<h2>
+
+📚 FOUNDATION BATCH
+
+</h2>
+
+
+<p>
+
+Class 9 • Foundation Batch Fee
+
+</p>
+
+
+<div class="amount">
+
+₹1,999
+
+</div>
+
+
+<div class="upi">
+
+UPI ID:
+
+<strong>
+7534976027@fam
+</strong>
+
+</div>
+
+
+<button
+class="pay-btn"
+onclick="payNow()">
+
+📱 PAY ₹1,999 USING UPI
+
+</button>
+
+
+<p
+style="margin-top:10px;font-size:7px">
+
+After payment, return to this page
+and use the button below.
+
+</p>
+
+
+<button
+class="done"
+onclick="completed()">
+
+✅ I HAVE COMPLETED PAYMENT
+
+</button>
+
+
+<button
+class="cancel"
+onclick="closePayment()">
+
+Cancel
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- SUCCESS POPUP -->
+
+<div
+class="success"
+id="success">
+
+<div class="box">
+
+
+<div class="success-icon">
+
+✓
+
+</div>
+
+
+<h2>
+
+Congratulations!
+
+</h2>
+
+
+<p>
+
+You have completed the purchase step
+for <strong>Foundation Batch</strong>.
+
+<br><br>
+
+Your next step is to start studying.
+
+</p>
+
+
+<a
+class="study"
+href="Foundation-Batch.html">
+
+📚 STUDY NOW
+
+</a>
+
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+const UPI_ID =
+"7534976027@fam";
+
+const PRICE =
+"1999";
+
+const MERCHANT =
+"STUDYBYPKY FOUNDATION BATCH";
+
+
+/* OPEN PAYMENT */
+
+function openPayment(){
+
+document.getElementById(
+"payment"
+).style.display="flex";
+
+}
+
+
+/* CLOSE PAYMENT */
+
+function closePayment(){
+
+document.getElementById(
+"payment"
+).style.display="none";
+
+}
+
+
+/* UPI PAYMENT */
+
+function payNow(){
+
+const upiLink =
+
+"upi://pay" +
+
+"?pa=" +
+encodeURIComponent(UPI_ID) +
+
+"&pn=" +
+encodeURIComponent(MERCHANT) +
+
+"&am=" +
+PRICE +
+
+"&cu=INR" +
+
+"&tn=" +
+encodeURIComponent(
+"FOUNDATION BATCH"
+);
+
+
+window.location.href =
+upiLink;
+
+}
+
+
+/* PAYMENT COMPLETED */
+
+function completed(){
+
+document.getElementById(
+"payment"
+).style.display="none";
+
+
+document.getElementById(
+"success"
+).style.display="flex";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

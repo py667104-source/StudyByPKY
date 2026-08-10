@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>STUDYBYPKY | SUPER50 CBT TEST SERIES</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#fff1f8;
+    color:#171717;
+}
+
+.header{
+    height:60px;
+    background:#0b1024;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 15px;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    color:#fff;
+    font-size:15px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#a044ff;
+}
+
+.badge{
+    background:#8d24c8;
+    color:#fff;
+    padding:8px 12px;
+    border-radius:20px;
+    font-size:8px;
+    font-weight:900;
+}
+
+.container{
+    width:100%;
+    max-width:850px;
+    margin:auto;
+    padding:12px 10px 50px;
+}
+
+
+/* IMAGE */
+
+.batch-image{
+    width:100%;
+    border-radius:18px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:0 10px 35px #d51d7c30;
+    margin-bottom:15px;
+}
+
+.batch-image img{
+    width:100%;
+    display:block;
+}
+
+
+/* CARD */
+
+.card{
+    background:#fff;
+    border:1px solid #efd9e7;
+    border-radius:16px;
+    padding:18px;
+    margin-bottom:14px;
+    box-shadow:0 7px 25px #c91e7020;
+}
+
+.category{
+    display:inline-block;
+    background:#ffe5f0;
+    color:#9e2860;
+    padding:8px 13px;
+    border-radius:10px;
+    font-size:11px;
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+.title{
+    font-size:27px;
+    line-height:1.2;
+    font-weight:1000;
+    margin-bottom:9px;
+}
+
+.rating{
+    color:#e5a700;
+    font-size:20px;
+    margin-bottom:15px;
+}
+
+.rating span{
+    font-size:16px;
+    margin-left:5px;
+}
+
+.feature{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:10px 0;
+    font-size:14px;
+    color:#444;
+}
+
+.check{
+    width:26px;
+    height:26px;
+    background:#68d518;
+    color:#fff;
+    border-radius:5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    flex-shrink:0;
+}
+
+
+/* SECTION */
+
+.section-title{
+    margin:20px 2px 10px;
+    padding:12px;
+    border-radius:9px;
+    background:linear-gradient(
+        135deg,
+        #ed167d,
+        #9225c9
+    );
+    color:white;
+    font-size:13px;
+    font-weight:900;
+}
+
+.info{
+    background:#fff;
+    border:1px solid #efd9e7;
+    border-radius:11px;
+    padding:14px;
+    margin-bottom:8px;
+}
+
+.info h3{
+    color:#c01769;
+    font-size:12px;
+    margin-bottom:6px;
+}
+
+.info p{
+    color:#555;
+    font-size:9px;
+    line-height:1.6;
+}
+
+
+/* PRICE */
+
+.price-card{
+    background:#fff;
+    border:1px solid #efd9e7;
+    border-radius:16px;
+    padding:20px;
+    margin-top:20px;
+    text-align:center;
+    box-shadow:0 7px 25px #c91e7020;
+}
+
+.price-label{
+    font-size:9px;
+    color:#777;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+.price{
+    color:#d3136b;
+    font-size:38px;
+    font-weight:1000;
+    margin-top:5px;
+}
+
+.old-price{
+    color:#999;
+    text-decoration:line-through;
+    font-size:18px;
+    margin-left:8px;
+}
+
+.buy-btn{
+    width:100%;
+    height:52px;
+    margin-top:15px;
+    border:0;
+    border-radius:10px;
+    background:linear-gradient(
+        135deg,
+        #ed167d,
+        #9225c9
+    );
+    color:white;
+    font-size:14px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 8px 22px #d51b8050;
+}
+
+
+/* PAYMENT */
+
+.payment{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#050914ee;
+    z-index:500;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+}
+
+.payment-box{
+    width:100%;
+    max-width:420px;
+    background:#111c31;
+    color:white;
+    border-radius:15px;
+    padding:22px;
+    text-align:center;
+}
+
+.payment-box h2{
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+.payment-box p{
+    color:#9ba8c0;
+    font-size:9px;
+    line-height:1.6;
+}
+
+.amount{
+    font-size:32px;
+    font-weight:1000;
+    margin:15px 0;
+}
+
+.upi{
+    background:#192743;
+    border:1px solid #394d76;
+    padding:11px;
+    border-radius:8px;
+    font-size:10px;
+    margin-bottom:10px;
+}
+
+.pay{
+    width:100%;
+    height:46px;
+    border:0;
+    border-radius:8px;
+    background:linear-gradient(
+        135deg,
+        #ed167d,
+        #9225c9
+    );
+    color:white;
+    font-size:10px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.done{
+    width:100%;
+    height:43px;
+    margin-top:9px;
+    border:1px solid #394d76;
+    background:#192945;
+    color:#fff;
+    border-radius:8px;
+    font-size:8px;
+    font-weight:bold;
+}
+
+.cancel{
+    margin-top:10px;
+    border:0;
+    background:none;
+    color:#8794aa;
+    cursor:pointer;
+}
+
+
+/* SUCCESS */
+
+.success{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#050914f5;
+    z-index:600;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+}
+
+.success-box{
+    width:100%;
+    max-width:420px;
+    background:#111d32;
+    color:#fff;
+    border-radius:15px;
+    padding:28px 18px;
+    text-align:center;
+}
+
+.success-icon{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:#1d9c43;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 12px;
+    font-size:30px;
+}
+
+.success-box h2{
+    font-size:20px;
+    margin-bottom:8px;
+}
+
+.success-box p{
+    color:#9ba8c0;
+    font-size:9px;
+    line-height:1.7;
+    margin-bottom:15px;
+}
+
+.study{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    height:47px;
+    background:linear-gradient(
+        135deg,
+        #ed167d,
+        #9225c9
+    );
+    color:#fff;
+    text-decoration:none;
+    border-radius:9px;
+    font-size:10px;
+    font-weight:900;
+}
+
+.footer{
+    text-align:center;
+    color:#888;
+    font-size:8px;
+    margin-top:25px;
+}
+
+@media(max-width:430px){
+
+    .title{
+        font-size:24px;
+    }
+
+    .feature{
+        font-size:13px;
+    }
+
+    .price{
+        font-size:33px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+<div class="logo">
+STUDY<span>BYPKY</span>
+</div>
+
+<div class="badge">
+🎯 SUPER50 CBT
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- =========================
+     UPLOADED BATCH IMAGE
+========================= -->
+
+<div class="batch-image">
+
+<img
+src="sc.jpeg"
+alt="The Super50 CBT Computer Based Test Series">
+
+</div>
+
+
+<!-- =========================
+     BATCH DETAILS
+========================= -->
+
+<section class="card">
+
+<div class="category">
+TEST SERIES
+</div>
+
+<h1 class="title">
+The Super50 Computer Based Test Series
+</h1>
+
+<div class="rating">
+★★★★★ <span>4.7</span>
+</div>
+
+
+<div class="feature">
+<div class="check">✓</div>
+50+ Mock Tests
+</div>
+
+<div class="feature">
+<div class="check">✓</div>
+Chapter-wise Tests
+</div>
+
+<div class="feature">
+<div class="check">✓</div>
+Detailed Solutions
+</div>
+
+<div class="feature">
+<div class="check">✓</div>
+Performance Analysis
+</div>
+
+<div class="feature">
+<div class="check">✓</div>
+Exam-Level Questions
+</div>
+
+</section>
+
+
+<!-- =========================
+     IMPORTANCE
+========================= -->
+
+<div class="section-title">
+🎯 IMPORTANCE OF SUPER50 CBT
+</div>
+
+
+<div class="info">
+
+<h3>
+📝 Regular Mock-Test Practice
+</h3>
+
+<p>
+Regular mock tests provide structured practice and help
+students become familiar with computer-based testing.
+</p>
+
+</div>
+
+
+<div class="info">
+
+<h3>
+⏱️ Improve Time Management
+</h3>
+
+<p>
+Timed tests allow students to practice solving questions
+within a limited examination time.
+</p>
+
+</div>
+
+
+<div class="info">
+
+<h3>
+📚 Chapter-wise Testing
+</h3>
+
+<p>
+Chapter-wise tests help students identify topics that
+require additional revision.
+</p>
+
+</div>
+
+
+<div class="info">
+
+<h3>
+📊 Performance Analysis
+</h3>
+
+<p>
+Performance reports can help students understand their
+strengths and areas requiring more practice.
+</p>
+
+</div>
+
+
+<div class="info">
+
+<h3>
+🎯 Exam-Oriented Practice
+</h3>
+
+<p>
+Regular exam-style practice can help students build
+confidence and develop a consistent test-taking routine.
+</p>
+
+</div>
+
+
+<!-- =========================
+     10 BENEFITS
+========================= -->
+
+<div class="section-title">
+🔥 10 BENEFITS OF SUPER50 CBT
+</div>
+
+
+<div class="info">
+<h3>01. 50+ Mock Tests</h3>
+<p>Practice with a large collection of mock tests.</p>
+</div>
+
+
+<div class="info">
+<h3>02. Chapter-wise Tests</h3>
+<p>Test your preparation chapter by chapter.</p>
+</div>
+
+
+<div class="info">
+<h3>03. CBT Practice</h3>
+<p>Get familiar with computer-based test practice.</p>
+</div>
+
+
+<div class="info">
+<h3>04. Detailed Solutions</h3>
+<p>Review explanations after attempting questions.</p>
+</div>
+
+
+<div class="info">
+<h3>05. Performance Analysis</h3>
+<p>Review your test performance and progress.</p>
+</div>
+
+
+<div class="info">
+<h3>06. Exam-Level Questions</h3>
+<p>Practice focused examination-style questions.</p>
+</div>
+
+
+<div class="info">
+<h3>07. Time-Bound Tests</h3>
+<p>Practice answering questions within a time limit.</p>
+</div>
+
+
+<div class="info">
+<h3>08. Revision Support</h3>
+<p>Use tests as an additional revision resource.</p>
+</div>
+
+
+<div class="info">
+<h3>09. Find Weak Topics</h3>
+<p>Identify chapters that need more attention.</p>
+</div>
+
+
+<div class="info">
+<h3>10. Consistent Practice</h3>
+<p>Maintain a regular test-practice routine.</p>
+</div>
+
+
+<!-- =========================
+     PRICE
+========================= -->
+
+<section class="price-card">
+
+<div class="price-label">
+SUPER50 CBT TEST SERIES
+</div>
+
+<div>
+
+<span class="price">
+₹999
+</span>
+
+<span class="old-price">
+₹1,999
+</span>
+
+</div>
+
+<button
+class="buy-btn"
+onclick="openPayment()">
+
+🚀 BUY NOW — ₹999
+
+</button>
+
+</section>
+
+
+<footer class="footer">
+
+© 2026 STUDYBYPKY • THE SUPER50 CBT
+
+</footer>
+
+</main>
+
+
+<!-- =========================
+     PAYMENT POPUP
+========================= -->
+
+<div
+class="payment"
+id="payment">
+
+<div class="payment-box">
+
+<h2>
+🎯 SUPER50 CBT TEST SERIES
+</h2>
+
+<p>
+Test Series Fee
+</p>
+
+<div class="amount">
+₹999
+</div>
+
+<div class="upi">
+UPI ID:
+<strong>7534976027@fam</strong>
+</div>
+
+
+<button
+class="pay"
+onclick="payNow()">
+
+📱 PAY ₹999 USING UPI
+
+</button>
+
+
+<button
+class="done"
+onclick="completed()">
+
+✅ I HAVE COMPLETED PAYMENT
+
+</button>
+
+
+<button
+class="cancel"
+onclick="closePayment()">
+
+Cancel
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     SUCCESS
+========================= -->
+
+<div
+class="success"
+id="success">
+
+<div class="success-box">
+
+<div class="success-icon">
+✓
+</div>
+
+<h2>
+Congratulations!
+</h2>
+
+<p>
+
+You have completed the purchase step for
+<strong>The Super50 CBT Test Series</strong>.
+
+<br><br>
+
+Your test-series access can now be provided.
+
+</p>
+
+<a
+href="Super50-CBT.html"
+class="study">
+
+🎯 START TEST SERIES
+
+</a>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   PAYMENT DETAILS
+========================= */
+
+const UPI_ID =
+"7534976027@fam";
+
+const PRICE =
+"999";
+
+const MERCHANT =
+"STUDYBYPKY SUPER50 CBT";
+
+
+/* OPEN */
+
+function openPayment(){
+
+    document.getElementById(
+        "payment"
+    ).style.display="flex";
+
+}
+
+
+/* UPI PAYMENT */
+
+function payNow(){
+
+    const upiLink =
+        "upi://pay" +
+        "?pa=" +
+        encodeURIComponent(UPI_ID) +
+        "&pn=" +
+        encodeURIComponent(MERCHANT) +
+        "&am=" +
+        PRICE +
+        "&cu=INR" +
+        "&tn=" +
+        encodeURIComponent(
+            "SUPER50 CBT TEST SERIES"
+        );
+
+    window.location.href =
+        upiLink;
+
+}
+
+
+/* CLOSE */
+
+function closePayment(){
+
+    document.getElementById(
+        "payment"
+    ).style.display="none";
+
+}
+
+
+/* COMPLETED */
+
+function completed(){
+
+    /*
+    This only opens the success screen.
+    It does NOT verify the actual payment.
+    */
+
+    document.getElementById(
+        "payment"
+    ).style.display="none";
+
+    document.getElementById(
+        "success"
+    ).style.display="flex";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
