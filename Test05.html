@@ -1,0 +1,2639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>STUDYBYPKY | CBT Test 05 | Class 11</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#06284a;
+    min-height:100vh;
+    color:#172033;
+}
+
+button{
+    cursor:pointer;
+    border:0;
+}
+
+/* HEADER */
+
+.header{
+    background:#06284a;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 3px 15px rgba(0,0,0,.3);
+}
+
+.logo{
+    color:#ffd21a;
+    font-size:23px;
+    font-weight:900;
+}
+
+.header-right{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.timer{
+    background:#ffd21a;
+    color:#111;
+    padding:10px 16px;
+    border-radius:25px;
+    font-weight:bold;
+}
+
+/* COMMON */
+
+.container{
+    max-width:1050px;
+    margin:30px auto;
+    padding:15px;
+}
+
+.card{
+    background:#203f61;
+    border-radius:28px;
+    padding:30px;
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+/* START SCREEN */
+
+.start-screen{
+    text-align:center;
+    color:white;
+}
+
+.start-screen h1{
+    color:#ffd21a;
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.start-screen h2{
+    color:#ffd21a;
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+.start-screen .date{
+    color:white;
+    font-size:19px;
+    margin-bottom:18px;
+}
+
+.syllabus{
+    max-width:850px;
+    margin:25px auto;
+    text-align:left;
+    background:#244766;
+    border-radius:18px;
+    padding:22px;
+}
+
+.syllabus h3{
+    color:#ffd21a;
+    margin-bottom:15px;
+    text-align:center;
+}
+
+.syllabus p{
+    margin:10px 0;
+    line-height:1.55;
+}
+
+.start-btn{
+    background:#ffd21a;
+    color:#111;
+    font-size:22px;
+    font-weight:bold;
+    padding:17px 55px;
+    border-radius:40px;
+    margin-top:15px;
+    transition:.2s;
+}
+
+.start-btn:hover{
+    transform:scale(1.04);
+}
+
+/* INSTRUCTIONS */
+
+.instructions{
+    display:none;
+    color:white;
+}
+
+.instructions h1{
+    color:#ffd21a;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.instruction-box{
+    background:#244766;
+    padding:22px;
+    border-radius:18px;
+    line-height:1.7;
+}
+
+.instruction-box li{
+    margin:8px 0;
+}
+
+.agree{
+    margin-top:20px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    justify-content:center;
+}
+
+.agree input{
+    width:18px;
+    height:18px;
+}
+
+/* TEST */
+
+.test-screen{
+    display:none;
+}
+
+.test-top{
+    background:#203f61;
+    color:white;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+.section-tabs{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+}
+
+.section-tab{
+    padding:12px 5px;
+    border-radius:10px;
+    background:#eee;
+    font-weight:bold;
+    color:#222;
+}
+
+.section-tab.active{
+    background:#ffd21a;
+}
+
+.question-card{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+}
+
+.section-title{
+    color:#0a3155;
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.question-number{
+    color:#e39c00;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:19px;
+    line-height:1.55;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.option{
+    display:block;
+    padding:14px;
+    margin:10px 0;
+    border:2px solid #d8dee5;
+    border-radius:12px;
+    background:#fafafa;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option:hover{
+    border-color:#ffd21a;
+    background:#fffbea;
+}
+
+.option input{
+    accent-color:#f2b900;
+    margin-right:10px;
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:20px;
+}
+
+.nav-btn{
+    padding:13px 22px;
+    border-radius:10px;
+    background:#0b3559;
+    color:white;
+    font-weight:bold;
+}
+
+.submit-btn{
+    width:100%;
+    padding:16px;
+    background:#e5ad00;
+    color:#111;
+    font-size:18px;
+    font-weight:bold;
+    border-radius:12px;
+    margin-top:15px;
+    display:none;
+}
+
+/* PALETTE */
+
+.palette{
+    margin-top:20px;
+    background:#fff;
+    padding:18px;
+    border-radius:15px;
+}
+
+.palette h3{
+    margin-bottom:12px;
+    color:#0b3559;
+}
+
+.palette button{
+    width:40px;
+    height:40px;
+    margin:4px;
+    border-radius:8px;
+    background:#ddd;
+}
+
+.palette button.current{
+    background:#0b3559;
+    color:white;
+}
+
+.palette button.answered{
+    background:#ffd21a;
+    color:#111;
+}
+
+/* RESULT */
+
+.result{
+    display:none;
+    background:white;
+    border-radius:20px;
+    padding:25px;
+}
+
+.result h1{
+    text-align:center;
+    color:#0b3559;
+}
+
+.big-score{
+    text-align:center;
+    font-size:45px;
+    font-weight:bold;
+    color:#e3aa00;
+    margin:15px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin:20px 0;
+}
+
+.stat{
+    padding:16px;
+    text-align:center;
+    border-radius:12px;
+    font-weight:bold;
+}
+
+.total{
+    background:#e8eef5;
+}
+
+.correct{
+    background:#dcfce7;
+    color:#16803c;
+}
+
+.wrong{
+    background:#fee2e2;
+    color:#c62828;
+}
+
+.unanswered{
+    background:#eeeeee;
+    color:#555;
+}
+
+/* REVIEW */
+
+.review-title{
+    text-align:center;
+    color:#0b3559;
+    margin:30px 0 15px;
+}
+
+.review-item{
+    padding:18px;
+    margin:14px 0;
+    border-radius:15px;
+    border-left:6px solid;
+}
+
+.review-item.correct-box{
+    background:#effcf3;
+    border-color:#16a34a;
+}
+
+.review-item.wrong-box{
+    background:#fff0f0;
+    border-color:#dc2626;
+}
+
+.review-item.unanswered-box{
+    background:#f3f3f3;
+    border-color:#777;
+}
+
+.review-q{
+    font-weight:bold;
+    line-height:1.5;
+    margin-bottom:10px;
+}
+
+.answer-line{
+    padding:9px;
+    margin-top:7px;
+    border-radius:8px;
+    background:white;
+}
+
+.explanation{
+    margin-top:10px;
+    padding:12px;
+    background:#fff9dc;
+    border-radius:8px;
+    line-height:1.5;
+}
+
+.restart{
+    display:block;
+    margin:25px auto;
+    padding:14px 30px;
+    border-radius:12px;
+    background:#0b3559;
+    color:white;
+    font-weight:bold;
+}
+
+footer{
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .header{
+        padding:12px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .timer{
+        font-size:12px;
+        padding:8px 10px;
+    }
+
+    .card{
+        padding:15px;
+    }
+
+    .start-screen h1{
+        font-size:32px;
+    }
+
+    .start-screen h2{
+        font-size:23px;
+    }
+
+    .section-tabs{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .question{
+        font-size:17px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        STUDYBYPKY
+    </div>
+
+    <div class="header-right">
+
+        <div class="timer" id="timer">
+            03:15:00
+        </div>
+
+    </div>
+
+</header>
+
+
+<div class="container">
+
+<div class="card">
+
+<!-- ================= START SCREEN ================= -->
+
+<div class="start-screen" id="startScreen">
+
+    <h1>CBT Test 1-15</h1>
+
+    <h2>Class 11th</h2>
+
+    <h2>Practice Test 05</h2>
+
+    <div class="date">
+        DATE:- 16/08/2026
+    </div>
+
+    <div class="syllabus">
+
+        <h3>📚 TEST SYLLABUS</h3>
+
+        <p>
+            <b>⚡ Physics:</b>
+            Basic Mathematics and Calculus Tools,
+            Vectors.
+        </p>
+
+        <p>
+            <b>⚗️ Chemistry:</b>
+            Some Basic Concepts of Chemistry
+            — Complete Chapter.
+        </p>
+
+        <p>
+            <b>🦁 Zoology:</b>
+            Structural Organisation in Animals
+            — Complete Chapter.
+        </p>
+
+        <p>
+            <b>🌱 Botany:</b>
+            Cell: The Unit of Life
+            — Complete Chapter.
+        </p>
+
+    </div>
+
+    <button class="start-btn" onclick="showInstructions()">
+        Start Test
+    </button>
+
+</div>
+
+
+<!-- ================= INSTRUCTIONS ================= -->
+
+<div class="instructions" id="instructions">
+
+    <h1>📋 Test Instructions</h1>
+
+    <div class="instruction-box">
+
+        <ul>
+
+            <li>
+                This test contains <b>180 questions</b>.
+            </li>
+
+            <li>
+                Physics: <b>45 questions</b>.
+            </li>
+
+            <li>
+                Chemistry: <b>45 questions</b>.
+            </li>
+
+            <li>
+                Zoology: <b>45 questions</b>.
+            </li>
+
+            <li>
+                Botany: <b>45 questions</b>.
+            </li>
+
+            <li>
+                Total test time:
+                <b>03 hours 15 minutes</b>.
+            </li>
+
+            <li>
+                You can move between questions using
+                Previous, Next and the Question Palette.
+            </li>
+
+            <li>
+                You may switch between Physics,
+                Chemistry, Zoology and Botany.
+            </li>
+
+            <li>
+                After submission you will see:
+                <b>Correct, Wrong and Unanswered</b>
+                questions.
+            </li>
+
+            <li>
+                Every question will show its
+                <b>correct answer and explanation</b>
+                after submission.
+            </li>
+
+            <li>
+                Attempt all questions carefully before submitting.
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="agree">
+
+        <input type="checkbox" id="agree">
+
+        <label for="agree">
+            I have read and understood the instructions.
+        </label>
+
+    </div>
+
+    <button class="start-btn"
+            onclick="beginTest()">
+        🚀 Begin Test
+    </button>
+
+</div>
+
+
+<!-- ================= TEST SCREEN ================= -->
+
+<div class="test-screen" id="testScreen">
+
+    <div class="test-top">
+
+        <div class="section-tabs">
+
+            <button class="section-tab active"
+                    id="physicsTab"
+                    onclick="changeSection(0)">
+                ⚡ Physics
+            </button>
+
+            <button class="section-tab"
+                    id="chemistryTab"
+                    onclick="changeSection(1)">
+                ⚗️ Chemistry
+            </button>
+
+            <button class="section-tab"
+                    id="zoologyTab"
+                    onclick="changeSection(2)">
+                🦁 Zoology
+            </button>
+
+            <button class="section-tab"
+                    id="botanyTab"
+                    onclick="changeSection(3)">
+                🌱 Botany
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="question-card">
+
+        <div class="section-title"
+             id="sectionTitle">
+            Physics
+        </div>
+
+        <div id="questionBox"></div>
+
+
+        <div class="navigation">
+
+            <button class="nav-btn"
+                    onclick="previousQuestion()">
+                ← Previous
+            </button>
+
+            <button class="nav-btn"
+                    onclick="nextQuestion()">
+                Next →
+            </button>
+
+        </div>
+
+        <button class="submit-btn"
+                id="submitBtn"
+                onclick="submitTest()">
+            Submit Test
+        </button>
+
+    </div>
+
+
+    <div class="palette">
+
+        <h3>Question Palette</h3>
+
+        <div id="palette"></div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= RESULT ================= -->
+
+<div class="result" id="result">
+
+    <h1>🎉 Test Submitted Successfully</h1>
+
+    <div class="big-score"
+         id="bigScore">
+        0 / 180
+    </div>
+
+    <p style="text-align:center"
+       id="percentage">
+    </p>
+
+
+    <div class="stats">
+
+        <div class="stat total">
+            Total<br>
+            <span id="totalCount">180</span>
+        </div>
+
+        <div class="stat correct">
+            ✅ Correct<br>
+            <span id="correctCount">0</span>
+        </div>
+
+        <div class="stat wrong">
+            ❌ Wrong<br>
+            <span id="wrongCount">0</span>
+        </div>
+
+        <div class="stat unanswered">
+            ⭕ Unanswered<br>
+            <span id="unansweredCount">0</span>
+        </div>
+
+    </div>
+
+
+    <h2 class="review-title">
+        📊 Detailed Question Review
+    </h2>
+
+    <div id="review"></div>
+
+
+    <button class="restart"
+            onclick="location.reload()">
+        🔄 Attempt Test Again
+    </button>
+
+</div>
+
+</div>
+</div>
+
+
+<footer>
+    © 2026 STUDYBYPKY<br>
+    Learn • Practice • Improve
+</footer>
+
+
+<script>
+
+/* =====================================================
+   QUESTION BANK
+   45 QUESTIONS EACH
+   ===================================================== */
+
+const sections = [
+
+/* ================= PHYSICS ================= */
+
+{
+name:"Physics",
+questions:[
+
+{
+q:"Which of the following is a scalar quantity?",
+o:["Velocity","Displacement","Speed","Acceleration"],
+a:2,
+e:"Speed has magnitude only, so it is a scalar quantity."
+},
+
+{
+q:"Which of the following is a vector quantity?",
+o:["Mass","Time","Temperature","Displacement"],
+a:3,
+e:"Displacement has both magnitude and direction."
+},
+
+{
+q:"The magnitude of vector A = 3i + 4j is:",
+o:["3","4","5","7"],
+a:2,
+e:"Magnitude = √(3² + 4²) = 5."
+},
+
+{
+q:"Two vectors are equal when they have:",
+o:["Same magnitude only","Same direction only","Same magnitude and direction","Same initial point"],
+a:2,
+e:"Equal vectors have the same magnitude and the same direction."
+},
+
+{
+q:"The dot product of two perpendicular vectors is:",
+o:["1","-1","0","Maximum"],
+a:2,
+e:"A·B = AB cos 90° = 0."
+},
+
+{
+q:"The cross product of two parallel vectors is:",
+o:["AB","0","A+B","A-B"],
+a:1,
+e:"A×B = AB sin θ; for parallel vectors θ=0°, so it is zero."
+},
+
+{
+q:"The unit vector along x-axis is:",
+o:["i","j","k","0"],
+a:0,
+e:"i is the standard unit vector along the x-axis."
+},
+
+{
+q:"The unit vector along y-axis is:",
+o:["i","j","k","1"],
+a:1,
+e:"j represents the unit vector along the y-axis."
+},
+
+{
+q:"The unit vector along z-axis is:",
+o:["i","j","k","-k"],
+a:2,
+e:"k represents the unit vector along the z-axis."
+},
+
+{
+q:"If A = 2i + 2j, its magnitude is:",
+o:["2","4","2√2","√2"],
+a:2,
+e:"Magnitude = √(2²+2²) = 2√2."
+},
+
+{
+q:"The derivative of x² with respect to x is:",
+o:["x","2x","x²","2"],
+a:1,
+e:"Using d(xⁿ)/dx = nxⁿ⁻¹, derivative of x² is 2x."
+},
+
+{
+q:"The derivative of sin x is:",
+o:["cos x","-cos x","sin x","-sin x"],
+a:0,
+e:"d(sin x)/dx = cos x."
+},
+
+{
+q:"The derivative of cos x is:",
+o:["sin x","-sin x","cos x","-cos x"],
+a:1,
+e:"d(cos x)/dx = -sin x."
+},
+
+{
+q:"The derivative of a constant is:",
+o:["1","0","The constant","Undefined"],
+a:1,
+e:"A constant does not change with the variable, so its derivative is zero."
+},
+
+{
+q:"The derivative of e^x is:",
+o:["1","x e^(x-1)","e^x","ln x"],
+a:2,
+e:"The exponential function e^x is its own derivative."
+},
+
+{
+q:"The derivative of ln x is:",
+o:["x","1/x","ln x","e^x"],
+a:1,
+e:"d(ln x)/dx = 1/x."
+},
+
+{
+q:"The integral of x dx is:",
+o:["x","x²/2 + C","2x","x²"],
+a:1,
+e:"∫x dx = x²/2 + C."
+},
+
+{
+q:"The integral of 1/x dx is:",
+o:["x","1/x²","ln|x| + C","e^x"],
+a:2,
+e:"∫1/x dx = ln|x| + C."
+},
+
+{
+q:"The integral of cos x dx is:",
+o:["-sin x","sin x + C","cos x","tan x"],
+a:1,
+e:"∫cos x dx = sin x + C."
+},
+
+{
+q:"The integral of sin x dx is:",
+o:["cos x","-cos x + C","sin x","tan x"],
+a:1,
+e:"∫sin x dx = -cos x + C."
+},
+
+{
+q:"The slope of a straight-line graph is:",
+o:["Δx/Δy","Δy/Δx","xy","x+y"],
+a:1,
+e:"Slope is change in y divided by change in x."
+},
+
+{
+q:"The SI unit of velocity is:",
+o:["m","m/s","m/s²","km"],
+a:1,
+e:"Velocity is displacement per unit time, so its SI unit is m/s."
+},
+
+{
+q:"The SI unit of acceleration is:",
+o:["m/s","m/s²","N","J"],
+a:1,
+e:"Acceleration is change in velocity per unit time, giving m/s²."
+},
+
+{
+q:"A vector with zero magnitude is called:",
+o:["Unit vector","Null vector","Position vector","Equal vector"],
+a:1,
+e:"A vector whose magnitude is zero is called a null or zero vector."
+},
+
+{
+q:"The angle between i and j unit vectors is:",
+o:["0°","45°","90°","180°"],
+a:2,
+e:"The x and y axes are perpendicular."
+},
+
+{
+q:"The value of i·i is:",
+o:["0","1","-1","i"],
+a:1,
+e:"The dot product of a unit vector with itself is 1."
+},
+
+{
+q:"The value of i×j is:",
+o:["i","j","k","-k"],
+a:2,
+e:"Using the right-hand rule, i×j = k."
+},
+
+{
+q:"If A·B is positive, the angle between A and B is generally:",
+o:["Acute","Obtuse","90°","180°"],
+a:0,
+e:"A·B = AB cosθ is positive when θ is acute."
+},
+
+{
+q:"The magnitude of a unit vector is:",
+o:["0","1","2","Depends on direction"],
+a:1,
+e:"By definition, a unit vector has magnitude one."
+},
+
+{
+q:"If a vector is multiplied by -1, its:",
+o:["Magnitude doubles","Direction reverses","Direction remains same","Magnitude becomes zero"],
+a:1,
+e:"Multiplication by -1 reverses the direction while keeping magnitude unchanged."
+},
+
+{
+q:"The resultant of two identical vectors in the same direction is:",
+o:["Zero","A","2A","A/2"],
+a:2,
+e:"For parallel vectors in the same direction, magnitudes add."
+},
+
+{
+q:"The resultant of two equal opposite vectors is:",
+o:["2A","A","Zero","A²"],
+a:2,
+e:"Equal vectors in opposite directions cancel each other."
+},
+
+{
+q:"The maximum resultant of vectors A and B occurs when they are:",
+o:["Perpendicular","Parallel same direction","Opposite","At 45°"],
+a:1,
+e:"Maximum resultant is A+B when the vectors are parallel and in the same direction."
+},
+
+{
+q:"The minimum resultant of vectors A and B occurs when they are:",
+o:["Same direction","Perpendicular","Opposite direction","At 45°"],
+a:2,
+e:"Minimum magnitude is |A-B| when vectors are opposite."
+},
+
+{
+q:"A position vector specifies:",
+o:["Only mass","Position of a point relative to origin","Only speed","Temperature"],
+a:1,
+e:"A position vector gives the location of a point relative to the chosen origin."
+},
+
+{
+q:"The graph of y = x² is:",
+o:["Straight line","Parabola","Circle","Hyperbola"],
+a:1,
+e:"A quadratic equation y=x² produces a parabola."
+},
+
+{
+q:"The derivative of x³ is:",
+o:["x²","2x","3x²","3x"],
+a:2,
+e:"d(x³)/dx = 3x²."
+},
+
+{
+q:"The derivative of 5x is:",
+o:["5","x","5x","0"],
+a:0,
+e:"d(5x)/dx = 5."
+},
+
+{
+q:"The integral of 5 dx is:",
+o:["5","5x+C","x+5","25x"],
+a:1,
+e:"∫5 dx = 5x + C."
+},
+
+{
+q:"If y = 3x², dy/dx equals:",
+o:["3x","6x","6x²","x²"],
+a:1,
+e:"Using the power rule, dy/dx = 3(2x)=6x."
+},
+
+{
+q:"A vector can be resolved into:",
+o:["Only one component","Two or more components","No components","Only scalar quantities"],
+a:1,
+e:"A vector can be resolved into components along chosen axes."
+},
+
+{
+q:"The x-component of a vector A making angle θ with x-axis is:",
+o:["A sinθ","A cosθ","A tanθ","A/θ"],
+a:1,
+e:"The projection along x-axis is A cosθ."
+},
+
+{
+q:"The y-component of a vector A making angle θ with x-axis is:",
+o:["A cosθ","A sinθ","A tanθ","Aθ"],
+a:1,
+e:"The projection along y-axis is A sinθ."
+},
+
+{
+q:"The magnitude of A = 6i + 8j is:",
+o:["10","14","2","48"],
+a:0,
+e:"Magnitude = √(36+64)=10."
+},
+
+{
+q:"The scalar product of A and B gives:",
+o:["A vector","A scalar","A tensor","Always zero"],
+a:1,
+e:"The dot product produces a scalar."
+},
+
+{
+q:"The vector product of two vectors produces:",
+o:["A scalar","A vector","A number only","Nothing"],
+a:1,
+e:"The cross product produces a vector perpendicular to both vectors."
+}
+
+]
+},
+
+/* ================= CHEMISTRY ================= */
+
+{
+name:"Chemistry",
+questions:[
+
+{
+q:"The SI unit of amount of substance is:",
+o:["Gram","Mole","Kilogram","Litre"],
+a:1,
+e:"The mole is the SI unit of amount of substance."
+},
+
+{
+q:"One mole contains approximately:",
+o:["6.022×10²³ particles","3.011×10²³ particles","10²³ particles","9.8×10²³ particles"],
+a:0,
+e:"One mole contains Avogadro's number, 6.022×10²³ entities."
+},
+
+{
+q:"Avogadro constant is approximately:",
+o:["6.022×10²³ mol⁻¹","9.8 mol⁻¹","3×10⁸ mol⁻¹","1.6×10⁻¹⁹ mol⁻¹"],
+a:0,
+e:"Avogadro constant is 6.022×10²³ per mole."
+},
+
+{
+q:"Molar mass of H₂O is approximately:",
+o:["16 g/mol","18 g/mol","20 g/mol","22 g/mol"],
+a:1,
+e:"H₂O = 2(1)+16 = 18 g/mol."
+},
+
+{
+q:"Molar mass of CO₂ is:",
+o:["28 g/mol","32 g/mol","44 g/mol","40 g/mol"],
+a:2,
+e:"CO₂ = 12 + 2(16) = 44 g/mol."
+},
+
+{
+q:"The law of conservation of mass was given by:",
+o:["Lavoisier","Dalton","Avogadro","Rutherford"],
+a:0,
+e:"Antoine Lavoisier established the law of conservation of mass."
+},
+
+{
+q:"The law of definite proportions was proposed by:",
+o:["Proust","Dalton","Lavoisier","Gay-Lussac"],
+a:0,
+e:"Proust proposed the law of definite proportions."
+},
+
+{
+q:"The law of multiple proportions is associated with:",
+o:["Dalton","Proust","Lavoisier","Bohr"],
+a:0,
+e:"John Dalton proposed the law of multiple proportions."
+},
+
+{
+q:"The empirical formula represents:",
+o:["Actual number of atoms","Simplest whole-number ratio","Molecular mass only","Number of molecules"],
+a:1,
+e:"Empirical formula gives the simplest whole-number ratio of atoms."
+},
+
+{
+q:"The molecular formula is always a:",
+o:["Fraction of empirical formula","Whole-number multiple of empirical formula","Different element","Mixture"],
+a:1,
+e:"Molecular formula is an integral multiple of the empirical formula."
+},
+
+{
+q:"The formula for number of moles is:",
+o:["m/M","m×M","M/m","m+M"],
+a:0,
+e:"Number of moles n = given mass / molar mass."
+},
+
+{
+q:"18 g of water corresponds to approximately:",
+o:["0.5 mol","1 mol","2 mol","18 mol"],
+a:1,
+e:"18 g water / 18 g mol⁻¹ = 1 mol."
+},
+
+{
+q:"9 g of water corresponds to:",
+o:["0.25 mol","0.5 mol","1 mol","2 mol"],
+a:1,
+e:"9/18 = 0.5 mol."
+},
+
+{
+q:"Molarity is defined as:",
+o:["Moles of solute per litre of solution","Mass per kg solvent","Moles per kg solvent","Mass per litre only"],
+a:0,
+e:"Molarity = moles of solute / volume of solution in litres."
+},
+
+{
+q:"Molality is defined as:",
+o:["Moles per litre solution","Moles per kg solvent","Mass per litre","Moles per gram solution"],
+a:1,
+e:"Molality is moles of solute per kilogram of solvent."
+},
+
+{
+q:"Which concentration term is independent of temperature?",
+o:["Molarity","Molality","Volume percent","Normality based on volume"],
+a:1,
+e:"Molality uses mass of solvent, which does not change with temperature."
+},
+
+{
+q:"A limiting reagent is the reactant that:",
+o:["Is present in excess","Gets consumed first","Has greatest molar mass","Is always a gas"],
+a:1,
+e:"The limiting reagent is completely consumed first and limits product formation."
+},
+
+{
+q:"If 2 mol H₂ react with 1 mol O₂, the product formed is:",
+o:["1 mol H₂O","2 mol H₂O","3 mol H₂O","4 mol H₂O"],
+a:1,
+e:"2H₂ + O₂ → 2H₂O, so 2 mol H₂ forms 2 mol water with 1 mol O₂."
+},
+
+{
+q:"The atomic mass unit is defined relative to:",
+o:["Hydrogen-1","Carbon-12","Oxygen-16","Nitrogen-14"],
+a:1,
+e:"One atomic mass unit is defined as 1/12 of the mass of a carbon-12 atom."
+},
+
+{
+q:"The molecular mass of O₂ is:",
+o:["16 u","32 u","8 u","64 u"],
+a:1,
+e:"O₂ contains two oxygen atoms, so molecular mass = 32 u."
+},
+
+{
+q:"Percentage composition is calculated using:",
+o:["Mass contribution/total mass ×100","Moles only","Volume only","Atomic number only"],
+a:0,
+e:"Mass percentage = mass of element in one mole compound divided by molar mass ×100."
+},
+
+{
+q:"The number of significant figures in 0.00450 is:",
+o:["2","3","4","5"],
+a:1,
+e:"Leading zeros are not significant; 4,5,0 are three significant figures."
+},
+
+{
+q:"Zeros between non-zero digits are:",
+o:["Never significant","Always significant","Only sometimes significant","Negative"],
+a:1,
+e:"Zeros between non-zero digits are significant."
+},
+
+{
+q:"The number 2.00 has:",
+o:["1 significant figure","2 significant figures","3 significant figures","4 significant figures"],
+a:2,
+e:"All trailing zeros after a decimal point are significant."
+},
+
+{
+q:"Precision refers to:",
+o:["Closeness to true value","Closeness among repeated measurements","Unit conversion","Mass"],
+a:1,
+e:"Precision describes how closely repeated measurements agree with one another."
+},
+
+{
+q:"Accuracy refers to:",
+o:["Closeness to true value","Repeated agreement only","Number of atoms","Molarity"],
+a:0,
+e:"Accuracy indicates closeness to the accepted or true value."
+},
+
+{
+q:"The dimensional formula of mass is:",
+o:["[M]","[L]","[T]","[ML]"],
+a:0,
+e:"Mass has fundamental dimension M."
+},
+
+{
+q:"The dimensional formula of velocity is:",
+o:["[LT⁻¹]","[LT⁻²]","[MLT⁻¹]","[M⁰L⁰T⁰]"],
+a:0,
+e:"Velocity = displacement/time = [L][T⁻¹]."
+},
+
+{
+q:"The dimensional formula of density is:",
+o:["[ML⁻³]","[ML³]","[M⁻¹L³]","[LT⁻¹]"],
+a:0,
+e:"Density = mass/volume = [M][L⁻³]."
+},
+
+{
+q:"The SI unit of pressure is:",
+o:["Joule","Pascal","Newton","Watt"],
+a:1,
+e:"Pressure is measured in pascal (Pa)."
+},
+
+{
+q:"One mole of NaCl contains:",
+o:["One molecule only","6.022×10²³ formula units","6.022×10²³ atoms only","1 gram"],
+a:1,
+e:"Ionic compounds are described in terms of formula units."
+},
+
+{
+q:"A balanced chemical equation obeys:",
+o:["Only conservation of energy","Conservation of atoms","Only conservation of volume","No law"],
+a:1,
+e:"Balancing ensures equal numbers of each type of atom on both sides."
+},
+
+{
+q:"The coefficient of O₂ when balancing H₂ + O₂ → H₂O is:",
+o:["1","2","3","4"],
+a:0,
+e:"Balanced equation is 2H₂ + O₂ → 2H₂O."
+},
+
+{
+q:"The molarity of 1 mol solute in 2 L solution is:",
+o:["2 M","1 M","0.5 M","0.25 M"],
+a:2,
+e:"M = n/V = 1/2 = 0.5 M."
+},
+
+{
+q:"A 1 M solution contains:",
+o:["1 mole solute per litre solution","1 g solute per litre","1 mole solvent per litre","1 kg solute"],
+a:0,
+e:"By definition, 1 M means one mole of solute per litre of solution."
+},
+
+{
+q:"Dilution generally decreases:",
+o:["Number of solute particles","Concentration","Moles of solvent","Molar mass"],
+a:1,
+e:"Adding solvent increases volume while moles of solute remain constant, lowering concentration."
+},
+
+{
+q:"The formula M₁V₁ = M₂V₂ is used for:",
+o:["Dilution","Combustion","Atomic mass","Empirical formula"],
+a:0,
+e:"The dilution relationship keeps the amount of solute constant."
+},
+
+{
+q:"If 2 mol solute are present in 1 kg solvent, molality is:",
+o:["0.5 m","1 m","2 m","3 m"],
+a:2,
+e:"Molality = 2 mol / 1 kg = 2 m."
+},
+
+{
+q:"The reactant present in excess after completion of reaction is called:",
+o:["Limiting reagent","Excess reagent","Catalyst","Product"],
+a:1,
+e:"The reactant remaining after the limiting reagent is consumed is the excess reagent."
+},
+
+{
+q:"Theoretical yield is:",
+o:["Maximum product predicted from stoichiometry","Always experimental","Always zero","Mass of reactant"],
+a:0,
+e:"Theoretical yield is the maximum amount expected from stoichiometric calculation."
+},
+
+{
+q:"Percentage yield is:",
+o:["Actual/theoretical ×100","Theoretical/actual ×100","Actual+theoretical","Actual−theoretical"],
+a:0,
+e:"Percentage yield = actual yield/theoretical yield ×100."
+},
+
+{
+q:"The formula mass of NaCl is approximately:",
+o:["23","35.5","58.5","46"],
+a:2,
+e:"NaCl = 23 + 35.5 = 58.5 u."
+},
+
+{
+q:"Which quantity is conserved during a chemical reaction?",
+o:["Atoms of each element","Number of molecules always","Volume always","Temperature always"],
+a:0,
+e:"Atoms are rearranged but are neither created nor destroyed."
+},
+
+{
+q:"The mass of 0.5 mol O₂ is:",
+o:["8 g","16 g","32 g","64 g"],
+a:1,
+e:"Molar mass O₂ = 32 g/mol; 0.5 mol = 16 g."
+}
+
+]
+},
+
+/* ================= ZOOLOGY ================= */
+
+{
+name:"Zoology",
+questions:[
+
+{
+q:"The basic unit of epithelial tissue is:",
+o:["Cell","Neuron","Bone","Blood"],
+a:0,
+e:"Epithelial tissue is made of closely packed epithelial cells."
+},
+
+{
+q:"Simple squamous epithelium is found in:",
+o:["Alveoli","Tendon","Stomach muscle","Bone"],
+a:0,
+e:"Alveoli require thin epithelium for efficient gas exchange."
+},
+
+{
+q:"The epithelium lining blood vessels is called:",
+o:["Endothelium","Mesothelium","Cuboidal epithelium","Ciliated epithelium"],
+a:0,
+e:"Endothelium is the simple squamous lining of blood vessels."
+},
+
+{
+q:"Cuboidal epithelium commonly occurs in:",
+o:["Kidney tubules","Alveoli","Tendon","Brain"],
+a:0,
+e:"Kidney tubules are lined by cuboidal epithelium."
+},
+
+{
+q:"Ciliated epithelium helps in:",
+o:["Movement of materials","Bone formation","Blood clotting","Muscle contraction"],
+a:0,
+e:"Cilia beat rhythmically to move materials along epithelial surfaces."
+},
+
+{
+q:"Goblet cells secrete:",
+o:["Mucus","Blood","Bile","Insulin"],
+a:0,
+e:"Goblet cells are mucus-secreting epithelial cells."
+},
+
+{
+q:"Connective tissue generally has:",
+o:["Abundant extracellular matrix","No matrix","Only neurons","Only muscle fibres"],
+a:0,
+e:"Connective tissue is characterised by cells embedded in extracellular matrix."
+},
+
+{
+q:"Areolar tissue is commonly found:",
+o:["Between skin and muscles","Only in brain","Only in bones","Inside neurons"],
+a:0,
+e:"Areolar connective tissue fills spaces between skin and muscles and around organs."
+},
+
+{
+q:"Adipose tissue mainly stores:",
+o:["Fat","Calcium","DNA","Mucus"],
+a:0,
+e:"Adipocytes store triglycerides as fat."
+},
+
+{
+q:"Tendon connects:",
+o:["Muscle to bone","Bone to bone","Skin to muscle","Nerve to bone"],
+a:0,
+e:"Tendons connect skeletal muscles to bones."
+},
+
+{
+q:"Ligament connects:",
+o:["Bone to bone","Muscle to bone","Skin to bone","Nerve to muscle"],
+a:0,
+e:"Ligaments connect bones at joints."
+},
+
+{
+q:"Cartilage is:",
+o:["Firm but flexible connective tissue","Liquid tissue","Muscular tissue","Nervous tissue"],
+a:0,
+e:"Cartilage provides flexible structural support."
+},
+
+{
+q:"The matrix of bone contains mainly:",
+o:["Calcium salts and collagen","Only fat","Only mucus","Only water"],
+a:0,
+e:"Bone matrix contains mineral salts along with collagen fibres."
+},
+
+{
+q:"Blood is classified as:",
+o:["Connective tissue","Epithelial tissue","Muscular tissue","Nervous tissue"],
+a:0,
+e:"Blood is a fluid connective tissue."
+},
+
+{
+q:"The fluid matrix of blood is:",
+o:["Plasma","Serum only","Lymph","Cytoplasm"],
+a:0,
+e:"Plasma is the liquid extracellular matrix of blood."
+},
+
+{
+q:"Red blood cells mainly transport:",
+o:["Oxygen","Hormones only","Bile","Digestive enzymes"],
+a:0,
+e:"Haemoglobin in RBCs carries oxygen."
+},
+
+{
+q:"White blood cells are mainly involved in:",
+o:["Defence","Oxygen transport","Bone formation","Digestion"],
+a:0,
+e:"WBCs participate in immune defence."
+},
+
+{
+q:"Platelets are important for:",
+o:["Blood clotting","Oxygen transport","Muscle contraction","Digestion"],
+a:0,
+e:"Platelets help in blood coagulation."
+},
+
+{
+q:"Skeletal muscle is generally:",
+o:["Striated and voluntary","Unstriated and involuntary","Only involuntary","Non-contractile"],
+a:0,
+e:"Skeletal muscles show striations and are usually under voluntary control."
+},
+
+{
+q:"Smooth muscle is:",
+o:["Involuntary","Always voluntary","Striated","Found only in bones"],
+a:0,
+e:"Smooth muscle works involuntarily and lacks visible striations."
+},
+
+{
+q:"Cardiac muscle is found in:",
+o:["Heart","Stomach only","Bones","Tendons"],
+a:0,
+e:"Cardiac muscle forms the muscular wall of the heart."
+},
+
+{
+q:"Intercalated discs occur in:",
+o:["Cardiac muscle","Skeletal muscle","Smooth muscle","Cartilage"],
+a:0,
+e:"Intercalated discs connect cardiac muscle cells."
+},
+
+{
+q:"The functional unit of nervous tissue is:",
+o:["Neuron","RBC","Osteocyte","Adipocyte"],
+a:0,
+e:"Neurons are specialised cells that transmit nerve impulses."
+},
+
+{
+q:"The part of neuron that usually receives impulses is:",
+o:["Dendrite","Axon","Cell wall","Myofibril"],
+a:0,
+e:"Dendrites generally receive signals from other neurons or receptors."
+},
+
+{
+q:"The long process of a neuron is usually called:",
+o:["Axon","Dendrite","Soma","Synapse"],
+a:0,
+e:"The axon carries nerve impulses away from the cell body."
+},
+
+{
+q:"Earthworm belongs to phylum:",
+o:["Annelida","Arthropoda","Mollusca","Echinodermata"],
+a:0,
+e:"Earthworm is a segmented annelid."
+},
+
+{
+q:"The body of earthworm is:",
+o:["Metamerically segmented","Unsegmented","Radially symmetrical","Covered by shell"],
+a:0,
+e:"Earthworm has repeated body segments."
+},
+
+{
+q:"The excretory organs of earthworm are:",
+o:["Nephridia","Malpighian tubules","Kidneys","Flame cells"],
+a:0,
+e:"Earthworms use nephridia for excretion and osmoregulation."
+},
+
+{
+q:"The alimentary canal of earthworm is:",
+o:["Complete","Incomplete","Absent","Only a stomach"],
+a:0,
+e:"Earthworm has a complete digestive tract with mouth and anus."
+},
+
+{
+q:"Cockroach belongs to:",
+o:["Arthropoda","Annelida","Mollusca","Chordata"],
+a:0,
+e:"Cockroach is an arthropod with jointed appendages and exoskeleton."
+},
+
+{
+q:"The exoskeleton of cockroach is made mainly of:",
+o:["Chitin","Cellulose","Calcium carbonate","Collagen"],
+a:0,
+e:"Arthropod exoskeleton contains chitin."
+},
+
+{
+q:"The respiratory organs of cockroach are:",
+o:["Tracheae","Gills","Lungs","Skin"],
+a:0,
+e:"Cockroach breathes through a tracheal system."
+},
+
+{
+q:"Cockroach excretes mainly through:",
+o:["Malpighian tubules","Nephridia","Kidneys","Flame cells"],
+a:0,
+e:"Malpighian tubules are the principal excretory structures in cockroach."
+},
+
+{
+q:"The body of cockroach is divided into:",
+o:["Head, thorax and abdomen","Head and trunk only","Cephalothorax and abdomen","Only abdomen"],
+a:0,
+e:"Cockroach body has three regions: head, thorax and abdomen."
+},
+
+{
+q:"The number of pairs of walking legs in cockroach is:",
+o:["1","2","3","4"],
+a:2,
+e:"Each of the three thoracic segments bears one pair of legs."
+},
+
+{
+q:"Frog belongs to class:",
+o:["Amphibia","Reptilia","Aves","Mammalia"],
+a:0,
+e:"Frogs are amphibians."
+},
+
+{
+q:"Frog has:",
+o:["Three-chambered heart","Two-chambered heart","Four-chambered heart","Five-chambered heart"],
+a:0,
+e:"A frog has two atria and one ventricle."
+},
+
+{
+q:"Frog respiration through skin is called:",
+o:["Cutaneous respiration","Tracheal respiration","Branchial respiration","Pulmonary only"],
+a:0,
+e:"Gas exchange through the skin is cutaneous respiration."
+},
+
+{
+q:"The adult frog mainly uses which organs for respiration?",
+o:["Lungs and skin","Gills only","Tracheae","Book lungs"],
+a:0,
+e:"Adult frogs use lungs and skin for respiration."
+},
+
+{
+q:"The frog's external ear is represented by:",
+o:["Tympanum","Pinna","Cochlea","Auditory canal"],
+a:0,
+e:"The tympanum is the visible circular membrane behind the eye."
+},
+
+{
+q:"The largest organ of the human body is:",
+o:["Skin","Liver","Heart","Brain"],
+a:0,
+e:"Skin is the largest organ by surface area."
+},
+
+{
+q:"Stratified squamous epithelium is mainly protective because it has:",
+o:["Multiple layers","No cells","Only one layer","Only muscle fibres"],
+a:0,
+e:"Multiple layers protect underlying tissues from abrasion."
+},
+
+{
+q:"The extracellular matrix of cartilage is secreted by:",
+o:["Chondrocytes","Neurons","RBCs","Platelets"],
+a:0,
+e:"Chondrocytes maintain and secrete cartilage matrix."
+},
+
+{
+q:"Osteocytes are cells found in:",
+o:["Bone","Cartilage","Blood","Muscle"],
+a:0,
+e:"Osteocytes are mature bone cells."
+},
+
+{
+q:"The contractile proteins in muscle include:",
+o:["Actin and myosin","Collagen and elastin","Keratin and tubulin","DNA and RNA"],
+a:0,
+e:"Actin and myosin interact to produce muscle contraction."
+}
+
+]
+},
+
+/* ================= BOTANY ================= */
+
+{
+name:"Botany",
+questions:[
+
+{
+q:"The basic unit of life is:",
+o:["Cell","Tissue","Organ","Organ system"],
+a:0,
+e:"The cell is the basic structural and functional unit of life."
+},
+
+{
+q:"The cell was first described by Robert Hooke in:",
+o:["Cork","Blood","Leaf","Bacteria"],
+a:0,
+e:"Hooke observed compartments in cork and called them cells."
+},
+
+{
+q:"A prokaryotic cell lacks:",
+o:["Membrane-bound nucleus","Ribosomes","DNA","Plasma membrane"],
+a:0,
+e:"Prokaryotes have no membrane-bound nucleus."
+},
+
+{
+q:"The plasma membrane follows the:",
+o:["Fluid mosaic model","Lock-and-key model","Central dogma","Cell theory"],
+a:0,
+e:"Singer and Nicolson proposed the fluid mosaic model."
+},
+
+{
+q:"The plant cell wall is mainly made of:",
+o:["Cellulose","Chitin","Peptidoglycan","Glycogen"],
+a:0,
+e:"Cellulose is the major structural component of plant cell walls."
+},
+
+{
+q:"The middle lamella is mainly composed of:",
+o:["Calcium pectate","Cellulose only","Protein","Chitin"],
+a:0,
+e:"Middle lamella contains calcium pectate and helps cement adjacent cells."
+},
+
+{
+q:"The nucleus contains:",
+o:["Chromatin","Only lipids","Only ATP","Cellulose"],
+a:0,
+e:"Chromatin consists of DNA and associated proteins inside the nucleus."
+},
+
+{
+q:"The nucleolus is associated with:",
+o:["rRNA synthesis","Lipid digestion","ATP breakdown","Cell wall formation"],
+a:0,
+e:"The nucleolus is the major site of ribosomal RNA synthesis and ribosome assembly."
+},
+
+{
+q:"The powerhouse of the cell is:",
+o:["Mitochondrion","Golgi apparatus","Lysosome","Vacuole"],
+a:0,
+e:"Mitochondria generate much of the cell's ATP through respiration."
+},
+
+{
+q:"The folds of inner mitochondrial membrane are:",
+o:["Cristae","Grana","Cisternae","Thylakoids"],
+a:0,
+e:"The inner membrane forms folds called cristae."
+},
+
+{
+q:"Chloroplasts are mainly responsible for:",
+o:["Photosynthesis","Protein digestion","DNA destruction","Cell movement"],
+a:0,
+e:"Chloroplasts contain chlorophyll and carry out photosynthesis."
+},
+
+{
+q:"Stacks of thylakoids are called:",
+o:["Grana","Cristae","Cisternae","Nucleoids"],
+a:0,
+e:"A stack of thylakoids is called a granum; plural is grana."
+},
+
+{
+q:"The fluid region of chloroplast containing enzymes is:",
+o:["Stroma","Matrix","Cytosol","Nucleoplasm"],
+a:0,
+e:"The stroma surrounds the thylakoid system and contains enzymes."
+},
+
+{
+q:"Ribosomes are the site of:",
+o:["Protein synthesis","Lipid storage","Photosynthesis","Cell digestion"],
+a:0,
+e:"Ribosomes translate mRNA to synthesize proteins."
+},
+
+{
+q:"Prokaryotic ribosomes are:",
+o:["70S","80S","90S","60S"],
+a:0,
+e:"Bacterial cytoplasmic ribosomes are 70S."
+},
+
+{
+q:"Eukaryotic cytoplasmic ribosomes are:",
+o:["80S","70S","50S","60S"],
+a:0,
+e:"The cytoplasmic ribosomes of eukaryotes are 80S."
+},
+
+{
+q:"Rough ER has:",
+o:["Ribosomes","Chlorophyll","DNA only","Centrioles"],
+a:0,
+e:"Rough ER appears rough because ribosomes are attached to its surface."
+},
+
+{
+q:"Smooth ER is important in:",
+o:["Lipid synthesis","Protein translation by ribosomes","DNA packaging","Cell division"],
+a:0,
+e:"Smooth ER participates in lipid synthesis and several metabolic processes."
+},
+
+{
+q:"Golgi apparatus is involved in:",
+o:["Modification and packaging","ATP production","DNA replication","Chromosome movement"],
+a:0,
+e:"Golgi modifies, sorts and packages proteins and lipids."
+},
+
+{
+q:"Lysosomes contain:",
+o:["Hydrolytic enzymes","Chlorophyll","DNA only","Cellulose"],
+a:0,
+e:"Lysosomes contain hydrolytic enzymes for intracellular digestion."
+},
+
+{
+q:"The membrane around the plant vacuole is:",
+o:["Tonoplast","Plasmalemma","Crista","Nuclear envelope"],
+a:0,
+e:"The vacuolar membrane is called the tonoplast."
+},
+
+{
+q:"The large central vacuole helps maintain:",
+o:["Turgor pressure","DNA sequence","Ribosome size","Chromosome number"],
+a:0,
+e:"Water stored in the vacuole contributes to turgor pressure."
+},
+
+{
+q:"Plasmodesmata connect:",
+o:["Adjacent plant cells","Mitochondria","Nuclei only","Ribosomes"],
+a:0,
+e:"Plasmodesmata provide cytoplasmic connections between neighbouring plant cells."
+},
+
+{
+q:"The centrosome is generally present in:",
+o:["Animal cells","Higher plant cells generally","Bacteria","Viruses"],
+a:0,
+e:"Centrosomes with centrioles are characteristic of animal cells."
+},
+
+{
+q:"The axoneme of cilia generally has:",
+o:["9+2 arrangement","8+1 arrangement","7+2 arrangement","9+0 only"],
+a:0,
+e:"Typical motile cilia and flagella have nine peripheral doublets and two central microtubules."
+},
+
+{
+q:"Microtubules are mainly composed of:",
+o:["Tubulin","Actin","Collagen","Keratin"],
+a:0,
+e:"Microtubules are polymers of tubulin."
+},
+
+{
+q:"Microfilaments are mainly composed of:",
+o:["Actin","Tubulin","Collagen","DNA"],
+a:0,
+e:"Microfilaments are primarily actin filaments."
+},
+
+{
+q:"The cytoskeleton helps in:",
+o:["Shape and movement","Only DNA replication","Only digestion","Only respiration"],
+a:0,
+e:"The cytoskeleton supports cell shape, organization and movement."
+},
+
+{
+q:"A double membrane surrounds:",
+o:["Mitochondria","Ribosomes","Lysosomes","Golgi apparatus"],
+a:0,
+e:"Mitochondria are bounded by outer and inner membranes."
+},
+
+{
+q:"Chloroplasts possess:",
+o:["Their own DNA and ribosomes","No DNA","Only RNA","Only proteins"],
+a:0,
+e:"Chloroplasts are semi-autonomous organelles with their own DNA and ribosomes."
+},
+
+{
+q:"Mitochondria and chloroplasts are called semi-autonomous because they:",
+o:["Contain their own genetic material and machinery","Have no membranes","Are found only in bacteria","Cannot make proteins"],
+a:0,
+e:"They possess their own DNA and ribosomes and can synthesize some proteins."
+},
+
+{
+q:"The cell wall provides:",
+o:["Mechanical support","Only ATP","Only hormones","Nerve impulses"],
+a:0,
+e:"The cell wall provides strength and protection."
+},
+
+{
+q:"The selectively permeable structure of a cell is:",
+o:["Plasma membrane","Cell wall","Nucleolus","Ribosome"],
+a:0,
+e:"The plasma membrane regulates movement of substances into and out of the cell."
+},
+
+{
+q:"Diffusion is movement from:",
+o:["Higher concentration to lower concentration","Lower to higher only","Equal to higher","No concentration gradient"],
+a:0,
+e:"Diffusion is net movement down a concentration gradient."
+},
+
+{
+q:"Osmosis involves movement of:",
+o:["Water","DNA","Proteins","Lipids only"],
+a:0,
+e:"Osmosis is movement of water across a selectively permeable membrane."
+},
+
+{
+q:"Endocytosis is:",
+o:["Taking material into cell using membrane","Release of material only","DNA replication","Cell division"],
+a:0,
+e:"Endocytosis brings external material into the cell by membrane invagination."
+},
+
+{
+q:"Exocytosis involves:",
+o:["Release of materials from cell","Water absorption only","DNA synthesis","Chromosome duplication"],
+a:0,
+e:"Exocytosis releases vesicular contents outside the cell."
+},
+
+{
+q:"The endomembrane system includes:",
+o:["ER, Golgi, lysosomes and vacuoles","Mitochondria only","Ribosomes only","Chloroplast only"],
+a:0,
+e:"These organelles are functionally connected through membrane trafficking."
+},
+
+{
+q:"Peroxisomes are involved in:",
+o:["Oxidative reactions","Protein translation","Chromosome formation","Photosynthesis only"],
+a:0,
+e:"Peroxisomes contain oxidative enzymes and participate in detoxification."
+},
+
+{
+q:"Cell division in which one cell forms two daughter cells with the same chromosome number is:",
+o:["Mitosis","Meiosis I","Meiosis II only","Fertilisation"],
+a:0,
+e:"Mitosis generally produces two genetically similar daughter cells with the same chromosome number."
+},
+
+{
+q:"Chromosomes become clearly visible during:",
+o:["Cell division","Interphase only","Translation","Photosynthesis"],
+a:0,
+e:"Chromatin condenses into visible chromosomes during cell division."
+},
+
+{
+q:"The genetic material of most organisms is:",
+o:["DNA","Protein","Lipid","Carbohydrate"],
+a:0,
+e:"DNA is the primary hereditary material in cellular organisms."
+},
+
+{
+q:"The cell membrane is mainly a:",
+o:["Phospholipid bilayer with proteins","Cellulose sheet","Protein-only layer","DNA layer"],
+a:0,
+e:"The plasma membrane consists mainly of a phospholipid bilayer with embedded proteins."
+},
+
+{
+q:"The fluid mosaic model was proposed by:",
+o:["Singer and Nicolson","Hooke and Brown","Schleiden and Schwann","Watson and Crick"],
+a:0,
+e:"Singer and Nicolson proposed the fluid mosaic model in 1972."
+},
+
+{
+q:"The Golgi apparatus in plant cells is composed of:",
+o:["Cisternae","Cristae","Grana","Nucleoids"],
+a:0,
+e:"Golgi stacks consist of flattened membrane-bound sacs called cisternae."
+}
+
+]
+}
+
+];
+
+
+/* =====================================================
+   VARIABLES
+   ===================================================== */
+
+let currentSection=0;
+let currentQuestion=0;
+
+let answers=sections.map(section =>
+    new Array(section.questions.length).fill(null)
+);
+
+let submitted=false;
+
+let totalSeconds=3*60*60+15*60;
+
+
+/* =====================================================
+   START
+   ===================================================== */
+
+function showInstructions(){
+
+    document.getElementById("startScreen").style.display="none";
+
+    document.getElementById("instructions").style.display="block";
+
+}
+
+
+function beginTest(){
+
+    if(!document.getElementById("agree").checked){
+
+        alert("Please read and accept the instructions first.");
+
+        return;
+    }
+
+    document.getElementById("instructions").style.display="none";
+
+    document.getElementById("testScreen").style.display="block";
+
+    loadQuestion();
+
+    startTimer();
+
+}
+
+
+/* =====================================================
+   TIMER
+   ===================================================== */
+
+function startTimer(){
+
+    const timer=document.getElementById("timer");
+
+    const interval=setInterval(()=>{
+
+        if(submitted){
+
+            clearInterval(interval);
+            return;
+
+        }
+
+        let h=Math.floor(totalSeconds/3600);
+
+        let m=Math.floor((totalSeconds%3600)/60);
+
+        let s=totalSeconds%60;
+
+        timer.textContent=
+            String(h).padStart(2,"0")+":"+
+            String(m).padStart(2,"0")+":"+
+            String(s).padStart(2,"0");
+
+
+        if(totalSeconds<=0){
+
+            clearInterval(interval);
+
+            alert("Time is over. Your test will be submitted automatically.");
+
+            submitTest();
+
+            return;
+
+        }
+
+        totalSeconds--;
+
+    },1000);
+
+}
+
+
+/* =====================================================
+   LOAD QUESTION
+   ===================================================== */
+
+function loadQuestion(){
+
+    const section=sections[currentSection];
+
+    const q=section.questions[currentQuestion];
+
+    document.getElementById("sectionTitle").textContent=
+        section.name+" • Question "+
+        (currentQuestion+1)+" / "+
+        section.questions.length;
+
+
+    let html=`
+
+    <div class="question-number">
+        Question ${currentQuestion+1} of 45
+    </div>
+
+    <div class="question">
+        ${currentQuestion+1}. ${q.q}
+    </div>
+
+    `;
+
+
+    q.o.forEach((option,index)=>{
+
+        html+=`
+
+        <label class="option">
+
+            <input
+            type="radio"
+            name="answer"
+            value="${index}"
+
+            ${answers[currentSection][currentQuestion]===index
+            ? "checked"
+            : ""}
+
+            onchange="selectAnswer(${index})">
+
+            ${String.fromCharCode(65+index)}.
+            ${option}
+
+        </label>
+
+        `;
+
+    });
+
+
+    document.getElementById("questionBox").innerHTML=html;
+
+
+    updateTabs();
+
+    updatePalette();
+
+
+    document.querySelector(".nav-btn")
+        .disabled=
+        currentSection===0 &&
+        currentQuestion===0;
+
+
+    if(currentQuestion===44){
+
+        document.querySelectorAll(".nav-btn")[1]
+            .style.display="none";
+
+        document.getElementById("submitBtn")
+            .style.display="block";
+
+    }else{
+
+        document.querySelectorAll(".nav-btn")[1]
+            .style.display="block";
+
+        document.getElementById("submitBtn")
+            .style.display="none";
+
+    }
+
+}
+
+
+/* =====================================================
+   ANSWER
+   ===================================================== */
+
+function selectAnswer(index){
+
+    answers[currentSection][currentQuestion]=index;
+
+    updatePalette();
+
+}
+
+
+/* =====================================================
+   NEXT
+   ===================================================== */
+
+function nextQuestion(){
+
+    if(currentQuestion<44){
+
+        currentQuestion++;
+
+    }else if(currentSection<3){
+
+        currentSection++;
+
+        currentQuestion=0;
+
+    }
+
+    loadQuestion();
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* =====================================================
+   PREVIOUS
+   ===================================================== */
+
+function previousQuestion(){
+
+    if(currentQuestion>0){
+
+        currentQuestion--;
+
+    }else if(currentSection>0){
+
+        currentSection--;
+
+        currentQuestion=44;
+
+    }
+
+    loadQuestion();
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* =====================================================
+   SECTION
+   ===================================================== */
+
+function changeSection(sectionIndex){
+
+    currentSection=sectionIndex;
+
+    currentQuestion=0;
+
+    loadQuestion();
+
+    window.scrollTo(0,0);
+
+}
+
+
+function updateTabs(){
+
+    document.querySelectorAll(".section-tab")
+    .forEach((tab,index)=>{
+
+        tab.classList.toggle(
+            "active",
+            index===currentSection
+        );
+
+    });
+
+}
+
+
+/* =====================================================
+   PALETTE
+   ===================================================== */
+
+function updatePalette(){
+
+    let html="";
+
+    const section=sections[currentSection];
+
+    section.questions.forEach((q,index)=>{
+
+        let cls="";
+
+        if(index===currentQuestion)
+            cls+=" current ";
+
+        if(answers[currentSection][index]!==null)
+            cls+=" answered ";
+
+        html+=`
+
+        <button class="${cls}"
+        onclick="goToQuestion(${index})">
+
+            ${index+1}
+
+        </button>
+
+        `;
+
+    });
+
+    document.getElementById("palette").innerHTML=html;
+
+}
+
+
+function goToQuestion(index){
+
+    currentQuestion=index;
+
+    loadQuestion();
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* =====================================================
+   SUBMIT
+   ===================================================== */
+
+function submitTest(){
+
+    if(submitted)
+        return;
+
+    if(!confirm(
+        "Are you sure you want to submit the complete test?"
+    ))
+        return;
+
+
+    submitted=true;
+
+    let correct=0;
+    let wrong=0;
+    let unanswered=0;
+
+    sections.forEach((section,s)=>{
+
+        section.questions.forEach((q,qIndex)=>{
+
+            const user=answers[s][qIndex];
+
+            if(user===null){
+
+                unanswered++;
+
+            }else if(user===q.a){
+
+                correct++;
+
+            }else{
+
+                wrong++;
+
+            }
+
+        });
+
+    });
+
+
+    const total=180;
+
+    const percentage=
+        ((correct/total)*100).toFixed(2);
+
+
+    document.getElementById("testScreen")
+        .style.display="none";
+
+    document.getElementById("result")
+        .style.display="block";
+
+
+    document.getElementById("bigScore")
+        .textContent=
+        correct+" / "+total;
+
+
+    document.getElementById("percentage")
+        .innerHTML=
+        "<b>Percentage:</b> "+percentage+"%";
+
+
+    document.getElementById("correctCount")
+        .textContent=correct;
+
+
+    document.getElementById("wrongCount")
+        .textContent=wrong;
+
+
+    document.getElementById("unansweredCount")
+        .textContent=unanswered;
+
+
+    createReview();
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* =====================================================
+   REVIEW
+   ===================================================== */
+
+function createReview(){
+
+    let html="";
+
+    sections.forEach((section,s)=>{
+
+        html+=`
+
+        <h2 style="
+        color:#0b3559;
+        margin-top:35px;
+        margin-bottom:15px;
+        ">
+
+            ${section.name}
+
+        </h2>
+
+        `;
+
+
+        section.questions.forEach((q,index)=>{
+
+            const user=
+                answers[s][index];
+
+            const correct=
+                user!==null &&
+                user===q.a;
+
+            const unanswered=
+                user===null;
+
+
+            let cls="";
+
+            let status="";
+
+
+            if(correct){
+
+                cls="correct-box";
+                status="✅ CORRECT";
+
+            }else if(unanswered){
+
+                cls="unanswered-box";
+                status="⭕ UNANSWERED";
+
+            }else{
+
+                cls="wrong-box";
+                status="❌ WRONG";
+
+            }
+
+
+            const userText=
+                unanswered
+                ? "Not attempted"
+                : q.o[user];
+
+
+            const correctText=
+                q.o[q.a];
+
+
+            html+=`
+
+            <div class="review-item ${cls}">
+
+                <div class="review-q">
+
+                    Question ${index+1}
+                    — ${status}
+
+                    <br><br>
+
+                    ${q.q}
+
+                </div>
+
+
+                <div class="answer-line">
+
+                    <b>Your answer:</b>
+
+                    ${userText}
+
+                </div>
+
+
+                <div class="answer-line">
+
+                    <b>Correct answer:</b>
+
+                    ${correctText}
+
+                </div>
+
+
+                <div class="explanation">
+
+                    <b>💡 Explanation:</b><br>
+
+                    ${q.e}
+
+                </div>
+
+            </div>
+
+            `;
+
+        });
+
+    });
+
+
+    document.getElementById("review").innerHTML=html;
+
+}
+
+</script>
+
+</body>
+</html>
