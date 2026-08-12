@@ -1,0 +1,2967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>StudyByPKY | Batches</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#fff5fb;
+    color:#222;
+    padding-bottom:82px;
+}
+
+/* ================= HEADER ================= */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#fff;
+    padding:14px 5%;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    box-shadow:0 3px 15px rgba(0,0,0,.10);
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    color:#e91e63;
+    white-space:nowrap;
+}
+
+.logo span{
+    color:#7b1fa2;
+}
+
+.search-box{
+    flex:1;
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+    padding:13px 45px 13px 18px;
+    border:1px solid #ddd;
+    border-radius:30px;
+    outline:none;
+    font-size:15px;
+    background:#f8f8f8;
+}
+
+.search-icon{
+    position:absolute;
+    right:17px;
+    top:10px;
+    font-size:21px;
+}
+
+.login-btn{
+    background:linear-gradient(90deg,#e91e63,#9c27b0);
+    color:white;
+    border:0;
+    padding:12px 20px;
+    border-radius:25px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* ================= PAGES ================= */
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    margin:20px 5%;
+    padding:40px 25px;
+    border-radius:25px;
+    background:linear-gradient(135deg,#e91e63,#9c27b0);
+    color:#fff;
+}
+
+.hero h1{
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+.hero p{
+    line-height:1.6;
+}
+
+.hero-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:13px 23px;
+    border-radius:25px;
+    background:#fff;
+    color:#e91e63;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+    padding:25px 5%;
+}
+
+.section-title{
+    margin-bottom:20px;
+}
+
+.section-title h2{
+    font-size:27px;
+}
+
+/* ================= CATEGORIES ================= */
+
+.categories{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding:5px 5% 20px;
+}
+
+.category{
+    white-space:nowrap;
+    border:1px solid #ddd;
+    background:#fff;
+    padding:11px 18px;
+    border-radius:25px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.category.active{
+    background:#e91e63;
+    color:#fff;
+}
+
+/* ================= BATCH GRID ================= */
+
+.batch-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    gap:20px;
+}
+
+.batch{
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.09);
+}
+
+.batch-img{
+    height:145px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:15px;
+    color:#fff;
+    font-size:24px;
+    font-weight:900;
+    background:linear-gradient(135deg,#e91e63,#7b1fa2);
+}
+
+.batch-content{
+    padding:18px;
+}
+
+.batch-content h3{
+    margin:7px 0;
+    font-size:20px;
+}
+
+.tag{
+    display:inline-block;
+    background:#fce4ec;
+    color:#c2185b;
+    padding:5px 9px;
+    border-radius:7px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.rating{
+    color:#ff9800;
+    margin:8px 0;
+}
+
+.benefits{
+    list-style:none;
+    margin:12px 0;
+}
+
+.benefits li{
+    margin:7px 0;
+    font-size:14px;
+    color:#555;
+}
+
+.price{
+    font-size:24px;
+    color:#e91e63;
+    font-weight:900;
+}
+
+.old-price{
+    font-size:14px;
+    color:#999;
+    text-decoration:line-through;
+    margin-left:5px;
+}
+
+.buy-btn,
+.study-btn,
+.primary-btn{
+    width:100%;
+    border:0;
+    padding:13px;
+    border-radius:10px;
+    margin-top:12px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:15px;
+}
+
+.buy-btn,
+.primary-btn{
+    color:#fff;
+    background:linear-gradient(90deg,#e91e63,#9c27b0);
+}
+
+.study-btn{
+    color:#fff;
+    background:#2e7d32;
+}
+
+/* ================= RESOURCES ================= */
+
+.resource-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    gap:20px;
+}
+
+.resource-card{
+    background:#fff;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.resource-card h3{
+    color:#7b1fa2;
+    margin-bottom:15px;
+}
+
+.resource-btn{
+    display:block;
+    text-decoration:none;
+    background:#fce4ec;
+    color:#c2185b;
+    padding:12px;
+    border-radius:10px;
+    margin:9px 0;
+    font-weight:bold;
+}
+
+/* ================= PURCHASE ================= */
+
+.purchase-wrapper{
+    max-width:800px;
+    margin:25px auto;
+    padding:0 18px;
+}
+
+.back-btn{
+    border:0;
+    background:#fff;
+    padding:10px 16px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.purchase-card{
+    background:#fff;
+    margin-top:18px;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 6px 25px rgba(0,0,0,.10);
+}
+
+.purchase-header{
+    padding:30px 22px;
+    color:#fff;
+    background:linear-gradient(135deg,#e91e63,#9c27b0);
+    text-align:center;
+}
+
+.purchase-header h1{
+    font-size:28px;
+}
+
+.purchase-body{
+    padding:22px;
+}
+
+.purchase-price{
+    text-align:center;
+    margin:10px 0 20px;
+}
+
+.purchase-price strong{
+    font-size:32px;
+    color:#e91e63;
+}
+
+.feature{
+    background:#fff4f8;
+    border-left:5px solid #e91e63;
+    padding:14px;
+    margin:9px 0;
+    border-radius:10px;
+}
+
+.feature-number{
+    font-weight:bold;
+    color:#c2185b;
+}
+
+/* ================= PAYMENT ================= */
+
+.payment-card{
+    background:#fff;
+    max-width:700px;
+    margin:20px auto;
+    padding:22px;
+    border-radius:24px;
+    box-shadow:0 5px 25px rgba(0,0,0,.10);
+}
+
+.payment-card h2{
+    margin-bottom:18px;
+}
+
+.upi-box{
+    border:2px dashed #e91e63;
+    padding:20px;
+    text-align:center;
+    border-radius:15px;
+    background:#fff7fa;
+}
+
+.upi-id{
+    font-size:24px;
+    color:#c2185b;
+    font-weight:900;
+    margin:10px 0;
+    word-break:break-word;
+}
+
+.copy-btn{
+    border:0;
+    background:#fce4ec;
+    color:#c2185b;
+    padding:10px 17px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.amount{
+    font-size:25px;
+    font-weight:bold;
+    color:#e91e63;
+    text-align:center;
+    margin:18px 0;
+}
+
+.qr-box{
+    text-align:center;
+    margin:20px 0;
+}
+
+.qr-box img{
+    width:260px;
+    max-width:100%;
+    border-radius:12px;
+    border:8px solid #fff;
+    box-shadow:0 3px 15px rgba(0,0,0,.15);
+}
+
+.qr-title{
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.payment-note{
+    background:#fff8df;
+    padding:15px;
+    border-radius:12px;
+    line-height:1.6;
+    margin:15px 0;
+}
+
+.payment-input{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    margin:7px 0;
+    font-size:15px;
+    outline:none;
+}
+
+.verify-submit{
+    width:100%;
+    padding:14px;
+    border:0;
+    border-radius:10px;
+    background:linear-gradient(90deg,#e91e63,#9c27b0);
+    color:#fff;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.pending{
+    background:#fff8df;
+    color:#795548;
+    padding:18px;
+    border-radius:15px;
+    line-height:1.6;
+}
+
+.verified{
+    background:#e8f5e9;
+    color:#2e7d32;
+    padding:18px;
+    border-radius:15px;
+    line-height:1.6;
+}
+
+/* ================= PROFILE ================= */
+
+.profile-box,
+.empty-box{
+    max-width:650px;
+    margin:auto;
+    background:#fff;
+    padding:25px;
+    border-radius:22px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.profile-head{
+    text-align:center;
+}
+
+.avatar{
+    width:75px;
+    height:75px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#e91e63,#9c27b0);
+    color:#fff;
+    font-size:35px;
+}
+
+.profile-row{
+    border-bottom:1px solid #eee;
+    padding:14px 5px;
+}
+
+.profile-label{
+    color:#888;
+    font-size:12px;
+}
+
+.profile-value{
+    font-weight:bold;
+    margin-top:5px;
+}
+
+.logout{
+    width:100%;
+    padding:13px;
+    margin-top:20px;
+    background:#333;
+    color:#fff;
+    border:0;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* ================= MY BATCH ================= */
+
+.mybatch-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.status{
+    display:inline-block;
+    padding:6px 9px;
+    border-radius:7px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.status.pending{
+    display:inline-block;
+    background:#fff3cd;
+    color:#856404;
+    padding:6px 9px;
+}
+
+.status.approved{
+    background:#e8f5e9;
+    color:#2e7d32;
+}
+
+/* ================= LOGIN ================= */
+
+.popup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:3000;
+    padding:20px;
+}
+
+.popup.show{
+    display:flex;
+}
+
+.login-box{
+    background:#fff;
+    width:100%;
+    max-width:420px;
+    padding:25px;
+    border-radius:22px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    right:20px;
+    top:12px;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.login-box input,
+.login-box select{
+    width:100%;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:9px;
+    margin:7px 0;
+}
+
+.login-submit{
+    width:100%;
+    padding:13px;
+    background:linear-gradient(90deg,#e91e63,#9c27b0);
+    color:#fff;
+    border:0;
+    border-radius:9px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.switch{
+    text-align:center;
+    margin-top:15px;
+}
+
+.switch span{
+    color:#e91e63;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#241026;
+    color:#fff;
+    text-align:center;
+    padding:30px 15px;
+    margin-top:30px;
+}
+
+footer h2{
+    color:#ff4081;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom-nav{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    height:72px;
+    background:#fff;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:2000;
+    box-shadow:0 -3px 15px rgba(0,0,0,.12);
+}
+
+.nav-item{
+    border:0;
+    background:none;
+    color:#555;
+    font-weight:bold;
+    cursor:pointer;
+    text-align:center;
+}
+
+.nav-item .icon{
+    display:block;
+    font-size:24px;
+}
+
+.nav-item.active{
+    color:#e91e63;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px){
+
+    .navbar{
+        flex-wrap:wrap;
+        padding:12px 4%;
+    }
+
+    .logo{
+        font-size:21px;
+    }
+
+    .login-btn{
+        padding:10px 15px;
+    }
+
+    .search-box{
+        flex-basis:100%;
+        order:3;
+    }
+
+    .hero{
+        margin:15px 4%;
+    }
+
+    .hero h1{
+        font-size:27px;
+    }
+
+    .section{
+        padding-left:4%;
+        padding-right:4%;
+    }
+
+    .batch-grid{
+        grid-template-columns:1fr;
+    }
+
+    .purchase-wrapper{
+        padding:0 12px;
+    }
+
+    .payment-card{
+        margin:15px 10px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     ONE HEADER ONLY
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="logo">
+        Study<span>ByPKY</span>
+    </div>
+
+    <div class="search-box">
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="Search batches, classes, NEET..."
+            oninput="searchBatches()">
+        <span class="search-icon">🔍</span>
+    </div>
+
+    <button
+        class="login-btn"
+        id="loginHeader"
+        onclick="openLogin()">
+        Login / Register
+    </button>
+
+</header>
+
+
+<!-- =====================================================
+     HOME
+===================================================== -->
+
+<section id="homePage" class="page active">
+
+<div class="hero">
+
+    <h1>Learn. Practice. Achieve. 🚀</h1>
+
+    <p>
+        StudyByPKY provides batches, NCERT resources,
+        revision material and test series for students.
+    </p>
+
+    <a
+        href="#batchSection"
+        class="hero-btn">
+        Explore Batches →
+    </a>
+
+</div>
+
+
+<div class="categories">
+
+<button
+class="category active"
+onclick="filterCategory('all',this)">
+All
+</button>
+
+<button
+class="category"
+onclick="filterCategory('class 9',this)">
+Class 9
+</button>
+
+<button
+class="category"
+onclick="filterCategory('class 10',this)">
+Class 10
+</button>
+
+<button
+class="category"
+onclick="filterCategory('class 11',this)">
+Class 11
+</button>
+
+<button
+class="category"
+onclick="filterCategory('class 12',this)">
+Class 12
+</button>
+
+<button
+class="category"
+onclick="filterCategory('neet',this)">
+NEET
+</button>
+
+<button
+class="category"
+onclick="filterCategory('test series',this)">
+Test Series
+</button>
+
+</div>
+
+
+<section
+class="section"
+id="batchSection">
+
+<div class="section-title">
+<h2>🔥 Popular Batches</h2>
+</div>
+
+<div
+class="batch-grid"
+id="batchGrid">
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-title">
+<h2>📚 Learning Resources</h2>
+</div>
+
+<div class="resource-grid">
+
+<div class="resource-card">
+
+<h3>🧬 Biology</h3>
+
+<a class="resource-btn"
+href="biology.html">
+BIOLOGY SYLLABUS
+</a>
+
+<a class="resource-btn"
+href="ncert-highlights.html">
+BIOLOGY NCERT HIGHLIGHTS
+</a>
+
+<a class="resource-btn"
+href="Ncertbiologyvedio.html">
+BIOLOGY NCERT VIDEO
+</a>
+
+<a class="resource-btn"
+href="BiologyShortnotes.html">
+BIOLOGY SHORT NOTES
+</a>
+
+</div>
+
+
+<div class="resource-card">
+
+<h3>⚡ Physics</h3>
+
+<a class="resource-btn"
+href="Physics.html">
+PHYSICS SYLLABUS
+</a>
+
+<a class="resource-btn"
+href="Physicsncert-highlights.html">
+PHYSICS NCERT HIGHLIGHTS
+</a>
+
+<a class="resource-btn"
+href="physicsncertvideo.html">
+PHYSICS NCERT VIDEO
+</a>
+
+<a class="resource-btn"
+href="Physicsshortnots.html">
+PHYSICS SHORT NOTES
+</a>
+
+</div>
+
+
+<div class="resource-card">
+
+<h3>🧪 Chemistry</h3>
+
+<a class="resource-btn"
+href="Chemistry.html">
+CHEMISTRY SYLLABUS
+</a>
+
+<a class="resource-btn"
+href="Chemistryncert-highlights.html">
+CHEMISTRY NCERT HIGHLIGHTS
+</a>
+
+<a class="resource-btn"
+href="Chemistryncertvideo.html">
+CHEMISTRY NCERT VIDEO
+</a>
+
+<a class="resource-btn"
+href="Chemistryshortnots.html">
+CHEMISTRY SHORT NOTES
+</a>
+
+</div>
+
+
+<div class="resource-card">
+
+<h3>🎯 Test Series</h3>
+
+<a class="resource-btn"
+href="50CBTBASEDTEST.html">
+50 CBT BASED TEST
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<h2>StudyByPKY</h2>
+
+<p>
+Learn smarter. Practice better. Achieve your goals.
+</p>
+
+<p>
+© 2026 StudyByPKY. All Rights Reserved.
+</p>
+
+</footer>
+
+</section>
+
+
+<!-- =====================================================
+     PURCHASE PAGE
+===================================================== -->
+
+<section
+id="purchasePage"
+class="page">
+
+<div class="purchase-wrapper">
+
+<button
+class="back-btn"
+onclick="showPage('home')">
+← Back to Batches
+</button>
+
+<div
+class="purchase-card"
+id="purchaseContainer">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     PAYMENT PAGE
+===================================================== -->
+
+<section
+id="paymentPage"
+class="page">
+
+<div class="purchase-wrapper">
+
+<button
+class="back-btn"
+onclick="showPage('purchase')">
+← Back to Batch
+</button>
+
+<div
+class="payment-card"
+id="paymentContainer">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     MY BATCH
+===================================================== -->
+
+<section
+id="myBatchPage"
+class="page">
+
+<div class="section">
+
+<div class="section-title">
+<h2>🎓 My Batch</h2>
+</div>
+
+<div
+id="myBatchContainer">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     ALL BATCH
+===================================================== -->
+
+<section
+id="allBatchPage"
+class="page">
+
+<div class="section">
+
+<div class="section-title">
+<h2>📚 All Batches</h2>
+</div>
+
+<div
+class="batch-grid"
+id="allBatchContainer">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     PROFILE
+===================================================== -->
+
+<section
+id="profilePage"
+class="page">
+
+<div class="section">
+
+<div class="section-title">
+<h2>👤 My Profile</h2>
+</div>
+
+<div
+class="profile-box"
+id="profileContainer">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<div
+class="popup"
+id="authPopup">
+
+<div class="login-box">
+
+<span
+class="close"
+onclick="closeLogin()">
+×
+</span>
+
+
+<div id="loginForm">
+
+<h2>Welcome Back 👋</h2>
+
+<input
+type="tel"
+id="loginPhone"
+maxlength="10"
+placeholder="Phone Number">
+
+<input
+type="password"
+id="loginPassword"
+placeholder="Password">
+
+<button
+class="login-submit"
+onclick="loginUser()">
+Login
+</button>
+
+<div class="switch">
+Don't have an account?
+<span onclick="showRegister()">
+Register
+</span>
+</div>
+
+</div>
+
+
+<div
+id="registerForm"
+style="display:none;">
+
+<h2>Create Account 🚀</h2>
+
+<input
+type="text"
+id="regName"
+placeholder="Full Name">
+
+<input
+type="tel"
+id="regPhone"
+maxlength="10"
+placeholder="Phone Number">
+
+<select id="regClass">
+
+<option value="">
+Select Class
+</option>
+
+<option>Class 9</option>
+<option>Class 10</option>
+<option>Class 11</option>
+<option>Class 12</option>
+<option>NEET</option>
+
+</select>
+
+<input
+type="password"
+id="regPassword"
+placeholder="Create Password">
+
+<input
+type="password"
+id="regConfirm"
+placeholder="Confirm Password">
+
+<button
+class="login-submit"
+onclick="registerUser()">
+Register
+</button>
+
+<div class="switch">
+Already registered?
+<span onclick="showLogin()">
+Login
+</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     BOTTOM NAVIGATION - ONLY ONE
+===================================================== -->
+
+<nav class="bottom-nav">
+
+<button
+class="nav-item active"
+id="navHome"
+onclick="showPage('home')">
+
+<span class="icon">🏠</span>
+Home
+
+</button>
+
+
+<button
+class="nav-item"
+id="navMyBatch"
+onclick="showPage('mybatch')">
+
+<span class="icon">🎓</span>
+My Batch
+
+</button>
+
+
+<button
+class="nav-item"
+id="navAllBatch"
+onclick="showPage('allbatch')">
+
+<span class="icon">📚</span>
+All Batch
+
+</button>
+
+
+<button
+class="nav-item"
+id="navProfile"
+onclick="showPage('profile')">
+
+<span class="icon">👤</span>
+Profile
+
+</button>
+
+</nav>
+
+
+<script>
+
+/* =====================================================
+   BATCH DATABASE
+===================================================== */
+
+const batches = [
+
+{
+name:"Lion Batch",
+price:2500,
+category:"neet",
+icon:"🦁",
+studyFile:"buynowlionbatch.html",
+oldPrice:5000
+},
+
+{
+name:"Biology NCERT Highlights",
+price:100,
+category:"neet",
+icon:"🧬",
+studyFile:"ncert-highlights.html",
+oldPrice:500
+},
+
+{
+name:"Physics NCERT Highlights",
+price:100,
+category:"neet",
+icon:"⚡",
+studyFile:"Physicsncert-highlights.html",
+oldPrice:500
+},
+
+{
+name:"Chemistry NCERT Highlights",
+price:100,
+category:"neet",
+icon:"🧪",
+studyFile:"Chemistryncert-highlights.html",
+oldPrice:500
+},
+
+{
+name:"Biology NCERT Highlights Videos",
+price:100,
+category:"neet",
+icon:"🎥",
+studyFile:"Ncertbiologyvedio.html",
+oldPrice:500
+},
+
+{
+name:"Physics NCERT Highlights Videos",
+price:100,
+category:"neet",
+icon:"🎥",
+studyFile:"physicsncertvideo.html",
+oldPrice:500
+},
+
+{
+name:"Chemistry NCERT Highlights Videos",
+price:100,
+category:"neet",
+icon:"🎥",
+studyFile:"Chemistryncertvideo.html",
+oldPrice:500
+},
+
+{
+name:"Phoenix Batch",
+price:2999,
+category:"class 12",
+icon:"⚡",
+studyFile:"Buynoephoenixbatch.html",
+oldPrice:5999
+},
+
+{
+name:"NEET Pro Batch",
+price:3999,
+category:"neet",
+icon:"🩺",
+studyFile:"BuynowNEETPRO.html",
+oldPrice:7999
+},
+
+{
+name:"The Super50 CBT Test Series",
+price:999,
+category:"test series",
+icon:"🎯",
+studyFile:"BuynowThesuper50cbt.html",
+oldPrice:1999
+},
+
+{
+name:"Class 9 Foundation Batch",
+price:1999,
+category:"class 9",
+icon:"📚",
+studyFile:"Buynowclass9foundation.html",
+oldPrice:3999
+},
+
+{
+name:"Class 10 Foundation Batch",
+price:2999,
+category:"class 10",
+icon:"📚",
+studyFile:"Buynowclass10foundation.html",
+oldPrice:3999
+},
+
+{
+name:"Class 11 Foundation Batch",
+price:1999,
+category:"class 11",
+icon:"📚",
+studyFile:"Buynowclass11foundation.html",
+oldPrice:3999
+},
+
+{
+name:"Class 12 Foundation Batch",
+price:3500,
+category:"class 12",
+icon:"📚",
+studyFile:"Buynowclass12foundation.html",
+oldPrice:3999
+},
+
+{
+name:"Board Master Batch",
+price:2499,
+category:"class 12",
+icon:"🏆",
+studyFile:"BuynowBoardmasterclass12.html",
+oldPrice:4999
+}
+
+];
+
+
+/* =====================================================
+   10 BENEFITS
+===================================================== */
+
+const benefits = [
+
+"Complete selected batch syllabus coverage",
+
+"Chapter-wise structured learning",
+
+"NCERT-focused preparation",
+
+"Important concepts and key points",
+
+"Practice questions for preparation",
+
+"Revision material and notes",
+
+"Exam-oriented preparation",
+
+"Mock/test practice",
+
+"Study notes and useful resources",
+
+"Access to the selected batch after payment verification"
+
+];
+
+
+/* =====================================================
+   STORAGE
+===================================================== */
+
+function getUser(){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem("studyByPKYUser")
+        ) || null;
+
+    }catch(e){
+
+        return null;
+
+    }
+
+}
+
+function saveUser(user){
+
+    localStorage.setItem(
+        "studyByPKYUser",
+        JSON.stringify(user)
+    );
+
+}
+
+
+/* =====================================================
+   STUDYBYPKY ID
+===================================================== */
+
+function createStudyID(){
+
+    return "SBPKY" +
+    Math.floor(
+        100000 +
+        Math.random()*900000
+    );
+
+}
+
+
+/* =====================================================
+   FIND BATCH
+===================================================== */
+
+function getBatch(name){
+
+    return batches.find(
+        b => b.name === name
+    );
+
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+function openLogin(){
+
+    document
+    .getElementById("authPopup")
+    .classList.add("show");
+
+    showLogin();
+
+}
+
+function closeLogin(){
+
+    document
+    .getElementById("authPopup")
+    .classList.remove("show");
+
+}
+
+function showLogin(){
+
+    document
+    .getElementById("loginForm")
+    .style.display="block";
+
+    document
+    .getElementById("registerForm")
+    .style.display="none";
+
+}
+
+function showRegister(){
+
+    document
+    .getElementById("loginForm")
+    .style.display="none";
+
+    document
+    .getElementById("registerForm")
+    .style.display="block";
+
+}
+
+
+/* =====================================================
+   REGISTER
+===================================================== */
+
+function registerUser(){
+
+    const name =
+        document.getElementById("regName").value.trim();
+
+    const phone =
+        document.getElementById("regPhone").value.trim();
+
+    const studentClass =
+        document.getElementById("regClass").value;
+
+    const password =
+        document.getElementById("regPassword").value;
+
+    const confirm =
+        document.getElementById("regConfirm").value;
+
+
+    if(
+        !name ||
+        !phone ||
+        !studentClass ||
+        !password ||
+        !confirm
+    ){
+
+        alert("Please fill all fields.");
+        return;
+
+    }
+
+
+    if(!/^[0-9]{10}$/.test(phone)){
+
+        alert("Enter a valid 10-digit phone number.");
+        return;
+
+    }
+
+
+    if(password !== confirm){
+
+        alert("Passwords do not match.");
+        return;
+
+    }
+
+
+    let existing =
+        getUser();
+
+
+    if(
+        existing &&
+        existing.phone === phone
+    ){
+
+        alert(
+            "This phone number is already registered. Please login."
+        );
+
+        showLogin();
+        return;
+
+    }
+
+
+    const user = {
+
+        name:name,
+
+        phone:phone,
+
+        class:studentClass,
+
+        studyId:createStudyID(),
+
+        password:password,
+
+        loggedIn:true,
+
+        purchased:[],
+
+        payments:[]
+
+    };
+
+
+    saveUser(user);
+
+    closeLogin();
+
+    updateHeader();
+
+    renderProfile();
+
+    alert(
+        "Registration successful!\n\n" +
+        "StudyByPKY ID: " +
+        user.studyId
+    );
+
+    showPage("profile");
+
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+function loginUser(){
+
+    const phone =
+        document.getElementById("loginPhone")
+        .value.trim();
+
+    const password =
+        document.getElementById("loginPassword")
+        .value;
+
+    const user =
+        getUser();
+
+
+    if(!user){
+
+        alert(
+            "No account found. Please register first."
+        );
+
+        showRegister();
+        return;
+
+    }
+
+
+    if(
+        user.phone !== phone ||
+        user.password !== password
+    ){
+
+        alert("Incorrect phone number or password.");
+        return;
+
+    }
+
+
+    user.loggedIn = true;
+
+    saveUser(user);
+
+    closeLogin();
+
+    updateHeader();
+
+    renderProfile();
+
+    alert("Login successful! 🎉");
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logoutUser(){
+
+    const user = getUser();
+
+    if(!user) return;
+
+    user.loggedIn = false;
+
+    saveUser(user);
+
+    updateHeader();
+
+    showPage("home");
+
+}
+
+
+/* =====================================================
+   BATCH CARD
+===================================================== */
+
+function createBatchCard(batch){
+
+    return `
+
+    <div
+        class="batch"
+        data-category="${batch.category}"
+        data-name="${escapeHTML(batch.name)}">
+
+        <div class="batch-img">
+            ${batch.icon}
+            ${escapeHTML(batch.name)}
+        </div>
+
+        <div class="batch-content">
+
+            <span class="tag">
+                ${escapeHTML(batch.category.toUpperCase())}
+            </span>
+
+            <h3>
+                ${escapeHTML(batch.name)}
+            </h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ 4.9
+            </div>
+
+            <ul class="benefits">
+
+                <li>✅ Complete syllabus</li>
+                <li>✅ NCERT focused</li>
+                <li>✅ Practice questions</li>
+
+            </ul>
+
+            <div class="price">
+
+                ₹${batch.price}
+
+                <span class="old-price">
+                    ₹${batch.oldPrice}
+                </span>
+
+            </div>
+
+            <button
+                class="buy-btn"
+                onclick="openPurchase('${escapeJS(batch.name)}')">
+
+                Buy Now
+
+            </button>
+
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   RENDER HOME BATCHES
+===================================================== */
+
+function renderBatches(){
+
+    document
+    .getElementById("batchGrid")
+    .innerHTML =
+        batches
+        .map(createBatchCard)
+        .join("");
+
+}
+
+
+/* =====================================================
+   OPEN PURCHASE PAGE
+===================================================== */
+
+function openPurchase(name){
+
+    const batch =
+        getBatch(name);
+
+    if(!batch){
+
+        alert("Batch not found.");
+        return;
+
+    }
+
+
+    const user =
+        getUser();
+
+
+    if(!user || !user.loggedIn){
+
+        alert(
+            "Please Login / Register first."
+        );
+
+        openLogin();
+        return;
+
+    }
+
+
+    renderPurchase(batch);
+
+    showPage("purchase");
+
+}
+
+
+/* =====================================================
+   PURCHASE PAGE
+===================================================== */
+
+function renderPurchase(batch){
+
+    const container =
+        document.getElementById(
+            "purchaseContainer"
+        );
+
+
+    let featureHTML = "";
+
+
+    benefits.forEach(
+        (item,index) => {
+
+            featureHTML += `
+
+            <div class="feature">
+
+                <span class="feature-number">
+                    ${(index+1)
+                    .toString()
+                    .padStart(2,"0")}.
+                </span>
+
+                ${escapeHTML(item)}
+
+            </div>
+
+            `;
+
+        }
+    );
+
+
+    container.innerHTML = `
+
+    <div class="purchase-header">
+
+        <div style="font-size:50px;">
+            ${batch.icon}
+        </div>
+
+        <h1>
+            ${escapeHTML(batch.name)}
+        </h1>
+
+        <p>
+            StudyByPKY Selected Batch
+        </p>
+
+    </div>
+
+
+    <div class="purchase-body">
+
+        <div class="purchase-price">
+
+            Batch Price
+
+            <br>
+
+            <strong>
+                ₹${batch.price}
+            </strong>
+
+        </div>
+
+
+        <h2>
+            📚 10 Important Features
+        </h2>
+
+        ${featureHTML}
+
+
+        <button
+            class="primary-btn"
+            onclick="continueToPayment('${escapeJS(batch.name)}')">
+
+            Continue to Payment →
+            
+        </button>
+
+    </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   PAYMENT PAGE
+===================================================== */
+
+function continueToPayment(name){
+
+    const batch =
+        getBatch(name);
+
+    if(!batch){
+
+        alert("Batch not found.");
+        return;
+
+    }
+
+
+    renderPayment(batch);
+
+    showPage("payment");
+
+}
+
+
+/* =====================================================
+   PAYMENT RENDER
+===================================================== */
+
+function renderPayment(batch){
+
+    const container =
+        document.getElementById(
+            "paymentContainer"
+        );
+
+
+    const upiID =
+        "7534976027@fam";
+
+
+    const upiURI =
+        "upi://pay?pa=" +
+        encodeURIComponent(upiID) +
+        "&pn=" +
+        encodeURIComponent("Pankaj Kumar") +
+        "&am=" +
+        encodeURIComponent(batch.price) +
+        "&cu=INR";
+
+
+    /*
+       QR generated from the same UPI payment URI.
+       Internet connection is required to load the QR image.
+    */
+
+    const qrURL =
+        "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
+        encodeURIComponent(upiURI);
+
+
+    container.innerHTML = `
+
+    <h2>
+        💳 Payment
+    </h2>
+
+
+    <div class="payment-card">
+
+        <h2>
+            ${batch.icon}
+            ${escapeHTML(batch.name)}
+        </h2>
+
+
+        <div class="upi-box">
+
+            <div>
+                UPI ID
+            </div>
+
+            <div class="upi-id">
+                ${upiID}
+            </div>
+
+            <button
+                class="copy-btn"
+                onclick="copyUPI()">
+
+                Copy UPI ID
+
+            </button>
+
+        </div>
+
+
+        <div class="amount">
+
+            Pay exactly:
+
+            ₹${batch.price}
+
+        </div>
+
+
+        <div class="qr-box">
+
+            <div class="qr-title">
+                📱 Pay by QR
+            </div>
+
+            <img
+                src="${qrURL}"
+                alt="UPI QR Code">
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="openUPI('${escapeJS(upiURI)}')">
+
+            📱 Pay by UPI App
+
+        </button>
+
+
+        <div class="payment-note">
+
+            <b>Important:</b><br>
+
+            1. Pay exactly ₹${batch.price}.<br>
+
+            2. After payment, return to this page.<br>
+
+            3. Enter your UTR / transaction reference below.<br>
+
+            4. Your batch will remain locked until payment
+            is genuinely verified.
+
+        </div>
+
+
+        <h3>
+            Payment Verification Request
+        </h3>
+
+
+        <input
+            id="utrInput"
+            class="payment-input"
+            type="text"
+            placeholder="Enter UTR / Transaction ID">
+
+
+        <button
+            class="verify-submit"
+            onclick="submitPayment('${escapeJS(batch.name)}')">
+
+            Submit Payment Verification
+
+        </button>
+
+
+        <div
+            id="paymentStatus"
+            style="margin-top:15px;">
+        </div>
+
+    </div>
+
+    `;
+
+
+    checkExistingPayment(batch);
+
+}
+
+
+/* =====================================================
+   COPY UPI
+===================================================== */
+
+function copyUPI(){
+
+    const upi =
+        "7534976027@fam";
+
+
+    if(
+        navigator.clipboard &&
+        navigator.clipboard.writeText
+    ){
+
+        navigator.clipboard
+        .writeText(upi)
+        .then(
+            () => alert("UPI ID copied.")
+        )
+        .catch(
+            () => alert("UPI ID: " + upi)
+        );
+
+    }
+    else{
+
+        alert("UPI ID: " + upi);
+
+    }
+
+}
+
+
+/* =====================================================
+   OPEN UPI APP
+===================================================== */
+
+function openUPI(uri){
+
+    window.location.href =
+        uri;
+
+}
+
+
+/* =====================================================
+   SUBMIT PAYMENT
+===================================================== */
+
+function submitPayment(name){
+
+    const user =
+        getUser();
+
+    const batch =
+        getBatch(name);
+
+
+    if(!user || !user.loggedIn){
+
+        alert("Please login first.");
+        openLogin();
+        return;
+
+    }
+
+
+    if(!batch){
+
+        alert("Batch not found.");
+        return;
+
+    }
+
+
+    const utr =
+        document
+        .getElementById("utrInput")
+        .value
+        .trim();
+
+
+    if(!utr){
+
+        alert(
+            "Please enter your UTR / transaction reference."
+        );
+
+        return;
+
+    }
+
+
+    if(utr.length < 6){
+
+        alert(
+            "Please enter a valid transaction reference."
+        );
+
+        return;
+
+    }
+
+
+    if(!user.payments){
+
+        user.payments = [];
+
+    }
+
+
+    /*
+       IMPORTANT:
+       This is a verification REQUEST, not proof
+       that money was received.
+    */
+
+    const payment = {
+
+        id:
+            "PAY" +
+            Date.now(),
+
+        batchName:
+            batch.name,
+
+        amount:
+            batch.price,
+
+        utr:
+            utr,
+
+        status:
+            "pending",
+
+        submittedAt:
+            new Date().toLocaleString("en-IN")
+
+    };
+
+
+    user.payments.push(payment);
+
+    saveUser(user);
+
+
+    showPaymentPending(batch);
+
+}
+
+
+/* =====================================================
+   PAYMENT PENDING
+===================================================== */
+
+function showPaymentPending(batch){
+
+    const status =
+        document.getElementById(
+            "paymentStatus"
+        );
+
+
+    if(!status) return;
+
+
+    status.innerHTML = `
+
+    <div class="pending">
+
+        ⏳ <b>Payment verification submitted.</b>
+
+        <br><br>
+
+        Batch:
+        <b>${escapeHTML(batch.name)}</b>
+
+        <br>
+
+        Amount:
+        <b>₹${batch.price}</b>
+
+        <br><br>
+
+        Your batch remains locked until the payment
+        is genuinely verified.
+
+    </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   EXISTING PAYMENT
+===================================================== */
+
+function checkExistingPayment(batch){
+
+    const user =
+        getUser();
+
+    if(!user || !user.payments)
+        return;
+
+
+    const payment =
+        user.payments
+        .find(
+            p =>
+            p.batchName === batch.name &&
+            p.status === "pending"
+        );
+
+
+    if(payment){
+
+        showPaymentPending(batch);
+
+    }
+
+}
+
+
+/* =====================================================
+   MY BATCH
+===================================================== */
+
+function renderMyBatch(){
+
+    const container =
+        document.getElementById(
+            "myBatchContainer"
+        );
+
+
+    const user =
+        getUser();
+
+
+    if(!user || !user.loggedIn){
+
+        container.innerHTML = `
+
+        <div class="empty-box">
+
+            <h2>🔐 Login Required</h2>
+
+            <p>
+                Login to view your purchased batches.
+            </p>
+
+            <button
+                class="buy-btn"
+                onclick="openLogin()">
+
+                Login / Register
+
+            </button>
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    const purchased =
+        user.purchased || [];
+
+
+    if(purchased.length === 0){
+
+        container.innerHTML = `
+
+        <div class="empty-box">
+
+            <h2>
+                📚 No Batch Yet
+            </h2>
+
+            <p>
+                Your verified batches will appear here.
+            </p>
+
+            <button
+                class="buy-btn"
+                onclick="showPage('allbatch')">
+
+                Explore Batches
+
+            </button>
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = `
+
+    <div class="mybatch-grid">
+
+        ${
+            purchased
+            .map(item => `
+
+            <div class="batch">
+
+                <div class="batch-img">
+
+                    🎓
+                    ${escapeHTML(item.name)}
+
+                </div>
+
+
+                <div class="batch-content">
+
+                    <span class="status approved">
+                        PAYMENT VERIFIED
+                    </span>
+
+
+                    <h3>
+                        ${escapeHTML(item.name)}
+                    </h3>
+
+
+                    <p style="color:#777;">
+                        Amount Paid:
+                        ₹${item.price}
+                    </p>
+
+
+                    <p style="color:#777;">
+                        Added:
+                        ${escapeHTML(item.date)}
+                    </p>
+
+
+                    <button
+                        class="study-btn"
+                        onclick="studyBatch('${escapeJS(item.studyFile)}')">
+
+                        📖 Study Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            `)
+            .join("")
+        }
+
+    </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   STUDY NOW
+===================================================== */
+
+function studyBatch(file){
+
+    if(!file){
+
+        alert("Study page not found.");
+        return;
+
+    }
+
+
+    /*
+       These files must exist in the same folder
+       as this HTML file.
+    */
+
+    window.location.href =
+        file;
+
+}
+
+
+/* =====================================================
+   ALL BATCHES
+===================================================== */
+
+function renderAllBatches(){
+
+    const container =
+        document.getElementById(
+            "allBatchContainer"
+        );
+
+
+    container.innerHTML =
+        batches
+        .map(createBatchCard)
+        .join("");
+
+}
+
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+function renderProfile(){
+
+    const container =
+        document.getElementById(
+            "profileContainer"
+        );
+
+
+    const user =
+        getUser();
+
+
+    if(!user || !user.loggedIn){
+
+        container.innerHTML = `
+
+        <div class="empty-box">
+
+            <div style="font-size:55px;">
+                👤
+            </div>
+
+            <h2>
+                Welcome to StudyByPKY
+            </h2>
+
+            <p>
+                Login or register to access your profile.
+            </p>
+
+            <button
+                class="buy-btn"
+                onclick="openLogin()">
+
+                Login / Register
+
+            </button>
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = `
+
+    <div class="profile-head">
+
+        <div class="avatar">
+            👤
+        </div>
+
+        <h2>
+            ${escapeHTML(user.name)}
+        </h2>
+
+        <p style="color:#777;">
+            StudyByPKY Student
+        </p>
+
+    </div>
+
+
+    <div class="profile-row">
+
+        <div class="profile-label">
+            NAME
+        </div>
+
+        <div class="profile-value">
+            ${escapeHTML(user.name)}
+        </div>
+
+    </div>
+
+
+    <div class="profile-row">
+
+        <div class="profile-label">
+            PHONE NUMBER
+        </div>
+
+        <div class="profile-value">
+            ${escapeHTML(user.phone)}
+        </div>
+
+    </div>
+
+
+    <div class="profile-row">
+
+        <div class="profile-label">
+            CLASS
+        </div>
+
+        <div class="profile-value">
+            ${escapeHTML(user.class)}
+        </div>
+
+    </div>
+
+
+    <div class="profile-row">
+
+        <div class="profile-label">
+            STUDYBYPKY ID
+        </div>
+
+        <div
+            class="profile-value"
+            style="color:#e91e63;font-size:18px;">
+
+            ${escapeHTML(user.studyId)}
+
+        </div>
+
+    </div>
+
+
+    <div class="profile-row">
+
+        <div class="profile-label">
+            VERIFIED BATCHES
+        </div>
+
+        <div class="profile-value">
+
+            ${
+                user.purchased
+                ? user.purchased.length
+                : 0
+            }
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="logout"
+        onclick="logoutUser()">
+
+        Logout
+
+    </button>
+
+    `;
+
+}
+
+
+/* =====================================================
+   PAGE SWITCHING
+===================================================== */
+
+function showPage(page){
+
+    document
+    .querySelectorAll(".page")
+    .forEach(
+        p => p.classList.remove("active")
+    );
+
+
+    document
+    .querySelectorAll(".nav-item")
+    .forEach(
+        n => n.classList.remove("active")
+    );
+
+
+    if(page === "home"){
+
+        document
+        .getElementById("homePage")
+        .classList.add("active");
+
+        document
+        .getElementById("navHome")
+        .classList.add("active");
+
+    }
+
+
+    if(page === "purchase"){
+
+        document
+        .getElementById("purchasePage")
+        .classList.add("active");
+
+    }
+
+
+    if(page === "payment"){
+
+        document
+        .getElementById("paymentPage")
+        .classList.add("active");
+
+    }
+
+
+    if(page === "mybatch"){
+
+        document
+        .getElementById("myBatchPage")
+        .classList.add("active");
+
+        document
+        .getElementById("navMyBatch")
+        .classList.add("active");
+
+        renderMyBatch();
+
+    }
+
+
+    if(page === "allbatch"){
+
+        document
+        .getElementById("allBatchPage")
+        .classList.add("active");
+
+        document
+        .getElementById("navAllBatch")
+        .classList.add("active");
+
+        renderAllBatches();
+
+    }
+
+
+    if(page === "profile"){
+
+        document
+        .getElementById("profilePage")
+        .classList.add("active");
+
+        document
+        .getElementById("navProfile")
+        .classList.add("active");
+
+        renderProfile();
+
+    }
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+function searchBatches(){
+
+    const value =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    document
+    .querySelectorAll(
+        "#batchGrid .batch"
+    )
+    .forEach(card => {
+
+        const text =
+            card.innerText.toLowerCase();
+
+        card.style.display =
+            text.includes(value)
+            ? ""
+            : "none";
+
+    });
+
+}
+
+
+/* =====================================================
+   CATEGORY FILTER
+===================================================== */
+
+function filterCategory(category,button){
+
+    document
+    .querySelectorAll(".category")
+    .forEach(
+        b => b.classList.remove("active")
+    );
+
+
+    button.classList.add("active");
+
+
+    document
+    .querySelectorAll(
+        "#batchGrid .batch"
+    )
+    .forEach(card => {
+
+        if(category === "all"){
+
+            card.style.display = "";
+
+            return;
+
+        }
+
+
+        card.style.display =
+            card.dataset.category === category
+            ? ""
+            : "none";
+
+    });
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+function updateHeader(){
+
+    const user =
+        getUser();
+
+
+    const btn =
+        document.getElementById(
+            "loginHeader"
+        );
+
+
+    if(user && user.loggedIn){
+
+        btn.innerText =
+            "👤 " + user.name;
+
+    }
+    else{
+
+        btn.innerText =
+            "Login / Register";
+
+    }
+
+}
+
+
+/* =====================================================
+   SECURITY HELPERS
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(value)
+
+    .replace(/&/g,"&amp;")
+
+    .replace(/</g,"&lt;")
+
+    .replace(/>/g,"&gt;")
+
+    .replace(/"/g,"&quot;")
+
+    .replace(/'/g,"&#039;");
+
+}
+
+
+function escapeJS(value){
+
+    return String(value)
+
+    .replace(/\\/g,"\\\\")
+
+    .replace(/'/g,"\\'")
+
+    .replace(/"/g,'\\"');
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+    renderBatches();
+
+    renderAllBatches();
+
+    renderProfile();
+
+    renderMyBatch();
+
+    updateHeader();
+
+});
+
+
+/* =====================================================
+   CLOSE LOGIN OUTSIDE
+===================================================== */
+
+document
+.getElementById("authPopup")
+.addEventListener(
+"click",
+function(e){
+
+    if(e.target === this){
+
+        closeLogin();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
