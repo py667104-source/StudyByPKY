@@ -2104,7 +2104,12 @@ function renderPayment(batch){
 
       </div>
 
-
+  <input
+     id="utr"
+     class="input"
+     placeholder="Enter UTR / Transaction ID"
+     autocomplete="off">
+     
       <button
         class="payment-btn"
         onclick='activateBatch(${JSON.stringify(batch.name)})'>
@@ -2150,6 +2155,19 @@ function toggleQR(){
 
 }
 
+ const input=document.getElementById("utr");
+
+ if(!input)return;
+
+ const utr=input.value.trim();
+
+
+ if(utr.length<6){
+
+   alert("Please enter a valid UTR / transaction reference.");
+   return;
+
+ }
 
 /* =====================================================
    COPY UPI
