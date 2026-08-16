@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>STUDYBYPKY | CBT Test 05</title>
+
+<style>
+*{
+ box-sizing:border-box;
+ margin:0;
+ padding:0;
+ font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+ background:linear-gradient(135deg,#ff4f9a,#ff8fc5,#ffd1e5);
+ min-height:100vh;
+ color:#222;
+}
+
+button{
+ cursor:pointer;
+}
+
+.screen{
+ display:none;
+ min-height:100vh;
+}
+
+.screen.active{
+ display:block;
+}
+
+/* ================= INSTRUCTIONS ================= */
+
+#instructionScreen{
+ padding:20px;
+}
+
+.instruction-card{
+ max-width:850px;
+ margin:25px auto;
+ background:white;
+ border-radius:25px;
+ padding:30px;
+ box-shadow:0 10px 35px rgba(0,0,0,.2);
+}
+
+.brand{
+ text-align:center;
+ color:#e6006d;
+ font-size:25px;
+ font-weight:900;
+ letter-spacing:2px;
+ margin-bottom:12px;
+}
+
+.instruction-card h1{
+ text-align:center;
+ color:#c5005d;
+ margin-bottom:20px;
+}
+
+.info-box{
+ background:#fff0f7;
+ border-left:6px solid #ff1680;
+ padding:18px;
+ border-radius:12px;
+ margin:15px 0;
+ line-height:1.7;
+}
+
+.info-box li{
+ margin:7px 0;
+}
+
+.start{
+ display:block;
+ margin:25px auto 0;
+ border:0;
+ background:#e6006d;
+ color:white;
+ padding:15px 45px;
+ border-radius:30px;
+ font-size:20px;
+ font-weight:bold;
+}
+
+.start:hover{
+ background:#b90057;
+}
+
+/* ================= TEST ================= */
+
+#testScreen{
+ padding:10px;
+}
+
+.header{
+ background:#fff;
+ border-radius:18px;
+ padding:12px;
+ max-width:1200px;
+ margin:auto;
+ box-shadow:0 5px 20px rgba(0,0,0,.15);
+ position:sticky;
+ top:5px;
+ z-index:20;
+}
+
+.header-row{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ flex-wrap:wrap;
+}
+
+.logo{
+ color:#e6006d;
+ font-size:22px;
+ font-weight:900;
+}
+
+.timer{
+ background:#111;
+ color:#fff;
+ padding:10px 18px;
+ border-radius:20px;
+ font-weight:bold;
+ font-size:18px;
+}
+
+.lang button{
+ border:0;
+ padding:8px 14px;
+ border-radius:18px;
+ background:#eee;
+ margin:2px;
+}
+
+.lang button.active{
+ background:#e6006d;
+ color:#fff;
+}
+
+.subject{
+ margin-top:10px;
+ text-align:center;
+ font-weight:bold;
+ color:#b90057;
+}
+
+.layout{
+ max-width:1200px;
+ margin:15px auto;
+ display:grid;
+ grid-template-columns:1fr 280px;
+ gap:15px;
+}
+
+.question-card,
+.palette-card{
+ background:#fff;
+ border-radius:20px;
+ padding:20px;
+ box-shadow:0 7px 25px rgba(0,0,0,.15);
+}
+
+.question-top{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ margin-bottom:18px;
+ flex-wrap:wrap;
+}
+
+.q-number{
+ font-size:20px;
+ font-weight:bold;
+ color:#c5005d;
+}
+
+.marks{
+ font-size:14px;
+ background:#fff0f7;
+ padding:7px 10px;
+ border-radius:15px;
+}
+
+.question{
+ font-size:20px;
+ line-height:1.55;
+ margin-bottom:20px;
+ font-weight:600;
+}
+
+.option{
+ display:block;
+ width:100%;
+ text-align:left;
+ padding:14px;
+ margin:10px 0;
+ border:2px solid #eee;
+ background:#fff;
+ border-radius:12px;
+ font-size:17px;
+ transition:.15s;
+}
+
+.option:hover{
+ border-color:#ff4f9a;
+ background:#fff4fa;
+}
+
+.option.selected{
+ border-color:#e6006d;
+ background:#ffe1ef;
+}
+
+.option.correct{
+ border-color:#13a34a;
+ background:#dcffe8;
+}
+
+.option.wrong{
+ border-color:#e53935;
+ background:#ffe0e0;
+}
+
+.nav{
+ display:flex;
+ justify-content:space-between;
+ gap:8px;
+ margin-top:20px;
+ flex-wrap:wrap;
+}
+
+.nav button{
+ border:0;
+ padding:12px 18px;
+ border-radius:22px;
+ font-weight:bold;
+}
+
+.prev{
+ background:#eee;
+}
+
+.next{
+ background:#e6006d;
+ color:#fff;
+}
+
+.review{
+ background:#ffb000;
+ color:#111;
+}
+
+.submit{
+ background:#111;
+ color:#fff;
+}
+
+.palette-title{
+ color:#c5005d;
+ font-weight:bold;
+ margin-bottom:12px;
+}
+
+.palette{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:7px;
+ max-height:470px;
+ overflow:auto;
+}
+
+.pbtn{
+ border:0;
+ background:#eee;
+ padding:9px 3px;
+ border-radius:8px;
+ font-weight:bold;
+}
+
+.pbtn.answered{
+ background:#29a653;
+ color:white;
+}
+
+.pbtn.review{
+ background:#ffad00;
+ color:#111;
+}
+
+.pbtn.current{
+ outline:3px solid #e6006d;
+}
+
+.legend{
+ margin-top:15px;
+ font-size:13px;
+ line-height:1.8;
+}
+
+.dot{
+ display:inline-block;
+ width:12px;
+ height:12px;
+ border-radius:50%;
+ margin-right:5px;
+}
+
+/* ================= RESULT ================= */
+
+.result-card{
+ max-width:1000px;
+ margin:20px auto;
+ background:#fff;
+ border-radius:25px;
+ padding:25px;
+ box-shadow:0 10px 35px rgba(0,0,0,.2);
+}
+
+.result-title{
+ text-align:center;
+ color:#c5005d;
+ margin-bottom:20px;
+}
+
+.stats{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:10px;
+ margin-bottom:20px;
+}
+
+.stat{
+ padding:18px 8px;
+ text-align:center;
+ border-radius:15px;
+ background:#fff0f7;
+}
+
+.stat b{
+ display:block;
+ font-size:26px;
+ color:#c5005d;
+ margin-bottom:5px;
+}
+
+.solution{
+ border:1px solid #ddd;
+ border-radius:14px;
+ padding:15px;
+ margin:12px 0;
+}
+
+.solution.correct{
+ border-left:6px solid #18a34a;
+}
+
+.solution.wrong{
+ border-left:6px solid #e53935;
+}
+
+.solution.unattempted{
+ border-left:6px solid #ffad00;
+}
+
+.sol-q{
+ font-weight:bold;
+ margin-bottom:8px;
+}
+
+.answer-line{
+ line-height:1.7;
+}
+
+.result-actions{
+ text-align:center;
+ margin-top:20px;
+}
+
+.restart{
+ background:#e6006d;
+ color:white;
+ border:0;
+ border-radius:25px;
+ padding:13px 30px;
+ font-weight:bold;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+ position:fixed;
+ inset:0;
+ background:rgba(0,0,0,.55);
+ display:none;
+ align-items:center;
+ justify-content:center;
+ z-index:100;
+ padding:20px;
+}
+
+.modal.show{
+ display:flex;
+}
+
+.modal-box{
+ background:white;
+ width:100%;
+ max-width:420px;
+ border-radius:20px;
+ padding:25px;
+ text-align:center;
+}
+
+.modal-box h2{
+ color:#c5005d;
+ margin-bottom:15px;
+}
+
+.modal-buttons{
+ display:flex;
+ justify-content:center;
+ gap:10px;
+ margin-top:20px;
+}
+
+.modal-buttons button{
+ border:0;
+ padding:12px 22px;
+ border-radius:20px;
+ font-weight:bold;
+}
+
+.cancel{
+ background:#eee;
+}
+
+.confirm{
+ background:#e6006d;
+ color:#fff;
+}
+
+@media(max-width:800px){
+ .layout{
+  grid-template-columns:1fr;
+ }
+ .palette-card{
+  order:2;
+ }
+ .stats{
+  grid-template-columns:repeat(2,1fr);
+ }
+}
+
+@media(max-width:500px){
+ .instruction-card{
+  padding:20px 15px;
+ }
+ .question-card{
+  padding:15px;
+ }
+ .question{
+  font-size:18px;
+ }
+ .option{
+  font-size:15px;
+ }
+ .header{
+  position:relative;
+ }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     SECOND SCREEN = INSTRUCTIONS
+====================================================== -->
+
+<section id="instructionScreen" class="screen active">
+
+ <div class="instruction-card">
+
+  <div class="brand">STUDYBYPKY</div>
+
+  <h1>CBT PRACTICE TEST 05</h1>
+
+  <div class="info-box">
+
+   <ul>
+    <li><b>Total Questions:</b> 180</li>
+    <li><b>Physics:</b> Questions 1–45</li>
+    <li><b>Chemistry:</b> Questions 46–90</li>
+    <li><b>Botany:</b> Questions 91–135</li>
+    <li><b>Zoology:</b> Questions 136–180</li>
+    <li><b>Time:</b> 03:15:00</li>
+    <li><b>Correct Answer:</b> +4 marks</li>
+    <li><b>Wrong Answer:</b> −1 mark</li>
+    <li><b>Unattempted:</b> 0 mark</li>
+   </ul>
+
+  </div>
+
+  <div class="info-box">
+
+   <b>Instructions</b>
+
+   <ol style="padding-left:20px;margin-top:8px">
+    <li>Select English or हिन्दी.</li>
+    <li>Select one option for each question.</li>
+    <li>Use Previous and Next to move between questions.</li>
+    <li>Use Mark for Review when you want to revisit a question.</li>
+    <li>The question palette shows attempted and review questions.</li>
+    <li>Do not refresh the page during the test.</li>
+    <li>Submit the test before the timer reaches zero.</li>
+    <li>After submission you will see Correct, Wrong and Unattempted.</li>
+    <li>Every question will show its correct answer and explanation.</li>
+   </ol>
+
+  </div>
+
+  <button class="start" onclick="startTest()">
+   START TEST
+  </button>
+
+ </div>
+
+</section>
+
+
+<!-- =====================================================
+     TEST SCREEN
+====================================================== -->
+
+<section id="testScreen" class="screen">
+
+ <div class="header">
+
+  <div class="header-row">
+
+   <div class="logo">
+    STUDYBYPKY
+   </div>
+
+   <div class="timer" id="timer">
+    03:15:00
+   </div>
+
+   <div class="lang">
+    <button id="enBtn" class="active" onclick="setLanguage('en')">
+     English
+    </button>
+
+    <button id="hiBtn" onclick="setLanguage('hi')">
+     हिन्दी
+    </button>
+   </div>
+
+  </div>
+
+  <div class="subject" id="subjectName"></div>
+
+ </div>
+
+
+ <div class="layout">
+
+  <div class="question-card">
+
+   <div class="question-top">
+
+    <div class="q-number" id="qNumber"></div>
+
+    <div class="marks">
+     +4 Correct &nbsp; | &nbsp; −1 Wrong
+    </div>
+
+   </div>
+
+   <div class="question" id="questionText"></div>
+
+   <div id="options"></div>
+
+   <div class="nav">
+
+    <button class="prev" onclick="previousQuestion()">
+     ← Previous
+    </button>
+
+    <button class="review" onclick="toggleReview()">
+     ★ Mark for Review
+    </button>
+
+    <button class="next" onclick="nextQuestion()">
+     Next →
+    </button>
+
+    <button class="submit" onclick="openSubmit()">
+     Submit Test
+    </button>
+
+   </div>
+
+  </div>
+
+
+  <div class="palette-card">
+
+   <div class="palette-title">
+    Question Palette
+   </div>
+
+   <div class="palette" id="palette"></div>
+
+   <div class="legend">
+    <div>
+     <span class="dot" style="background:#29a653"></span>
+     Answered
+    </div>
+
+    <div>
+     <span class="dot" style="background:#ffad00"></span>
+     Marked for Review
+    </div>
+
+    <div>
+     <span class="dot" style="background:#eee"></span>
+     Not Attempted
+    </div>
+   </div>
+
+  </div>
+
+ </div>
+
+</section>
+
+
+<!-- =====================================================
+     RESULT SCREEN
+====================================================== -->
+
+<section id="resultScreen" class="screen">
+
+ <div class="result-card">
+
+  <div class="brand">STUDYBYPKY</div>
+
+  <h1 class="result-title">
+   TEST 05 RESULT
+  </h1>
+
+  <div class="stats">
+
+   <div class="stat">
+    <b id="score">0</b>
+    Score
+   </div>
+
+   <div class="stat">
+    <b id="correctCount">0</b>
+    Correct
+   </div>
+
+   <div class="stat">
+    <b id="wrongCount">0</b>
+    Wrong
+   </div>
+
+   <div class="stat">
+    <b id="unattemptedCount">0</b>
+    Unattempted
+   </div>
+
+  </div>
+
+  <div id="solutions"></div>
+
+  <div class="result-actions">
+
+   <button class="restart" onclick="location.reload()">
+    Take Test Again
+   </button>
+
+  </div>
+
+ </div>
+
+</section>
+
+
+<!-- SUBMIT MODAL -->
+
+<div class="modal" id="submitModal">
+
+ <div class="modal-box">
+
+  <h2>Submit Test?</h2>
+
+  <p id="submitText">
+   Are you sure you want to submit the test?
+  </p>
+
+  <div class="modal-buttons">
+
+   <button class="cancel" onclick="closeSubmit()">
+    Cancel
+   </button>
+
+   <button class="confirm" onclick="submitTest()">
+    Submit
+   </button>
+
+  </div>
+
+ </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   QUESTION DATA
+   EXACTLY 180 QUESTIONS
+   45 PER SECTION
+===================================================== */
+
+function Q(en,hi,e,h,a,s){
+ return {
+  en:en,
+  hi:hi,
+  oe:e,
+  oh:h,
+  answer:a,
+  solution:s
+ };
+}
+
+const questions=[];
+
+
+/* =====================================================
+   PHYSICS 1–45
+   Basic Maths/Calculus + Vectors
+===================================================== */
+
+const physics=[
+
+Q(
+"What is the value of sin 90°?",
+"sin 90° का मान क्या है?",
+["0","1","−1","1/2"],
+["0","1","−1","1/2"],
+1,
+"sin 90° = 1."
+),
+
+Q(
+"What is cos 0°?",
+"cos 0° का मान क्या है?",
+["0","1","−1","1/2"],
+["0","1","−1","1/2"],
+1,
+"cos 0° = 1."
+),
+
+Q(
+"What is tan 45°?",
+"tan 45° का मान क्या है?",
+["0","1","√3","1/√3"],
+["0","1","√3","1/√3"],
+1,
+"tan 45° = 1."
+),
+
+Q(
+"If A = 3i + 4j, what is |A|?",
+"यदि A = 3i + 4j है, तो |A| क्या है?",
+["3","4","5","7"],
+["3","4","5","7"],
+2,
+"|A| = √(3²+4²) = 5."
+),
+
+Q(
+"Which quantity is a scalar?",
+"निम्न में से कौन-सी अदिश राशि है?",
+["Velocity","Force","Mass","Displacement"],
+["वेग","बल","द्रव्यमान","विस्थापन"],
+2,
+"Mass has magnitude only, so it is scalar."
+),
+
+Q(
+"Which quantity is a vector?",
+"निम्न में से कौन-सी सदिश राशि है?",
+["Mass","Time","Temperature","Displacement"],
+["द्रव्यमान","समय","तापमान","विस्थापन"],
+3,
+"Displacement has magnitude and direction."
+),
+
+Q(
+"What is i · j?",
+"i · j का मान क्या है?",
+["0","1","−1","i"],
+["0","1","−1","i"],
+0,
+"Unit vectors i and j are perpendicular, so their dot product is zero."
+),
+
+Q(
+"What is i · i?",
+"i · i का मान क्या है?",
+["0","1","−1","i"],
+["0","1","−1","i"],
+1,
+"A unit vector dotted with itself equals 1."
+),
+
+Q(
+"What is j × k?",
+"j × k का मान क्या है?",
+["i","−i","j","k"],
+["i","−i","j","k"],
+0,
+"Using cyclic unit-vector multiplication, j × k = i."
+),
+
+Q(
+"What is k × i?",
+"k × i का मान क्या है?",
+["i","j","−j","k"],
+["i","j","−j","k"],
+1,
+"k × i = j."
+),
+
+Q(
+"What is the derivative of x²?",
+"x² का अवकलज क्या है?",
+["x","2x","x²","2"],
+["x","2x","x²","2"],
+1,
+"d(x²)/dx = 2x."
+),
+
+Q(
+"What is the derivative of x³?",
+"x³ का अवकलज क्या है?",
+["x²","2x","3x²","3x"],
+["x²","2x","3x²","3x"],
+2,
+"d(x³)/dx = 3x²."
+),
+
+Q(
+"What is the derivative of sin x?",
+"sin x का अवकलज क्या है?",
+["cos x","−cos x","sin x","−sin x"],
+["cos x","−cos x","sin x","−sin x"],
+0,
+"d(sin x)/dx = cos x."
+),
+
+Q(
+"What is the derivative of cos x?",
+"cos x का अवकलज क्या है?",
+["sin x","−sin x","cos x","−cos x"],
+["sin x","−sin x","cos x","−cos x"],
+1,
+"d(cos x)/dx = −sin x."
+),
+
+Q(
+"What is ∫x dx?",
+"∫x dx का मान क्या है?",
+["x²+C","x²/2+C","2x+C","x+C"],
+["x²+C","x²/2+C","2x+C","x+C"],
+1,
+"∫x dx = x²/2 + C."
+),
+
+Q(
+"What is ∫1 dx?",
+"∫1 dx का मान क्या है?",
+["1","x+C","0","x²"],
+["1","x+C","0","x²"],
+1,
+"The integral of 1 is x+C."
+),
+
+Q(
+"What is the slope of y = 3x + 2?",
+"y = 3x + 2 की ढाल क्या है?",
+["2","3","5","1"],
+["2","3","5","1"],
+1,
+"The coefficient of x is the slope, 3."
+),
+
+Q(
+"What is the derivative of a constant?",
+"अचर का अवकलज क्या होता है?",
+["1","0","x","constant"],
+["1","0","x","अचर"],
+1,
+"The derivative of a constant is zero."
+),
+
+Q(
+"What is the value of 2³?",
+"2³ का मान क्या है?",
+["4","6","8","9"],
+["4","6","8","9"],
+2,
+"2³ = 2×2×2 = 8."
+),
+
+Q(
+"What is √144?",
+"√144 का मान क्या है?",
+["10","11","12","14"],
+["10","11","12","14"],
+2,
+"12×12 = 144."
+),
+
+Q(
+"What is 10⁰?",
+"10⁰ का मान क्या है?",
+["0","1","10","100"],
+["0","1","10","100"],
+1,
+"Any non-zero number raised to power zero equals 1."
+),
+
+Q(
+"What is log₁₀100?",
+"log₁₀100 का मान क्या है?",
+["1","2","10","100"],
+["1","2","10","100"],
+1,
+"10² = 100, therefore log₁₀100 = 2."
+),
+
+Q(
+"If a vector is multiplied by −1, its direction becomes:",
+"यदि किसी सदिश को −1 से गुणा किया जाए, तो उसकी दिशा:",
+["Same","Opposite","Zero","Random"],
+["समान","विपरीत","शून्य","अनिश्चित"],
+1,
+"Multiplication by −1 reverses the vector direction."
+),
+
+Q(
+"What is the magnitude of zero vector?",
+"शून्य सदिश का परिमाण क्या है?",
+["1","−1","0","Undefined"],
+["1","−1","0","परिभाषित नहीं"],
+2,
+"The zero vector has magnitude zero."
+),
+
+Q(
+"Two vectors are equal when they have:",
+"दो सदिश बराबर होते हैं जब उनमें:",
+["Only same magnitude","Only same direction","Same magnitude and direction","Different direction"],
+["केवल समान परिमाण","केवल समान दिशा","समान परिमाण और दिशा","भिन्न दिशा"],
+2,
+"Equal vectors have equal magnitude and same direction."
+),
+
+Q(
+"What is the angle between i and j?",
+"i और j के बीच कोण कितना है?",
+["0°","45°","90°","180°"],
+["0°","45°","90°","180°"],
+2,
+"i and j are mutually perpendicular."
+),
+
+Q(
+"What is A · B if A and B are perpendicular?",
+"यदि A और B लंबवत हैं तो A · B क्या होगा?",
+["AB","0","A+B","A−B"],
+["AB","0","A+B","A−B"],
+1,
+"A·B = AB cos90° = 0."
+),
+
+Q(
+"The unit vector along x-axis is:",
+"x-अक्ष के अनुदिश इकाई सदिश है:",
+["i","j","k","0"],
+["i","j","k","0"],
+0,
+"i is the unit vector along x-axis."
+),
+
+Q(
+"The unit vector along y-axis is:",
+"y-अक्ष के अनुदिश इकाई सदिश है:",
+["i","j","k","0"],
+["i","j","k","0"],
+1,
+"j is the unit vector along y-axis."
+),
+
+Q(
+"The unit vector along z-axis is:",
+"z-अक्ष के अनुदिश इकाई सदिश है:",
+["i","j","k","0"],
+["i","j","k","0"],
+2,
+"k is the unit vector along z-axis."
+),
+
+Q(
+"What is the magnitude of 5i?",
+"5i का परिमाण क्या है?",
+["0","1","5","25"],
+["0","1","5","25"],
+2,
+"|5i| = 5."
+),
+
+Q(
+"If A = 2i and B = 3i, A+B is:",
+"यदि A = 2i और B = 3i है, तो A+B है:",
+["i","5i","6i","i/5"],
+["i","5i","6i","i/5"],
+1,
+"2i + 3i = 5i."
+),
+
+Q(
+"What is the derivative of eˣ?",
+"eˣ का अवकलज क्या है?",
+["1","x eˣ","eˣ","0"],
+["1","x eˣ","eˣ","0"],
+2,
+"d(eˣ)/dx = eˣ."
+),
+
+Q(
+"What is ∫cos x dx?",
+"∫cos x dx का मान क्या है?",
+["sin x+C","−sin x+C","cos x+C","−cos x+C"],
+["sin x+C","−sin x+C","cos x+C","−cos x+C"],
+0,
+"The integral of cos x is sin x+C."
+),
+
+Q(
+"What is ∫sin x dx?",
+"∫sin x dx का मान क्या है?",
+["cos x+C","−cos x+C","sin x+C","−sin x+C"],
+["cos x+C","−cos x+C","sin x+C","−sin x+C"],
+1,
+"The integral of sin x is −cos x+C."
+),
+
+Q(
+"What is the value of sin²x + cos²x?",
+"sin²x + cos²x का मान क्या है?",
+["0","1","2","sin x"],
+["0","1","2","sin x"],
+1,
+"Fundamental trigonometric identity: sin²x+cos²x=1."
+),
+
+Q(
+"What is the dot product of parallel unit vectors in the same direction?",
+"एक ही दिशा में समानांतर इकाई सदिशों का डॉट गुणनफल क्या है?",
+["0","1","−1","2"],
+["0","1","−1","2"],
+1,
+"cos0° = 1."
+),
+
+Q(
+"What is the dot product of anti-parallel unit vectors?",
+"विपरीत दिशा वाले इकाई सदिशों का डॉट गुणनफल क्या है?",
+["0","1","−1","2"],
+["0","1","−1","2"],
+2,
+"cos180° = −1."
+),
+
+Q(
+"If A = 3i+4j, its direction angle with x-axis satisfies:",
+"यदि A = 3i+4j है, तो x-अक्ष से दिशा कोण के लिए:",
+["tanθ=4/3","tanθ=3/4","sinθ=3/4","cosθ=4/3"],
+["tanθ=4/3","tanθ=3/4","sinθ=3/4","cosθ=4/3"],
+0,
+"tanθ = Ay/Ax = 4/3."
+),
+
+Q(
+"What is the value of 5!?",
+"5! का मान क्या है?",
+["25","60","100","120"],
+["25","60","100","120"],
+3,
+"5! = 5×4×3×2×1 = 120."
+),
+
+Q(
+"What is the value of 1/2 + 1/4?",
+"1/2 + 1/4 का मान क्या है?",
+["1/4","2/4","3/4","1"],
+["1/4","2/4","3/4","1"],
+2,
+"1/2 = 2/4, so total = 3/4."
+),
+
+Q(
+"What is the derivative of 5x?",
+"5x का अवकलज क्या है?",
+["5","x","5x","0"],
+["5","x","5x","0"],
+0,
+"d(5x)/dx = 5."
+),
+
+Q(
+"What is the derivative of xⁿ?",
+"xⁿ का अवकलज क्या है?",
+["nxⁿ⁻¹","xⁿ⁻¹","n+x","nxⁿ"],
+["nxⁿ⁻¹","xⁿ⁻¹","n+x","nxⁿ"],
+0,
+"Power rule: d(xⁿ)/dx = nxⁿ⁻¹."
+),
+
+Q(
+"What is A × A for any vector A?",
+"किसी भी सदिश A के लिए A × A क्या है?",
+["A²","A","0","1"],
+["A²","A","0","1"],
+2,
+"The angle between A and itself is 0°, so A×A = 0."
+),
+
+Q(
+"What is the dimension of a 3D vector?",
+"3D सदिश के घटकों की संख्या कितनी होती है?",
+["1","2","3","4"],
+["1","2","3","4"],
+2,
+"A three-dimensional vector has three components."
+),
+
+Q(
+"If x=2, what is x²+3x?",
+"यदि x=2 है, तो x²+3x कितना है?",
+["8","10","12","14"],
+["8","10","12","14"],
+2,
+"2²+3(2)=4+6=10."
+)
+
+];
+
+
+/* =====================================================
+   CHEMISTRY 46–90
+   SOME BASIC CONCEPTS OF CHEMISTRY
+===================================================== */
+
+const chemistry=[
+
+Q("What is the SI unit of amount of substance?","पदार्थ की मात्रा की SI इकाई क्या है?",["Gram","Mole","Kilogram","Litre"],["ग्राम","मोल","किलोग्राम","लीटर"],1,"The SI unit is mole."),
+
+Q("One mole contains approximately:","एक मोल में लगभग कितने कण होते हैं?",["6.022×10²³","3.011×10²³","9.8×10²³","1.66×10⁻²⁷"],["6.022×10²³","3.011×10²³","9.8×10²³","1.66×10⁻²⁷"],0,"Avogadro number is 6.022×10²³."),
+
+Q("Molar mass of H₂O is:","H₂O का मोलर द्रव्यमान है:",["16 g/mol","18 g/mol","20 g/mol","22 g/mol"],["16 g/mol","18 g/mol","20 g/mol","22 g/mol"],1,"2(1)+16=18 g/mol."),
+
+Q("Molar mass of CO₂ is:","CO₂ का मोलर द्रव्यमान है:",["28","32","44","48"],["28","32","44","48"],2,"12+2(16)=44 g/mol."),
+
+Q("Atomic mass of carbon is approximately:","कार्बन का परमाणु द्रव्यमान लगभग है:",["6","12","14","16"],["6","12","14","16"],1,"Carbon has atomic mass about 12 u."),
+
+Q("How many moles are present in 18 g water?","18 g जल में कितने मोल होते हैं?",["0.5","1","2","18"],["0.5","1","2","18"],1,"n=m/M=18/18=1 mol."),
+
+Q("Moles in 44 g CO₂ are:","44 g CO₂ में मोल की संख्या है:",["0.5","1","2","4"],["0.5","1","2","4"],1,"44/44=1 mol."),
+
+Q("Moles in 22 g CO₂ are:","22 g CO₂ में मोल की संख्या है:",["0.25","0.5","1","2"],["0.25","0.5","1","2"],1,"22/44=0.5 mol."),
+
+Q("Mass of 2 mol O₂ is:","2 mol O₂ का द्रव्यमान है:",["16 g","32 g","64 g","8 g"],["16 g","32 g","64 g","8 g"],2,"M(O₂)=32 g/mol, so 2 mol=64 g."),
+
+Q("Molar mass of NaCl is approximately:","NaCl का मोलर द्रव्यमान लगभग है:",["23","35.5","58.5","60"],["23","35.5","58.5","60"],2,"23+35.5=58.5 g/mol."),
+
+Q("The empirical formula represents:","अनुभवजन्य सूत्र दर्शाता है:",["Actual molecular mass","Simplest whole-number ratio","Atomic number","Density"],["वास्तविक आणविक द्रव्यमान","सरलतम पूर्णांक अनुपात","परमाणु क्रमांक","घनत्व"],1,"Empirical formula gives the simplest whole-number ratio."),
+
+Q("Molecular formula is a multiple of:","आणविक सूत्र किसका गुणज होता है?",["Empirical formula","Atomic number","Mass number","Density"],["अनुभवजन्य सूत्र","परमाणु क्रमांक","द्रव्यमान संख्या","घनत्व"],0,"Molecular formula is an integral multiple of empirical formula."),
+
+Q("Percentage composition is based on:","प्रतिशत संघटन किस पर आधारित है?",["Mass contribution","Only volume","Only pressure","Temperature only"],["द्रव्यमान योगदान","केवल आयतन","केवल दाब","केवल तापमान"],0,"Percentage composition commonly uses mass contribution."),
+
+Q("1 L equals:","1 L बराबर है:",["10 mL","100 mL","1000 mL","10000 mL"],["10 mL","100 mL","1000 mL","10000 mL"],2,"1 litre = 1000 mL."),
+
+Q("1 mL equals:","1 mL बराबर है:",["1 cm³","10 cm³","100 cm³","0.1 cm³"],["1 cm³","10 cm³","100 cm³","0.1 cm³"],0,"1 mL = 1 cm³."),
+
+Q("Density is defined as:","घनत्व की परिभाषा है:",["Volume/mass","Mass/volume","Mass×volume","Mass+volume"],["आयतन/द्रव्यमान","द्रव्यमान/आयतन","द्रव्यमान×आयतन","द्रव्यमान+आयतन"],1,"Density = mass/volume."),
+
+Q("SI unit of density is:","घनत्व की SI इकाई है:",["g/cm³","kg/m³","kg/L","g/L"],["g/cm³","kg/m³","kg/L","g/L"],1,"SI unit is kg m⁻³."),
+
+Q("0.5 mole NaOH has mass:","0.5 mol NaOH का द्रव्यमान है:",["10 g","20 g","40 g","80 g"],["10 g","20 g","40 g","80 g"],1,"M(NaOH)=40 g/mol; half mole=20 g."),
+
+Q("Molar mass of O₂ is:","O₂ का मोलर द्रव्यमान है:",["16","18","32","34"],["16","18","32","34"],2,"O₂ = 2×16 = 32 g/mol."),
+
+Q("Molar mass of N₂ is:","N₂ का मोलर द्रव्यमान है:",["14","28","32","42"],["14","28","32","42"],1,"N₂ = 2×14 = 28 g/mol."),
+
+Q("Molar mass of NH₃ is:","NH₃ का मोलर द्रव्यमान है:",["14","15","17","18"],["14","15","17","18"],2,"14+3=17 g/mol."),
+
+Q("Molar mass of CH₄ is:","CH₄ का मोलर द्रव्यमान है:",["12","14","16","18"],["12","14","16","18"],2,"12+4=16 g/mol."),
+
+Q("A balanced chemical equation obeys conservation of:","संतुलित रासायनिक समीकरण किस नियम का पालन करता है?",["Energy only","Mass","Volume only","Temperature"],["केवल ऊर्जा","द्रव्यमान","केवल आयतन","तापमान"],1,"Atoms and hence total mass are conserved."),
+
+Q("Coefficient of O₂ in 2H₂+O₂→2H₂O is:","2H₂+O₂→2H₂O में O₂ का गुणांक है:",["1","2","3","4"],["1","2","3","4"],0,"The coefficient of O₂ is 1."),
+
+Q("The limiting reagent is consumed:","सीमांत अभिकारक:",["Last","First completely","Never","Only partly"],["अंत में","सबसे पहले पूर्णतः","कभी नहीं","केवल आंशिक"],1,"The limiting reagent is completely consumed first."),
+
+Q("Avogadro constant unit is:","एवोगैड्रो नियतांक की इकाई है:",["mol","mol⁻¹","g mol⁻¹","L mol⁻¹"],["mol","mol⁻¹","g mol⁻¹","L mol⁻¹"],1,"Nₐ is expressed in mol⁻¹."),
+
+Q("Number of molecules in 2 mol O₂ is:","2 mol O₂ में अणुओं की संख्या है:",["Nₐ","2Nₐ","Nₐ/2","4Nₐ"],["Nₐ","2Nₐ","Nₐ/2","4Nₐ"],1,"Two moles contain 2Nₐ molecules."),
+
+Q("One atomic mass unit is approximately:","एक atomic mass unit लगभग है:",["1.66×10⁻²⁷ kg","9.1×10⁻³¹ kg","1 kg","1.66×10²⁷ kg"],["1.66×10⁻²⁷ kg","9.1×10⁻³¹ kg","1 kg","1.66×10²⁷ kg"],0,"1 u ≈ 1.66×10⁻²⁷ kg."),
+
+Q("Significant figures in 0.00450 are:","0.00450 में सार्थक अंकों की संख्या है:",["2","3","4","5"],["2","3","4","5"],1,"Leading zeros are not significant; 4,5,0 are significant."),
+
+Q("Significant figures in 100.0 are:","100.0 में सार्थक अंकों की संख्या है:",["1","2","3","4"],["1","2","3","4"],3,"The decimal notation makes all four digits significant."),
+
+Q("Which is a derived SI unit?","निम्न में से कौन व्युत्पन्न SI इकाई है?",["Metre","Second","Kilogram","Newton"],["मीटर","सेकंड","किलोग्राम","न्यूटन"],3,"Newton is a derived SI unit."),
+
+Q("The SI base unit of temperature is:","तापमान की SI मूल इकाई है:",["Celsius","Kelvin","Fahrenheit","Joule"],["सेल्सियस","केल्विन","फारेनहाइट","जूल"],1,"Kelvin is the SI base unit."),
+
+Q("The SI base unit of length is:","लंबाई की SI मूल इकाई है:",["Centimetre","Metre","Kilometre","Foot"],["सेंटीमीटर","मीटर","किलोमीटर","फुट"],1,"Metre is the SI base unit."),
+
+Q("The SI base unit of mass is:","द्रव्यमान की SI मूल इकाई है:",["Gram","Kilogram","Milligram","Ton"],["ग्राम","किलोग्राम","मिलीग्राम","टन"],1,"Kilogram is the SI base unit."),
+
+Q("If 10 g solute is present in 100 g solution, mass percentage is:","100 g विलयन में 10 g विलेय हो तो द्रव्यमान प्रतिशत है:",["1%","5%","10%","20%"],["1%","5%","10%","20%"],2,"Mass percentage =10/100×100=10%."),
+
+Q("Molarity is moles of solute per:","मोलरता = विलेय के मोल प्रति:",["kg solvent","L solution","g solution","mL solvent"],["kg विलायक","L विलयन","g विलयन","mL विलायक"],1,"Molarity = moles per litre of solution."),
+
+Q("Molality is moles of solute per:","मोललता = विलेय के मोल प्रति:",["kg solvent","L solution","L solvent","g solute"],["kg विलायक","L विलयन","L विलायक","g विलेय"],0,"Molality uses kg of solvent."),
+
+Q("If 1 mol solute is in 2 L solution, molarity is:","2 L विलयन में 1 mol विलेय हो तो मोलरता है:",["0.25 M","0.5 M","1 M","2 M"],["0.25 M","0.5 M","1 M","2 M"],1,"M=1/2=0.5 M."),
+
+Q("If 2 mol solute is in 1 L solution, molarity is:","1 L विलयन में 2 mol विलेय हो तो मोलरता है:",["0.5 M","1 M","2 M","3 M"],["0.5 M","1 M","2 M","3 M"],2,"M=2/1=2 M."),
+
+Q("The formula n = m/M gives:","n = m/M सूत्र से क्या ज्ञात होता है?",["Molar mass","Moles","Density","Volume"],["मोलर द्रव्यमान","मोल","घनत्व","आयतन"],1,"n is number of moles."),
+
+Q("Molecular mass of H₂SO₄ is:","H₂SO₄ का आणविक द्रव्यमान है:",["96","98","100","102"],["96","98","100","102"],1,"2+32+64=98."),
+
+Q("Molar mass of CaCO₃ is:","CaCO₃ का मोलर द्रव्यमान है:",["90","100","110","120"],["90","100","110","120"],1,"40+12+48=100 g/mol."),
+
+Q("Formula mass is generally used for:","सूत्र द्रव्यमान सामान्यतः किसके लिए प्रयोग होता है?",["Ionic compounds","Only gases","Only liquids","Elements only"],["आयनिक यौगिक","केवल गैसें","केवल द्रव","केवल तत्व"],0,"Ionic compounds are described using formula units."),
+
+Q("The smallest whole-number ratio in a compound is its:","यौगिक में सबसे छोटा पूर्णांक अनुपात कहलाता है:",["Molecular formula","Empirical formula","Structural formula","Electronic formula"],["आणविक सूत्र","अनुभवजन्य सूत्र","संरचनात्मक सूत्र","इलेक्ट्रॉनिक सूत्र"],1,"That is the empirical formula."),
+
+Q("0.25 mol of a substance contains:","0.25 mol पदार्थ में कणों की संख्या है:",["Nₐ","2Nₐ","Nₐ/4","4Nₐ"],["Nₐ","2Nₐ","Nₐ/4","4Nₐ"],2,"Number of particles =0.25Nₐ=Nₐ/4."),
+
+Q("The law of definite proportions states that elements combine in:","निश्चित अनुपात का नियम कहता है कि तत्व संयोजित होते हैं:",["Random ratios","Fixed mass ratio","Only equal masses","Volume ratio only"],["अनियमित अनुपात","निश्चित द्रव्यमान अनुपात","केवल समान द्रव्यमान","केवल आयतन अनुपात"],1,"A pure compound has elements in a fixed mass ratio."),
+
+Q("The law of multiple proportions concerns formation of:","गुणित अनुपात का नियम संबंधित है:",["Different compounds by same elements","Only mixtures","Only solutions","Isotopes"],["समान तत्वों से विभिन्न यौगिक","केवल मिश्रण","केवल विलयन","समस्थानिक"],0,"It applies when two elements form more than one compound."),
+
+Q("Precision refers to:", "परिशुद्धता का अर्थ है:",["Closeness to true value","Closeness among repeated values","Large value","Small value"],["वास्तविक मान के निकटता","बार-बार मापों की आपसी निकटता","बड़ा मान","छोटा मान"],1,"Precision means reproducibility/closeness of repeated measurements."),
+
+Q("Accuracy refers to:", "शुद्धता का अर्थ है:",["Closeness to true value","Repeated value only","Number of units","Instrument size"],["वास्तविक मान के निकटता","केवल दोहराया मान","इकाइयों की संख्या","यंत्र का आकार"],0,"Accuracy is closeness to the true value.")
+
+];
+
+
+/* =====================================================
+   BOTANY 91–135
+   CELL: THE UNIT OF LIFE
+===================================================== */
+
+const botany=[
+
+Q("The basic structural and functional unit of life is:","जीवन की मूल संरचनात्मक एवं क्रियात्मक इकाई है:",["Tissue","Organ","Cell","Organism"],["ऊतक","अंग","कोशिका","जीव"],2,"Cell is the basic structural and functional unit of life."),
+
+Q("Who coined the term cell?","कोशिका शब्द किसने दिया?",["Robert Hooke","Darwin","Mendel","Schleiden"],["रॉबर्ट हुक","डार्विन","मेंडल","श्लाइडेन"],0,"Robert Hooke used the term cell in cork."),
+
+Q("The cell theory was developed mainly by:","कोशिका सिद्धांत मुख्यतः किसने दिया?",["Schleiden and Schwann","Watson and Crick","Darwin and Wallace","Mendel and Morgan"],["श्लाइडेन और श्वान","वॉटसन और क्रिक","डार्विन और वॉलेस","मेंडल और मॉर्गन"],0,"Schleiden and Schwann formulated the cell theory."),
+
+Q("The plasma membrane is mainly composed of:","प्लाज्मा झिल्ली मुख्यतः बनी होती है:",["Lipids and proteins","DNA only","Cellulose only","RNA only"],["लिपिड और प्रोटीन","केवल DNA","केवल सेलुलोज","केवल RNA"],0,"The plasma membrane is a lipid-protein membrane."),
+
+Q("The fluid mosaic model was proposed by:","फ्लुइड मोज़ेक मॉडल किसने दिया?",["Singer and Nicolson","Hooke","Schwann","Virchow"],["सिंगर और निकोलसन","हुक","श्वान","विर्खो"],0,"Singer and Nicolson proposed the fluid mosaic model."),
+
+Q("The plant cell wall is mainly made of:","पादप कोशिका भित्ति मुख्यतः बनी होती है:",["Cellulose","Chitin","Protein","Lipid"],["सेलुलोज","काइटिन","प्रोटीन","लिपिड"],0,"Cellulose is a major component of plant cell walls."),
+
+Q("The middle lamella is mainly composed of:","मध्य पटलिका मुख्यतः बनी होती है:",["Calcium pectate","Cellulose","Chitin","Lignin only"],["कैल्शियम पेक्टेट","सेलुलोज","काइटिन","केवल लिग्निन"],0,"Middle lamella is rich in calcium pectate."),
+
+Q("The control centre of a eukaryotic cell is:","यूकैरियोटिक कोशिका का नियंत्रण केंद्र है:",["Ribosome","Nucleus","Golgi body","Lysosome"],["राइबोसोम","केंद्रक","गॉल्जी काय","लाइसोसोम"],1,"The nucleus contains genetic material and controls activities."),
+
+Q("Nucleolus is associated mainly with formation of:","नाभिकिका मुख्यतः किसके निर्माण से संबंधित है?",["Ribosomes","Lysosomes","Vacuoles","Cell wall"],["राइबोसोम","लाइसोसोम","रिक्तिकाएँ","कोशिका भित्ति"],0,"Nucleolus is involved in ribosome biogenesis."),
+
+Q("Ribosomes are the sites of:","राइबोसोम किसके स्थल हैं?",["Protein synthesis","DNA replication only","Lipid storage","Photosynthesis"],["प्रोटीन संश्लेषण","केवल DNA प्रतिकृति","लिपिड भंडारण","प्रकाश संश्लेषण"],0,"Ribosomes synthesize proteins."),
+
+Q("70S ribosomes occur in:","70S राइबोसोम पाए जाते हैं:",["Prokaryotes","Only nucleus","Golgi","Lysosomes"],["प्रोकैरियोट्स","केवल केंद्रक","गॉल्जी","लाइसोसोम"],0,"Prokaryotic ribosomes are 70S."),
+
+Q("80S ribosomes occur in:","80S राइबोसोम पाए जाते हैं:",["Eukaryotic cytoplasm","Bacterial cytoplasm","Mitochondrial matrix only","Cell wall"],["यूकैरियोटिक कोशिकाद्रव्य","जीवाणु कोशिकाद्रव्य","केवल माइटोकॉन्ड्रियल मैट्रिक्स","कोशिका भित्ति"],0,"Cytoplasmic eukaryotic ribosomes are 80S."),
+
+Q("Mitochondria are called the:","माइटोकॉन्ड्रिया को कहा जाता है:",["Powerhouse of cell","Control wall","Protein store","Digestive wall"],["कोशिका का पावरहाउस","नियंत्रण भित्ति","प्रोटीन भंडार","पाचन भित्ति"],0,"Mitochondria produce ATP through respiration."),
+
+Q("Mitochondria possess:","माइटोकॉन्ड्रिया में होता है:",["Own DNA and ribosomes","Only cellulose","No membrane","Only RNA"],["अपना DNA और राइबोसोम","केवल सेलुलोज","कोई झिल्ली नहीं","केवल RNA"],0,"Mitochondria are semi-autonomous organelles."),
+
+Q("Chlorophyll is present in:","क्लोरोफिल पाया जाता है:",["Chloroplast","Lysosome","Golgi body","Nucleus"],["क्लोरोप्लास्ट","लाइसोसोम","गॉल्जी काय","केंद्रक"],0,"Chlorophyll is located in chloroplasts."),
+
+Q("Grana are stacks of:","ग्राना किसके ढेर होते हैं?",["Thylakoids","Cristae","Ribosomes","Vacuoles"],["थायलाकोइड","क्रिस्टी","राइबोसोम","रिक्तिकाएँ"],0,"Stacks of thylakoids are called grana."),
+
+Q("Cristae are folds of:","क्रिस्टी किसकी तहें हैं?",["Inner mitochondrial membrane","Cell wall","Nuclear membrane","Golgi membrane"],["आंतरिक माइटोकॉन्ड्रियल झिल्ली","कोशिका भित्ति","नाभिकीय झिल्ली","गॉल्जी झिल्ली"],0,"Cristae increase the inner membrane surface area."),
+
+Q("Golgi apparatus is involved in:","गॉल्जी तंत्र संबंधित है:",["Packaging and modification","DNA replication","Photosynthesis","Cell division only"],["पैकेजिंग और संशोधन","DNA प्रतिकृति","प्रकाश संश्लेषण","केवल कोशिका विभाजन"],0,"Golgi modifies, packages and sorts cellular products."),
+
+Q("Lysosomes contain:","लाइसोसोम में होते हैं:",["Hydrolytic enzymes","DNA only","Chlorophyll","Cellulose"],["हाइड्रोलाइटिक एंजाइम","केवल DNA","क्लोरोफिल","सेलुलोज"],0,"Lysosomes contain digestive hydrolytic enzymes."),
+
+Q("Endoplasmic reticulum is mainly involved in:","अंतर्द्रव्यी जालिका मुख्यतः संबंधित है:",["Synthesis and transport","Cell wall formation only","Photosynthesis only","DNA storage"],["संश्लेषण और परिवहन","केवल कोशिका भित्ति निर्माण","केवल प्रकाश संश्लेषण","DNA भंडारण"],0,"ER is involved in synthesis and intracellular transport."),
+
+Q("Rough ER has:","रफ ER पर होते हैं:",["Ribosomes","Lysosomes","Centrioles","Chloroplasts"],["राइबोसोम","लाइसोसोम","सेंट्रियोल","क्लोरोप्लास्ट"],0,"RER is studded with ribosomes."),
+
+Q("Smooth ER is important in:","स्मूथ ER महत्वपूर्ण है:",["Lipid synthesis","Protein synthesis by ribosomes","DNA packaging","Cell wall digestion"],["लिपिड संश्लेषण","राइबोसोम द्वारा प्रोटीन संश्लेषण","DNA पैकेजिंग","कोशिका भित्ति पाचन"],0,"SER is associated with lipid synthesis."),
+
+Q("Vacuoles in plant cells contain:","पादप कोशिका की रिक्तिकाओं में होता है:",["Cell sap","DNA only","Ribosomes only","Chlorophyll only"],["कोशिका रस","केवल DNA","केवल राइबोसोम","केवल क्लोरोफिल"],0,"Plant vacuoles contain cell sap."),
+
+Q("The membrane surrounding a vacuole is called:","रिक्तिका को घेरने वाली झिल्ली कहलाती है:",["Tonoplast","Plasmalemma","Crista","Nuclear pore"],["टोनोप्लास्ट","प्लाज्मालेम्मा","क्रिस्टी","नाभिकीय छिद्र"],0,"Tonoplast surrounds the vacuole."),
+
+Q("Centrioles are generally found in:","सेंट्रियोल सामान्यतः पाए जाते हैं:",["Animal cells","Mature sieve tubes","Cell wall","Chloroplasts"],["जंतु कोशिकाओं","परिपक्व चालनी नलिकाओं","कोशिका भित्ति","क्लोरोप्लास्ट"],0,"Centrioles are characteristic of animal cells."),
+
+Q("The nucleus is bounded by:","केंद्रक घिरा होता है:",["Double membrane","Single cell wall","No membrane","Cellulose wall"],["दोहरी झिल्ली","एकल कोशिका भित्ति","कोई झिल्ली नहीं","सेलुलोज भित्ति"],0,"The nuclear envelope is double-membraned."),
+
+Q("Chromatin is composed mainly of:","क्रोमैटिन मुख्यतः बना होता है:",["DNA and proteins","Lipids only","Cellulose","RNA only"],["DNA और प्रोटीन","केवल लिपिड","सेलुलोज","केवल RNA"],0,"Chromatin consists of DNA associated with proteins."),
+
+Q("The nucleoplasm is present inside:","न्यूक्लियोप्लाज्म पाया जाता है:",["Nucleus","Mitochondria","Golgi","Vacuole"],["केंद्रक","माइटोकॉन्ड्रिया","गॉल्जी","रिक्तिका"],0,"Nucleoplasm is the matrix inside the nucleus."),
+
+Q("Prokaryotic cells lack:","प्रोकैरियोटिक कोशिकाओं में नहीं होता:",["Membrane-bound nucleus","Ribosomes","Plasma membrane","DNA"],["झिल्ली-बद्ध केंद्रक","राइबोसोम","प्लाज्मा झिल्ली","DNA"],0,"They do not have a membrane-bound nucleus."),
+
+Q("Bacterial genetic material is located in:","जीवाणु का आनुवंशिक पदार्थ स्थित होता है:",["Nucleoid","Nucleolus","Golgi","Vacuole"],["न्यूक्लिऑइड","नाभिकिका","गॉल्जी","रिक्तिका"],0,"The bacterial chromosome occupies the nucleoid region."),
+
+Q("A typical bacterial cell wall contains:","सामान्य जीवाणु कोशिका भित्ति में होता है:",["Peptidoglycan","Cellulose","Chitin","Pectin only"],["पेप्टिडोग्लाइकन","सेलुलोज","काइटिन","केवल पेक्टिन"],0,"Bacterial cell walls contain peptidoglycan."),
+
+Q("Plasmids are:","प्लाज्मिड होते हैं:",["Extra-chromosomal DNA","Proteins","Lipids","Carbohydrates"],["अतिरिक्त-गुणसूत्रीय DNA","प्रोटीन","लिपिड","कार्बोहाइड्रेट"],0,"Plasmids are small extra-chromosomal DNA molecules."),
+
+Q("Cell membrane is selectively:","कोशिका झिल्ली चयनात्मक रूप से:",["Permeable","Impermeable","Rigid","Dead"],["पारगम्य","अपारगम्य","कठोर","मृत"],0,"The plasma membrane is selectively permeable."),
+
+Q("Osmosis is movement of:","परासरण में गति होती है:",["Water through a selectively permeable membrane","Solute only","Proteins only","DNA"],["चयनात्मक पारगम्य झिल्ली से जल","केवल विलेय","केवल प्रोटीन","DNA"],0,"Osmosis concerns movement of water."),
+
+Q("Diffusion occurs from:","विसरण होता है:",["Higher concentration to lower concentration","Lower to higher only","Equal to higher","No movement"],["अधिक सांद्रता से कम सांद्रता","केवल कम से अधिक","समान से अधिक","कोई गति नहीं"],0,"Particles move down their concentration gradient."),
+
+Q("The largest cell organelle in a typical plant cell is often:","सामान्य पादप कोशिका में सबसे बड़ा कोशिकांग प्रायः है:",["Vacuole","Ribosome","Golgi body","Centriole"],["रिक्तिका","राइबोसोम","गॉल्जी काय","सेंट्रियोल"],0,"The large central vacuole occupies much of the plant cell."),
+
+Q("Cell wall provides:","कोशिका भित्ति प्रदान करती है:",["Shape and mechanical support","DNA synthesis","ATP only","Protein synthesis"],["आकार और यांत्रिक सहारा","DNA संश्लेषण","केवल ATP","प्रोटीन संश्लेषण"],0,"Cell wall provides rigidity and support."),
+
+Q("Peroxisomes are associated with:","पेरॉक्सीसोम संबंधित हैं:",["Oxidative reactions","Protein translation","DNA storage","Cellulose synthesis"],["ऑक्सीकरण अभिक्रियाएँ","प्रोटीन अनुवाद","DNA भंडारण","सेलुलोज संश्लेषण"],0,"Peroxisomes contain oxidative enzymes."),
+
+Q("Cilia and flagella help mainly in:","सिलिया और फ्लैजेला मुख्यतः सहायता करते हैं:",["Movement","DNA replication","Protein storage","Cell wall formation"],["गति","DNA प्रतिकृति","प्रोटीन भंडारण","कोशिका भित्ति निर्माण"],0,"They are locomotory structures."),
+
+Q("The common axoneme arrangement in eukaryotic cilia is:","यूकैरियोटिक सिलिया में सामान्य एक्सोनीम व्यवस्था है:",["9+2","9+0","8+2","7+2"],["9+2","9+0","8+2","7+2"],0,"Typical motile cilia have a 9+2 arrangement."),
+
+Q("Microtubules are made mainly of:","माइक्रोट्यूब्यूल मुख्यतः बने होते हैं:",["Tubulin","Actin","Cellulose","Keratin"],["ट्यूब्यूलिन","एक्टिन","सेलुलोज","केराटिन"],0,"Microtubules are polymers of tubulin."),
+
+Q("Microfilaments are mainly composed of:","माइक्रोफिलामेंट मुख्यतः बने होते हैं:",["Actin","Tubulin","Cellulose","DNA"],["एक्टिन","ट्यूब्यूलिन","सेलुलोज","DNA"],0,"Microfilaments are mainly actin."),
+
+Q("Cell division and chromosome movement involve:","कोशिका विभाजन और गुणसूत्र गति में महत्वपूर्ण हैं:",["Spindle fibres","Cell wall only","Golgi only","Vacuoles"],["स्पिंडल तंतु","केवल कोशिका भित्ति","केवल गॉल्जी","रिक्तिकाएँ"],0,"Spindle fibres help move chromosomes during cell division."),
+
+Q("The term semi-autonomous organelles refers mainly to:","अर्ध-स्वायत्त कोशिकांग मुख्यतः हैं:",["Mitochondria and chloroplasts","Golgi and lysosomes","Ribosomes and vacuoles","ER and Golgi"],["माइटोकॉन्ड्रिया और क्लोरोप्लास्ट","गॉल्जी और लाइसोसोम","राइबोसोम और रिक्तिकाएँ","ER और गॉल्जी"],0,"Both have their own DNA and ribosomes."),
+
+Q("Which organelle modifies and packages proteins?","कौन-सा कोशिकांग प्रोटीन को संशोधित और पैकेज करता है?",["Golgi apparatus","Nucleus","Vacuole","Centriole"],["गॉल्जी तंत्र","केंद्रक","रिक्तिका","सेंट्रियोल"],0,"Golgi apparatus modifies and packages proteins.")
+];
+
+
+/* =====================================================
+   ZOOLOGY 136–180
+   STRUCTURAL ORGANISATION IN ANIMALS
+===================================================== */
+
+const zoology=[
+
+Q("The basic unit of animal tissue is:","जंतु ऊतक की मूल इकाई है:",["Cell","Organ","Organ system","Organism"],["कोशिका","अंग","अंग तंत्र","जीव"],0,"Tissues are groups of specialized cells."),
+
+Q("A group of similar cells performing a function is called:","समान कोशिकाओं का कार्यात्मक समूह कहलाता है:",["Tissue","Organ","System","Organism"],["ऊतक","अंग","तंत्र","जीव"],0,"A tissue is a group of similar cells."),
+
+Q("The tissue covering external body surfaces is:","शरीर की बाहरी सतह को ढकने वाला ऊतक है:",["Epithelial tissue","Muscular tissue","Nervous tissue","Connective tissue"],["उपकला ऊतक","पेशीय ऊतक","तंत्रिका ऊतक","संयोजी ऊतक"],0,"Epithelium covers body surfaces."),
+
+Q("Simple squamous epithelium consists of:","सरल शल्की उपकला में होती हैं:",["Single layer of flat cells","Many layers of cuboidal cells","Muscle fibres","Neurons"],["चपटी कोशिकाओं की एक परत","घनाकार कोशिकाओं की अनेक परतें","पेशीय तंतु","न्यूरॉन"],0,"Simple squamous epithelium has one thin layer."),
+
+Q("Cuboidal epithelium has cells that are:","घनाकार उपकला की कोशिकाएँ होती हैं:",["Cube-shaped","Flat","Long branched","Spindle only"],["घनाकार","चपटी","लंबी शाखित","केवल धुरीनुमा"],0,"Cuboidal cells are approximately cube-shaped."),
+
+Q("Columnar epithelial cells are:","स्तंभाकार उपकला कोशिकाएँ होती हैं:",["Tall","Flat","Spherical only","Without nucleus"],["लंबी","चपटी","केवल गोलाकार","केंद्रक रहित"],0,"Columnar cells are taller than they are wide."),
+
+Q("Ciliated epithelium contains:","रोमाभी उपकला में होते हैं:",["Cilia","Bones","Cartilage","Blood"],["सिलिया","हड्डियाँ","उपास्थि","रक्त"],0,"Cilia project from the apical surface."),
+
+Q("Glandular epithelium is specialized for:","ग्रंथिल उपकला विशेषीकृत है:",["Secretion","Contraction","Impulse conduction","Support only"],["स्राव","संकुचन","आवेग संचरण","केवल सहारा"],0,"Glandular cells produce secretions."),
+
+Q("Connective tissue generally has:","संयोजी ऊतक में सामान्यतः होता है:",["Abundant extracellular matrix","No matrix","Only neurons","Only muscle fibres"],["अधिक बाह्यकोशिकीय मैट्रिक्स","कोई मैट्रिक्स नहीं","केवल न्यूरॉन","केवल पेशीय तंतु"],0,"Connective tissue is characterized by extracellular matrix."),
+
+Q("Blood is a type of:","रक्त किस प्रकार का ऊतक है?",["Connective tissue","Epithelial tissue","Muscle tissue","Nervous tissue"],["संयोजी ऊतक","उपकला ऊतक","पेशीय ऊतक","तंत्रिका ऊतक"],0,"Blood is a fluid connective tissue."),
+
+Q("Bone provides:","हड्डी प्रदान करती है:",["Support and protection","Only secretion","Only digestion","Only impulse conduction"],["सहारा और सुरक्षा","केवल स्राव","केवल पाचन","केवल आवेग संचरण"],0,"Bone is a rigid connective tissue."),
+
+Q("Cartilage is generally:","उपास्थि सामान्यतः होती है:",["Flexible connective tissue","Hard epithelium","Muscle","Nervous tissue"],["लचीला संयोजी ऊतक","कठोर उपकला","पेशी","तंत्रिका ऊतक"],0,"Cartilage provides flexible support."),
+
+Q("Adipose tissue stores mainly:","वसा ऊतक मुख्यतः संग्रह करता है:",["Fat","Calcium only","DNA","Water only"],["वसा","केवल कैल्शियम","DNA","केवल जल"],0,"Adipose tissue stores lipids."),
+
+Q("Areolar tissue helps in:","एरिओलर ऊतक सहायता करता है:",["Packing and binding","Bone formation only","Impulse generation","Digestion only"],["पैकिंग और बंधन","केवल अस्थि निर्माण","आवेग निर्माण","केवल पाचन"],0,"Areolar tissue fills spaces and binds structures."),
+
+Q("Tendon connects:","टेंडन जोड़ता है:",["Muscle to bone","Bone to bone","Nerve to nerve","Skin to skin"],["पेशी को हड्डी से","हड्डी को हड्डी से","तंत्रिका को तंत्रिका से","त्वचा को त्वचा से"],0,"Tendons connect muscles to bones."),
+
+Q("Ligament connects:","लिगामेंट जोड़ता है:",["Bone to bone","Muscle to bone","Nerve to muscle","Skin to bone"],["हड्डी को हड्डी से","पेशी को हड्डी से","तंत्रिका को पेशी से","त्वचा को हड्डी से"],0,"Ligaments connect bones at joints."),
+
+Q("Muscular tissue is specialized for:","पेशीय ऊतक विशेषीकृत है:",["Contraction","Secretion only","Support only","Photosynthesis"],["संकुचन","केवल स्राव","केवल सहारा","प्रकाश संश्लेषण"],0,"Muscles contract to produce movement."),
+
+Q("Skeletal muscle is generally:","कंकालीय पेशी सामान्यतः होती है:",["Striated and voluntary","Non-striated and involuntary","Only cardiac","Without fibres"],["रेखित और ऐच्छिक","अरेखित और अनैच्छिक","केवल हृदयीय","तंतुरहित"],0,"Skeletal muscle is striated and usually voluntary."),
+
+Q("Smooth muscle is:","चिकनी पेशी होती है:",["Non-striated and involuntary","Striated and voluntary","Only in bones","Only in heart"],["अरेखित और अनैच्छिक","रेखित और ऐच्छिक","केवल हड्डियों में","केवल हृदय में"],0,"Smooth muscle is involuntary and non-striated."),
+
+Q("Cardiac muscle is found in:","हृदयीय पेशी पाई जाती है:",["Heart","Stomach only","Bone","Skin"],["हृदय","केवल आमाशय","हड्डी","त्वचा"],0,"Cardiac muscle forms the heart wall."),
+
+Q("Cardiac muscle cells are connected by:","हृदयीय पेशी कोशिकाएँ जुड़ी होती हैं:",["Intercalated discs","Tendons","Ligaments","Cartilage"],["इंटरकलेटेड डिस्क","टेंडन","लिगामेंट","उपास्थि"],0,"Intercalated discs connect cardiac muscle cells."),
+
+Q("Nervous tissue is specialized for:","तंत्रिका ऊतक विशेषीकृत है:",["Impulse conduction","Fat storage","Support only","Secretion only"],["आवेग संचरण","वसा भंडारण","केवल सहारा","केवल स्राव"],0,"Nervous tissue receives and conducts impulses."),
+
+Q("The structural and functional unit of nervous tissue is:","तंत्रिका ऊतक की संरचनात्मक एवं क्रियात्मक इकाई है:",["Neuron","Osteocyte","Adipocyte","Erythrocyte"],["न्यूरॉन","ऑस्टियोसाइट","एडिपोसाइट","एरिथ्रोसाइट"],0,"Neuron is the functional unit of nervous tissue."),
+
+Q("Dendrites generally receive:","डेंड्राइट सामान्यतः ग्रहण करते हैं:",["Nerve impulses","Blood","Hormones only","Oxygen only"],["तंत्रिका आवेग","रक्त","केवल हार्मोन","केवल ऑक्सीजन"],0,"Dendrites receive signals toward the cell body."),
+
+Q("Axon generally carries impulses:","एक्सॉन सामान्यतः आवेग ले जाता है:",["Away from cell body","Only toward cell body","Into blood","Into bone"],["कोशिका शरीर से दूर","केवल कोशिका शरीर की ओर","रक्त में","हड्डी में"],0,"The axon conducts impulses away from the cell body."),
+
+Q("Earthworm belongs to phylum:","केंचुआ किस संघ से संबंधित है?",["Annelida","Arthropoda","Mollusca","Chordata"],["एनेलिडा","आर्थ्रोपोडा","मोलस्का","कॉर्डेटा"],0,"Earthworm is an annelid."),
+
+Q("Earthworm body shows:","केंचुए के शरीर में होता है:",["Metameric segmentation","Radial symmetry only","No segmentation","Shell"],["खंडीभवन","केवल त्रिज्यीय सममिति","खंडीभवन नहीं","खोल"],0,"Earthworm has metameric segmentation."),
+
+Q("Earthworm locomotion is aided by:","केंचुए की गति में सहायता करते हैं:",["Setae and muscles","Wings","Fins","Cilia only"],["सीटी और पेशियाँ","पंख","पंखनुमा पंख","केवल सिलिया"],0,"Setae and body muscles aid locomotion."),
+
+Q("Cockroach belongs to:","कॉकरोच किस संघ का है?",["Arthropoda","Annelida","Mollusca","Echinodermata"],["आर्थ्रोपोडा","एनेलिडा","मोलस्का","एकाइनोडर्मेटा"],0,"Cockroach is an arthropod."),
+
+Q("The body of cockroach is divided into:","कॉकरोच का शरीर विभाजित है:",["Head, thorax and abdomen","Head and tail only","Thorax only","Abdomen only"],["सिर, वक्ष और उदर","केवल सिर और पूंछ","केवल वक्ष","केवल उदर"],0,"Cockroach has three main body regions."),
+
+Q("Cockroach has how many pairs of walking legs?","कॉकरोच में चलने वाले पैरों के कितने जोड़े होते हैं?",["1","2","3","4"],["1","2","3","4"],2,"Cockroach has three pairs of thoracic legs."),
+
+Q("Cockroach has how many pairs of wings?","कॉकरोच में पंखों के कितने जोड़े होते हैं?",["1","2","3","4"],["1","2","3","4"],1,"Adult cockroaches have two pairs of wings."),
+
+Q("The respiratory organs of cockroach are:","कॉकरोच के श्वसन अंग हैं:",["Tracheae","Gills","Lungs only","Skin only"],["ट्रेकिया","गलफड़े","केवल फेफड़े","केवल त्वचा"],0,"Cockroach breathes through tracheal tubes."),
+
+Q("Cockroach excretion occurs through:","कॉकरोच में उत्सर्जन होता है:",["Malpighian tubules","Nephridia","Kidneys","Flame cells"],["मैलपीघियन नलिकाएँ","नेफ्रिडिया","वृक्क","ज्वाला कोशिकाएँ"],0,"Malpighian tubules are excretory organs."),
+
+Q("Frog belongs to class:","मेंढक किस वर्ग का है?",["Amphibia","Reptilia","Mammalia","Aves"],["एम्फीबिया","रेप्टीलिया","मैमेलिया","एविस"],0,"Frog is an amphibian."),
+
+Q("Frog skin is generally:","मेंढक की त्वचा सामान्यतः होती है:",["Moist and glandular","Dry and scaly","Feathered","Hard shell"],["नम और ग्रंथियुक्त","सूखी और शल्कयुक्त","पंखयुक्त","कठोर खोल वाली"],0,"Frog has moist glandular skin."),
+
+Q("Adult frog mainly respires through:","वयस्क मेंढक मुख्यतः श्वसन करता है:",["Lungs and skin","Gills only","Tracheae","Feathers"],["फेफड़ों और त्वचा से","केवल गलफड़ों से","ट्रेकिया से","पंखों से"],0,"Adult frogs use lungs and cutaneous respiration."),
+
+Q("Frog heart has:","मेंढक के हृदय में होते हैं:",["Three chambers","Two chambers","Four chambers","One chamber"],["तीन कक्ष","दो कक्ष","चार कक्ष","एक कक्ष"],0,"Frog heart has two atria and one ventricle."),
+
+Q("The larval stage of frog is called:","मेंढक की लार्वा अवस्था कहलाती है:",["Tadpole","Nymph","Maggot","Larva only"],["टैडपोल","निम्फ","मैगॉट","केवल लार्वा"],0,"Frog larvae are called tadpoles."),
+
+Q("A frog is generally:","मेंढक सामान्यतः होता है:",["Cold-blooded","Warm-blooded","Always endothermic","Always homeothermic"],["शीत-रक्ती","उष्ण-रक्ती","हमेशा अंत:तापी","हमेशा समतापी"],0,"Frogs are ectothermic animals."),
+
+Q("Earthworm excretes mainly through:","केंचुआ मुख्यतः उत्सर्जन करता है:",["Nephridia","Malpighian tubules","Kidneys","Gills"],["नेफ्रिडिया","मैलपीघियन नलिकाएँ","वृक्क","गलफड़े"],0,"Nephridia are the excretory organs of earthworm."),
+
+Q("The digestive tract of earthworm is:","केंचुए का पाचन तंत्र होता है:",["Complete","Incomplete","Absent","Only a cavity"],["पूर्ण","अपूर्ण","अनुपस्थित","केवल गुहा"],0,"Earthworm has a complete digestive tract."),
+
+Q("The gizzard of earthworm helps in:","केंचुए का गिजार्ड सहायता करता है:",["Grinding food","Absorbing oxygen","Pumping blood","Excretion"],["भोजन पीसने में","ऑक्सीजन अवशोषण","रक्त पंप करने","उत्सर्जन"],0,"The muscular gizzard mechanically grinds food."),
+
+Q("In cockroach, blood is called:","कॉकरोच में रक्त कहलाता है:",["Haemolymph","Plasma only","Lymph only","Serum"],["हीमोलिम्फ","केवल प्लाज्मा","केवल लसीका","सीरम"],0,"Arthropods have haemolymph."),
+
+Q("Cockroach has an open circulatory system because:","कॉकरोच का परिसंचरण तंत्र खुला होता है क्योंकि:",["Haemolymph enters body spaces","Blood stays only in vessels","It has no heart","It has closed capillaries"],["हीमोलिम्फ शरीर गुहाओं में पहुँचता है","रक्त केवल वाहिकाओं में रहता है","इसमें हृदय नहीं होता","इसमें बंद केशिकाएँ हैं"],0,"Haemolymph bathes organs in body spaces."),
+
+Q("The exoskeleton of cockroach is mainly made of:","कॉकरोच का बाह्यकंकाल मुख्यतः बना होता है:",["Chitin","Cellulose","Calcium carbonate only","Keratin"],["काइटिन","सेलुलोज","केवल कैल्शियम कार्बोनेट","केराटिन"],0,"Arthropod exoskeleton contains chitin."),
+
+Q("Which tissue binds two bones together?","कौन-सा ऊतक दो हड्डियों को जोड़ता है?",["Ligament","Tendon","Blood","Cartilage only"],["लिगामेंट","टेंडन","रक्त","केवल उपास्थि"],0,"Ligaments connect bone to bone.")
+
+];
+
+
+/* =====================================================
+   BUILD EXACTLY 180
+===================================================== */
+
+questions.push(...physics);
+questions.push(...chemistry);
+questions.push(...botany);
+questions.push(...zoology);
+
+
+/* Safety check */
+if(questions.length !== 180){
+ alert("Question bank error: expected 180 questions, found "+questions.length);
+}
+
+
+/* =====================================================
+   STATE
+===================================================== */
+
+let current=0;
+let language="en";
+let answers=new Array(180).fill(null);
+let review=new Array(180).fill(false);
+
+let timeLeft=3*60*60+15*60;
+let timerInterval=null;
+
+
+/* =====================================================
+   START
+===================================================== */
+
+function startTest(){
+
+ document.getElementById("instructionScreen").classList.remove("active");
+ document.getElementById("testScreen").classList.add("active");
+
+ renderPalette();
+ renderQuestion();
+
+ startTimer();
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+function startTimer(){
+
+ clearInterval(timerInterval);
+
+ timerInterval=setInterval(function(){
+
+  timeLeft--;
+
+  if(timeLeft<=0){
+
+   timeLeft=0;
+   updateTimer();
+   clearInterval(timerInterval);
+
+   alert("Time is over. The test will be submitted automatically.");
+   submitTest();
+
+   return;
+  }
+
+  updateTimer();
+
+ },1000);
+
+ updateTimer();
+}
+
+
+function updateTimer(){
+
+ let h=Math.floor(timeLeft/3600);
+ let m=Math.floor((timeLeft%3600)/60);
+ let s=timeLeft%60;
+
+ document.getElementById("timer").textContent=
+  String(h).padStart(2,"0")+":"+
+  String(m).padStart(2,"0")+":"+
+  String(s).padStart(2,"0");
+}
+
+
+/* =====================================================
+   LANGUAGE
+===================================================== */
+
+function setLanguage(lang){
+
+ language=lang;
+
+ document.getElementById("enBtn").classList.toggle(
+  "active",lang==="en"
+ );
+
+ document.getElementById("hiBtn").classList.toggle(
+  "active",lang==="hi"
+ );
+
+ renderQuestion();
+}
+
+
+/* =====================================================
+   SUBJECT
+===================================================== */
+
+function getSubject(index){
+
+ if(index<45) return "PHYSICS";
+ if(index<90) return "CHEMISTRY";
+ if(index<135) return "BOTANY";
+ return "ZOOLOGY";
+}
+
+
+/* =====================================================
+   QUESTION RENDER
+===================================================== */
+
+function renderQuestion(){
+
+ const q=questions[current];
+
+ document.getElementById("subjectName").textContent=
+  getSubject(current);
+
+ document.getElementById("qNumber").textContent=
+  "Question "+(current+1)+" / 180";
+
+ document.getElementById("questionText").textContent=
+  language==="en" ? q.en : q.hi;
+
+ const options=document.getElementById("options");
+
+ options.innerHTML="";
+
+ const arr=language==="en" ? q.oe : q.oh;
+
+ arr.forEach(function(option,index){
+
+  const btn=document.createElement("button");
+
+  btn.className="option";
+
+  if(answers[current]===index){
+   btn.classList.add("selected");
+  }
+
+  btn.textContent=
+   String.fromCharCode(65+index)+". "+option;
+
+  btn.onclick=function(){
+   selectAnswer(index);
+  };
+
+  options.appendChild(btn);
+
+ });
+
+ renderPalette();
+}
+
+
+/* =====================================================
+   SELECT ANSWER
+===================================================== */
+
+function selectAnswer(index){
+
+ answers[current]=index;
+
+ review[current]=false;
+
+ renderQuestion();
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function nextQuestion(){
+
+ if(current<179){
+  current++;
+  renderQuestion();
+ }else{
+  openSubmit();
+ }
+}
+
+
+function previousQuestion(){
+
+ if(current>0){
+  current--;
+  renderQuestion();
+ }
+}
+
+
+/* =====================================================
+   REVIEW
+===================================================== */
+
+function toggleReview(){
+
+ review[current]=!review[current];
+
+ renderPalette();
+}
+
+
+/* =====================================================
+   PALETTE
+===================================================== */
+
+function renderPalette(){
+
+ const palette=document.getElementById("palette");
+
+ if(!palette) return;
+
+ palette.innerHTML="";
+
+ for(let i=0;i<180;i++){
+
+  const btn=document.createElement("button");
+
+  btn.className="pbtn";
+
+  btn.textContent=i+1;
+
+  if(answers[i]!==null){
+   btn.classList.add("answered");
+  }
+
+  if(review[i]){
+   btn.classList.add("review");
+  }
+
+  if(i===current){
+   btn.classList.add("current");
+  }
+
+  btn.onclick=function(){
+
+   current=i;
+   renderQuestion();
+
+   window.scrollTo({
+    top:0,
+    behavior:"smooth"
+   });
+
+  };
+
+  palette.appendChild(btn);
+ }
+}
+
+
+/* =====================================================
+   SUBMIT MODAL
+===================================================== */
+
+function openSubmit(){
+
+ let attempted=answers.filter(x=>x!==null).length;
+
+ document.getElementById("submitText").textContent=
+  "You have attempted "+attempted+
+  " out of 180 questions. Do you want to submit?";
+
+ document.getElementById("submitModal")
+  .classList.add("show");
+}
+
+
+function closeSubmit(){
+
+ document.getElementById("submitModal")
+  .classList.remove("show");
+}
+
+
+/* =====================================================
+   SUBMIT
+===================================================== */
+
+function submitTest(){
+
+ closeSubmit();
+
+ clearInterval(timerInterval);
+
+ let correct=0;
+ let wrong=0;
+ let unattempted=0;
+ let score=0;
+
+ questions.forEach(function(q,i){
+
+  if(answers[i]===null){
+
+   unattempted++;
+
+  }else if(answers[i]===q.answer){
+
+   correct++;
+   score+=4;
+
+  }else{
+
+   wrong++;
+   score-=1;
+
+  }
+
+ });
+
+ document.getElementById("testScreen")
+  .classList.remove("active");
+
+ document.getElementById("resultScreen")
+  .classList.add("active");
+
+ document.getElementById("score").textContent=score;
+ document.getElementById("correctCount").textContent=correct;
+ document.getElementById("wrongCount").textContent=wrong;
+ document.getElementById("unattemptedCount").textContent=unattempted;
+
+ renderSolutions();
+}
+
+
+/* =====================================================
+   SOLUTIONS
+===================================================== */
+
+function renderSolutions(){
+
+ const box=document.getElementById("solutions");
+
+ box.innerHTML="";
+
+ questions.forEach(function(q,i){
+
+  let status;
+
+  if(answers[i]===null){
+   status="unattempted";
+  }else if(answers[i]===q.answer){
+   status="correct";
+  }else{
+   status="wrong";
+  }
+
+  const div=document.createElement("div");
+
+  div.className="solution "+status;
+
+  const questionText=
+   language==="en" ? q.en : q.hi;
+
+  const optionArray=
+   language==="en" ? q.oe : q.oh;
+
+  const correctText=
+   optionArray[q.answer];
+
+  let selectedText="Unattempted";
+
+  if(answers[i]!==null){
+   selectedText=optionArray[answers[i]];
+  }
+
+  const statusText=
+   status==="correct" ? "CORRECT" :
+   status==="wrong" ? "WRONG" :
+   "UNATTEMPTED";
+
+  div.innerHTML=
+   '<div class="sol-q">'+
+   (i+1)+". "+questionText+
+   '</div>'+
+   '<div class="answer-line">'+
+   '<b>Status:</b> '+statusText+
+   '<br>'+
+   '<b>Your Answer:</b> '+selectedText+
+   '<br>'+
+   '<b>Correct Answer:</b> '+correctText+
+   '<br>'+
+   '<b>Explanation:</b> '+q.solution+
+   '</div>';
+
+  box.appendChild(div);
+
+ });
+}
+
+
+/* =====================================================
+   KEYBOARD SUPPORT
+===================================================== */
+
+document.addEventListener("keydown",function(e){
+
+ if(!document.getElementById("testScreen").classList.contains("active")){
+  return;
+ }
+
+ if(e.key==="ArrowRight"){
+  nextQuestion();
+ }
+
+ if(e.key==="ArrowLeft"){
+  previousQuestion();
+ }
+
+});
+
+
+/* =====================================================
+   PREVENT ACCIDENTAL FORM SUBMISSION
+===================================================== */
+
+window.addEventListener("beforeunload",function(e){
+
+ if(document.getElementById("testScreen").classList.contains("active")){
+
+  e.preventDefault();
+  e.returnValue="";
+
+ }
+
+});
+
+</script>
+
+</body>
+</html>
