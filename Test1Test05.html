@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>STUDYBYPKY | TEST 05</title>
+
+<style>
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff4f9a,#ff9ccc,#ffe6f2);
+color:#222;
+min-height:100vh;
+}
+
+.hidden{
+display:none!important;
+}
+
+.page{
+min-height:100vh;
+padding:15px;
+}
+
+.card{
+max-width:950px;
+margin:25px auto;
+background:#fff;
+border-radius:22px;
+padding:25px;
+box-shadow:0 10px 35px rgba(0,0,0,.20);
+}
+
+.brand{
+text-align:center;
+font-size:30px;
+font-weight:900;
+color:#e91e63;
+margin-bottom:8px;
+}
+
+.subtitle{
+text-align:center;
+font-size:18px;
+font-weight:bold;
+margin-bottom:20px;
+}
+
+h1{
+text-align:center;
+margin:10px 0 20px;
+}
+
+h2{
+color:#d81b60;
+margin:18px 0 12px;
+}
+
+.info{
+background:#fff0f7;
+border-left:5px solid #e91e63;
+padding:16px;
+border-radius:12px;
+line-height:1.8;
+margin:15px 0;
+}
+
+.btn{
+border:none;
+background:#e91e63;
+color:white;
+padding:13px 25px;
+border-radius:25px;
+cursor:pointer;
+font-size:16px;
+font-weight:bold;
+margin:5px;
+}
+
+.btn:hover{
+background:#c2185b;
+}
+
+.green{
+background:#16a34a;
+}
+
+.green:hover{
+background:#15803d;
+}
+
+.center{
+text-align:center;
+}
+
+/* TEST */
+
+#testPage{
+display:none;
+}
+
+.topbar{
+position:sticky;
+top:0;
+z-index:100;
+background:white;
+padding:10px;
+box-shadow:0 3px 15px rgba(0,0,0,.15);
+}
+
+.toprow{
+max-width:1250px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.logo{
+color:#e91e63;
+font-size:20px;
+font-weight:900;
+}
+
+.timer{
+background:#111;
+color:white;
+padding:10px 16px;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+}
+
+.lang button{
+padding:8px 12px;
+border:1px solid #e91e63;
+background:white;
+color:#e91e63;
+border-radius:7px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.lang button.active{
+background:#e91e63;
+color:white;
+}
+
+.section{
+max-width:1250px;
+margin:12px auto;
+background:white;
+padding:12px;
+text-align:center;
+border-radius:12px;
+color:#d81b60;
+font-weight:bold;
+}
+
+.layout{
+max-width:1250px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 290px;
+gap:15px;
+}
+
+.questionBox,
+.palette{
+background:white;
+border-radius:18px;
+padding:20px;
+}
+
+.questionNo{
+color:#e91e63;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.question{
+font-size:20px;
+font-weight:bold;
+line-height:1.5;
+margin-bottom:18px;
+}
+
+.option{
+width:100%;
+display:block;
+text-align:left;
+background:white;
+border:2px solid #eee;
+padding:13px;
+border-radius:10px;
+margin:9px 0;
+cursor:pointer;
+font-size:16px;
+}
+
+.option:hover{
+border-color:#e91e63;
+}
+
+.option.selected{
+background:#ffe0ed;
+border-color:#e91e63;
+}
+
+.controls{
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:7px;
+margin-top:20px;
+}
+
+.control{
+border:none;
+padding:10px 14px;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.next{
+background:#e91e63;
+color:white;
+}
+
+.review{
+background:#f59e0b;
+color:white;
+}
+
+.submit{
+background:#16a34a;
+color:white;
+}
+
+.numbers{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:5px;
+}
+
+.num{
+border:1px solid #ddd;
+background:#f3f3f3;
+padding:8px 2px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.num.current{
+border:3px solid #e91e63;
+}
+
+.num.answered{
+background:#22c55e;
+color:white;
+}
+
+.num.reviewed{
+background:#f59e0b;
+color:white;
+}
+
+/* RESULT */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin:20px 0;
+}
+
+.stat{
+padding:18px;
+text-align:center;
+border-radius:12px;
+font-weight:bold;
+}
+
+.correct{
+background:#dcfce7;
+color:#15803d;
+}
+
+.wrong{
+background:#fee2e2;
+color:#b91c1c;
+}
+
+.skip{
+background:#f3f4f6;
+color:#555;
+}
+
+.marks{
+background:#fff0f6;
+color:#d81b60;
+}
+
+.reviewItem{
+background:#fff8fb;
+border-radius:12px;
+padding:15px;
+margin:12px 0;
+border-left:6px solid #aaa;
+line-height:1.7;
+}
+
+.reviewCorrect{
+border-left-color:#22c55e;
+}
+
+.reviewWrong{
+border-left-color:#ef4444;
+}
+
+.reviewSkip{
+border-left-color:#999;
+}
+
+@media(max-width:800px){
+
+.layout{
+grid-template-columns:1fr;
+}
+
+.palette{
+position:static;
+}
+
+.stats{
+grid-template-columns:1fr 1fr;
+}
+
+.numbers{
+grid-template-columns:repeat(10,1fr);
+}
+
+}
+
+@media(max-width:500px){
+
+.card{
+padding:15px;
+}
+
+.question{
+font-size:18px;
+}
+
+.stats{
+grid-template-columns:1fr;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- =====================================================
+PAGE 1 : WELCOME
+===================================================== -->
+
+<div id="welcomePage" class="page">
+
+<div class="card">
+
+<div class="brand">
+STUDYBYPKY
+</div>
+
+<div class="subtitle">
+NEET TEST SERIES
+</div>
+
+<h1>TEST 05</h1>
+
+<div class="info">
+
+<b>Test Pattern</b><br><br>
+
+🔹 Physics — 45 Questions<br>
+🔹 Chemistry — 45 Questions<br>
+🔹 Botany — 45 Questions<br>
+🔹 Zoology — 45 Questions<br><br>
+
+<b>Total Questions:</b> 180<br>
+<b>Total Marks:</b> 720<br>
+<b>Time:</b> 03:15:00<br>
+<b>Marking:</b> +4 / −1 / 0
+
+</div>
+
+<div class="center">
+
+<button class="btn" onclick="openInstructions()">
+START TEST
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+PAGE 2 : INSTRUCTIONS
+===================================================== -->
+
+<div id="instructionPage" class="page hidden">
+
+<div class="card">
+
+<div class="brand">
+STUDYBYPKY
+</div>
+
+<h1>TEST 05</h1>
+
+<div class="center">
+<h2>TEST INSTRUCTIONS</h2>
+</div>
+
+<div class="info">
+
+<h3>⏱ TEST DURATION</h3>
+
+<p>
+<b>03:15:00</b>
+</p>
+
+<p>
+The timer will start when you enter the test.
+</p>
+
+</div>
+
+
+<div class="info">
+
+<h3>📚 TEST SECTIONS</h3>
+
+<br>
+
+<p>
+<b>Physics:</b> Question 1 – 45
+</p>
+
+<p>
+<b>Chemistry:</b> Question 46 – 90
+</p>
+
+<p>
+<b>Botany:</b> Question 91 – 135
+</p>
+
+<p>
+<b>Zoology:</b> Question 136 – 180
+</p>
+
+</div>
+
+
+<div class="info">
+
+<h3>📊 MARKING SCHEME</h3>
+
+<br>
+
+<p>
+✅ Correct Answer:
+<b>+4 Marks</b>
+</p>
+
+<p>
+❌ Wrong Answer:
+<b>−1 Mark</b>
+</p>
+
+<p>
+⚪ Unattempted:
+<b>0 Marks</b>
+</p>
+
+<p>
+<br>
+<b>Maximum Marks: 720</b>
+</p>
+
+</div>
+
+
+<div class="info">
+
+<h3>📝 IMPORTANT INSTRUCTIONS</h3>
+
+<br>
+
+<p>
+1. There are <b>180 questions</b> in this test.
+</p>
+
+<p>
+2. Each question has four options.
+</p>
+
+<p>
+3. Only one option can be selected.
+</p>
+
+<p>
+4. Correct answer awards <b>+4</b> marks.
+</p>
+
+<p>
+5. Wrong answer deducts <b>1</b> mark.
+</p>
+
+<p>
+6. Unattempted questions receive <b>0</b> marks.
+</p>
+
+<p>
+7. You can move between questions using
+<b>Previous</b> and <b>Next</b>.
+</p>
+
+<p>
+8. You can directly open any question from the
+<b>Question Palette</b>.
+</p>
+
+<p>
+9. You can mark a question for review.
+</p>
+
+<p>
+10. English and Hindi can be selected during the test.
+</p>
+
+<p>
+11. The test will automatically submit when the timer reaches zero.
+</p>
+
+<p>
+12. After submission you can see:
+</p>
+
+<ul style="margin-left:25px;line-height:1.8">
+
+<li>Correct Questions</li>
+<li>Wrong Questions</li>
+<li>Unattempted Questions</li>
+<li>Total Score</li>
+<li>Correct Answer</li>
+<li>Your Answer</li>
+<li>Detailed Explanation</li>
+
+</ul>
+
+</div>
+
+
+<div class="info">
+
+<h3>⚠️ PLEASE NOTE</h3>
+
+<br>
+
+<p>
+Once the test is submitted, you cannot change your answers.
+</p>
+
+<p>
+Please check your answers carefully before submitting.
+</p>
+
+</div>
+
+
+<div class="center">
+
+<label style="display:block;margin:15px">
+
+<input
+type="checkbox"
+id="agreeBox"
+onchange="toggleContinue()">
+
+&nbsp;
+
+I have read and understood all instructions.
+
+</label>
+
+
+<button
+id="continueBtn"
+class="btn green"
+disabled
+onclick="startTest()">
+
+I AGREE & CONTINUE
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+PAGE 3 : TEST
+===================================================== -->
+
+<div id="testPage">
+
+<div class="topbar">
+
+<div class="toprow">
+
+<div class="logo">
+STUDYBYPKY | TEST 05
+</div>
+
+<div class="lang">
+
+<button
+id="enBtn"
+class="active"
+onclick="changeLanguage('en')">
+
+English
+
+</button>
+
+<button
+id="hiBtn"
+onclick="changeLanguage('hi')">
+
+हिन्दी
+
+</button>
+
+</div>
+
+<div class="timer" id="timer">
+03:15:00
+</div>
+
+</div>
+
+</div>
+
+
+<div id="sectionTitle" class="section"></div>
+
+
+<div class="layout">
+
+<div class="questionBox">
+
+<div id="questionNo"
+class="questionNo">
+</div>
+
+<div id="question"
+class="question">
+</div>
+
+<div id="options"></div>
+
+
+<div class="controls">
+
+<button
+class="control"
+onclick="previousQuestion()">
+
+← Previous
+
+</button>
+
+<button
+class="control review"
+onclick="markReview()">
+
+★ Mark Review
+
+</button>
+
+<button
+class="control next"
+onclick="nextQuestion()">
+
+Next →
+
+</button>
+
+<button
+class="control submit"
+onclick="submitTest()">
+
+Submit Test
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="palette">
+
+<h3>Question Palette</h3>
+
+<p style="font-size:12px;margin-bottom:10px">
+
+🟢 Answered
+
+&nbsp;
+
+🟠 Review
+
+&nbsp;
+
+⚪ Unattempted
+
+</p>
+
+<div id="numbers"
+class="numbers">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+RESULT PAGE
+===================================================== -->
+
+<div id="resultPage" class="page hidden">
+
+<div class="card">
+
+<div class="brand">
+STUDYBYPKY
+</div>
+
+<h1>TEST RESULT</h1>
+
+
+<div class="stats">
+
+<div class="stat correct">
+
+<div style="font-size:25px"
+id="correct">
+
+0
+
+</div>
+
+Correct
+
+</div>
+
+
+<div class="stat wrong">
+
+<div style="font-size:25px"
+id="wrong">
+
+0
+
+</div>
+
+Wrong
+
+</div>
+
+
+<div class="stat skip">
+
+<div style="font-size:25px"
+id="unattempted">
+
+0
+
+</div>
+
+Unattempted
+
+</div>
+
+
+<div class="stat marks">
+
+<div style="font-size:25px"
+id="score">
+
+0
+
+</div>
+
+Score
+
+</div>
+
+</div>
+
+
+<div class="info center">
+
+<b>MARKING SCHEME</b>
+
+<br><br>
+
+Correct = <b>+4</b>
+
+&nbsp; | &nbsp;
+
+Wrong = <b>−1</b>
+
+&nbsp; | &nbsp;
+
+Unattempted = <b>0</b>
+
+<br><br>
+
+Maximum Marks = <b>720</b>
+
+</div>
+
+
+<h2
+id="resultSummary"
+class="center">
+</h2>
+
+
+<div class="center">
+
+<button
+class="btn"
+onclick="showSolutions()">
+
+VIEW ALL SOLUTIONS
+
+</button>
+
+</div>
+
+
+<div id="solutions"></div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+QUESTION DATA
+===================================================== */
+
+let questions=[];
+
+
+function addQuestion(
+section,
+en,
+hi,
+enOptions,
+hiOptions,
+answer,
+enExp,
+hiExp
+){
+
+questions.push({
+
+section:section,
+en:en,
+hi:hi,
+enOptions:enOptions,
+hiOptions:hiOptions,
+answer:answer,
+enExp:enExp,
+hiExp:hiExp,
+selected:null,
+review:false
+
+});
+
+}
+
+
+/* =====================================================
+PHYSICS QUESTIONS
+1 - 45
+===================================================== */
+
+const physicsBase=[
+
+[
+"What is the SI unit of length?",
+"लंबाई की SI इकाई क्या है?",
+["Metre","Kilometre","Centimetre","Millimetre"],
+["मीटर","किलोमीटर","सेंटीमीटर","मिलीमीटर"],
+0,
+"The SI base unit of length is metre.",
+"लंबाई की SI मूल इकाई मीटर है।"
+],
+
+[
+"Which quantity is a vector?",
+"कौन-सी राशि सदिश है?",
+["Mass","Time","Force","Temperature"],
+["द्रव्यमान","समय","बल","तापमान"],
+2,
+"Force has magnitude and direction.",
+"बल में परिमाण और दिशा दोनों होते हैं।"
+],
+
+[
+"The magnitude of vector 3i + 4j is:",
+"सदिश 3i + 4j का परिमाण है:",
+["3","4","5","7"],
+["3","4","5","7"],
+2,
+"√(3² + 4²) = 5.",
+"√(3² + 4²) = 5।"
+]
+
+];
+
+
+for(let i=1;i<=45;i++){
+
+let q=physicsBase[(i-1)%physicsBase.length];
+
+addQuestion(
+"Physics",
+q[0]+" (Q"+i+")",
+q[1]+" (प्रश्न "+i+")",
+q[2],
+q[3],
+q[4],
+q[5],
+q[6]
+);
+
+}
+
+
+/* =====================================================
+CHEMISTRY
+46 - 90
+===================================================== */
+
+const chemistryBase=[
+
+[
+"Avogadro number is:",
+"एवोगैड्रो संख्या है:",
+["6.022 × 10²³","3 × 10⁸","9.8","1.6 × 10⁻¹⁹"],
+["6.022 × 10²³","3 × 10⁸","9.8","1.6 × 10⁻¹⁹"],
+0,
+"Avogadro number is approximately 6.022 × 10²³.",
+"एवोगैड्रो संख्या लगभग 6.022 × 10²³ है।"
+],
+
+[
+"Molar mass of water is:",
+"जल का मोलर द्रव्यमान है:",
+["16 g/mol","18 g/mol","20 g/mol","22 g/mol"],
+["16 g/mol","18 g/mol","20 g/mol","22 g/mol"],
+1,
+"H₂O has molar mass 18 g/mol.",
+"H₂O का मोलर द्रव्यमान 18 g/mol है।"
+],
+
+[
+"Atomic number represents the number of:",
+"परमाणु क्रमांक किसकी संख्या दर्शाता है?",
+["Neutrons","Protons","Nucleons","Molecules"],
+["न्यूट्रॉन","प्रोटॉन","न्यूक्लिऑन","अणु"],
+1,
+"Atomic number equals the number of protons.",
+"परमाणु क्रमांक प्रोटॉनों की संख्या के बराबर होता है।"
+]
+
+];
+
+
+for(let i=46;i<=90;i++){
+
+let q=chemistryBase[(i-46)%chemistryBase.length];
+
+addQuestion(
+"Chemistry",
+q[0]+" (Q"+i+")",
+q[1]+" (प्रश्न "+i+")",
+q[2],
+q[3],
+q[4],
+q[5],
+q[6]
+);
+
+}
+
+
+/* =====================================================
+BOTANY
+91 - 135
+===================================================== */
+
+const botanyBase=[
+
+[
+"The basic unit of life is:",
+"जीवन की मूल इकाई है:",
+["Cell","Tissue","Organ","Organ system"],
+["कोशिका","ऊतक","अंग","अंग तंत्र"],
+0,
+"Cell is the basic structural and functional unit of life.",
+"कोशिका जीवन की मूल संरचनात्मक एवं क्रियात्मक इकाई है।"
+],
+
+[
+"Who discovered cells in cork?",
+"कॉर्क में कोशिकाओं की खोज किसने की?",
+["Robert Hooke","Darwin","Mendel","Schleiden"],
+["रॉबर्ट हुक","डार्विन","मेंडल","श्लाइडेन"],
+0,
+"Robert Hooke observed cork cells.",
+"रॉबर्ट हुक ने कॉर्क कोशिकाओं का अवलोकन किया।"
+],
+
+[
+"Powerhouse of the cell is:",
+"कोशिका का पावरहाउस है:",
+["Nucleus","Mitochondria","Ribosome","Golgi body"],
+["नाभिक","माइटोकॉन्ड्रिया","राइबोसोम","गॉल्जी तंत्र"],
+1,
+"Mitochondria produce ATP.",
+"माइटोकॉन्ड्रिया ATP का उत्पादन करते हैं।"
+]
+
+];
+
+
+for(let i=91;i<=135;i++){
+
+let q=botanyBase[(i-91)%botanyBase.length];
+
+addQuestion(
+"Botany",
+q[0]+" (Q"+i+")",
+q[1]+" (प्रश्न "+i+")",
+q[2],
+q[3],
+q[4],
+q[5],
+q[6]
+);
+
+}
+
+
+/* =====================================================
+ZOOLOGY
+136 - 180
+===================================================== */
+
+const zoologyBase=[
+
+[
+"Study of tissues is called:",
+"ऊतकों के अध्ययन को कहते हैं:",
+["Histology","Cytology","Ecology","Genetics"],
+["हिस्टोलॉजी","साइटोलॉजी","इकोलॉजी","जेनेटिक्स"],
+0,
+"Histology is the study of tissues.",
+"हिस्टोलॉजी ऊतकों का अध्ययन है।"
+],
+
+[
+"Blood is a type of:",
+"रक्त किस प्रकार का ऊतक है?",
+["Connective tissue","Epithelial tissue","Muscular tissue","Nervous tissue"],
+["संयोजी ऊतक","उपकला ऊतक","मांसपेशीय ऊतक","तंत्रिका ऊतक"],
+0,
+"Blood is connective tissue.",
+"रक्त संयोजी ऊतक है।"
+],
+
+[
+"Functional unit of nervous tissue is:",
+"तंत्रिका ऊतक की क्रियात्मक इकाई है:",
+["Neuron","Nephron","Alveolus","Osteocyte"],
+["न्यूरॉन","नेफ्रॉन","एल्वियोलस","ऑस्टियोसाइट"],
+0,
+"Neuron is the functional unit of nervous tissue.",
+"न्यूरॉन तंत्रिका ऊतक की क्रियात्मक इकाई है।"
+]
+
+];
+
+
+for(let i=136;i<=180;i++){
+
+let q=zoologyBase[(i-136)%zoologyBase.length];
+
+addQuestion(
+"Zoology",
+q[0]+" (Q"+i+")",
+q[1]+" (प्रश्न "+i+")",
+q[2],
+q[3],
+q[4],
+q[5],
+q[6]
+);
+
+}
+
+
+/* =====================================================
+TEST VARIABLES
+===================================================== */
+
+let current=0;
+
+let language="en";
+
+let remaining=3*60*60+15*60;
+
+let timerInterval=null;
+
+let submitted=false;
+
+
+/* =====================================================
+PAGE 2
+===================================================== */
+
+function openInstructions(){
+
+document.getElementById("welcomePage")
+.classList.add("hidden");
+
+document.getElementById("instructionPage")
+.classList.remove("hidden");
+
+}
+
+
+function toggleContinue(){
+
+let checked=
+document.getElementById("agreeBox").checked;
+
+document.getElementById("continueBtn").disabled=
+!checked;
+
+}
+
+
+/* =====================================================
+START TEST
+===================================================== */
+
+function startTest(){
+
+document.getElementById("instructionPage")
+.classList.add("hidden");
+
+document.getElementById("testPage")
+.style.display="block";
+
+renderQuestion();
+
+startTimer();
+
+}
+
+
+/* =====================================================
+TIMER
+===================================================== */
+
+function startTimer(){
+
+timerInterval=setInterval(()=>{
+
+remaining--;
+
+if(remaining<=0){
+
+remaining=0;
+
+updateTimer();
+
+clearInterval(timerInterval);
+
+submitTest(true);
+
+return;
+
+}
+
+updateTimer();
+
+},1000);
+
+}
+
+
+function updateTimer(){
+
+let h=Math.floor(remaining/3600);
+
+let m=Math.floor((remaining%3600)/60);
+
+let s=remaining%60;
+
+document.getElementById("timer")
+.textContent=
+
+String(h).padStart(2,"0")+":"+
+String(m).padStart(2,"0")+":"+
+String(s).padStart(2,"0");
+
+}
+
+
+/* =====================================================
+LANGUAGE
+===================================================== */
+
+function changeLanguage(lang){
+
+language=lang;
+
+document.getElementById("enBtn")
+.classList.toggle("active",lang==="en");
+
+document.getElementById("hiBtn")
+.classList.toggle("active",lang==="hi");
+
+renderQuestion();
+
+}
+
+
+/* =====================================================
+SECTION
+===================================================== */
+
+function sectionName(i){
+
+if(i<45){
+
+return language==="en"
+?"PHYSICS | Questions 1–45"
+:"भौतिक विज्ञान | प्रश्न 1–45";
+
+}
+
+if(i<90){
+
+return language==="en"
+?"CHEMISTRY | Questions 46–90"
+:"रसायन विज्ञान | प्रश्न 46–90";
+
+}
+
+if(i<135){
+
+return language==="en"
+?"BOTANY | Questions 91–135"
+:"वनस्पति विज्ञान | प्रश्न 91–135";
+
+}
+
+return language==="en"
+?"ZOOLOGY | Questions 136–180"
+:"प्राणी विज्ञान | प्रश्न 136–180";
+
+}
+
+
+/* =====================================================
+RENDER QUESTION
+===================================================== */
+
+function renderQuestion(){
+
+let q=questions[current];
+
+document.getElementById("sectionTitle")
+.textContent=sectionName(current);
+
+document.getElementById("questionNo")
+.textContent=
+
+language==="en"
+?"Question "+(current+1)+" of 180"
+:"प्रश्न "+(current+1)+" / 180";
+
+document.getElementById("question")
+.textContent=
+
+language==="en"
+?q.en
+:q.hi;
+
+let options=
+
+language==="en"
+?q.enOptions
+:q.hiOptions;
+
+let html="";
+
+options.forEach((option,index)=>{
+
+html+=`
+
+<button
+class="option ${q.selected===index?"selected":""}"
+onclick="selectAnswer(${index})">
+
+${String.fromCharCode(65+index)}. ${option}
+
+</button>
+
+`;
+
+});
+
+document.getElementById("options")
+.innerHTML=html;
+
+renderPalette();
+
+}
+
+
+/* =====================================================
+ANSWER
+===================================================== */
+
+function selectAnswer(index){
+
+questions[current].selected=index;
+
+renderQuestion();
+
+}
+
+
+/* =====================================================
+NAVIGATION
+===================================================== */
+
+function nextQuestion(){
+
+if(current<179){
+
+current++;
+
+renderQuestion();
+
+}
+
+}
+
+
+function previousQuestion(){
+
+if(current>0){
+
+current--;
+
+renderQuestion();
+
+}
+
+}
+
+
+function jump(index){
+
+current=index;
+
+renderQuestion();
+
+}
+
+
+function markReview(){
+
+questions[current].review=
+!questions[current].review;
+
+renderQuestion();
+
+}
+
+
+/* =====================================================
+PALETTE
+===================================================== */
+
+function renderPalette(){
+
+let html="";
+
+questions.forEach((q,i)=>{
+
+let c="num";
+
+if(i===current)
+c+=" current";
+
+if(q.selected!==null)
+c+=" answered";
+
+if(q.review)
+c+=" reviewed";
+
+html+=`
+
+<button
+class="${c}"
+onclick="jump(${i})">
+
+${i+1}
+
+</button>
+
+`;
+
+});
+
+document.getElementById("numbers")
+.innerHTML=html;
+
+}
+
+
+/* =====================================================
+SUBMIT
+===================================================== */
+
+function submitTest(auto=false){
+
+if(submitted)
+return;
+
+if(!auto){
+
+let unanswered=questions.filter(
+q=>q.selected===null
+).length;
+
+let message=
+
+language==="en"
+
+?
+
+`You have ${unanswered} unattempted questions.
+
+Correct = +4
+Wrong = -1
+Unattempted = 0
+
+Are you sure you want to submit?`
+
+:
+
+`आपके ${unanswered} प्रश्न अनुत्तरित हैं।
+
+सही = +4
+गलत = -1
+अनुत्तरित = 0
+
+क्या आप टेस्ट जमा करना चाहते हैं?`;
+
+if(!confirm(message))
+return;
+
+}
+
+submitted=true;
+
+clearInterval(timerInterval);
+
+calculateResult();
+
+document.getElementById("testPage")
+.style.display="none";
+
+document.getElementById("resultPage")
+.classList.remove("hidden");
+
+window.scrollTo(0,0);
+
+}
+
+
+/* =====================================================
+RESULT
+===================================================== */
+
+function calculateResult(){
+
+let correct=0;
+
+let wrong=0;
+
+let unattempted=0;
+
+questions.forEach(q=>{
+
+if(q.selected===null){
+
+unattempted++;
+
+}
+else if(q.selected===q.answer){
+
+correct++;
+
+}
+else{
+
+wrong++;
+
+}
+
+});
+
+let positive=correct*4;
+
+let negative=wrong;
+
+let finalScore=positive-negative;
+
+document.getElementById("correct")
+.textContent=correct;
+
+document.getElementById("wrong")
+.textContent=wrong;
+
+document.getElementById("unattempted")
+.textContent=unattempted;
+
+document.getElementById("score")
+.textContent=finalScore;
+
+document.getElementById("resultSummary")
+.innerHTML=
+
+language==="en"
+
+?
+
+`Final Score: <b>${finalScore} / 720</b>
+<br><br>
+Correct: +${positive}
+&nbsp; | &nbsp;
+Wrong: -${negative}
+&nbsp; | &nbsp;
+Unattempted: 0`
+
+:
+
+`अंतिम स्कोर: <b>${finalScore} / 720</b>
+<br><br>
+सही: +${positive}
+&nbsp; | &nbsp;
+गलत: -${negative}
+&nbsp; | &nbsp;
+अनुत्तरित: 0`;
+
+}
+
+
+/* =====================================================
+SOLUTIONS
+===================================================== */
+
+function showSolutions(){
+
+let box=document.getElementById("solutions");
+
+box.innerHTML="";
+
+questions.forEach((q,i)=>{
+
+let correct=
+q.selected!==null &&
+q.selected===q.answer;
+
+let skipped=
+q.selected===null;
+
+let cls=
+skipped
+?"reviewSkip"
+:correct
+?"reviewCorrect"
+:"reviewWrong";
+
+let yourAnswer=
+
+skipped
+
+?(language==="en"
+?"Unattempted"
+:"अनुत्तरित")
+
+:
+
+language==="en"
+?q.enOptions[q.selected]
+:q.hiOptions[q.selected];
+
+let correctAnswer=
+
+language==="en"
+?q.enOptions[q.answer]
+:q.hiOptions[q.answer];
+
+let questionText=
+language==="en"
+?q.en
+:q.hi;
+
+let explanation=
+language==="en"
+?q.enExp
+:q.hiExp;
+
+box.innerHTML+=`
+
+<div class="reviewItem ${cls}">
+
+<h3>
+${language==="en"?"Question":"प्रश्न"} ${i+1}
+</h3>
+
+<p>
+<b>${questionText}</b>
+</p>
+
+<p>
+<b>
+${language==="en"?"Your Answer":"आपका उत्तर"}:
+</b>
+
+${yourAnswer}
+
+</p>
+
+<p>
+
+<b>
+${language==="en"?"Correct Answer":"सही उत्तर"}:
+</b>
+
+${correctAnswer}
+
+</p>
+
+<p>
+
+<b>
+${language==="en"?"Explanation":"व्याख्या"}:
+</b>
+
+${explanation}
+
+</p>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+/* =====================================================
+REFRESH WARNING
+===================================================== */
+
+window.addEventListener("beforeunload",function(e){
+
+if(
+!submitted &&
+document.getElementById("testPage").style.display==="block"
+){
+
+e.preventDefault();
+
+e.returnValue="";
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
