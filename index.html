@@ -139,6 +139,131 @@ button{
 }
 
 
+/* =====================================================
+   RAKSHABANDHAN
+===================================================== */
+
+.raksha{
+  margin:20px 5%;
+  padding:25px 20px;
+  border-radius:25px;
+  text-align:center;
+  color:#fff;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(255,255,255,.35) 0 2px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 85% 30%,
+      rgba(255,255,255,.25) 0 3px,
+      transparent 4px
+    ),
+    linear-gradient(
+      135deg,
+      #ff4081,
+      #9c27b0,
+      #673ab7,
+      #ff7043
+    );
+
+  box-shadow:
+    0 10px 30px
+    rgba(156,39,176,.35);
+
+  position:relative;
+  overflow:hidden;
+}
+
+.raksha::before,
+.raksha::after{
+  content:"✨";
+  position:absolute;
+  font-size:38px;
+  opacity:.8;
+}
+
+.raksha::before{
+  left:18px;
+  top:15px;
+}
+
+.raksha::after{
+  right:18px;
+  bottom:15px;
+}
+
+.raksha-box{
+  background:rgba(35,10,45,.82);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:20px;
+  padding:22px 15px;
+  backdrop-filter:blur(5px);
+}
+
+.raksha-icon{
+  font-size:55px;
+  margin-bottom:5px;
+  animation:rakshaGlow 2s infinite alternate;
+}
+
+.raksha h2{
+  font-size:30px;
+  margin-bottom:8px;
+  color:#fff;
+}
+
+.raksha h3{
+  font-size:21px;
+  color:#ffd54f;
+  margin:8px 0;
+}
+
+.raksha p{
+  line-height:1.6;
+  font-size:15px;
+  margin-top:8px;
+}
+
+.raksha-line{
+  width:110px;
+  height:5px;
+  margin:12px auto;
+  border-radius:20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff4081,
+      #ffd54f,
+      #ff80ab
+    );
+
+  box-shadow:
+    0 0 12px
+    rgba(255,213,79,.7);
+}
+
+.rakhi{
+  font-size:32px;
+  margin:8px 0;
+}
+
+@keyframes rakshaGlow{
+
+  from{
+    transform:scale(1);
+    filter:drop-shadow(0 0 2px #fff);
+  }
+
+  to{
+    transform:scale(1.08);
+    filter:drop-shadow(0 0 12px #ffd54f);
+  }
+
+  }
 /* ================= CATEGORIES ================= */
 
 .categories{
@@ -869,6 +994,57 @@ footer h2{
 
   </div>
 
+ <!-- =================================================
+       RAKSHABANDHAN WISH
+  ================================================= -->
+
+  <div class="raksha">
+
+    <div class="raksha-box">
+
+      <div class="raksha-icon">
+        🪢
+      </div>
+
+      <h2>
+        Happy Raksha Bandhan!
+      </h2>
+
+      <div class="raksha-line"></div>
+
+      <div class="rakhi">
+        🌸 💖 🪢 💖 🌸
+      </div>
+
+      <h3>
+        Celebrate the Bond of Love & Protection
+      </h3>
+
+      <p>
+        💖 Wishing all our students and their families a very
+        <b>Happy Raksha Bandhan!</b>
+      </p>
+
+      <p>
+        May this beautiful festival bring
+        <b>love, happiness, blessings and togetherness</b>
+        to every family.
+      </p>
+
+      <p>
+        🌸 Celebrate • Smile • Share Happiness • Stay Blessed 🌸
+      </p>
+
+      <p>
+        <b>
+          With warm wishes from<br>
+          StudyByPKY ❤️📚
+        </b>
+      </p>
+
+    </div>
+
+  </div>
 
   <!-- =================================================
        CATEGORIES
