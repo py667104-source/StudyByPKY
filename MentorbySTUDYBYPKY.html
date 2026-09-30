@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mentor by STUDYBYPKY | NEET</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#0b1222;
+    color:white;
+    min-height:100vh;
+}
+
+
+/* HEADER */
+
+.header{
+    height:55px;
+    background:#10192c;
+    border-bottom:1px solid #293858;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 12px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back{
+    color:#8ea0ff;
+    text-decoration:none;
+    font-size:25px;
+    margin-right:8px;
+}
+
+.header-title{
+    font-size:12px;
+    font-weight:bold;
+}
+
+.header-title span{
+    color:#6878ff;
+}
+
+
+/* CONTAINER */
+
+.container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:15px 10px 50px;
+}
+
+
+/* BATCH HERO */
+
+.hero{
+
+    background:linear-gradient(
+        135deg,
+        #18294a,
+        #111c34
+    );
+
+    border:1px solid #304467;
+
+    border-radius:12px;
+
+    padding:18px 15px;
+
+    margin-bottom:15px;
+
+    text-align:center;
+}
+
+.hero h1{
+    font-size:22px;
+    margin-bottom:7px;
+}
+
+.hero h1 span{
+    color:#6878ff;
+}
+
+.hero p{
+    color:#9aa8c0;
+    font-size:9px;
+    line-height:1.6;
+}
+
+.badges{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:12px;
+}
+
+.badge{
+    background:#202f50;
+    border:1px solid #34476d;
+    padding:6px 9px;
+    border-radius:20px;
+    font-size:7px;
+    color:#dce3f3;
+}
+
+
+/* SEARCH */
+
+.search{
+    margin-bottom:15px;
+}
+
+.search input{
+
+    width:100%;
+
+    height:38px;
+
+    background:#151f34;
+
+    border:1px solid #293b5c;
+
+    border-radius:8px;
+
+    padding:0 12px;
+
+    color:white;
+
+    outline:none;
+
+    font-size:9px;
+}
+
+.search input::placeholder{
+    color:#71809b;
+}
+
+.search input:focus{
+    border-color:#6878ff;
+}
+
+
+/* SECTION TITLE */
+
+.section-title{
+
+    display:flex;
+    align-items:center;
+
+    height:32px;
+
+    margin:14px 0 8px;
+
+    padding-left:9px;
+
+    border-left:3px solid #6878ff;
+
+    background:#111d32;
+
+    border-radius:4px;
+
+    font-size:10px;
+
+    font-weight:bold;
+}
+
+
+/* SUBJECT CARD */
+
+.subject-card{
+
+    display:flex;
+
+    align-items:center;
+
+    min-height:82px;
+
+    background:#182640;
+
+    border:1px solid #293b5d;
+
+    border-radius:9px;
+
+    margin-bottom:7px;
+
+    overflow:hidden;
+
+    transition:.2s;
+}
+
+.subject-card:hover{
+    background:#1e2d49;
+    border-color:#4b6090;
+}
+
+
+/* ICON */
+
+.subject-icon{
+
+    width:70px;
+
+    align-self:stretch;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#19385e;
+
+    flex-shrink:0;
+}
+
+.icon-box{
+
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#fff;
+
+    color:#5266ff;
+
+    font-size:18px;
+
+    font-weight:bold;
+}
+
+
+/* INFO */
+
+.subject-info{
+
+    flex:1;
+
+    padding:9px;
+
+}
+
+.subject-info h3{
+
+    font-size:10px;
+
+    line-height:1.4;
+
+    color:#f1f4fa;
+}
+
+.subject-info p{
+
+    color:#8391aa;
+
+    font-size:7px;
+
+    margin-top:4px;
+
+    line-height:1.5;
+}
+
+
+/* BUTTON */
+
+.open-btn{
+
+    margin-right:8px;
+
+    padding:8px 10px;
+
+    border:0;
+
+    border-radius:6px;
+
+    background:#596cff;
+
+    color:white;
+
+    font-size:6px;
+
+    font-weight:bold;
+
+    text-decoration:none;
+
+    white-space:nowrap;
+
+    cursor:pointer;
+}
+
+.open-btn:hover{
+    background:#7180ff;
+}
+
+
+/* PYQ CARD */
+
+.pyq-card{
+
+    background:#182640;
+
+    border:1px solid #293b5d;
+
+    border-radius:9px;
+
+    padding:12px;
+
+    margin-bottom:7px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.pdf-icon{
+
+    width:42px;
+    height:48px;
+
+    background:white;
+
+    border-radius:5px;
+
+    color:#e53935;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    flex-shrink:0;
+}
+
+.pyq-info{
+    flex:1;
+}
+
+.pyq-info h3{
+    font-size:9px;
+}
+
+.pyq-info p{
+    font-size:6.5px;
+    color:#8491a8;
+    margin-top:4px;
+}
+
+
+/* FOOTER */
+
+.footer{
+
+    text-align:center;
+
+    color:#65738c;
+
+    font-size:7px;
+
+    margin-top:25px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:430px){
+
+    .hero h1{
+        font-size:19px;
+    }
+
+    .subject-icon{
+        width:60px;
+    }
+
+    .subject-info h3{
+        font-size:8px;
+    }
+
+    .subject-info p{
+        font-size:6px;
+    }
+
+    .open-btn{
+        font-size:5.5px;
+        padding:7px;
+        margin-right:5px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+<a href="index.html" class="back">
+‹
+</a>
+
+<div class="header-title">
+<span>Mentor by STUDYBYPKY</span> Batch | NEET Preparation
+</div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>
+🙋<span>Mentor by STUDYBYPKY</span>
+</h1>
+
+<p>
+Helps in how to cover all syllabus in 7 months . 
+</p>
+
+<div class="badges">
+
+<div class="badge">🎯 NEET in 7 month</div>
+
+<div class="badge">📚 how to cover Complete neet Syllabus</div>
+
+<div class="badge">📝 how to solve PYQs</div>
+
+<div class="badge">🎥 live Video interaction</div>
+
+</div>
+
+</section>
+
+
+
+<!-- SEARCH -->
+
+<div class="search">
+
+<input
+type="text"
+id="searchBox"
+placeholder="Search subject, chapter or PYQ..."
+>
+
+</div>
+
+
+
+<!-- ================= interaction 1================= -->
+
+<section class="content-section">
+
+<div class="section-title">
+🗓 2 October 2026
+</div>
+
+
+<div class="subject-card"
+data-search="live  interaction by mentor me ">
+
+<div class="subject-icon">
+<div class="icon-box">
+🧏
+</div>
+</div>
+
+<div class="subject-info">
+
+<h3>
+Interaction 01 
+</h3>
+
+<p>
+Class 11 & Class 12 & Dropper  NEET studentes 
+</p>
+
+<p>
+🕗Time 7:00pm to 8:00pm
+</p>
+
+</div>
+
+<a
+href="xx"
+class="open-btn">
+Upcoming 
+</a>
+
+</div>
+
+<!-- ================= interaction 2================= -->
+
+<section class="content-section">
+
+<div class="section-title">
+🗓 28 October 2026
+</div>
+
+
+<div class="subject-card"
+data-search="live  interaction by mentor me ">
+
+<div class="subject-icon">
+<div class="icon-box">
+🧏
+</div>
+</div>
+
+<div class="subject-info">
+
+<h3>
+Interaction 02
+</h3>
+
+<p>
+Class 11 & Class 12 & Dropper  NEET studentes 
+</p>
+
+<p>
+🕗Time 7:00pm to 8:00pm
+</p>
+
+</div>
+
+<a
+href="xx"
+class="open-btn">
+Upcoming 
+</a>
+
+</div>
+
+
+</section>
+
+<!-- ================= interaction 3================ -->
+
+<section class="content-section">
+
+<div class="section-title">
+🗓 28  November 2026
+</div>
+
+
+<div class="subject-card"
+data-search="live  interaction by mentor me ">
+
+<div class="subject-icon">
+<div class="icon-box">
+🧏
+</div>
+</div>
+
+<div class="subject-info">
+
+<h3>
+Interaction 03
+</h3>
+
+<p>
+Class 11 & Class 12 & Dropper  NEET students 
+</p>
+
+<p>
+🕗Time 7:00pm to 8:00pm
+</p>
+
+</div>
+
+<a
+href="xx"
+class="open-btn">
+Upcoming 
+</a>
+
+</div>
+
+
+</section>
+<!-- ================= interaction 4================= -->
+
+<section class="content-section">
+
+<div class="section-title">
+🗓  28 December 2026
+</div>
+
+
+<div class="subject-card"
+data-search="live  interaction by mentor me ">
+
+<div class="subject-icon">
+<div class="icon-box">
+🧏
+</div>
+</div>
+
+<div class="subject-info">
+
+<h3>
+Interaction 04
+</h3>
+
+<p>
+Class 11 & Class 12 & Dropper  NEET students 
+</p>
+
+<p>
+🕗Time 7:00pm to 8:00pm
+</p>
+
+</div>
+
+<a
+href="xx"
+class="open-btn">
+Upcoming 
+</a>
+
+</div>
+
+
+</section>
+<!-- ================= interaction 5================= -->
+
+<section class="content-section">
+
+<div class="section-title">
+🗓 28  January 2027
+</div>
+
+
+<div class="subject-card"
+data-search="live  interaction by mentor me ">
+
+<div class="subject-icon">
+<div class="icon-box">
+🧏
+</div>
+</div>
+
+<div class="subject-info">
+
+<h3>
+Interaction 05
+</h3>
+
+<p>
+Class 11 & Class 12 & Dropper  NEET students 
+</p>
+
+<p>
+🕗Time 7:00pm to 8:00pm
+</p>
+
+</div>
+
+<a
+href="xx"
+class="open-btn">
+Upcoming 
+</a>
+
+</div>
+
+
+</section>
+<!-- ================= interaction 6================= -->
+
+<section class="content-section">
+
+<div class="section-title">
+🗓28 February 2027
+</div>
+
+
+<div class="subject-card"
+data-search="live  interaction by mentor me ">
+
+<div class="subject-icon">
+<div class="icon-box">
+🧏
+</div>
+</div>
+
+<div class="subject-info">
+
+<h3>
+Interaction 06
+</h3>
+
+<p>
+Class 11 & Class 12 & Dropper  NEET students 
+</p>
+
+<p>
+🕗Time 7:00pm to 8:00pm
+</p>
+
+</div>
+
+<a
+href="xx"
+class="open-btn">
+Upcoming 
+</a>
+
+</div>
+
+
+</section>
+
+<!-- ================= interaction 7================= -->
+
+<section class="content-section">
+
+<div class="section-title">
+🗓 28 March 2027
+</div>
+
+
+<div class="subject-card"
+data-search="live  interaction by mentor me ">
+
+<div class="subject-icon">
+<div class="icon-box">
+🧏
+</div>
+</div>
+
+<div class="subject-info">
+
+<h3>
+Interaction 07
+</h3>
+
+<p>
+Class 11 & Class 12 & Dropper  NEET students 
+</p>
+
+<p>
+🕗Time 7:00pm to 8:00pm
+</p>
+
+</div>
+
+<a
+href="xx"
+class="open-btn">
+Upcoming 
+</a>
+
+</div>
+
+
+</section>
+
+<!-- ================= interaction 8================ -->
+
+<section class="content-section">
+
+<div class="section-title">
+🗓28 April 2027
+</div>
+
+
+<div class="subject-card"
+data-search="live  interaction by mentor me ">
+
+<div class="subject-icon">
+<div class="icon-box">
+🧏
+</div>
+</div>
+
+<div class="subject-info">
+
+<h3>
+Interaction 08
+</h3>
+
+<p>
+Class 11 & Class 12 & Dropper  NEET students 
+</p>
+
+<p>
+🕗Time 7:00pm to 8:00pm
+</p>
+
+</div>
+
+<a
+href="xx"
+class="open-btn">
+Upcoming 
+</a>
+
+</div>
+
+
+</section>
+
+
+
+<div
+id="noResult"
+class="footer"
+style="display:none;">
+No matching content found.
+</div>
+
+
+<footer class="footer">
+
+🙋Mentor by STUDYBYPKY • NEET Preparation • Poverd by STUDYBYPKY  
+
+</footer>
+
+
+</main>
+
+
+
+<script>
+
+/* SEARCH */
+
+const searchBox =
+document.getElementById("searchBox");
+
+const cards =
+document.querySelectorAll(
+".subject-card, .pyq-card"
+);
+
+const noResult =
+document.getElementById("noResult");
+
+
+searchBox.addEventListener(
+"input",
+function(){
+
+    const value =
+    this.value.toLowerCase().trim();
+
+    let found = 0;
+
+
+    cards.forEach(card => {
+
+        const text =
+        card.dataset.search.toLowerCase();
+
+        if(text.includes(value)){
+
+            card.style.display =
+            "flex";
+
+            found++;
+
+        }
+        else{
+
+            card.style.display =
+            "none";
+
+        }
+
+    });
+
+
+    if(value && found === 0){
+
+        noResult.style.display =
+        "block";
+
+    }
+    else{
+
+        noResult.style.display =
+        "none";
+
+    }
+
+});
+
+</script>
+
+
+</body>
+</html>
